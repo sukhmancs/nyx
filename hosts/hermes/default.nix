@@ -3,7 +3,7 @@
     ./fs
     ./modules
 
-    ./encryption.nix
+    #./encryption.nix
     ./networking.nix
     ./system.nix
   ];

@@ -17,7 +17,7 @@
     ./eza.nix
     ./fzf.nix
     ./gh.nix
-    ./gpg.nix
+    # ./gpg.nix
     ./man.nix
     ./nix-direnv.nix
     ./nix-index.nix

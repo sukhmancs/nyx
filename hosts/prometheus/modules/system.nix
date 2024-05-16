@@ -1,7 +1,7 @@
 {
   config.modules.system = {
     mainUser = "notashelf";
-    fs = ["btrfs" "vfat" "ntfs"];
+    fs = ["ext4" "vfat" "ntfs"];
     autoLogin = true;
 
     boot = {
@@ -20,8 +20,8 @@
     networking = {
       optimizeTcp = true;
       tailscale = {
-        enable = true;
-        isClient = true;
+        enable = false;
+        isClient = false;
       };
     };
 
@@ -36,10 +36,19 @@
       cli.enable = true;
       gui.enable = true;
 
-      git.signingKey = "419DBDD3228990BE";
+      firefox.enable = true;
+      chromium.enable = true;
+      libreoffice.enable = true;
+      element.enable = true;
+      spotify.enable = true;
+      thunderbird.enable = true;
+      # vscode.enable = true;
+      webcord.enable = true;
+
+      git.signingKey = "97262307A37BC732";
 
       gaming = {
-        enable = true;
+        enable = false;
       };
 
       default = {

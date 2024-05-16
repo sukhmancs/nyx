@@ -16,7 +16,7 @@
     };
 
     encryption = {
-      enable = true;
+      enable = false;
       device = "enc";
     };
 

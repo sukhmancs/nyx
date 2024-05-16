@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   time = {
-    timeZone = "Europe/Istanbul";
+    timeZone = "America/Toronto";
     hardwareClockInLocalTime = false; # this somehow breaks if Impermanence is enabled
   };
 
