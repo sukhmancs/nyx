@@ -24,7 +24,7 @@ in {
             pkgs.rofi-rbw
           ]
           ++ optionals meta.isWayland (with inputs'.nyxpkgs.packages; [
-            rofi-rbw-wayland
+            # rofi-rbw-wayland
             rofi-calc-wayland
             rofi-emoji-wayland
           ]);
@@ -142,7 +142,7 @@ in {
           lines = 7;
           cycle = true;
           dynamic = true;
-          srollbar = false;
+          scrollbar = false;
           layout = mkLiteral "vertical";
           reverse = false;
           fixed-height = true;
