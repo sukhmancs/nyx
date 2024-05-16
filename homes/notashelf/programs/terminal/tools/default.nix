@@ -29,5 +29,6 @@
     ./transient-services.nix
     ./xdg.nix
     ./zoxide.nix
+    ./pass.nix
   ];
 }
