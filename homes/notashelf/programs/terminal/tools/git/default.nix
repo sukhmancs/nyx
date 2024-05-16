@@ -25,8 +25,8 @@ in {
       package = gitPackage;
 
       # my credentials
-      userName = "NotAShelf";
-      userEmail = "raf@notashelf.dev";
+      userName = "racoot";
+      userEmail = "63659772+sukhmancs@users.noreply.github.com"; # i wonder why i don't wanna reveal my email
 
       # lets sign using our own key
       # this must be provided by the host

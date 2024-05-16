@@ -1,9 +1,10 @@
 {
-  config,
+  osConfig,
   pkgs,
+  lib,
   ...
 }: let
-  sys = config.modules.system;
+  sys = osConfig.modules.system;
 in {
   programs = {
     # password-store pass
@@ -29,8 +30,8 @@ in {
     };
   };
 
-  home.file.".config/pass-git-helper" = {
-    source = ./git-pass-mapping;
-    recursive = true;
-  };
+  #  home.file.".config/pass-git-helper" = {
+  #    source = ./git-pass-mapping;
+  #    recursive = true;
+  #  };
 }
