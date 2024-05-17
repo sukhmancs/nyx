@@ -22,6 +22,9 @@ in {
         plugins =
           [
             pkgs.rofi-rbw
+            (pkgs.callPackage
+              ./rofi-ollama
+              {})
           ]
           ++ optionals meta.isWayland (with inputs'.nyxpkgs.packages; [
             # rofi-rbw-wayland
