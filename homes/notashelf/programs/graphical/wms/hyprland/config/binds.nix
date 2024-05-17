@@ -46,7 +46,6 @@ in {
       "$MOD,equal,exec, killall rofi || rofi -show calc" # calc plugin for rofi
       "$MOD,period,exec, killall rofi || rofi -show emoji" # emoji plugin for rofi
       "$MOD,Space,exec, killall rofi || rofi-pass" # rofi-pass plugin for rofi
-      "$MOD,Q,exec, killall rofi || rofi -show ollama" # rofi-ollama plugin for rofi
       ''$MOD,R,exec, killall tofi || run-as-service $(tofi-drun --prompt-text "  Run")'' # alternative app launcher
       ''$MODSHIFT,R,exec, killall anyrun || run-as-service $(anyrun)'' # alternative application launcher with more features
 

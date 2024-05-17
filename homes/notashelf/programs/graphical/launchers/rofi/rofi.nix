@@ -22,9 +22,6 @@ in {
         plugins =
           [
             pkgs.rofi-rbw
-            (pkgs.callPackage
-              ./rofi-ollama
-              {})
           ]
           ++ optionals meta.isWayland (with inputs'.nyxpkgs.packages; [
             # rofi-rbw-wayland
@@ -34,7 +31,7 @@ in {
       };
       font = "Iosevka Nerd Font 14";
       extraConfig = {
-        modi = "drun,filebrowser,calc,emoji,ollama";
+        modi = "drun,filebrowser,calc,emoji";
         drun-display-format = " {name} ";
         sidebar-mode = true;
         matching = "prefix";
@@ -47,7 +44,6 @@ in {
         display-filebrowser = " Files";
         display-calc = "󰃬 Calculator";
         display-emoji = "💀 Emoji";
-        display-ollama = "🧠 Ollama";
       };
 
       theme = let
