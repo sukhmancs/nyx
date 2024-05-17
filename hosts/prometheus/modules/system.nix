@@ -6,10 +6,15 @@
 
     boot = {
       loader = "systemd-boot";
+      secureBoot = false;
       enableKernelTweaks = true;
       initrd.enableTweaks = true;
       loadRecommendedModules = true;
       tmpOnTmpfs = true;
+      plymouth = {
+        enable = true;
+        withThemes = false;
+      };
     };
 
     video.enable = true;
@@ -19,10 +24,19 @@
 
     networking = {
       optimizeTcp = true;
+      nftables.enable = true;
       tailscale = {
-        enable = false;
-        isClient = false;
+        enable = true;
+        isClient = true;
+        isServer = false;
       };
+    };
+
+    security = {
+      tor.enable = true;
+      fixWebcam = false;
+      lockModules = true;
+      auditd.enable = true;
     };
 
     virtualization = {
