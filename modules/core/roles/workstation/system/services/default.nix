@@ -10,5 +10,6 @@
     ./runners.nix
     ./systemd.nix
     ./zswap.nix
+    ./ollama.nix
   ];
 }
