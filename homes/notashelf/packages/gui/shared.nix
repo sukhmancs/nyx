@@ -16,6 +16,8 @@ in {
       easyeffects
       qbittorrent
       helvum
+      joplin-desktop
+      joplin
 
       # Electron applications
       # zoom-us # may we never return to online education
