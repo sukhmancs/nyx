@@ -12,18 +12,10 @@
 in {
   imports = [
     ./transcend # module that merges trees outside central nixpkgs with our system's
-<<<<<<< HEAD
     ./builders.nix # configuration for remote builders
     ./documentation.nix # nixos documentation
     ./nixpkgs.nix # global nixpkgs configuration.nix
     ./system.nix # nixos system configuration
-||||||| parent of 468f39a3 (changed locale keyboard layout)
-    ./builders.nix # configuration for remote builders
-    ./nixpkgs.nix # global nixpkgs configurationnix
-=======
-    # ./builders.nix # configuration for remote builders
-    ./nixpkgs.nix # global nixpkgs configurationnix
->>>>>>> 468f39a3 (changed locale keyboard layout)
   ];
 
   environment = {
