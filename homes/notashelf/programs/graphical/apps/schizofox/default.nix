@@ -87,6 +87,14 @@ in {
               id = "{446900e4-71c2-419f-a6a7-df9c091e268b}";
               name = "bitwarden-password-manager";
             }
+            {
+              id = "tridactyl.vim@cmcaine.co.uk";
+              name = "tridactyl-vim";
+            }
+            {
+              id = "browser-extension@anonaddy";
+              name = "addy_io";
+            }
           ];
           extraExtensions = builtins.foldl' (acc: ext: acc // {ext.id = {install_url = mkUrl ext.name;};}) {} extensions;
         in
