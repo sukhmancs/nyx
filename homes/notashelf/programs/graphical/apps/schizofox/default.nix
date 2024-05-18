@@ -78,7 +78,7 @@ in {
                 name = "tree-style-tab";
               }
               {
-                id = "1018e4d6-728f-4b20-ad56-37578a4de76";
+                id = "{1018e4d6-728f-4b20-ad56-37578a4de76b}";
                 name = "flagfox";
               }
               {
@@ -100,6 +100,10 @@ in {
               {
                 id = "tridactyl.vim@cmcaine.co.uk";
                 name = "tridactyl-vim";
+              }
+              {
+                id = "{c607c8df-14a7-4f28-894f-29e8722976af}";
+                name = "temporary-containers";
               }
               {
                 id = "browser-extension@anonaddy";
