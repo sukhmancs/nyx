@@ -5,11 +5,11 @@
   ...
 }: let
   sys = config.modules.system;
-  cfg = sys.programs;
+  cfg = sys.programs.nushell;
   shellPackage = with pkgs;
-    if cfg.shell == "zsh"
-    then zsh
-    else nushell;
+    if cfg.enable
+    then nushell
+    else zsh;
 
   keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIABG2T60uEoq4qTZtAZfSBPtlqWs2b4V4O+EptQ6S/ru notashelf@prometheus"

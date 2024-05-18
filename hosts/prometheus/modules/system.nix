@@ -61,7 +61,7 @@
 
       git.signingKey = "97262307A37BC732";
 
-      shell = "nushell";
+      nushell.enable = false;
 
       gaming = {
         enable = false;

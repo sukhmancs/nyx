@@ -24,6 +24,7 @@ in {
     nextcloud.enable = mkEnableOption "Nextcloud sync client";
     rnnoise.enable = mkEnableOption "RNNoise noise suppression plugin";
     noisetorch.enable = mkEnableOption "NoiseTorch noise suppression plugin";
+    nushell.enable = mkEnableOption "Alternative shell to zsh/bash";
 
     chromium = {
       enable = mkEnableOption "Chromium browser";
@@ -60,12 +61,6 @@ in {
         default = "";
         description = "The default gpg key used for signing commits";
       };
-    };
-
-    shell = mkOption {
-      type = types.str;
-      default = "zsh";
-      description = "The default shell";
     };
 
     # default program options
