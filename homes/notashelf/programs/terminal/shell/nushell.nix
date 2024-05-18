@@ -4,7 +4,6 @@
 {
   pkgs,
   osConfig,
-  vars,
   lib,
   ...
 }: let
@@ -134,7 +133,6 @@ in {
            	rm -fp $tmp
            }
 
-           # source /home/${vars.user}/.config/nushell/extra.nu
           # kitten icat --align left /home/${vars.user}/.config/kitty/kitty.gif
         '';
       };
