@@ -4,5 +4,6 @@
 
     ./starship.nix
     ./bash.nix
+    ./nushell.nix
   ];
 }
