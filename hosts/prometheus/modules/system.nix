@@ -56,10 +56,12 @@
       element.enable = true;
       spotify.enable = true;
       thunderbird.enable = true;
-      vscode.enable = true;
+      #vscode.enable = true;
       webcord.enable = true;
 
       git.signingKey = "97262307A37BC732";
+
+      shell = "nushell";
 
       gaming = {
         enable = false;
