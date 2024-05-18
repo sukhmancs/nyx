@@ -5,16 +5,14 @@
     autoLogin = true;
 
     boot = {
-      loader = "systemd-boot";
       secureBoot = false;
+      kernel = pkgs.linuxPackages_xanmod_latest;
+      plymouth.enable = true;
+      loader = "systemd-boot";
       enableKernelTweaks = true;
       initrd.enableTweaks = true;
       loadRecommendedModules = true;
       tmpOnTmpfs = true;
-      plymouth = {
-        enable = true;
-        withThemes = false;
-      };
     };
 
     video.enable = true;
@@ -33,14 +31,14 @@
     };
 
     security = {
-      tor.enable = true;
       fixWebcam = false;
       lockModules = true;
-      auditd.enable = true;
+      lockModules = true;
+      usbguard.enable = true;
     };
 
     virtualization = {
-      enable = false;
+      enable = true;
       docker.enable = false;
       qemu.enable = true;
       podman.enable = false;
@@ -53,9 +51,7 @@
       firefox.enable = true;
       chromium.enable = true;
       libreoffice.enable = true;
-      element.enable = true;
       spotify.enable = true;
-      thunderbird.enable = true;
       vscode.enable = true;
       webcord.enable = true;
 

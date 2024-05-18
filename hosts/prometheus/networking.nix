@@ -15,7 +15,6 @@
       extraArgs = ["--ipv4"];
     };
 
-    # https://wiki.archlinux.org/title/Systemd-networkd
     networks = {
       # leave the kernel dummy devies unmanagaed
       "10-dummy" = {
@@ -34,7 +33,6 @@
         };
       };
 
-      # wired interfaces e.g. ethernet
       "30-network-defaults-wired" = {
         # matchConfig.Name = "en* | eth* | usb*";
         matchConfig.Type = "ether";
@@ -48,7 +46,7 @@
         dhcpV4Config = {
           ClientIdentifier = "duid"; # "mac"
           Use6RD = "yes";
-          RouteMetric = 512; # should be higher than the wireless RouteMetric so that wireless is preferred
+          RouteMetric = 512;
           UseDNS = false;
           DUIDType = "link-layer";
         };
@@ -61,7 +59,6 @@
         };
       };
 
-      # wireless interfaces e.g. network cards
       "30-network-defaults-wireless" = {
         # matchConfig.Name = "wl*";
         matchConfig.Type = "wlan";
@@ -74,16 +71,20 @@
 
         dhcpV4Config = {
           ClientIdentifier = "mac";
-          RouteMetric = 216;
+          RouteMetric = 1500;
           UseDNS = true;
           DUIDType = "link-layer";
           Use6RD = "yes";
         };
 
         dhcpV6Config = {
-          RouteMetric = 216;
+          RouteMetric = 1500;
           UseDNS = true;
           DUIDType = "link-layer";
+          # routes = [
+          #   { routeConfig = { Gateway = "_dhcp4"; Metric = 1500; }; }
+          #   { routeConfig = { Gateway = "_ipv6ra"; Metric = 1500; }; }
+          # ];
           PrefixDelegationHint = "::64";
         };
       };
