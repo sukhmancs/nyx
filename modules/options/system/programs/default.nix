@@ -62,6 +62,12 @@ in {
       };
     };
 
+    shell = mkOption {
+      type = types.str;
+      default = "zsh";
+      description = "The default shell";
+    };
+
     # default program options
     default = {
       # what program should be used as the default terminal
