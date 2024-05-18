@@ -78,7 +78,7 @@ in {
     # it would be better to construct this list dynamically
     # but we hardcode it because we cannot check if a host is
     # authenticated - that needs manual intervention
-    hosts = ["helios" "enyo" "hermes"];
+    hosts = ["helios" "enyo" "prometheus"];
 
     # generate the ssh config for the hosts
     mkHostConfig = hostname: ''

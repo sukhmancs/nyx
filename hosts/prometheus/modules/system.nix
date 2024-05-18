@@ -1,5 +1,5 @@
-{
-  config.modules.system = {
+{pkgs, ...}: {
+  modules.system = {
     mainUser = "notashelf";
     fs = ["ext4" "vfat" "ntfs"];
     autoLogin = true;
@@ -32,7 +32,6 @@
 
     security = {
       fixWebcam = false;
-      lockModules = true;
       lockModules = true;
       usbguard.enable = true;
     };
