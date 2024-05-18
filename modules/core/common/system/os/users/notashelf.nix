@@ -1,13 +1,11 @@
 {
   config,
-  osConfig,
   pkgs,
   lib,
   ...
 }: let
-  inherit (osConfig) modules;
-
-  cfg = modules.system.programs;
+  sys = config.modules.system;
+  cfg = sys.programs;
   shellPackage = with pkgs;
     if cfg.shell == "zsh"
     then zsh
