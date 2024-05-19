@@ -3,6 +3,7 @@ let
   inherit (keys) servers workstations;
   inherit (keys) mkGlobal;
 in {
+  # TODO: configure these later
   # core system secrets
   # "common/nix-builder.age".publicKeys = mkGlobal (workstations ++ servers);
   # "client/spotify.age".publicKeys = mkGlobal workstations;

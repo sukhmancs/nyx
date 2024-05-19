@@ -42,6 +42,7 @@ in {
       mode = "400";
     };
 
+    # TODO: configure these options later
     # secrets needed for peers
     # spotify-secret = mkSecret config.modules.system.programs.spotify.enable {
     #   file = "client/spotify.age";
