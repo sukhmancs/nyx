@@ -21,7 +21,7 @@
 in {
   config = {
     # Power state monitor. Switches Power profiles based on charging state.
-    # Plugged in - performance
+    # Plugged in - balanced
     # Unplugged - power-saver
     systemd.services."power-monitor" = {
       description = "Power Monitoring Service";

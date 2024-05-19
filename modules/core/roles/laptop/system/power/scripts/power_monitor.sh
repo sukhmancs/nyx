@@ -7,7 +7,7 @@ AC_PROFILE="balanced"     #"performance"
 BAT_PROFILE="power-saver" #"balanced"
 
 # low and critical battery levels
-LOW_BAT_PERCENT=25
+LOW_BAT_PERCENT=90
 CRIT_BAT_PERCENT=5
 
 # how long to wait before suspending
@@ -43,7 +43,11 @@ while true; do
   fi
   prev=$profile
 
-  if [[ $(cat "$BAT_CAP") -le $LOW_BAT_PERCENT && $BAT_STATUS == "Discharging" ]]; then
+  current_capacity=$(cat "$BAT_CAP")
+  current_status=$(cat "$BAT_STATUS")
+
+  if [[ $current_capacity -le $LOW_BAT_PERCENT && $current_status == "Discharging" ]]; then
+    echo -en "Battery Low\n"
     notify-send --urgency=critical --hint=int:transient:1 --icon=battery_empty "Battery Low" \
       "Consider plugging in."
 
@@ -52,13 +56,13 @@ while true; do
     done
   fi
 
-  if [[ $(cat "$BAT_CAP") -le $CRIT_BAT_PERCENT && $BAT_STATUS == "Discharging" ]]; then
+  if [[ $current_capacity -le $CRIT_BAT_PERCENT && $current_status == "Discharging" ]]; then
     notify-send --urgency=critical --hint=int:transient:1 --icon=battery_empty "Battery Critically Low" \
       "Computer will suspend in 60 seconds."
     wait_and_suspend &
   fi
 
-  if [[ $(cat "$BAT_CAP") -gt $LOW_BAT_PERCENT && $BAT_STATUS == "Charging" ]]; then
+  if [[ $current_capacity -gt $LOW_BAT_PERCENT && $current_status == "Charging" ]]; then
     for i in $(hyprctl instances -j | jaq ".[].instance" -r); do
       hyprctl -i "$i" --batch 'keyword decoration:blur:enabled true; keyword animations:enabled true'
     done
