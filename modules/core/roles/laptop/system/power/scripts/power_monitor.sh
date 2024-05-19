@@ -7,7 +7,7 @@ AC_PROFILE="balanced"     # "performance"
 BAT_PROFILE="power-saver" # "balanced"
 
 # low and critical battery levels
-LOW_BAT_PERCENT=90
+LOW_BAT_PERCENT=25
 CRIT_BAT_PERCENT=5
 
 # how long to wait before suspending
