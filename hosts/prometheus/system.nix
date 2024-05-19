@@ -21,12 +21,10 @@ in {
       };
     };
 
-    boot = {
-      kernelParams = optionals ((dev.cpu == "intel") && (dev.gpu != "hybrid-nv")) [
-        "i915.enable_fbc=1"
-        "i915.enable_psr=2"
-      ];
-    };
+    boot.kernelParams = [
+      "i8042.nomux" # Don't check presence of an active multiplexing controller
+      "i8042.nopnp" # Don't use ACPIPn<P / PnPBIOS to discover KBD/AUX controllers
+    ];
 
     system = {
       stateVersion = "23.05";

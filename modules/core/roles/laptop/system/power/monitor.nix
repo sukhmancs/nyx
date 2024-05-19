@@ -13,6 +13,7 @@
       coreutils
       power-profiles-daemon
       inotify-tools
+      libnotify
       jaq
     ]
     ++ [
