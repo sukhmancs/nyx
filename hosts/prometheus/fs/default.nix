@@ -6,38 +6,12 @@
     "/" = {
       device = "/dev/disk/by-uuid/b2db528f-c0a1-4c2d-a7d2-46190860bba6";
       fsType = "ext4";
-      options = ["noatime" "commit=60"];
+      options = ["noatime"];
     };
 
     "/boot" = {
       device = "/dev/disk/by-uuid/045F-11EB";
       fsType = "vfat";
-    };
-
-    "/nix" = {
-      device = "/dev/disk/by-uuid/b2db528f-c0a1-4c2d-a7d2-46190860bba6";
-      fsType = "ext4";
-      options = ["noatime" "commit=60"];
-    };
-
-    "/persist" = {
-      device = "/dev/disk/by-uuid/b2db528f-c0a1-4c2d-a7d2-46190860bba6";
-      fsType = "ext4";
-      neededForBoot = true;
-      options = ["noatime" "commit=60"];
-    };
-
-    "/var/log" = {
-      device = "/dev/disk/by-uuid/b2db528f-c0a1-4c2d-a7d2-46190860bba6";
-      fsType = "ext4";
-      neededForBoot = true;
-      options = ["noatime" "commit=60"];
-    };
-
-    "/home" = {
-      device = "/dev/disk/by-uuid/b2db528f-c0a1-4c2d-a7d2-46190860bba6";
-      fsType = "ext4";
-      options = ["noatime" "commit=60"];
     };
   };
 
