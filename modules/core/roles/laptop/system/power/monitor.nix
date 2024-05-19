@@ -24,7 +24,7 @@ in {
     # Power state monitor. Switches Power profiles based on charging state.
     # Plugged in - balanced
     # Unplugged - power-saver
-    systemd.services."power-monitor" = {
+    systemd.user.services."power-monitor" = {
       description = "Power Monitoring Service";
       environment.PATH = mkForce "/run/wrappers/bin:${makeBinPath dependencies}";
       script = readFile ./scripts/power_monitor.sh;
