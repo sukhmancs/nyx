@@ -47,12 +47,9 @@
       cli.enable = true;
       gui.enable = true;
 
-      firefox.enable = true;
       chromium.enable = true;
-      libreoffice.enable = true;
       spotify.enable = true;
       vscode.enable = true;
-      webcord.enable = true;
 
       git.signingKey = "97262307A37BC732";
 
