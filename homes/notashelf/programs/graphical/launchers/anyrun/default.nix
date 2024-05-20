@@ -20,8 +20,8 @@ in {
           applications
           rink
           translate
-          # randr
           shell
+          # randr
           symbols
           translate
           dictionary
@@ -110,19 +110,17 @@ in {
         "shell.ron".text = ''
           Config(
             prefix: ":sh",
-            shell: "zsh",
+            shell: "kitty",
             max_entries: 5,
           )
         '';
 
         "nixos-options.ron".text = let
           nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
-          # neovim-flake-options = inputs'.neovim-flake.packages.docs-json + "/share/doc/neovim-flake/options.json";
           hm-options = inputs'.home-manager.packages.docs-json + "/share/doc/home-manager/options.json";
           options = builtins.toJSON {
             ":nix" = [nixos-options];
             ":hm" = [hm-options];
-            # ":vim" = [neovim-flake-options];
             ":nall" = [nixos-options hm-options];
           };
         in ''

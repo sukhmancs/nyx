@@ -68,8 +68,7 @@ in {
     specialArgs = {inherit lib;};
   };
 
-  # HP Pavilion from 2016
-  # superseded by epimetheus
+  # ASUS TUF FX505DV
   prometheus = mkNixosSystem {
     inherit withSystem;
     hostname = "prometheus";

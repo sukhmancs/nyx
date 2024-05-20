@@ -8,7 +8,6 @@
 
       launchers = {
         anyrun.enable = true;
-        tofi.enable = true;
         rofi.enable = true;
       };
 
