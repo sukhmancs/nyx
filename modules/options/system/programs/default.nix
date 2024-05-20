@@ -25,7 +25,6 @@ in {
     rnnoise.enable = mkEnableOption "RNNoise noise suppression plugin";
     noisetorch.enable = mkEnableOption "NoiseTorch noise suppression plugin";
     nushell.enable = mkEnableOption "Alternative shell to zsh/bash";
-    vesktop.enable = mkEnableOption "Vesktop Discord client";
 
     chromium = {
       enable = mkEnableOption "Chromium browser";
