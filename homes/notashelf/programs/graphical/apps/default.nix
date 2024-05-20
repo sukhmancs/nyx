@@ -12,5 +12,6 @@
     ./vscode
     ./webcord
     ./zathura
+    ./vesktop
   ];
 }

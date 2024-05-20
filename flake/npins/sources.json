@@ -43,11 +43,12 @@
       },
       "pre_releases": false,
       "version_upper_bound": null,
-      "version": "v1.3.3",
-      "revision": "f6fcb79527872e9330c554915af2ca511c388390",
-      "url": "https://api.github.com/repos/mrjones2014/smart-splits.nvim/tarball/v1.3.3",
-      "hash": "0js9l8siaf4hkfpzlzqj89a40xiv2h8wll3jlh4xndpnji6k2vy3"
-    }
+      "release_prefix": null,
+      "version": "v1.4.0",
+      "revision": "2179ec0d26aacd4f40c766c79f6ebc83b7001e48",
+      "url": "https://api.github.com/repos/mrjones2014/smart-splits.nvim/tarball/v1.4.0",
+      "hash": "15cbxzbc7jn5yy5vqg2x8yg6ac9zrjmla0njcyfm1cz0i8r2wbpj"
+	}
   },
   "version": 3
 }
