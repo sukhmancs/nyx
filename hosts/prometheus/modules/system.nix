@@ -50,6 +50,7 @@
       chromium.enable = true;
       spotify.enable = true;
       vscode.enable = true;
+      discord.enable = true;
 
       git.signingKey = "97262307A37BC732";
 
