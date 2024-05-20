@@ -1,11 +1,7 @@
 {
   config.modules.device = {
     type = "laptop";
-    cpu = {
-      type = "amd";
-      amd.pstate.enable = false;
-      amd.zenpower.enable = false;
-    };
+    cpu.type = "amd";
     gpu.type = "hybrid-nv"; # "nvidia"; # nvidia drivers :b:roke
     monitors = ["eDP-1"];
     hasBluetooth = true;
