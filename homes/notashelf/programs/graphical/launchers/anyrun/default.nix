@@ -110,7 +110,7 @@ in {
         "shell.ron".text = ''
           Config(
             prefix: ":sh",
-            shell: "kitty",
+            shell: "zsh",
             max_entries: 5,
           )
         '';

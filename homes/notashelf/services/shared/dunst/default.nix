@@ -90,6 +90,7 @@ in {
 
         urgency_critical = {
           timeout = 0;
+          fullscreen = "show";
           background = "#${colors.base02}";
           foreground = "#${colors.base05}";
           highlight = "#${colors.base08}";
