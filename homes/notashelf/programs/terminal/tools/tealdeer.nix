@@ -1,7 +1,7 @@
 {
   programs = {
     tealdeer = {
-      enable = false;
+      enable = true;
       settings = {
         display = {
           compact = false;
