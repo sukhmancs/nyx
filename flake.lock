@@ -1298,11 +1298,11 @@
         "zig": "zig"
       },
       "locked": {
-        "lastModified": 1716069055,
-        "narHash": "sha256-6r2gG8oa6q8XIIFwXZzO/jGdWGsCPxnOFVVilDsCzNU=",
+        "lastModified": 1716276976,
+        "narHash": "sha256-I7itJsKdAGh5poop62OEmdI2QQ1+S6UNRw7T7XQlYHM=",
         "owner": "NotAShelf",
         "repo": "nvf",
-        "rev": "f59a915da9786721a07f2e410d3ba90d765468a4",
+        "rev": "9074b6e5e7494c747bde4b371a1d854806143bcd",
         "type": "github"
       },
       "original": {
