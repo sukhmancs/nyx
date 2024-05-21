@@ -7,7 +7,7 @@
   inherit (lib) mkIf;
 
   dev = osConfig.modules.device;
-  env = osConfig.modules.usrEnv;
+  env = osConfig.meta;
   acceptedTypes = ["laptop" "desktop" "hybrid" "lite"];
 in {
   config = mkIf ((builtins.elem dev.type acceptedTypes) && env.isWayland) {
