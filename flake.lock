@@ -1807,11 +1807,11 @@
         "nixpkgs": "nixpkgs_10"
       },
       "locked": {
-        "lastModified": 1716167928,
-        "narHash": "sha256-2RsIjDHL9vpyIf0XLQxJberdP9v3jL6nnOAlX7Mt3CQ=",
+        "lastModified": 1716254302,
+        "narHash": "sha256-3H6Vf/s6Ocm0oVCgFbLc7M6CxpL+3b5AoMPYO1vkNr8=",
         "owner": "NotAShelf",
         "repo": "nyxpkgs",
-        "rev": "715779ae1dad197556f690029a1f9aaa988b9349",
+        "rev": "31f27b85b691a7c94b971dbb6399531f0b50b5ec",
         "type": "github"
       },
       "original": {
