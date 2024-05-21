@@ -17,4 +17,7 @@ jobs:
     secrets:
       GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     with:
-      command: nix run nixpkgs#alejandra -- -c .
+      command: |
+        nix run nixpkgs#alejandra -- \
+        --exclude ./flake/pkgs/packages/nicksfetch/generated.nix \
+        --exclude ./flake/pkgs/packages/plymouth-themes/generated.nix -c .
