@@ -158,7 +158,7 @@ in {
 
       # use binary cache, this is not gentoo
       # external builders can also pick up those substituters
-      # builders-use-substitutes = true;
+      builders-use-substitutes = true;
 
       # substituters to use
       substituters = [

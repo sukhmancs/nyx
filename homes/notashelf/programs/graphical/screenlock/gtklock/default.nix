@@ -22,6 +22,7 @@ in {
         modules = [
           "${pkgs.gtklock-powerbar-module.outPath}/lib/gtklock/powerbar-module.so"
         ];
+
         style = readFile (compileSCSS pkgs {
           name = "gtklock-dark";
           path = ./styles/dark.scss;

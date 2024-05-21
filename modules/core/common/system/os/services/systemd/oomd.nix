@@ -1,4 +1,3 @@
-# systemd-oomd: A system and service manager feature designed to handle Out Of Memory (OOM) events intelligently. It continuously monitors system memory usage and selectively terminates processes under memory pressure to ensure system stability and reliability. Especially useful for servers and mission-critical systems where reliable operation is essential.
 {
   config,
   lib,

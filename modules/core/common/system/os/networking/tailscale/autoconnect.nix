@@ -40,12 +40,15 @@ in {
         script = ''
           # wait for tailscaled to settle
           sleep 2
+
           # check if we are already authenticated to Tailscale
           status="$(${tailscale.package}/bin/tailscale status -json | ${pkgs.jq}/bin/jq -r .BackendState)"
+
           # if so, then do nothing
           if [ $status = "Running" ]; then
             exit 0
           fi
+
           # otherwise authenticate with tailscale
           ${tailscale.package}/bin/tailscale up ${toString tailscale.extraUpFlags}
         '';

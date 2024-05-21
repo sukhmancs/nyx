@@ -20,15 +20,6 @@ create_autocmd('BufWritePre', {
 --   command = ':%s/\\s\\+$//e',
 -- })
 
--- Don't auto-comment new lines automatically
--- that happens when you press enter at the end
--- of a comment line, and comments the next line
--- That's annoying and we don't want it!
-create_autocmd('BufEnter', {
-  pattern = '',
-  command = 'set fo-=c fo-=r fo-=o',
-})
-
 -- Disable line wrapping & spell checking
 -- for the terminal buffer
 create_autocmd({ 'FileType' }, {
@@ -125,5 +116,19 @@ create_autocmd('FileType', {
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
+  end,
+})
+
+-- Mark internally when nvim is focused
+-- and when it is not
+create_autocmd('FocusGained', {
+  callback = function()
+    vim.g.nvim_focused = true
+  end,
+})
+
+create_autocmd('FocusLost', {
+  callback = function()
+    vim.g.nvim_focused = false
   end,
 })
