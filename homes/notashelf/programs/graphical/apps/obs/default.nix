@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (osConfig) modules;
+  inherit (osConfig) modules meta;
 
   sys = modules.system;
   prg = sys.programs;
@@ -19,7 +19,7 @@ in {
           obs-pipewire-audio-capture
           obs-vkcapture
         ]
-        ++ optional env.isWayland
+        ++ optional meta.isWayland
         pkgs.obs-studio-plugins.wlrobs;
     };
   };

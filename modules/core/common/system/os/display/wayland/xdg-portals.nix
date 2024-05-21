@@ -8,6 +8,7 @@
 
   sys = config.modules.system;
   env = config.modules.usrEnv;
+  cfg = config.meta;
 in {
   config = mkIf sys.video.enable {
     xdg.portal = {
@@ -39,7 +40,7 @@ in {
       # will (and should) override this one
       # however in case I run a different compositor on a Wayland host, it can be enabled
       wlr = {
-        enable = mkForce (env.isWayland && env.desktop != "Hyprland");
+        enable = mkForce (cfg.isWayland && env.desktop != "Hyprland");
         settings = {
           screencast = {
             max_fps = 30;

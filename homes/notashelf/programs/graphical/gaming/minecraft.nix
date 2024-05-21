@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (osConfig) modules;
+  inherit (osConfig) modules meta;
 
   env = modules.usrEnv;
   prg = env.programs;
@@ -52,7 +52,7 @@ in {
         ];
 
         glfw =
-          if env.isWayland
+          if meta.isWayland
           then pkgs.glfw-wayland-minecraft
           else pkgs.glfw;
       in [

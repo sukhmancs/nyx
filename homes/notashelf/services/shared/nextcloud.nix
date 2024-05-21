@@ -8,7 +8,7 @@
 
   dev = osConfig.modules.device;
   vid = osConfig.modules.system.video;
-  env = osConfig.modules.usrEnv;
+  env = osConfig.meta;
 
   acceptedTypes = ["desktop" "laptop" "lite" "hybrid"];
 in {
