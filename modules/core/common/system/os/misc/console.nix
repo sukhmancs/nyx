@@ -11,7 +11,7 @@ in {
   in {
     enable = mkDefault true;
     earlySetup = true;
-    keyMap = "trq";
+    keyMap = "dvorak";
 
     font = "ter-powerline-${variant}";
     packages = attrValues {inherit (pkgs) terminus_font powerline-fonts;};
