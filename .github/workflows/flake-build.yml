@@ -1,0 +1,107 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: Build flake
+
+concurrency: build
+
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - "update/flake"
+  workflow_dispatch:
+
+jobs:
+  show:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install nix
+        uses: cachix/install-nix-action@master
+        with:
+          install_url: https://nixos.org/nix/install
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            allow-import-from-derivation = false
+            extra-substituters = https://nyx.cachix.org
+            extra-trusted-public-keys = nyx.cachix.org-1:xH6G0MO9PrpeGe7mHBtj1WbNzmnXr7jId2mCiq6hipE=
+            extra-substituters = https://nix-community.cachix.org
+            extra-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
+      - name: Flake show
+        run: nix flake show
+
+  generate_matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      flake_outputs: ${{ steps.generate_flake_outputs.outputs.flake_outputs }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install nix
+        uses: cachix/install-nix-action@master
+        with:
+          install_url: https://nixos.org/nix/install
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            allow-import-from-derivation = false
+            extra-substituters = https://nyx.cachix.org
+            extra-trusted-public-keys = nyx.cachix.org-1:xH6G0MO9PrpeGe7mHBtj1WbNzmnXr7jId2mCiq6hipE=
+            extra-substituters = https://nix-community.cachix.org
+            extra-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
+      - id: generate_flake_outputs
+        name: Generate flake output matrix
+        run: nix run .#prometheus -L -- build-matrix >> "$GITHUB_OUTPUT"
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [generate_matrix]
+    if: ${{ needs.generate_matrix.outputs.flake_outputs != '[]' && needs.generate_matrix.outputs.flake_outputs != '' }}
+    strategy:
+      fail-fast: false
+      # max-parallel: 5
+      matrix:
+        flake_output: ${{ fromJson(needs.generate_matrix.outputs.flake_outputs )}}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install nix
+        uses: cachix/install-nix-action@master
+        with:
+          install_url: https://nixos.org/nix/install
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            allow-import-from-derivation = false
+            extra-substituters = https://nyx.cachix.org
+            extra-trusted-public-keys = nyx.cachix.org-1:xH6G0MO9PrpeGe7mHBtj1WbNzmnXr7jId2mCiq6hipE=
+            extra-substituters = https://nix-community.cachix.org
+            extra-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
+      - name: "Nix Magic Cache"
+        uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Build output
+        run: nix build .#${{ matrix.flake_output }} -L
+
+  eval:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        flake_output:
+          [nixosConfigurations.prometheus.config.system.build.toplevel]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install nix
+        uses: cachix/install-nix-action@master
+        with:
+          install_url: https://nixos.org/nix/install
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            allow-import-from-derivation = false
+            extra-substituters = https://nyx.cachix.org
+            extra-trusted-public-keys = nyx.cachix.org-1:xH6G0MO9PrpeGe7mHBtj1WbNzmnXr7jId2mCiq6hipE=
+            extra-substituters = https://nix-community.cachix.org
+            extra-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
+      - name: "Nix Magic Cache"
+        uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Eval output
+        run: nix build .#${{ matrix.flake_output }} -L --dry-run --print-out-paths -j0
