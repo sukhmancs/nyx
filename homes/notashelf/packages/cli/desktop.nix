@@ -22,6 +22,7 @@ in {
       brightnessctl
       pamixer
       nix-tree
+      tgpt
     ];
   };
 }
