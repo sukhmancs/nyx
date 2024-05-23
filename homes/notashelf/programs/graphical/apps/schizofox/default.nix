@@ -73,6 +73,7 @@ in {
           "sponsorBlocker@ajay.app".install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
           "tridactyl.vim@cmcaine.co.uk".install_url = "https://addons.mozilla.org/firefox/downloads/latest/tridactyl-vim/latest.xpi";
           "browser-extension@anonaddy".install_url = "https://addons.mozilla.org/firefox/downloads/latest/addy_io/latest.xpi";
+          "2.0@disconnect.me".install_url = "https://addons.mozilla.org/firefox/downloads/latest/disconnect/latest.xpi";
         };
         #     let
         #       mkUrl = name: "https://addons.mozilla.org/firefox/downloads/latest/${name}/latest.xpi";
