@@ -12,15 +12,15 @@ import { Swallow } from "./modules/swallow.js";
 import { BluetoothWidget } from "./modules/bluetooth.js";
 import { AudioWidget } from "./modules/audio.js";
 import { NetworkWidget } from "./modules/network.js";
-import { SystemUsage } from "./modules/system.js";
-import { Weather } from "./modules/weather.js";
+// import { SystemUsage } from "./modules/system.js";
+// import { Weather } from "./modules/weather.js";
 
 const Top = () =>
     Box({
         className: "barTop",
         vertical: true,
         vpack: "start",
-        children: [LauncherIcon(), SystemUsage(), Weather()],
+        children: [LauncherIcon()],//[LauncherIcon(), SystemUsage(), Weather()],
     });
 
 const Center = () =>
