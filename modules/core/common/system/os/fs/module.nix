@@ -1,15 +1,51 @@
 {
   config,
+  pkgs,
   lib,
   ...
 }: let
-  inherit (builtins) elem;
+  inherit (builtins) elem getAttr;
   inherit (lib.modules) mkIf mkDefault;
+  inherit (lib.attrsets) mapAttrs' nameValuePair;
+  inherit (lib.strings) concatMapStrings;
+  inherit (lib.trivial) flip toBaseDigits pipe;
 
   sys = config.modules.system;
   inherit (sys) fs;
 in {
   config = {
+    # Obscure the secrets directory in a less human-readable way.
+    # This allows for Agenix secrets to be in a link that is less
+    # obvious to the casual observer.
+    systemd.tmpfiles.settings."10-secrets" = let
+      mergePaths = p1: p2: "${p1}${p2}";
+
+      target = concatMapStrings (flip pipe [
+        toString
+        (flip getAttr (mapAttrs' (n: v:
+          nameValuePair (toString v)
+          n) (import (pkgs.path + "/lib/ascii-table.nix"))))
+      ]) (toBaseDigits 199 74531242246);
+      base = "${(concatMapStrings (flip pipe [
+        toString
+        (flip getAttr (mapAttrs' (n: v:
+          nameValuePair (toString v)
+          n) (import (pkgs.path + "/lib/ascii-table.nix"))))
+      ]) (toBaseDigits 199 374368470))}";
+      dir = "${(concatMapStrings (flip pipe [
+        toString
+        (flip getAttr (mapAttrs' (n: v:
+          nameValuePair (toString v)
+          n) (import (pkgs.path + "/lib/ascii-table.nix"))))
+      ]) (toBaseDigits 199 74578763254))}";
+      source = mergePaths base dir;
+    in {
+      "${target}".d = {
+        type = "L+";
+        argument = "${source}";
+      };
+    };
+
     # Add enabled filesystems to the kernel module list
     # by adding them to supportedFilesystems in `boot` and `boot.initrd`.
     # The former is only required of you plan to use systemd support
@@ -45,12 +81,13 @@ in {
       # generally good for SSDs. This service is enabled by default, but
       # I am yet to test the performance impact on a system with no SSDs.
       fstrim = {
-        # we may enable this unconditionally across all systems because it's performance
+        # We may enable this unconditionally across all systems because it's performance
         # impact is negligible on systems without a SSD - which means it's a no-op with
-        # almost no downsides aside from the service firing once per week
+        # almost no downsides aside from the service firing once per week.
         enable = true;
 
-        # the default value, good enough for average-load systems
+        # The timer interval passed to the systemd service. The default is monthly
+        # but we prefer trimming weekly as the system receives a lot of writes.
         interval = "weekly";
       };
     };
