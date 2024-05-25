@@ -24,6 +24,10 @@ in {
         };
       };
 
+      settings = {
+        "security.OCSP.enabled" = 1;
+      };
+
       search = rec {
         defaultSearchEngine = "Searxng";
         removeEngines = ["Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia" "LibRedirect" "DuckDuckGo"];
@@ -50,6 +54,7 @@ in {
       misc = {
         drm.enable = true;
         disableWebgl = false;
+        firefoxSync = true;
         startPageURL = "file://${self'.packages.schizofox-startpage.outPath}/index.html";
         bookmarks = [
           {
