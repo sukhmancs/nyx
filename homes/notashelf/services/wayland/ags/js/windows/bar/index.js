@@ -20,7 +20,7 @@ const Top = () =>
         className: "barTop",
         vertical: true,
         vpack: "start",
-        children: [LauncherIcon(), SystemUsage(), Weather()], //[LauncherIcon(), SystemUsage(), Weather()],
+        children: [LauncherIcon(), Weather()], //[LauncherIcon(), SystemUsage(), Weather()], // FIXME: SystemUsage spawning btm resources
     });
 
 const Center = () =>
