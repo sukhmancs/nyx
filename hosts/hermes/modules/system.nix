@@ -32,10 +32,10 @@
     networking = {
       optimizeTcp = true;
       nftables.enable = true;
-      tailscale = {
-        enable = true;
-        isClient = true;
-      };
+      #      tailscale = {
+      #        enable = true;
+      #        isClient = true;
+      #      };
     };
 
     security = {
@@ -55,12 +55,13 @@
       cli.enable = true;
       gui.enable = true;
 
+      vscode.enable = true;
       spotify.enable = true;
 
-      git.signingKey = "0x02D1DD3FA08B6B29";
+      git.signingKey = "EB28A227A8C9E8F0";
 
       gaming = {
-        enable = true;
+        enable = false;
       };
 
       default = {

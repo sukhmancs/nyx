@@ -6,7 +6,7 @@
       amd.pstate.enable = true;
       amd.zenpower.enable = true;
     };
-    gpu.type = "amd";
+    gpu.type = "hybrid-nv";
     monitors = ["eDP-1"];
     hasBluetooth = true;
     hasSound = true;
