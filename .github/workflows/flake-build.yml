@@ -38,7 +38,7 @@ jobs:
       fail-fast: false
       matrix:
         flake_output: [
-          nixosConfigurations.hermes.config.system.build.toplevel
+          nixosConfigurations."hermes".config.system.build.toplevel,
           #nixosConfigurations.enyo.config.system.build.toplevel
         ]
     steps:
@@ -58,4 +58,4 @@ jobs:
       - name: "Nix Magic Cache"
         uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Build output
-        run: nix build .#${{ matrix.flake_output }} -L --print-out-paths -j0
+        run: nix build .#${{ matrix.flake_output }} -L --dry-run --print-out-paths -j0
