@@ -26,6 +26,8 @@ in {
 
       settings = {
         "security.OCSP.enabled" = 1;
+        "services.sync.engine.prefs" = false;
+        "services.sync.engine.addons" = false;
       };
 
       search = rec {
