@@ -133,6 +133,9 @@ in {
         "security.workspace.trust.enabled" = false;
         "explorer.confirmDelete" = false;
         "breadcrumbs.enabled" = true;
+        "github.copilot.enable" = {
+          "markdown" = true;
+        };
       };
     };
   };

@@ -21,7 +21,7 @@
   <br/>
   <img src=".github/assets/desktop_preview_wide.png" alt="Desktop Preview" />
   <br/>
-  Screenshot last updated <b>2024-03-19</b>
+  Screenshot last updated <b>2024-03-19</b
 </p>
 
 ## High Level Overview
