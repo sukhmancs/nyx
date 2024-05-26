@@ -33,6 +33,7 @@
 > - Commented out `System` widget in ags bar. _(There is an issue with this widget, that make it spawn multiple instances of unknown `btm` process.)_
 > - Added `flake-build.yml` and `update-flake.yml` GitHub Actions workflows.
 > - Modified `erebus/system.services` to remove deprecated modules and services. 
+> - Changed `console.nix` to use DVORAK keyboard layout.
 > - Many more I don't remember.
 
 ## High Level Overview

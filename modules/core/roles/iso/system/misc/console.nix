@@ -5,6 +5,6 @@
   in {
     # hidpi terminal font
     font = "${pkgs.terminus_font}/share/consolefonts/ter-${variant}.psf.gz";
-    keyMap = "trq";
+    keyMap = "dvorak";
   };
 }
