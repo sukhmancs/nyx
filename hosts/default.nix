@@ -92,7 +92,7 @@ in {
     };
   };
 
-  # ASUS TUF FX505DV
+  # Deprecated
   prometheus = mkNixosSystem {
     inherit withSystem;
     hostname = "prometheus";
@@ -116,7 +116,7 @@ in {
     };
   };
 
-  # HP Pavilion laptop from 2023
+  # ASUS TUF FX505D laptop from 2019
   # equipped a Ryzen 7 7730U
   # usually acts as my portable workstation
   # similar to epimetheus, has full disk

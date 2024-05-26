@@ -38,7 +38,7 @@ jobs:
       fail-fast: false
       matrix:
         host:
-          - prometheus
+          - hermes
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3

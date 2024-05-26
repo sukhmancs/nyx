@@ -8,7 +8,7 @@
     autorandr.enable = true;
     xserver = {
       enable = true;
-      layout = "tr";
+      layout = "dvorak";
       displayManager = {
         autoLogin.enable = true;
         autoLogin.user = "yubikey";
