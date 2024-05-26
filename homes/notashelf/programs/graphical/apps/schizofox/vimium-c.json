@@ -36,6 +36,7 @@
 		"ph: https://www.phind.com/search?q=%s Phind",
 		"tr|translate: https://translate.google.com/?source=osdd#auto|auto|%s Google Translator",
 		"p: https://www.perplexity.ai/search?q=%s Perplexity",
+		"gb: https://thegigabrain.com/search/%s TheGigaBrain",
 		""
 	],
 	"searchUrl": "https://www.perplexity.ai/search?q=$s Perplexity",
