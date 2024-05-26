@@ -24,6 +24,15 @@
   Screenshot last updated <b>2024-03-19</b
 </p>
 
+> [!IMPORTANT]
+> ## Here are some of the features that I have implemented in this configuration:
+> - Updated `hermes` file system.
+> - Commented out lot of agenix secrets.
+> - Updated `keys.nix` file.
+> - Updated `prometheus` host configuration. _(I no longer manage this host.)_
+> - Commented out `System` widget in ags bar. _(There is an issue with this widget, that make it spawn multiple instances of unknown `btm` process.)_
+> - Many more I don't remember.
+
 ## High Level Overview
 
 A high level overview of this monorepo, containing configurations for **all** of
