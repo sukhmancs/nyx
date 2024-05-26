@@ -38,7 +38,7 @@ jobs:
       fail-fast: false
       matrix:
         flake_output: [
-          nixosConfigurations."hermes".config.system.build.toplevel,
+          nixosConfigurations.hermes.config.system.build.toplevel,
           #nixosConfigurations.enyo.config.system.build.toplevel
         ]
     steps:
@@ -50,7 +50,7 @@ jobs:
           install_url: https://nixos.org/nix/install
           extra_nix_config: |
             experimental-features = nix-command flakes
-            allow-import-from-derivation = false
+            allow-import-from-derivation = true
             extra-substituters = https://nyx.cachix.org
             extra-trusted-public-keys = nyx.cachix.org-1:xH6G0MO9PrpeGe7mHBtj1WbNzmnXr7jId2mCiq6hipE=
             extra-substituters = https://nix-community.cachix.org
