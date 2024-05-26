@@ -6,14 +6,16 @@
     pcscd.enable = true;
 
     autorandr.enable = true;
+
+    displayManager = {
+      autoLogin.enable = true;
+      autoLogin.user = "yubikey";
+      defaultSession = "none+i3";
+    };
+
     xserver = {
       enable = true;
-      layout = "dvorak";
-      displayManager = {
-        autoLogin.enable = true;
-        autoLogin.user = "yubikey";
-        defaultSession = "none+i3";
-      };
+      xkb.layout = "dvorak";
 
       desktopManager = {
         xterm.enable = false;
