@@ -7,6 +7,8 @@
 
     autorandr.enable = true;
 
+    # auto-login as the "yubikey" user
+    # in an i3-only session
     displayManager = {
       autoLogin.enable = true;
       autoLogin.user = "yubikey";
@@ -15,7 +17,7 @@
 
     xserver = {
       enable = true;
-      xkb.layout = "dvorak";
+      xkb.layout = "tr";
 
       desktopManager = {
         xterm.enable = false;

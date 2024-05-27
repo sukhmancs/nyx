@@ -213,28 +213,44 @@ I ~~shamelessly stole from~~ got inspired by those folks
 [fortuneteller2k](https://github.com/fortuneteller2k) -
 [Max Headroom](https://github.com/max-privatevoid)
 
-... and surely there are more, but I tend to forget.
+... and surely there are more, but I tend to forget. Nevertheless, I extend my
+thanks to all of those people and any others that I might have forgotten.
 
 ### Anti-credits
 
 Pretend I haven't credited those people (but I will, because they are equally
 awesome and I appreciate them)
 
-[n3oney](https://github.com/n3oney) -
 [gerg-l (bald frog)](https://github.com/gerg-l) -
 [eclairevoyant](https://github.com/eclairevoyant/) -
 [FrothyMarrow](https://github.com/frothymarrow) -
-[Raidenovich](https://github.com/raidenovich)
+[adamcstephens](https://github.com/adamcstephens) -
+[nrabulinski](https://github.com/nrabulinski) -
+[n3oney](https://github.com/n3oney) -
+[Raidenovich](https://github.com/raidenovich) -
+[jacekpoz](https://github.com/jacekpoz)
 
-### Other Cool Resources
+### Honorable Mentions
+
+Just people that I find cool :)
+
+[nuko](https://github.com/nu-nu-ko) - [lychee](https://github.com/itslychee)
+
+## Cool Resources
 
 Resource that helped shape and improve this configuration, or resources that I
 strongly recommend that you read in no particular order.
 
-#### Readings
+### Interactive Pages
 
 - [A list of Nix library functions and builtins](https://teu5us.github.io/nix-lib.html)
-  - [Noogle](https://noogle.dev)
+- [Noogle](https://noogle.dev)
+- [NixOS package search](https://search.nixos.org/packages)
+- [NixOS option search](https://search.nixos.org/options?)
+- [Tour of Nix](https://nixcloud.io/tour/?id=introduction/nix)
+
+### Readings
+
 - [Zero to Nix](https://zero-to-nix.com/)
 - [Nix Pills](https://nixos.org/guides/nix-pills/)
 - [Xe Iaso's blog](https://xeiaso.net/blog)
@@ -243,7 +259,7 @@ strongly recommend that you read in no particular order.
 - [Solène's Blog](https://dataswamp.org/~solene)
 - [...my own "blog"?](https://notashelf.github.io/nyx/)
 
-#### Software
+### Software
 
 Software that helped this configuration become what it is, or software I find
 interesting
@@ -255,6 +271,7 @@ interesting
 
 **Nix/NixOS**
 
+- [nix-super](https://github.com/privatevoid-net/nix-super)
 - [Agenix](https://github.com/ryantm/agenix)
 - [nh](https://github.com/viperML/nh)
 

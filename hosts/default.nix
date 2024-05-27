@@ -176,6 +176,7 @@ in {
     system = "x86_64-linux";
     specialArgs = {inherit lib;};
     modules = mkModulesFor "gaea" {
+      moduleTrees = [];
       roles = [iso headless];
       extraModules = [shared];
     };
@@ -213,13 +214,10 @@ in {
     inherit withSystem;
     hostname = "artemis";
     system = "x86_64-linux";
-    modules =
-      [
-        ./artemis
-        server
-        headless
-      ]
-      ++ shared;
+    modules = mkModulesFor "artemis" {
+      roles = [server headless];
+      extraModules = [shared];
+    };
   };
 
   # Apollon is also x86_64-linux
@@ -228,12 +226,9 @@ in {
     inherit withSystem;
     hostname = "apollon";
     system = "aarch64-linux";
-    modules =
-      [
-        ./apollon
-        server
-        headless
-      ]
-      ++ shared;
+    modules = mkModulesFor "apollon" {
+      roles = [server headless];
+      extraModules = [shared];
+    };
   };
 }
