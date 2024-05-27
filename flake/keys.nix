@@ -3,7 +3,6 @@ let
 
   # Users
   users = {
-    # users
     notashelf = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILPakhaEWcF9kSpjx1y8sjOBGd9OILZ2EVS/YaEQ+o8Z";
   };
 

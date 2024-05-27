@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   modules.system = {
     mainUser = "notashelf";
-    fs.enabledFilesystems = ["ext4" "vfat" "ntfs"];
+    fs.enabledFilesystems = ["btrfs" "vfat" "ntfs"];
     autoLogin = true;
 
     boot = {

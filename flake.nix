@@ -195,7 +195,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs-small";
         flake-parts.follows = "flake-parts";
-        pre-commit-hooks.follows = "git-hooks";
+        git-hooks.follows = "git-hooks";
       };
     };
 
@@ -293,7 +293,7 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"
-      #      "https://cache.privatevoid.net"
+      "https://cache.privatevoid.net"
       "https://nyx.cachix.org"
     ];
 

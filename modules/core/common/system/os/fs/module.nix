@@ -1,51 +1,15 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }: let
-  inherit (builtins) elem getAttr;
+  inherit (builtins) elem;
   inherit (lib.modules) mkIf mkDefault;
-  inherit (lib.attrsets) mapAttrs' nameValuePair;
-  inherit (lib.strings) concatMapStrings;
-  inherit (lib.trivial) flip toBaseDigits pipe;
 
   sys = config.modules.system;
   inherit (sys) fs;
 in {
   config = {
-    # Obscure the secrets directory in a less human-readable way.
-    # This allows for Agenix secrets to be in a link that is less
-    # obvious to the casual observer.
-    systemd.tmpfiles.settings."10-secrets" = let
-      mergePaths = p1: p2: "${p1}${p2}";
-
-      target = concatMapStrings (flip pipe [
-        toString
-        (flip getAttr (mapAttrs' (n: v:
-          nameValuePair (toString v)
-          n) (import (pkgs.path + "/lib/ascii-table.nix"))))
-      ]) (toBaseDigits 199 74531242246);
-      base = "${(concatMapStrings (flip pipe [
-        toString
-        (flip getAttr (mapAttrs' (n: v:
-          nameValuePair (toString v)
-          n) (import (pkgs.path + "/lib/ascii-table.nix"))))
-      ]) (toBaseDigits 199 374368470))}";
-      dir = "${(concatMapStrings (flip pipe [
-        toString
-        (flip getAttr (mapAttrs' (n: v:
-          nameValuePair (toString v)
-          n) (import (pkgs.path + "/lib/ascii-table.nix"))))
-      ]) (toBaseDigits 199 74578763254))}";
-      source = mergePaths base dir;
-    in {
-      "${target}".d = {
-        type = "L+";
-        argument = "${source}";
-      };
-    };
-
     # Add enabled filesystems to the kernel module list
     # by adding them to supportedFilesystems in `boot` and `boot.initrd`.
     # The former is only required of you plan to use systemd support
@@ -57,7 +21,7 @@ in {
       };
     };
 
-    # If  lvm is enabled, then tell it to issue discard. This is
+    # If lvm is enabled, then tell it to issue discard. This is
     # good for SSDs and has almost no downsides on HDDs, so
     # it's a good idea to enable it unconditionally.
     environment.etc."lvm/lvm.conf".text = mkIf config.services.lvm.enable ''
