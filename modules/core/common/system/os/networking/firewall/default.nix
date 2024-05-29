@@ -21,7 +21,6 @@ in {
     # since the UI cannot be opened on servers, we
     # disable it if dev.type is server
     services.opensnitch.enable = dev.type != "server";
-
     networking.firewall = {
       enable = !cfg.enable;
       package =
