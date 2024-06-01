@@ -4,10 +4,11 @@ let
   inherit (keys) mkGlobal;
 in {
   # TODO: configure these later
+
   # core system secrets
   # "common/nix-builder.age".publicKeys = mkGlobal (workstations ++ servers);
   # "client/spotify.age".publicKeys = mkGlobal workstations;
-  # "client/wg.age".publicKeys = mkGlobal (workstations ++ servers);
+  "client/wg.age".publicKeys = mkGlobal (workstations ++ servers);
   "client/tailscale.age".publicKeys = mkGlobal (workstations ++ servers);
   # "client/email.age".publicKeys = mkGlobal (workstations ++ servers);
 
@@ -16,7 +17,7 @@ in {
   # "service/nextcloud.age".publicKeys = mkGlobal servers;
   # "service/mkm-web.age".publicKeys = mkGlobal servers;
   # "service/vaultwarden.age".publicKeys = mkGlobal servers;
-  # "service/wg.age".publicKeys = mkGlobal servers;
+  "service/wg.age".publicKeys = mkGlobal servers;
   "service/searx.age".publicKeys = mkGlobal servers;
   # "service/forgejo-runner-token.age".publicKeys = mkGlobal servers;
   # "service/forgejo-runner-config.age".publicKeys = mkGlobal servers;

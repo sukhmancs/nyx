@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   #  we don't want the kernel setting up interfaces magically for us
   boot.extraModprobeConfig = "options bonding max_bonds=0";
   networking = {
@@ -7,7 +7,7 @@
   };
 
   systemd.network = {
-    enable = true;
+    enable = lib.mkForce false;
 
     wait-online = {
       enable = false;

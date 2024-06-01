@@ -6,5 +6,6 @@
     ./encryption.nix
     ./networking.nix
     ./system.nix
+    ./wireguard.nix
   ];
 }
