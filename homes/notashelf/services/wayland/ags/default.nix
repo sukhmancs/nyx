@@ -50,15 +50,11 @@
   baseSrc = unions [
     # runtime executables
     ./bin
-
-    # ags widgets and utilities
-    ./js
-    ./config.js
-
+    ./src
     # compiled stylesheet
     # should be generated using the below command
     # `sassc -t compressed style/main.scss style.css`
-    ./style.css
+    # ./style.css
   ];
 
   filter = difference baseSrc filterNixFiles;
