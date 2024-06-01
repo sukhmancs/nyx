@@ -4,7 +4,7 @@ in {
   # this should block *most* junk sites
   networking = {
     stevenblack = {
-      enable = dev.type != "server"; # don't touch hosts file on a server
+      enable = true; # dev.type != "server"; # don't touch hosts file on a server
       block = [
         "fakenews"
         "gambling"
