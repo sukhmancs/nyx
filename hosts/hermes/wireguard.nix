@@ -4,7 +4,7 @@
   };
 
   boot.kernelModules = ["wireguard"];
-
+  # hermes public key: 9BtqBu73BFTkYew/x3spLtvNmCSLrZrjfuToag84jjA=
   # Wireguard Client Peer Setup
   networking.wireguard = {
     enable = true;
