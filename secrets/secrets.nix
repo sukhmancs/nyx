@@ -14,7 +14,7 @@ in {
 
   # # service specific secrets
   # "service/matrix.age".publicKeys = mkGlobal servers;
-  # "service/nextcloud.age".publicKeys = mkGlobal servers;
+  "service/nextcloud.age".publicKeys = mkGlobal servers;
   # "service/mkm-web.age".publicKeys = mkGlobal servers;
   # "service/vaultwarden.age".publicKeys = mkGlobal servers;
   "service/wg.age".publicKeys = mkGlobal servers;
