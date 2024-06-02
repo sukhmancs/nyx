@@ -1,7 +1,7 @@
 {
   config.modules.device = {
     type = "server";
-    cpu.type = "intel";
+    cpu.type = "amd";
     gpu.type = null;
     hasBluetooth = false;
     hasSound = false;
