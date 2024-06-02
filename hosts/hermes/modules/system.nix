@@ -20,7 +20,7 @@
       device = "enc";
     };
 
-    yubikeySupport.enable = true;
+    yubikeySupport.enable = false; # when this is true openssh-agent will turn off.
     autoLogin = true;
 
     video.enable = true;
