@@ -9,6 +9,7 @@
   ];
 
   config = {
+    networking.domain = "notashelf.dev";
     services.smartd.enable = lib.mkForce false;
 
     boot = {
