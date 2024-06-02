@@ -19,7 +19,7 @@
           {
             allowedIPs = ["10.255.255.0/24" "2a01:4f9:c010:2cf9:f::/80"];
             endpoint = "128.140.91.216:51820";
-            publicKey = "hT+c+1AHCem2jcYpk3cq3XqTVRHt/sxJXd6oi+fUYzM=";
+            publicKey = "8Yo4FdRhwA6CftVb7unpdxT+bxw+IRq/al7yinHewDQ=";
             persistentKeepalive = 30;
           }
         ];
