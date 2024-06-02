@@ -30,5 +30,9 @@
         isClient = false;
       };
     };
+
+    programs = {
+      git.signingKey = "";
+    };
   };
 }

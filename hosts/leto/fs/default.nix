@@ -1,11 +1,9 @@
 {
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/4e742f36-b005-4f3b-a25c-dd55ef1bda0a";
-    fsType = "btrfs";
-    options = ["compress=zstd" "noatime"];
+    device = "/dev/disk/by-uuid/f82a1d67-5e56-4b97-83e0-f5b55e6fe409";
+    fsType = "ext4";
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/8d35941a-dcf0-4659-83f8-458c18d0bb4f";}
   ];
 }
