@@ -49,14 +49,14 @@ in {
 
           # Peers
           peers = [
-            # enyo
+            # hermes
             {
               allowedIPs = [
                 "10.255.255.11/32"
                 "fe80::11/128"
                 "2a01:4f9:c010:2cf9:f::11/128"
               ];
-              publicKey = "u5Riuu4NEWEH06qATdnrPO+LacZTspoghqMnoWQ+uEQ=";
+              publicKey = "9BtqBu73BFTkYew/x3spLtvNmCSLrZrjfuToag84jjA=";
             }
           ];
         };
