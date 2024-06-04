@@ -33,5 +33,9 @@ in {
         hash = "sha256-Y7fkpvCOC/lC2CHYui+6vOdNO8dNHGrVYTGGNf9qgdg=";
       };
     }
+    {
+      name = "you-should-use";
+      inherit (pkgs.zsh-you-should-use) src;
+    }
   ];
 }
