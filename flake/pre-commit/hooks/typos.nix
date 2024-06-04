@@ -19,6 +19,7 @@
         "muh" = "muh";
         "HDA" = "HDA";
         "CROS" = "CROS";
+        "crypted" = "crypted";
       };
     };
   in {
