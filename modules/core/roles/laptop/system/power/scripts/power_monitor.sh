@@ -3,8 +3,8 @@
 BAT=$(echo /sys/class/power_supply/BAT*)
 BAT_STATUS="$BAT/status"
 BAT_CAP="$BAT/capacity"
-AC_PROFILE="balanced"     # "performance"
-BAT_PROFILE="power-saver" # "balanced"
+AC_PROFILE="performance" # "balanced", "performance"
+BAT_PROFILE="balanced"   # "power-saver", "balanced"
 
 # low and critical battery levels
 LOW_BAT_PERCENT=25
