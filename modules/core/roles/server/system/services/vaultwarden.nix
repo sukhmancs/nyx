@@ -27,7 +27,7 @@ in {
         environmentFile = config.age.secrets.vaultwarden-env.path;
         backupDir = "/srv/storage/vaultwarden/backup";
         config = {
-          DOMAIN = "https://vault.notashelf.dev";
+          DOMAIN = "https://vault.xilain.dev";
           SIGNUPS_ALLOWED = false;
           ROCKET_ADDRESS = host;
           ROCKET_PORT = port;
@@ -37,19 +37,19 @@ in {
           logLevel = "warn";
           showPasswordHint = false;
           signupsAllowed = false;
-          signupsDomainsWhitelist = "notashelf.dev";
+          signupsDomainsWhitelist = "xilain.dev";
           signupsVerify = true;
           smtpAuthMechanism = "Login";
-          smtpFrom = "vaultwarden@notashelf.dev";
-          smtpFromName = "NotAShelf's Vaultwarden Service";
-          smtpHost = "mail.notashelf.dev";
+          smtpFrom = "vaultwarden@xilain.dev";
+          smtpFromName = "XiLain's Vaultwarden Service";
+          smtpHost = "mail.xilain.dev";
           smtpPort = 465;
           smtpSecurity = "force_tls";
           dataDir = "/srv/storage/vaultwarden";
         };
       };
 
-      nginx.virtualHosts."vault.notashelf.dev" =
+      nginx.virtualHosts."vault.xilain.dev" =
         {
           locations."/" = {
             proxyPass = "http://${host}:${toString port}";
