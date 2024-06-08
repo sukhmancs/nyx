@@ -10,7 +10,7 @@ in {
   # "client/spotify.age".publicKeys = mkGlobal workstations;
   "client/wg.age".publicKeys = mkGlobal (workstations ++ servers);
   "client/tailscale.age".publicKeys = mkGlobal (workstations ++ servers);
-  # "client/email.age".publicKeys = mkGlobal (workstations ++ servers);
+  "client/email.age".publicKeys = mkGlobal (workstations ++ servers);
 
   # # service specific secrets
   # "service/matrix.age".publicKeys = mkGlobal servers;
@@ -30,10 +30,10 @@ in {
   # "db/garage.age".publicKeys = mkGlobal servers;
 
   # # secrets for specific mailserver accounts
-  # "mailserver/cloud.age".publicKeys = mkGlobal servers;
-  # "mailserver/forgejo.age".publicKeys = mkGlobal servers;
-  # "mailserver/matrix.age".publicKeys = mkGlobal servers;
-  # "mailserver/noreply.age".publicKeys = mkGlobal servers;
-  # "mailserver/postmaster.age".publicKeys = mkGlobal servers;
-  # "mailserver/vaultwarden.age".publicKeys = mkGlobal servers;
+  "mailserver/cloud.age".publicKeys = mkGlobal servers;
+  "mailserver/forgejo.age".publicKeys = mkGlobal servers;
+  "mailserver/matrix.age".publicKeys = mkGlobal servers;
+  "mailserver/noreply.age".publicKeys = mkGlobal servers;
+  "mailserver/postmaster.age".publicKeys = mkGlobal servers;
+  "mailserver/vaultwarden.age".publicKeys = mkGlobal servers;
 }
