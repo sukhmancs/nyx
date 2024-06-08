@@ -27,7 +27,7 @@ in {
 
         configureNginx = false;
         trustedProxy = "127.0.0.1";
-        localDomain = "social.notashelf.dev";
+        localDomain = "social.xilain.dev";
         streamingProcesses = 2;
 
         webPort = 55001;
@@ -54,16 +54,16 @@ in {
         smtp = {
           authenticate = true;
           createLocally = false;
-          fromAddress = "noreply@notashelf.dev";
+          fromAddress = "noreply@xilain.dev";
           user = "noreply";
-          host = "mail.notashelf.dev";
+          host = "mail.xilain.dev";
           passwordFile = config.age.secrets.mailserver-noreply-secret.path;
         };
 
         # extra config
         extraConfig = {
           SINGLE_USER_MODE = "true";
-          WEB_DOMAIN = "social.notashelf.dev";
+          WEB_DOMAIN = "social.xilain.dev";
           AUTHORIZED_FETCH = "true";
         };
       };
@@ -74,7 +74,7 @@ in {
       # in case they break another thing without proper documentation
       # /rant
       nginx = {
-        virtualHosts."social.notashelf.dev" =
+        virtualHosts."social.xilain.dev" =
           {
             root = "${config.services.mastodon.package}/public/";
             quic = true;

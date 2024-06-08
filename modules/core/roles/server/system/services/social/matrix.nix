@@ -45,9 +45,9 @@ in {
       };
 
       nginx.virtualHosts = {
-        "notashelf.dev" =
+        "xilain.dev" =
           {
-            serverAliases = ["matrix.notashelf.dev"];
+            serverAliases = ["matrix.xilain.dev"];
             locations = {
               "= /.well-known/matrix/server".extraConfig = mkWellKnown serverConfig;
               "= /.well-known/matrix/client".extraConfig = mkWellKnown clientConfig;
@@ -66,8 +66,8 @@ in {
 
         extraConfigFiles = [config.age.secrets.matrix-secret.path];
         settings = {
-          server_name = "notashelf.dev";
-          public_baseurl = "https://notashelf.dev";
+          server_name = "xilain.dev";
+          public_baseurl = "https://xilain.dev";
 
           withJemalloc = true;
           enable_registration = true;
