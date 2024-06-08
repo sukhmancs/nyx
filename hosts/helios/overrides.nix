@@ -1,8 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}: {
+{lib, ...}: {
   config = {
     services.qemuGuest.enable = lib.mkForce true;
 
