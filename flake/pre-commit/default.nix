@@ -26,6 +26,11 @@
           actionlint = mkHook "actionlint" {enable = true;};
           luacheck = mkHook "luacheck" {enable = true;};
           treefmt = mkHook "treefmt" {enable = true;};
+          lychee = mkHook "lychee" {
+            enable = true;
+            excludes = ["^(?!.*\.md$).*"];
+          };
+
           editorconfig-checker = mkHook "editorconfig" {
             enable = false;
             always_run = true;

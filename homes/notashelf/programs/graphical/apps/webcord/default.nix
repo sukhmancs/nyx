@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
   inherit (osConfig) modules;
 
   sys = modules.system;
@@ -13,8 +13,15 @@
   catppuccin-mocha = pkgs.fetchFromGitHub {
     owner = "catppuccin";
     repo = "discord";
-    rev = "fa735cd9a89732f4b27ff14309c2af1581622ae5";
-    hash = "sha256-1H5l2E0VBUL1/k7tf21gXGVT158koARug/KeLixCukU=";
+    rev = "7d9808eaf663f9c61824fcd1be810dce0fe4a7af";
+    hash = "sha256-wIRr+LnOp9PW7v5xOqpdB6AjqINBlYFkoGRorYkRC2I=";
+  };
+
+  openasar-git = pkgs.fetchFromGitHub {
+    owner = "OpenAsar";
+    repo = "arrpc";
+    rev = "c62ec6a04c8d870530aa6944257fe745f6c59a24";
+    hash = "sha256-wIRr+LnOp9PW7v5xOqpdB6AjqINBlYFkoGRorYkRC2I=";
   };
 in {
   config = mkIf prg.webcord.enable {
@@ -23,9 +30,7 @@ in {
     ];
 
     xdg.configFile = {
-      "WebCord/Themes/mocha" = {
-        source = "${catppuccin-mocha}/themes/mocha.theme.css";
-      };
+      "WebCord/Themes/mocha".source = "${catppuccin-mocha}/themes/mocha.theme.css";
     };
 
     # TODO: maybe this should be under services/global because technically it's not an app
@@ -33,17 +38,12 @@ in {
     # companion app that we enable for rich presence.
     services.arrpc = {
       enable = true;
-      package = pkgs.arrpc.overrideAttrs (_: {
+      package = pkgs.arrpc.overrideAttrs {
         pname = "arrpc";
         version = "3.4.0";
 
-        src = pkgs.fetchFromGitHub {
-          owner = "OpenAsar";
-          repo = "arrpc";
-          rev = "59553e276716cde3c0afa8bff56aa8af3ab774cc";
-          hash = "sha256-kjpsPWjgoSNs569DfN8T3/lPB8MzUck7QqD/wfNL8To=";
-        };
-      });
+        src = openasar-git;
+      };
     };
   };
 }
