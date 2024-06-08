@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkDefault ldTernary;
+  inherit (lib) mkDefault;
 in {
   system = {
     # Automatic/Unattended upgrades in general are one of the dumbest things you can set up
@@ -12,6 +12,6 @@ in {
     # bootloader also breaks during the upgrade, you may not be able to roll back at all.
     # tl;dr: upgrade manually, review changelogs.
     autoUpgrade.enable = false;
-    stateVersion = ldTernary pkgs (mkDefault "23.05") (mkDefault 4);
+    stateVersion = mkDefault "23.05";
   };
 }
