@@ -17,7 +17,7 @@
         theme = null;
         backgroundColor = null;
         splashImage = null;
-        device = lib.mkForce "/dev/disk/by-label/nixos";
+        device = lib.mkForce "/dev/vda";
         forceInstall = true;
       };
     };
