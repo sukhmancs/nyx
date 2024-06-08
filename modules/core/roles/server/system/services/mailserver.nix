@@ -36,6 +36,9 @@ in {
       fqdn = "mail.xilain.dev";
       certificateScheme = "acme-nginx";
       domains = ["xilain.dev"];
+
+      # To create the password hashes, use
+      # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
       loginAccounts = {
         "shelf@xilain.dev" = {
           hashedPasswordFile = secrets.mailserver-secret.path;

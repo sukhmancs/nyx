@@ -15,7 +15,9 @@
     # Should be generated manually. See option documentation
     # for tips on generating it. For security purposes, it's
     # a good idea to use a non-default hash.
-    initialHashedPassword = "$2b$05$NI5/uV4JXUt/wq8hEN.NX.5rKCvCtj8JZih/seVcPIXNFIpw61v.y";
+    # To create the password hashes, use
+    # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
+    initialHashedPassword = "$2b$05$BzxF5/YnEdPRSLTWbvVZz.ThWxyGJYgkN12d0J2Zj2YFrlckPYIYS";
     openssh.authorizedKeys.keys = [keys.notashelf];
     extraGroups = [
       "wheel"
