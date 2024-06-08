@@ -52,7 +52,7 @@ in {
           github.vscode-pull-request-github
           github.codespaces
           astro-build.astro-vscode
-          WakaTime.vscode-wakatime
+          wakatime.vscode-wakatime
         ]
         ++ [
           pkgs.vscode-extensions."2gua".rainbow-brackets
