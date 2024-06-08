@@ -41,7 +41,7 @@ in {
             instance_name = "NotASearx";
             privacypolicy_url = false;
             donation_url = "https://ko-fi.com/notashelf";
-            contact_url = "mailto:raf@notashelf.dev";
+            contact_url = "mailto:shelf@xilain.dev";
             enable_metrics = true;
             debug = false;
           };
@@ -127,7 +127,7 @@ in {
         };
       };
 
-      nginx.virtualHosts."search.notashelf.dev" =
+      nginx.virtualHosts."search.xilain.dev" =
         {
           locations."/".proxyPass = "http://${host}:${toString port}";
           extraConfig = ''

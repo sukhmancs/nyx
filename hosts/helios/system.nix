@@ -7,7 +7,7 @@
   imports = [(modulesPath + "/profiles/qemu-guest.nix")];
 
   config = {
-    networking.domain = "notashelf.dev";
+    networking.domain = "xilain.dev";
     services.smartd.enable = lib.mkForce false;
 
     boot = {

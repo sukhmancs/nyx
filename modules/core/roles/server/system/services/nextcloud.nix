@@ -6,7 +6,7 @@
 }: let
   inherit (lib) mkIf;
 
-  domain = "cloud.notashelf.dev";
+  domain = "cloud.xilain.dev";
 
   sys = config.modules.system;
   cfg = sys.services;
@@ -54,7 +54,7 @@ in {
         config = {
           # admin user settings
           # only effective during setup
-          adminuser = "notashelf";
+          adminuser = "xilain";
           adminpassFile = config.age.secrets.nextcloud-secret.path;
 
           # database
@@ -128,7 +128,7 @@ in {
         phpExtraExtensions = ext: [ext.redis];
       };
 
-      nginx.virtualHosts."cloud.notashelf.dev" =
+      nginx.virtualHosts."cloud.xilain.dev" =
         {
           quic = true;
           http3 = true;

@@ -16,7 +16,7 @@ in {
     security = {
       acme = {
         acceptTerms = true;
-        defaults.email = "me@notashelf.dev";
+        defaults.email = "me@xilain.dev";
       };
     };
 

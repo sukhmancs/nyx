@@ -33,54 +33,54 @@ in {
       enableSubmissionSsl = true;
       hierarchySeparator = "/";
       localDnsResolver = false;
-      fqdn = "mail.notashelf.dev";
+      fqdn = "mail.xilain.dev";
       certificateScheme = "acme-nginx";
-      domains = ["notashelf.dev"];
+      domains = ["xilain.dev"];
       loginAccounts = {
-        "raf@notashelf.dev" = {
+        "shelf@xilain.dev" = {
           hashedPasswordFile = secrets.mailserver-secret.path;
           aliases = [
             "me"
-            "raf"
-            "me@notashelf.dev"
+            "shelf"
+            "me@xilain.dev"
             "admin"
-            "admin@notashelf.dev"
+            "admin@xilain.dev"
             "root"
-            "root@notashelf.dev"
+            "root@xilain.dev"
             "postmaster"
-            "postmaster@notashelf.dev"
+            "postmaster@xilain.dev"
           ];
         };
 
-        "noreply@notashelf.dev" = {
+        "noreply@xilain.dev" = {
           aliases = ["noreply"];
           hashedPasswordFile = secrets.mailserver-noreply-secret.path;
           sendOnly = true;
           sendOnlyRejectMessage = "";
         };
 
-        "git@notashelf.dev" = mkIf cfg.forgejo.enable {
+        "git@xilain.dev" = mkIf cfg.forgejo.enable {
           aliases = ["git" "forgejo"];
           hashedPasswordFile = secrets.mailserver-forgejo-secret.path;
           sendOnly = true;
           sendOnlyRejectMessage = "";
         };
 
-        "vaultwarden@notashelf.dev" = mkIf cfg.vaultwarden.enable {
+        "vaultwarden@xilain.dev" = mkIf cfg.vaultwarden.enable {
           aliases = ["vaultwarden" "vault"];
           hashedPasswordFile = secrets.mailserver-vaultwarden-secret.path;
           sendOnly = true;
           sendOnlyRejectMessage = "";
         };
 
-        "matrix@notashelf.dev" = mkIf cfg.social.matrix.enable {
+        "matrix@xilain.dev" = mkIf cfg.social.matrix.enable {
           aliases = ["matrix"];
           hashedPasswordFile = secrets.mailserver-matrix-secret.path;
           sendOnly = true;
           sendOnlyRejectMessage = "";
         };
 
-        "cloud@notashelf.dev" = mkIf cfg.nextcloud.enable {
+        "cloud@xilain.dev" = mkIf cfg.nextcloud.enable {
           aliases = ["cloud" "nextcloud"];
           hashedPasswordFile = secrets.mailserver-cloud-secret.path;
           sendOnly = true;
@@ -134,14 +134,14 @@ in {
         dicts = with pkgs.aspellDicts; [en tr de];
         # this is the url of the vhost, not necessarily the same as the fqdn of
         # the mailserver
-        hostName = "webmail.notashelf.dev";
+        hostName = "webmail.xilain.dev";
         extraConfig = ''
           $config['imap_host'] = array(
-            'tls://mail.notashelf.dev' => "NotAShelf's Mail Server",
+            'tls://mail.xilain.dev' => "xilain's Mail Server",
             'ssl://imap.gmail.com:993' => 'Google Mail',
           );
           $config['username_domain'] = array(
-            'mail.notashelf.dev' => 'notashelf.dev',
+            'mail.xilain.dev' => 'xilain.dev',
             'mail.gmail.com' => 'gmail.com',
           );
           $config['x_frame_options'] = false;
@@ -162,8 +162,8 @@ in {
           "blacklist.woody.ch"
         ];
         dnsBlacklistOverrides = ''
-          notashelf.dev OK
-          mail.notashelf.dev OK
+          xilain.dev OK
+          mail.xilain.dev OK
           127.0.0.0/8 OK
           192.168.0.0/16 OK
         '';
@@ -185,8 +185,8 @@ in {
       };
 
       nginx.virtualHosts = {
-        "mail.notashelf.dev" = {quic = true;} // lib.sslTemplate;
-        "webmail.notashelf.dev" = {quic = true;} // lib.sslTemplate;
+        "mail.xilain.dev" = {quic = true;} // lib.sslTemplate;
+        "webmail.xilain.dev" = {quic = true;} // lib.sslTemplate;
       };
     };
   };
