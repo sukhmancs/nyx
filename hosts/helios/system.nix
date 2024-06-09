@@ -9,6 +9,7 @@
   config = {
     networking.domain = "xilain.dev";
     services.smartd.enable = lib.mkForce false;
+    time.timeZone = lib.mkForce "Africa/Johannesburg";
 
     boot = {
       growPartition = !config.boot.initrd.systemd.enable;

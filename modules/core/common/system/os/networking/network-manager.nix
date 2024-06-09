@@ -32,7 +32,7 @@ in {
       wifi = {
         inherit (wireless) backend; # this can be iwd or wpa_supplicant, use wpa_supp. until iwd support is stable
         macAddress = "random"; # use a random mac address on every boot
-        powersave = false; # enable wifi powersaving
+        powersave = true; # enable wifi powersaving
         scanRandMacAddress = true; # MAC address randomization of a Wi-Fi device during scanning
       };
 
