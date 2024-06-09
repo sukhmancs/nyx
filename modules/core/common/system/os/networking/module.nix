@@ -40,13 +40,13 @@ in {
     # "script-based" network setups. Host may contain individual
     # dhcp interfaces or systemd-networkd configurations in host
     # specific directories
-    useDHCP = mkForce false;
-    useNetworkd = mkForce true;
+    useDHCP = false;
+    useNetworkd = true;
 
     # interfaces are assigned names that contain topology information (e.g. wlp3s0)
     # and thus should be consistent across reboots
     # this already defaults to true, we set it in case it changes upstream
-    usePredictableInterfaceNames = mkDefault true;
+    usePredictableInterfaceNames = true;
 
     # dns
     nameservers = [

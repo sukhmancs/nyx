@@ -20,13 +20,13 @@ in {
       dns = "systemd-resolved"; # use systemd-resolved as dns backend
       unmanaged = [
         "interface-name:tailscale*"
-        # "interface-name:br-*"
+        "interface-name:br-*"
         "interface-name:rndis*"
         "interface-name:docker*"
-        #"interface-name:virbr*"
-        #"interface-name:vboxnet*"
+        "interface-name:virbr*"
+        "interface-name:vboxnet*"
         "interface-name:waydroid*"
-        #"type:bridge"
+        "type:bridge"
       ];
 
       wifi = {

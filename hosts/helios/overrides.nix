@@ -14,13 +14,13 @@
         eth0 = {
           ipv4.addresses = [
             {
-              address = "102.209.85.254";
+              address = "102.209.85.256";
               prefixLength = 27;
             }
           ];
           ipv6.addresses = [
             {
-              address = "fe80::be24:11ff:fe16:a408";
+              address = "fe80::be24:11ff:fef5:8406";
               prefixLength = 64;
             }
           ];

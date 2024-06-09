@@ -17,7 +17,8 @@
     # a good idea to use a non-default hash.
     # To create the password hashes, use
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
-    initialHashedPassword = "$2b$05$BzxF5/YnEdPRSLTWbvVZz.ThWxyGJYgkN12d0J2Zj2YFrlckPYIYS";
+    # initialHashedPassword = "$2b$05$BzxF5/YnEdPRSLTWbvVZz.ThWxyGJYgkN12d0J2Zj2YFrlckPYIYS"; #FIXME - keep getting incorrect password
+    initialPassword = "changeme";
     openssh.authorizedKeys.keys = [keys.notashelf];
     extraGroups = [
       "wheel"

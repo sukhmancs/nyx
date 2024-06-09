@@ -5,6 +5,6 @@
 
     ./system.nix
     ./nftables.nix
-    # ./overrides.nix
+    ./overrides.nix
   ];
 }
