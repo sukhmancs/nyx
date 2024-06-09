@@ -1,13 +1,15 @@
-{lib, ...}: {
+{lib, ...}: let
+  inherit (lib.modules) mkForce;
+in {
   #  we don't want the kernel setting up interfaces magically for us
   boot.extraModprobeConfig = "options bonding max_bonds=0";
   networking = {
-    useDHCP = false;
-    useNetworkd = false;
+    useDHCP = mkForce false;
+    useNetworkd = mkForce false;
   };
 
   systemd.network = {
-    enable = lib.mkForce false;
+    enable = mkForce true;
 
     wait-online = {
       enable = false;
