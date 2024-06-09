@@ -8,7 +8,7 @@
         address = "";
         interface = "eth0";
       };
-      useNetworkd = false;
+      useNetworkd = lib.mkForce false;
       dhcpcd.enable = lib.mkForce false;
       usePredictableInterfaceNames = lib.mkForce false;
       interfaces = {
