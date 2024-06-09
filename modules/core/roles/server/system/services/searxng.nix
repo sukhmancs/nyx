@@ -33,12 +33,12 @@ in {
       searx = {
         enable = true;
         package = pkgs.searxng;
-        environmentFile = config.age.secrets.searx-secretkey.path;
+        # environmentFile = config.age.secrets.searx-secretkey.path;
         settings = {
           use_default_settings = true;
 
           general = {
-            instance_name = "NotASearx";
+            instance_name = "XiSearx";
             privacypolicy_url = false;
             donation_url = "https://ko-fi.com/notashelf";
             contact_url = "mailto:shelf@xilain.dev";
@@ -56,7 +56,7 @@ in {
           server = {
             inherit port;
             method = "GET";
-            secret_key = "@SEARX_SECRET_KEY@"; # set in the environment file
+            secret_key = "changeme"; #"@SEARX_SECRET_KEY@"; # set in the environment file
             limiter = false;
             image_proxy = false; # no thanks, lol
             default_http_headers = {
