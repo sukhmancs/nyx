@@ -8,8 +8,8 @@
     reposilite.enable = true;
 
     social = {
-      mastodon.enable = true;
-      matrix.enable = true;
+     mastodon.enable = true;
+     matrix.enable = true;
     };
 
     bincache = {
