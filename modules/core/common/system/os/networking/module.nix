@@ -69,8 +69,8 @@ in {
     # this can allow us to find hosts on private networks
     # e.g. wireguard, tailscale and headscale
     search = [
-      "notashelf.dev" # referss to the server itself
-      "notashelf.notashelf.dev" # headscale network
+      "xilain.dev" # referss to the server itself
+      "xilain.xilain.dev" # headscale network
     ];
   };
 

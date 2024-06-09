@@ -3,7 +3,6 @@
     services.qemuGuest.enable = lib.mkForce true;
 
     networking = {
-#      networkmanager.enable = lib.mkForce false;      
       defaultGateway = "102.209.85.225";
       defaultGateway6 = {
         address = "";
