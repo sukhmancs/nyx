@@ -13,7 +13,7 @@ in {
     services.postgresql = {
       enable = true;
       package = pkgs.postgresql_16;
-      dataDir = "/srv/storage/postgresql/${config.services.postgresql.package.psqlSchema}";
+      dataDir = "/var/lib/postgresql/${config.services.postgresql.package.psqlSchema}";
 
       ensureDatabases = [
         "nextcloud"
@@ -139,10 +139,5 @@ in {
         log_destination = lib.mkForce "syslog";
       };
     };
-
-    # Ensure the data directory is created with the correct permissions
-    systemd.tmpfiles.rules = [
-      "d ${config.services.postgresql.dataDir} 0700 postgres postgres -"
-    ];
   };
 }

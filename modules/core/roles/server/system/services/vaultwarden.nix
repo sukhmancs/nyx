@@ -25,7 +25,7 @@ in {
       vaultwarden = {
         enable = true;
         environmentFile = config.age.secrets.vaultwarden-env.path;
-        backupDir = "/srv/storage/vaultwarden/backup";
+        backupDir = "/var/lib/vaultwarden/backup";
         config = {
           DOMAIN = "https://vault.xilain.dev";
           SIGNUPS_ALLOWED = false;
@@ -45,7 +45,7 @@ in {
           smtpHost = "mail.xilain.dev";
           smtpPort = 465;
           smtpSecurity = "force_tls";
-          dataDir = "/srv/storage/vaultwarden";
+          dataDir = "/var/lib/vaultwarden";
         };
       };
 

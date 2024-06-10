@@ -29,7 +29,7 @@ in {
         hostName = domain;
         nginx.recommendedHttpHeaders = true;
 
-        home = "/srv/storage/nextcloud";
+        home = "/var/lib/nextcloud";
         maxUploadSize = "4G";
         enableImagemagick = true;
 
