@@ -139,5 +139,10 @@ in {
         log_destination = lib.mkForce "syslog";
       };
     };
+
+    # Ensure the data directory is created with the correct permissions
+    systemd.tmpfiles.rules = [
+      "d ${config.services.postgresql.dataDir} 0700 postgres postgres -"
+    ];
   };
 }
