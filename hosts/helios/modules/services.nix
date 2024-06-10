@@ -2,22 +2,22 @@
   config.modules.system.services = {
     nextcloud.enable = true;
     mailserver.enable = true;
-    vaultwarden.enable = true;
-    forgejo.enable = true;
+    # vaultwarden.enable = true;
+    # forgejo.enable = true;
     searxng.enable = true;
-    reposilite.enable = true;
+    # reposilite.enable = true;
 
-    social = {
-      mastodon.enable = true;
-      matrix.enable = true;
-    };
+    # social = {
+    #   mastodon.enable = true;
+    #   matrix.enable = true;
+    # };
 
     bincache = {
-      harmonia.enable = true;
+      # harmonia.enable = true;
     };
 
     networking = {
-      headscale.enable = true;
+      # headscale.enable = true;
       wireguard.enable = true;
     };
 

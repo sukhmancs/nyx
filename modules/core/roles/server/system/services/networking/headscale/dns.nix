@@ -2,7 +2,7 @@
   services.headscale.settings.dns_config = {
     override_local_dns = true;
     magic_dns = true;
-    base_domain = "notashelf.dev";
+    base_domain = "xilain.dev";
     domains = [];
     nameservers = [
       "9.9.9.9" # no cloudflare, nice

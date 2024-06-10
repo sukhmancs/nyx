@@ -33,7 +33,7 @@ in {
           grpc_listen_addr = "127.0.0.1:50443";
           grpc_allow_insecure = false;
 
-          server_url = "https://hs.notashelf.dev";
+          server_url = "https://hs.xilain.dev";
           tls_cert_path = null;
           tls_key_path = null;
 
@@ -66,7 +66,7 @@ in {
         };
       };
 
-      nginx.virtualHosts."hs.notashelf.dev" = {
+      nginx.virtualHosts."hs.xilain.dev" = {
         forceSSL = true;
         enableACME = true;
         quic = true;

@@ -62,33 +62,33 @@ in {
           sendOnlyRejectMessage = "";
         };
 
-        "git@xilain.dev" = mkIf cfg.forgejo.enable {
-          aliases = ["git" "forgejo"];
-          hashedPasswordFile = secrets.mailserver-forgejo-secret.path;
-          sendOnly = true;
-          sendOnlyRejectMessage = "";
-        };
+        # "git@xilain.dev" = mkIf cfg.forgejo.enable {
+        #   aliases = ["git" "forgejo"];
+        #   hashedPasswordFile = secrets.mailserver-forgejo-secret.path;
+        #   sendOnly = true;
+        #   sendOnlyRejectMessage = "";
+        # };
 
-        "vaultwarden@xilain.dev" = mkIf cfg.vaultwarden.enable {
-          aliases = ["vaultwarden" "vault"];
-          hashedPasswordFile = secrets.mailserver-vaultwarden-secret.path;
-          sendOnly = true;
-          sendOnlyRejectMessage = "";
-        };
+        # "vaultwarden@xilain.dev" = mkIf cfg.vaultwarden.enable {
+        #   aliases = ["vaultwarden" "vault"];
+        #   hashedPasswordFile = secrets.mailserver-vaultwarden-secret.path;
+        #   sendOnly = true;
+        #   sendOnlyRejectMessage = "";
+        # };
 
-        "matrix@xilain.dev" = mkIf cfg.social.matrix.enable {
-          aliases = ["matrix"];
-          hashedPasswordFile = secrets.mailserver-matrix-secret.path;
-          sendOnly = true;
-          sendOnlyRejectMessage = "";
-        };
+        # "matrix@xilain.dev" = mkIf cfg.social.matrix.enable {
+        #   aliases = ["matrix"];
+        #   hashedPasswordFile = secrets.mailserver-matrix-secret.path;
+        #   sendOnly = true;
+        #   sendOnlyRejectMessage = "";
+        # };
 
-        "cloud@xilain.dev" = mkIf cfg.nextcloud.enable {
-          aliases = ["cloud" "nextcloud"];
-          hashedPasswordFile = secrets.mailserver-cloud-secret.path;
-          sendOnly = true;
-          sendOnlyRejectMessage = "";
-        };
+        # "cloud@xilain.dev" = mkIf cfg.nextcloud.enable {
+        #   aliases = ["cloud" "nextcloud"];
+        #   hashedPasswordFile = secrets.mailserver-cloud-secret.path;
+        #   sendOnly = true;
+        #   sendOnlyRejectMessage = "";
+        # };
       };
 
       mailboxes = {
