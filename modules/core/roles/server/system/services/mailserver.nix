@@ -62,12 +62,12 @@ in {
           sendOnlyRejectMessage = "";
         };
 
-        "git@xilain.dev" = mkIf cfg.forgejo.enable {
-          aliases = ["git" "forgejo"];
-          hashedPasswordFile = secrets.mailserver-forgejo-secret.path;
-          sendOnly = true;
-          sendOnlyRejectMessage = "";
-        };
+        # "git@xilain.dev" = mkIf cfg.forgejo.enable {
+        #   aliases = ["git" "forgejo"];
+        #   hashedPasswordFile = secrets.mailserver-forgejo-secret.path;
+        #   sendOnly = true;
+        #   sendOnlyRejectMessage = "";
+        # };
 
         "vaultwarden@xilain.dev" = mkIf cfg.vaultwarden.enable {
           aliases = ["vaultwarden" "vault"];
