@@ -1,6 +1,6 @@
 {lib, ...}: {
   config = {
-    services.qemuGuest.enable = lib.mkForce true;
+    # services.qemuGuest.enable = lib.mkForce true;
 
     networking = {
       defaultGateway = "102.209.85.225";
