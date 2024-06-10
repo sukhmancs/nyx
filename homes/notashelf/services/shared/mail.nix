@@ -12,12 +12,12 @@
       accounts = {
         notashelf = let
           gpgKey = "0xBA46BCC36E912922";
-          name = "NotAShelf";
+          name = "XiLain";
         in {
           primary = true;
-          address = "raf@notashelf.dev";
-          aliases = ["me@notashelf.dev"];
-          userName = "raf@notashelf.dev";
+          address = "shelf@xilain.dev";
+          aliases = ["me@xilain.dev"];
+          userName = "shelf@xilain.dev";
           realName = name; # very real, I know
           passwordCommand = ''
             # this is a really bad way of getting the password
@@ -44,12 +44,12 @@
           };
 
           imap = {
-            host = "notashelf.dev";
+            host = "xilain.dev";
             tls.enable = true;
           };
 
           smtp = {
-            host = "notashelf.dev";
+            host = "xilain.dev";
             tls.enable = true;
           };
 
