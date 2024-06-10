@@ -12,11 +12,11 @@ in {
   "client/tailscale.age".publicKeys = mkGlobal (workstations ++ servers);
   "client/email.age".publicKeys = mkGlobal (workstations ++ servers);
 
-  # # service specific secrets
-  # "service/matrix.age".publicKeys = mkGlobal servers;
+  # service specific secrets
+  "service/matrix.age".publicKeys = mkGlobal servers;
   "service/nextcloud.age".publicKeys = mkGlobal servers;
   # "service/mkm-web.age".publicKeys = mkGlobal servers;
-  # "service/vaultwarden.age".publicKeys = mkGlobal servers;
+  "service/vaultwarden.age".publicKeys = mkGlobal servers;
   "service/wg.age".publicKeys = mkGlobal servers;
   "service/searx.age".publicKeys = mkGlobal servers;
   # "service/forgejo-runner-token.age".publicKeys = mkGlobal servers;
@@ -26,10 +26,10 @@ in {
   # "service/headscale-noise.age".publicKeys = mkGlobal servers;
   # "service/headscale-derp.age".publicKeys = mkGlobal servers;
 
-  # "db/mongodb.age".publicKeys = mkGlobal servers;
-  # "db/garage.age".publicKeys = mkGlobal servers;
+  "db/mongodb.age".publicKeys = mkGlobal servers;
+  "db/garage.age".publicKeys = mkGlobal servers;
 
-  # # secrets for specific mailserver accounts
+  # secrets for specific mailserver accounts
   "mailserver/cloud.age".publicKeys = mkGlobal servers;
   "mailserver/forgejo.age".publicKeys = mkGlobal servers;
   "mailserver/matrix.age".publicKeys = mkGlobal servers;
