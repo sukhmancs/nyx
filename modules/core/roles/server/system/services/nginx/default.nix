@@ -16,7 +16,7 @@ in {
     security = {
       acme = {
         acceptTerms = true;
-        defaults.email = "me@xilain.dev";
+        defaults.email = "sukhmansinghh2@gmail.com"; # "me@xilain.dev";
       };
     };
 
