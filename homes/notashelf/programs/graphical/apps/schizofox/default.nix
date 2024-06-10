@@ -33,7 +33,7 @@ in {
       search = rec {
         defaultSearchEngine = "Searxng";
         removeEngines = ["Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia" "LibRedirect" "DuckDuckGo"];
-        searxUrl = "https://search.notashelf.dev";
+        searxUrl = "https://search.xilain.dev";
         searxQuery = "${searxUrl}/search?q={searchTerms}&categories=general";
         addEngines = [
           {
