@@ -3,7 +3,7 @@
     nextcloud.enable = true;
     mailserver.enable = true;
     vaultwarden.enable = true;
-    # forgejo.enable = true;
+    forgejo.enable = true;
     searxng.enable = true;
     # reposilite.enable = true;
 
@@ -13,7 +13,7 @@
     };
 
     # bincache = {
-    # harmonia.enable = true;
+    #   harmonia.enable = true;
     # };
 
     networking = {

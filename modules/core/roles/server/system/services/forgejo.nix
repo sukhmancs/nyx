@@ -7,7 +7,7 @@
   inherit (lib) mkIf;
 
   cfg = config.modules.system.services;
-  domain = "git.notashelf.dev";
+  domain = "git.xilain.dev";
 
   inherit (cfg.forgejo.settings) port;
 in {
@@ -30,7 +30,7 @@ in {
       forgejo = {
         enable = true;
         package = pkgs.forgejo.override {pamSupport = false;};
-        stateDir = "/srv/storage/forgejo/data";
+        stateDir = "/var/lib/forgejo/data";
 
         mailerPasswordFile = config.age.secrets.mailserver-forgejo-secret.path;
         lfs.enable = true;
@@ -114,7 +114,7 @@ in {
           mailer = mkIf config.modules.system.services.mailserver.enable {
             ENABLED = true;
             PROTOCOL = "smtps";
-            SMTP_ADDR = "mail.notashelf.dev";
+            SMTP_ADDR = "mail.xilain.dev";
             USER = "git@notashelf.dev";
           };
         };
@@ -122,13 +122,13 @@ in {
         # backup
         dump = {
           enable = true;
-          backupDir = "/srv/storage/forgejo/dump";
+          backupDir = "/var/lib/forgejo/dump";
           interval = "06:00";
           type = "tar.zst";
         };
       };
 
-      nginx.virtualHosts."git.notashelf.dev" =
+      nginx.virtualHosts."git.xilain.dev" =
         {
           locations."/" = {
             recommendedProxySettings = true;
