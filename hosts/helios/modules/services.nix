@@ -7,10 +7,10 @@
     searxng.enable = true;
     # reposilite.enable = true;
 
-    # social = {
-    #   mastodon.enable = true;
-    #   matrix.enable = true;
-    # };
+    social = {
+      mastodon.enable = true;
+      matrix.enable = true;
+    };
 
     # bincache = {
     # harmonia.enable = true;
