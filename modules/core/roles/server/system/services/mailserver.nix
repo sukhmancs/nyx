@@ -55,12 +55,12 @@ in {
           ];
         };
 
-        "noreply@xilain.dev" = {
-          aliases = ["noreply"];
-          hashedPasswordFile = secrets.mailserver-noreply-secret.path;
-          sendOnly = true;
-          sendOnlyRejectMessage = "";
-        };
+        # "noreply@xilain.dev" = {
+        #   aliases = ["noreply"];
+        #   hashedPasswordFile = secrets.mailserver-noreply-secret.path;
+        #   sendOnly = true;
+        #   sendOnlyRejectMessage = "";
+        # };
 
         # "git@xilain.dev" = mkIf cfg.forgejo.enable {
         #   aliases = ["git" "forgejo"];
