@@ -17,7 +17,7 @@ in {
     services = {
       invidious = {
         enable = true;
-        port = mkDefault "${toString cfg.invidious.settings.port}";
+        port = mkDefault 3333;
         domain = mkDefault "${domain}";
         settings = {
           https_only = false;
