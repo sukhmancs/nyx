@@ -6,6 +6,7 @@
     forgejo.enable = true;
     searxng.enable = true;
     reposilite.enable = true;
+    invidious.enable = true;
 
     social = {
       mastodon.enable = true;

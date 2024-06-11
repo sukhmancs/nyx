@@ -75,6 +75,11 @@ in {
         name = "Kanidm";
         port = 8443;
       };
+
+      invidious = mkService {
+        name = "Invidious";
+        port = 3333;
+      };
     };
   };
 }

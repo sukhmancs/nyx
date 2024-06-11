@@ -20,6 +20,7 @@
     ./reposilite.nix # self-hosted maven repository
     ./elasticsearch.nix # elasticsearch
     ./kanidm.nix # kanidm identity management
+    ./invidious.nix # invidious youtube frontend
 
     # misc
     ./mkm.nix # holy fuck
