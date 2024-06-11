@@ -5,7 +5,7 @@
     vaultwarden.enable = true;
     forgejo.enable = true;
     searxng.enable = true;
-    # reposilite.enable = true;
+    reposilite.enable = true;
 
     social = {
       mastodon.enable = true;

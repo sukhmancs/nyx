@@ -19,7 +19,7 @@ in {
     services.reposilite = {
       enable = true;
       package = inputs'.nyxpkgs.packages.reposilite-bin;
-      dataDir = "/srv/storage/reposilite";
+      dataDir = "/var/lib/reposilite";
 
       openFirewall = true;
 

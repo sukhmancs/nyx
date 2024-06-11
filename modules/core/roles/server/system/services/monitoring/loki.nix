@@ -11,7 +11,7 @@ in {
   config = mkIf sys.services.monitoring.loki.enable {
     services.loki = {
       enable = true;
-      dataDir = "/srv/storage/loki";
+      dataDir = "/var/lib/loki";
       extraFlags = ["--config.expand-env=true"];
 
       configuration = {
@@ -64,8 +64,8 @@ in {
           filesystem.directory = "${cfg.dataDir}/storage-chunks";
 
           boltdb_shipper = {
-            active_index_directory = "/srv/storage/loki/boltdb-shipper-active";
-            cache_location = "/srv/storage/loki/boltdb-shipper-cache";
+            active_index_directory = "/var/lib/loki/boltdb-shipper-active";
+            cache_location = "/var/lib/loki/boltdb-shipper-cache";
             cache_ttl = "24h";
           };
         };

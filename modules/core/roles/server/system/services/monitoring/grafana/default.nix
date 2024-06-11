@@ -24,8 +24,8 @@ in {
             http_addr = "0.0.0.0";
             http_port = 3000;
 
-            root_url = "https://dash.notashelf.dev";
-            domain = "dash.notashelf.dev";
+            root_url = "https://dash.xilain.dev";
+            domain = "dash.xilain.dev";
             enforce_domain = true;
           };
 
