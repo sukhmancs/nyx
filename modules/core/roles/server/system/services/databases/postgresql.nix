@@ -66,7 +66,7 @@ in {
           ensureDBOwnership = true;
         }
         {
-          name = "invidious";
+          name = "kemal";
           ensureDBOwnership = true;
         }
       ];
