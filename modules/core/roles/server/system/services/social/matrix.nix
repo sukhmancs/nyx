@@ -71,7 +71,7 @@ in {
 
           withJemalloc = true;
           enable_registration = true;
-          registration_requires_token = false;
+          registration_requires_token = true;
 
           bcrypt_rounds = 14;
 
