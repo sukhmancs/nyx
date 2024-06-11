@@ -36,7 +36,7 @@ in {
             # port = "5432";
             dbname = mkForce "invidious";
             user = mkForce "invidious";
-            password = "changeme";
+            password = mkForce "";
           };
         };
       };
