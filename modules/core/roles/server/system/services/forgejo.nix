@@ -44,9 +44,10 @@ in {
             DEFAULT_THEME = "forgejo-dark";
             EXPLORE_PAGING_NUM = 5;
             SHOW_USER_EMAIL = false; # hide user email in the explore page
-            svg = {
-              ENABLE_RENDER = true;
-            };
+          };
+
+          ui.svg = {
+            ENABLE_RENDER = true;
           };
 
           attachment.ALLOWED_TYPES = "*/*";
