@@ -31,6 +31,13 @@ in {
             quality = "dash";
             dark_mode = "auto";
           };
+          db = {
+            host = "/run/postgresql";
+            # port = "5432";
+            dbname = "invidious";
+            user = "invidious";
+            password = "changeme";
+          };
         };
       };
 
