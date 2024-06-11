@@ -32,10 +32,10 @@ in {
             dark_mode = "auto";
           };
           db = {
-            host = "/run/postgresql";
+            host = mkDefault "/run/postgresql";
             # port = "5432";
-            dbname = "invidious";
-            user = "invidious";
+            dbname = mkDefault "invidious";
+            user = mkDefault "invidious";
             password = "changeme";
           };
         };
