@@ -47,7 +47,7 @@ in {
           };
 
           attachment.ALLOWED_TYPES = "*/*";
-          service.DISABLE_REGISTRATION = false;
+          service.DISABLE_REGISTRATION = true;
           packages.ENABLED = false;
           log.LEVEL = "Debug";
 
