@@ -19,7 +19,7 @@
       enable = true;
       inherit name;
 
-      url = "https://git.notashelf.dev";
+      url = "https://git.xilain.dev";
 
       # NOTE: changing (i.e adding or removing) labels causes your old registration token to expire
       # make sure your labels are final before deploying
