@@ -21,12 +21,12 @@
       wireguard.enable = true;
     };
 
-    # monitoring = {
-    #   grafana.enable = true;
-    #   prometheus.enable = true;
-    #   loki.enable = false;
-    #   uptime-kuma.enable = true;
-    # };
+    monitoring = {
+      grafana.enable = true;
+      prometheus.enable = true;
+      loki.enable = false;
+      uptime-kuma.enable = true;
+    };
 
     database = {
       mysql.enable = false;
