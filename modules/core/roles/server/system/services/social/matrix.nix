@@ -71,8 +71,7 @@ in {
 
           withJemalloc = true;
           enable_registration = true;
-          registration_requires_token = true;
-          # registration_shared_secret = "${config.age.secrets.matrix-secret.path}";
+          registration_requires_token = false;
 
           bcrypt_rounds = 14;
 
