@@ -64,7 +64,7 @@ in {
       matrix-synapse = {
         enable = true;
 
-        # extraConfigFiles = [config.age.secrets.matrix-secret.path];
+        extraConfigFiles = [config.age.secrets.matrix-secret.path];
         settings = {
           server_name = "xilain.dev";
           public_baseurl = "https://xilain.dev";
@@ -72,7 +72,7 @@ in {
           withJemalloc = true;
           enable_registration = true;
           registration_requires_token = true;
-          registration_shared_secret = "${config.age.secrets.matrix-secret.path}";
+          # registration_shared_secret = "${config.age.secrets.matrix-secret.path}";
 
           bcrypt_rounds = 14;
 
