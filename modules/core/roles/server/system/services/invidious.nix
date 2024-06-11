@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf mkDefault;
+  inherit (lib) mkIf mkDefault mkForce;
 
   domain = "yt.xilain.dev";
   sys = config.modules.system;
@@ -32,10 +32,10 @@ in {
             dark_mode = "auto";
           };
           db = {
-            host = mkDefault "/run/postgresql";
+            host = mkForce "/run/postgresql";
             # port = "5432";
-            dbname = mkDefault "invidious";
-            user = mkDefault "invidious";
+            dbname = mkForce "invidious";
+            user = mkForce "invidious";
             password = "changeme";
           };
         };
