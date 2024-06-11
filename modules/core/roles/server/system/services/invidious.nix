@@ -17,7 +17,7 @@ in {
     services = {
       invidious = {
         enable = true;
-        port = mkDefault 3333;
+        port = mkDefault "${toString cfg.invidious.settings.port}";
         domain = mkDefault "${domain}";
         settings = {
           https_only = false;
@@ -44,7 +44,7 @@ in {
       nginx.virtualHosts."${domain}" =
         {
           locations."/" = {
-            proxyPass = "http://127.0.0.1:${cfg.invidious.settings.port}/";
+            proxyPass = "http://127.0.0.1:${toString cfg.invidious.settings.port}/";
             proxyWebsockets = true;
           };
 
