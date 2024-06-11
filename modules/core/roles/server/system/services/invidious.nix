@@ -35,7 +35,7 @@ in {
             host = mkForce "/run/postgresql";
             port = mkForce "";
             dbname = mkForce "invidious";
-            user = mkForce "kemal";
+            user = mkForce "invidious";
           };
         };
       };
