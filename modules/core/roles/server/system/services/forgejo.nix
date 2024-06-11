@@ -46,7 +46,7 @@ in {
             SHOW_USER_EMAIL = false; # hide user email in the explore page
           };
 
-          ui.svg = {
+          "ui.svg" = {
             ENABLE_RENDER = true;
           };
 
