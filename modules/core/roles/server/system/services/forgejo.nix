@@ -47,7 +47,7 @@ in {
           };
 
           attachment.ALLOWED_TYPES = "*/*";
-          service.DISABLE_REGISTRATION = true;
+          service.DISABLE_REGISTRATION = false;
           packages.ENABLED = false;
           log.LEVEL = "Debug";
 
@@ -63,7 +63,7 @@ in {
 
           actions = {
             ENABLED = true;
-            DEFAULT_ACTIONS_URL = "https://git.notashelf.dev";
+            DEFAULT_ACTIONS_URL = "https://git.xilain.dev";
           };
 
           other = {
@@ -115,7 +115,7 @@ in {
             ENABLED = true;
             PROTOCOL = "smtps";
             SMTP_ADDR = "mail.xilain.dev";
-            USER = "git@notashelf.dev";
+            USER = "git@xilain.dev";
           };
         };
 
