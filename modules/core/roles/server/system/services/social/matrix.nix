@@ -1,3 +1,22 @@
+#
+# Matrix-synapse server configuration
+#
+# To allow other users to register, an admin token is required. Follow these steps to create an admin user and obtain the token:
+#
+# 1. Run the following command to create an admin user:
+#    /nix/store/4wswwv8pjpsn1zscp77xjcvpa98xmpr7-matrix-synapse-wrapped-1.108.0/bin/register_new_matrix_user -c /nix/store/0ib7assyn86b4lxpl5fv76b7hb4p68wp-homeserver.yaml -c somefile.yaml
+#
+# 2. The 'somefile.yaml' should contain the following content:
+#    registration_shared_secret: your_shared_secret
+#
+# 3. After creating the admin user, you can access the admin token by following these steps in the Element Matrix client:
+#    - Go to 'All Settings'
+#    - Navigate to 'Help & About'
+#    - Under the 'Advanced' section, click on the '< >' button next to 'Access Token' to reveal your access token
+#
+# NOTE: The nix store paths for the above command can be found by checking the loaded file via:
+#   systemctl status matrix-synapse.service
+#
 {
   config,
   lib,
