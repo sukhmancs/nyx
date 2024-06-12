@@ -5,39 +5,15 @@
   ...
 }: let
   inherit (lib) mkIf;
-  # cfg = config.homelab.homepage;
-  # homepage = config.services.homepage-dashboard;
+
   format = pkgs.formats.yaml {};
   configDir = "/var/lib/homepage-dashboard";
 
-  domain = "home.xilain.dev";
+  domain = "xilain.dev";
 
   sys = config.modules.system;
   cfg = sys.services.homelab;
 in {
-  # imports = [
-  #   ./homepage.nix
-  # ];
-  # options.homelab.homepage = with lib; {
-  #   enable = mkEnableOption "homepage";
-  #   settings = mkOption {
-  #     type = types.attrs;
-  #     default = {};
-  #   };
-  #   services = mkOption {
-  #     type = types.listOf types.attrs;
-  #     default = [];
-  #   };
-  #   widgets = mkOption {
-  #     type = types.listOf types.attrs;
-  #     default = [];
-  #   };
-  #   bookmarks = mkOption {
-  #     type = types.listOf types.attrs;
-  #     default = [];
-  #   };
-  # };
-
   config = mkIf cfg.homepage.enable {
     modules.system.services.homelab = {
       homepage.settings = {
@@ -45,54 +21,56 @@ in {
           title = "Xi's dashboard";
           favicon = "https://jnsgr.uk/favicon.ico";
           headerStyle = "clean"; # "boxedWidgets";
-          layout = {
-            Services = {
-              style = "row";
-              columns = 4;
-            };
-            Multimedia = {
-              style = "row";
-              columns = 4;
-            };
-            Developer = {
-              style = "row";
-              columns = 4;
-            };
-          };
+          # layout = {
+          #   Services = {
+          #     style = "row";
+          #     columns = 4;
+          #   };
+          #   Multimedia = {
+          #     style = "row";
+          #     columns = 4;
+          #   };
+          #   Developer = {
+          #     style = "row";
+          #     columns = 4;
+          #   };
+          # };
           hideVersion = true;
-          quicklaunch = {
-            provider = "custom";
-            url = "https://search.xilain.dev/search?q=";
-            target = "_blank";
-            suggestionUrl = "https://ac.ecosia.org/autocomplete?type=list&q=";
-          };
         };
         widgets = [
           {
+            logo = {
+              icon = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/I_Love_New_York.svg/1101px-I_Love_New_York.svg.png"; # optional
+            };
+          }
+          {
             search = {
-              provider = "duckduckgo";
+              provider = "custom";
+              url = "https://search.xilain.dev/search?q=";
               target = "_blank";
+              suggestionUrl = "https://ac.ecosia.org/autocomplete?type=list&q="; # Optional
+              showSearchSuggestions = true;
             };
           }
           {
             resources = {
               label = "system";
+              expanded = true;
               cpu = true;
               memory = true;
+              uptime = true;
             };
           }
           {
             resources = {
               label = "storage";
-              disk = ["/data"];
+              expanded = true;
+              disk = ["/"];
             };
           }
           {
             openmeteo = {
-              label = "Bristol";
-              timezone = "America/Toronto";
-              latitude = "{{HOMEPAGE_VAR_LATITUDE}}";
-              longitude = "{{HOMEPAGE_VAR_LONGITUDE}}";
+              label = "weather";
               units = "metric";
             };
           }
