@@ -31,12 +31,17 @@ in {
             quality = "dash";
             dark_mode = "auto";
           };
-          db = {
-            host = mkForce "/run/postgresql";
-            port = mkForce "";
-            dbname = mkForce "invidious";
-            user = mkForce "invidious";
+          database = {
+            createLocally = mkForce false;
+            # port = mkDefault 5432;
+            # host = mkDefault "/run/postgresql";
           };
+          # db = {
+          #   host = mkForce "/run/postgresql";
+          #   port = mkForce "";
+          #   dbname = mkForce "invidious";
+          #   user = mkForce "invidious";
+          # };
         };
       };
 
