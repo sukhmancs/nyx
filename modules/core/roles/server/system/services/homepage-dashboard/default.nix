@@ -13,6 +13,8 @@
 
   sys = config.modules.system;
   cfg = sys.services.homelab;
+
+  inherit (cfg.homepage.settings) port host;
 in {
   config = mkIf cfg.homepage.enable {
     modules.system.services.homelab = {
@@ -156,12 +158,13 @@ in {
           }
           {
             Utilities = [
-              # {
-              #   Traefik = {
-              #     href = "https://traefik.${domain}";
-              #     icon = "traefik";
-              #   };
-              # }
+              {
+                Nginx = {
+                  href = "https://${domain}";
+                  icon = "nginx-proxy-manager";
+                  siteMonitor = "https://${domain}";
+                };
+              }
               # {
               #   Blocky = {
               #     href = "https://blocky.${domain}";
@@ -295,7 +298,7 @@ in {
       enable = true;
       virtualHosts."home.${domain}" =
         {
-          locations."/".proxyPass = "http://${toString cfg.homepage.settings.host}:${toString cfg.homepage.settings.port}";
+          locations."/".proxyPass = "http://${host}:${toString port}";
 
           quic = true;
         }
