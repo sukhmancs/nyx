@@ -63,7 +63,7 @@ in {
     services.nginx.enable = true;
     services.nginx.virtualHosts."${domain}" = {
       # Use wildcard domain
-      useACMEHost = domain;
+      useACMEHost = "xilain.dev";
       forceSSL = true;
 
       locations."/" = {
