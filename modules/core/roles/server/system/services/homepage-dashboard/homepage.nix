@@ -5,8 +5,61 @@ in {
     homelab.homepage = {
       enable = true;
       settings = {
-        title = "Xi's Homelab";
+        title = "Xi's dashboard";
+        favicon = "https://jnsgr.uk/favicon.ico";
+        headerStyle = "clean"; # "boxedWidgets";
+        layout = {
+          Services = {
+            style = "row";
+            columns = 4;
+          };
+          Multimedia = {
+            style = "row";
+            columns = 4;
+          };
+          Developer = {
+            style = "row";
+            columns = 4;
+          };
+        };
+        hideVersion = true;
+        quicklaunch = {
+          provider = "custom";
+          url = "https://search.xilain.dev/search?q=";
+          target = "_blank";
+          suggestionUrl = "https://ac.ecosia.org/autocomplete?type=list&q=";
+        };
       };
+      widgets = [
+        {
+          search = {
+            provider = "duckduckgo";
+            target = "_blank";
+          };
+        }
+        {
+          resources = {
+            label = "system";
+            cpu = true;
+            memory = true;
+          };
+        }
+        {
+          resources = {
+            label = "storage";
+            disk = ["/data"];
+          };
+        }
+        {
+          openmeteo = {
+            label = "Bristol";
+            timezone = "America/Toronto";
+            latitude = "{{HOMEPAGE_VAR_LATITUDE}}";
+            longitude = "{{HOMEPAGE_VAR_LONGITUDE}}";
+            units = "metric";
+          };
+        }
+      ];
       services = [
         {
           Services = [
@@ -16,18 +69,54 @@ in {
                 icon = "nextcloud";
               };
             }
-            # {
-            #   Gitea = {
-            #     href = "https://gitea.${domain}";
-            #     icon = "gitea";
-            #   };
-            # }
+            {
+              SearX = {
+                href = "https://search.${domain}";
+                icon = "searxng";
+              };
+            }
+            {
+              Vaultwarden = {
+                href = "https://vault.${domain}";
+                icon = "vaultwarden";
+              };
+            }
+            {
+              Forgejo = {
+                href = "https://git.${domain}";
+                icon = "forgejo";
+              };
+            }
+            {
+              Mastodon = {
+                href = "https://social.${domain}";
+                icon = "mastodon";
+              };
+            }
+            {
+              RepoSilite = {
+                href = "https://repo.${domain}";
+                icon = "reposilite";
+              };
+            }
+            {
+              Mail = {
+                href = "https://webmail.${domain}";
+                icon = "mailfence";
+              };
+            }
             {
               Invidious = {
                 href = "https://yt.${domain}";
                 icon = "invidious";
               };
             }
+            # {
+            #   Gitea = {
+            #     href = "https://gitea.${domain}";
+            #     icon = "gitea";
+            #   };
+            # }
             # {
             #   Miniflux = {
             #     href = "https://rss.${domain}";
@@ -117,6 +206,18 @@ in {
         # }
         {
           Monitoring = [
+            {
+              Grafana = {
+                href = "https://dash.${domain}";
+                icon = "grafana";
+              };
+            }
+            {
+              UptimeKuma = {
+                href = "https://up.${domain}";
+                icon = "uptime-kuma";
+              };
+            }
             # {
             #   Netdata = {
             #     href = "https://netdata.${domain}";
@@ -129,12 +230,6 @@ in {
             #     icon = "prometheus";
             #   };
             # }
-            {
-              Grafana = {
-                href = "https://grafana.${domain}";
-                icon = "grafana";
-              };
-            }
           ];
         }
       ];
@@ -162,14 +257,6 @@ in {
                 {
                   icon = "si-nixos";
                   href = "https://nixos.wiki/";
-                }
-              ];
-            }
-            {
-              "Kubernetes Docs" = [
-                {
-                  icon = "si-kubernetes";
-                  href = "https://kubernetes.io/docs/home/";
                 }
               ];
             }
