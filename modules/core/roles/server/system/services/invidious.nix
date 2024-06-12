@@ -34,7 +34,7 @@ in {
             feed_menu = ["Subscriptions" "Playlists"];
             default_home = "Subscriptions";
             player_style = "youtube";
-            quality = "dash";
+            quality = "hd720"; #"dash";
             dark_mode = "auto";
           };
           database = {
@@ -47,7 +47,7 @@ in {
             # port = mkForce "";
             dbname = mkForce "invidious";
             user = mkForce "invidious";
-            password = mkForce "changeme";
+            # password = mkForce "changeme";
           };
         };
       };
