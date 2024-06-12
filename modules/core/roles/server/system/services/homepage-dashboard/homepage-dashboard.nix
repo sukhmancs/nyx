@@ -13,8 +13,11 @@
   domain = "home.xilain.dev";
 
   sys = config.modules.system;
-  cfg = sys.services;
+  cfg = sys.services.homelab;
 in {
+  imports = [
+    ./homepage.nix
+  ];
   # options.homelab.homepage = with lib; {
   #   enable = mkEnableOption "homepage";
   #   settings = mkOption {
@@ -35,12 +38,12 @@ in {
   #   };
   # };
 
-  config = mkIf cfg.homelab.enable {
+  config = mkIf cfg.homepage.enable {
     services.nginx = {
       enable = true;
       virtualHosts."${domain}" =
         {
-          locations."/".proxyPass = "http://${toString cfg.homelab.settings.host}:${toString cfg.homelab.settings.Port}";
+          locations."/".proxyPass = "http://${toString cfg.homepage.settings.host}:${toString cfg.homepage.settings.port}";
 
           quic = true;
         }
@@ -50,10 +53,10 @@ in {
     services.homepage-dashboard.enable = true;
     systemd.services.homepage-dashboard = {
       preStart = ''
-        ln -sf ${format.generate "settings.yaml" cfg.homelab.setting} ${configDir}/settings.yaml
-        ln -sf ${format.generate "services.yaml" cfg.homelab.services} ${configDir}/services.yaml
-        ln -sf ${format.generate "widgets.yaml" cfg.homelab.widgets} ${configDir}/widgets.yaml
-        ln -sf ${format.generate "bookmarks.yaml" cfg.homelab.bookmarks} ${configDir}/bookmarks.yaml
+        ln -sf ${format.generate "settings.yaml" cfg.homepage.setting} ${configDir}/settings.yaml
+        ln -sf ${format.generate "services.yaml" cfg.homepage.services} ${configDir}/services.yaml
+        ln -sf ${format.generate "widgets.yaml" cfg.homepage.widgets} ${configDir}/widgets.yaml
+        ln -sf ${format.generate "bookmarks.yaml" cfg.homepage.bookmarks} ${configDir}/bookmarks.yaml
       '';
     };
   };

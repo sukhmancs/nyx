@@ -2,9 +2,8 @@
   domain = "xilain.dev";
 in {
   config = {
-    homelab.homepage = {
-      enable = true;
-      settings = {
+    homelab = {
+      setting = {
         title = "Xi's dashboard";
         favicon = "https://jnsgr.uk/favicon.ico";
         headerStyle = "clean"; # "boxedWidgets";
