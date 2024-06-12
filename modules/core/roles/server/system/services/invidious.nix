@@ -32,16 +32,16 @@ in {
             dark_mode = "auto";
           };
           database = {
-            createLocally = mkForce false;
-            # port = mkDefault 5432;
-            # host = mkDefault "/run/postgresql";
+            createLocally = mkForce true;
+            port = mkDefault 5432;
+            host = mkDefault "/run/postgresql";
           };
-          # db = {
-          #   host = mkForce "/run/postgresql";
-          #   port = mkForce "";
-          #   dbname = mkForce "invidious";
-          #   user = mkForce "invidious";
-          # };
+          db = {
+            # host = mkForce "/run/postgresql";
+            # port = mkForce "";
+            dbname = mkForce "invidious";
+            user = mkForce "invidious";
+          };
         };
       };
 
