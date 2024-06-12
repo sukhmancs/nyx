@@ -38,7 +38,7 @@ in {
 
           quic = true;
         }
-        // lib.sslTemplate;
+        // lib.sslTemplate; # Enable SSL
     };
 
     services.homepage-dashboard.enable = true;
