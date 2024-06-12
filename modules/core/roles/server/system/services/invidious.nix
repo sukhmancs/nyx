@@ -1,3 +1,9 @@
+#
+# Invidious service
+#
+# This does not mean you cannot be tracked as browser fingerprinting, IP address logging,
+# pattern analysis, etc. are still possible.
+#
 {
   config,
   lib,
@@ -41,6 +47,7 @@ in {
             # port = mkForce "";
             dbname = mkForce "invidious";
             user = mkForce "invidious";
+            password = mkForce "changeme";
           };
         };
       };
