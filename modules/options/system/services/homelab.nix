@@ -9,7 +9,7 @@ in {
         port = 8082;
         host = "127.0.0.1";
         extraOptions = {
-          setting = mkOption {
+          settings = mkOption {
             type = types.attrs;
             default = {};
           };

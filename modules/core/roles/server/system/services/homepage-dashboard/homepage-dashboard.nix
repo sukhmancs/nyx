@@ -40,8 +40,8 @@ in {
 
   config = mkIf cfg.homepage.enable {
     modules.system.services.homelab = {
-      homepage = {
-        setting = {
+      homepage.settings = {
+        settings = {
           title = "Xi's dashboard";
           favicon = "https://jnsgr.uk/favicon.ico";
           headerStyle = "clean"; # "boxedWidgets";
@@ -270,36 +270,36 @@ in {
             ];
           }
         ];
-        # bookmarks = [
-        #   {
-        #     Developer = [
-        #       {
-        #         Github = [
-        #           {
-        #             icon = "si-github";
-        #             href = "https://github.com/";
-        #           }
-        #         ];
-        #       }
-        #       {
-        #         "Nixos Search" = [
-        #           {
-        #             icon = "si-nixos";
-        #             href = "https://search.nixos.org/packages";
-        #           }
-        #         ];
-        #       }
-        #       {
-        #         "Nixos Wiki" = [
-        #           {
-        #             icon = "si-nixos";
-        #             href = "https://nixos.wiki/";
-        #           }
-        #         ];
-        #       }
-        #     ];
-        #   }
-        # ];
+        bookmarks = [
+          {
+            Developer = [
+              {
+                Github = [
+                  {
+                    icon = "si-github";
+                    href = "https://github.com/";
+                  }
+                ];
+              }
+              {
+                "Nixos Search" = [
+                  {
+                    icon = "si-nixos";
+                    href = "https://search.nixos.org/packages";
+                  }
+                ];
+              }
+              {
+                "Nixos Wiki" = [
+                  {
+                    icon = "si-nixos";
+                    href = "https://nixos.wiki/";
+                  }
+                ];
+              }
+            ];
+          }
+        ];
       };
     };
 
@@ -317,10 +317,10 @@ in {
     services.homepage-dashboard.enable = true;
     systemd.services.homepage-dashboard = {
       preStart = ''
-        ln -sf ${format.generate "settings.yaml" cfg.homepage.setting} ${configDir}/settings.yaml
-        ln -sf ${format.generate "services.yaml" cfg.homepage.services} ${configDir}/services.yaml
-        ln -sf ${format.generate "widgets.yaml" cfg.homepage.widgets} ${configDir}/widgets.yaml
-        ln -sf ${format.generate "bookmarks.yaml" cfg.homepage.bookmarks} ${configDir}/bookmarks.yaml
+        ln -sf ${format.generate "settings.yaml" cfg.homepage.settings.settings} ${configDir}/settings.yaml
+        ln -sf ${format.generate "services.yaml" cfg.homepage.settings.services} ${configDir}/services.yaml
+        ln -sf ${format.generate "widgets.yaml" cfg.homepage.settings.widgets} ${configDir}/widgets.yaml
+        ln -sf ${format.generate "bookmarks.yaml" cfg.homepage.settings.bookmarks} ${configDir}/bookmarks.yaml
       '';
     };
   };
