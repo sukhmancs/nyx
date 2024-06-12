@@ -24,7 +24,7 @@ in {
     services = {
       vaultwarden = {
         enable = true;
-        # environmentFile = config.age.secrets.vaultwarden-env.path;
+        environmentFile = config.age.secrets.vaultwarden-env.path;
         backupDir = "/var/lib/vaultwarden/backup";
         config = {
           DOMAIN = "https://vault.xilain.dev";
