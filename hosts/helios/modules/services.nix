@@ -8,6 +8,10 @@
     reposilite.enable = true;
     invidious.enable = true;
 
+    homelab = {
+      homepage.enable = true;
+    };
+
     social = {
       mastodon.enable = true;
       matrix.enable = true;
