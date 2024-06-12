@@ -1,8 +1,11 @@
 {config, ...}: let
   domain = "xilain.dev";
+
+  sys = config.modules.system;
+  cfg = sys.services.homelab;
 in {
-  config = {
-    homelab = {
+  cfg = {
+    homepage = {
       setting = {
         title = "Xi's dashboard";
         favicon = "https://jnsgr.uk/favicon.ico";
