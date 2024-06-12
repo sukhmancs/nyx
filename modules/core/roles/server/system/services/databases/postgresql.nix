@@ -23,7 +23,6 @@ in {
         "roundcube"
         "headscale"
         "atticd"
-        "invidious"
       ];
 
       ensureUsers = [
@@ -63,10 +62,6 @@ in {
         }
         {
           name = "atticd";
-          ensureDBOwnership = true;
-        }
-        {
-          name = "invidious";
           ensureDBOwnership = true;
         }
       ];
