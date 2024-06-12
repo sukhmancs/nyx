@@ -110,7 +110,7 @@ in {
         };
       };
 
-      nginx.virtualHosts."dash.notashelf.dev" =
+      nginx.virtualHosts."dash.xilain.dev" =
         {
           locations."/" = {
             proxyPass = with config.services.grafana.settings.server; "http://${toString http_addr}:${toString http_port}/";
