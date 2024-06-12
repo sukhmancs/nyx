@@ -82,48 +82,56 @@ in {
                 Nextcloud = {
                   href = "https://cloud.${domain}";
                   icon = "nextcloud";
+                  siteMonitor = "https://cloud.${domain}";
                 };
               }
               {
                 SearX = {
                   href = "https://search.${domain}";
                   icon = "searxng";
+                  siteMonitor = "https://search.${domain}";
                 };
               }
               {
                 Vaultwarden = {
                   href = "https://vault.${domain}";
                   icon = "vaultwarden";
+                  siteMonitor = "https://vault.${domain}";
                 };
               }
               {
                 Forgejo = {
                   href = "https://git.${domain}";
                   icon = "forgejo";
+                  siteMonitor = "https://git.${domain}";
                 };
               }
               {
                 Mastodon = {
                   href = "https://social.${domain}";
                   icon = "mastodon";
+                  siteMonitor = "https://social.${domain}";
                 };
               }
               {
                 RepoSilite = {
                   href = "https://repo.${domain}";
-                  icon = "reposilite";
+                  icon = "mdi-cached";
+                  siteMonitor = "https://repo.${domain}";
                 };
               }
               {
                 Mail = {
                   href = "https://webmail.${domain}";
                   icon = "mailfence";
+                  siteMonitor = "https://webmail.${domain}";
                 };
               }
               {
                 Invidious = {
                   href = "https://yt.${domain}";
                   icon = "invidious";
+                  siteMonitor = "https://yt.${domain}";
                 };
               }
               # {
@@ -225,12 +233,14 @@ in {
                 Grafana = {
                   href = "https://dash.${domain}";
                   icon = "grafana";
+                  siteMonitor = "https://dash.${domain}";
                 };
               }
               {
                 UptimeKuma = {
                   href = "https://up.${domain}";
                   icon = "uptime-kuma";
+                  siteMonitor = "https://up.${domain}";
                 };
               }
               # {
