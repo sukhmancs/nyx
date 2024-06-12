@@ -36,7 +36,7 @@ in {
           useSyslog = true;
           logLevel = "warn";
           showPasswordHint = false;
-          signupsAllowed = false;
+          signupsAllowed = true;
           signupsDomainsWhitelist = "xilain.dev";
           signupsVerify = true;
           smtpAuthMechanism = "Login";
