@@ -4,8 +4,8 @@
   sys = config.modules.system;
   cfg = sys.services.homelab;
 in {
-  cfg = {
-    homepage = {
+  config = {
+    cfg.homepage = {
       setting = {
         title = "Xi's dashboard";
         favicon = "https://jnsgr.uk/favicon.ico";
