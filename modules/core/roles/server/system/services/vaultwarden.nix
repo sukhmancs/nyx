@@ -32,7 +32,7 @@ in {
           ROCKET_ADDRESS = host;
           ROCKET_PORT = port;
           extendedLogging = true;
-          invitationsAllowed = false;
+          invitationsAllowed = true; # change back
           useSyslog = true;
           logLevel = "warn";
           showPasswordHint = false;
