@@ -283,7 +283,7 @@ in {
 
     services.nginx = {
       enable = true;
-      virtualHosts."${domain}" =
+      virtualHosts."home.${domain}" =
         {
           locations."/".proxyPass = "http://${toString cfg.homepage.settings.host}:${toString cfg.homepage.settings.port}";
 
