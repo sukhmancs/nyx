@@ -28,7 +28,7 @@ in {
         backupDir = "/var/lib/vaultwarden/backup";
         config = {
           DOMAIN = "https://vault.xilain.dev";
-          SIGNUPS_ALLOWED = true;
+          SIGNUPS_ALLOWED = true; # change back
           ROCKET_ADDRESS = host;
           ROCKET_PORT = port;
           extendedLogging = true;
@@ -36,9 +36,9 @@ in {
           useSyslog = true;
           logLevel = "warn";
           showPasswordHint = false;
-          signupsAllowed = true;
+          signupsAllowed = true; # change back
           signupsDomainsWhitelist = "xilain.dev";
-          signupsVerify = true;
+          signupsVerify = false; #change back
           smtpAuthMechanism = "Login";
           smtpFrom = "vaultwarden@xilain.dev";
           smtpFromName = "XiLain's Vaultwarden Service";
