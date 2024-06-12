@@ -32,9 +32,13 @@ in {
   config = lib.mkIf cfg.enable {
     services.nginx = {
       enable = true;
-      virtualHosts."home.xilain.dev" = {
-        locations."/".proxyPass = "http://127.0.0.1:${toString homepage.listenPort}";
-      };
+      virtualHosts."home.xilain.dev" =
+        {
+          locations."/".proxyPass = "http://127.0.0.1:${toString homepage.listenPort}";
+
+          quic = true;
+        }
+        // lib.sslTemplate;
     };
 
     services.homepage-dashboard.enable = true;
