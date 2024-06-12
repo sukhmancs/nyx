@@ -28,7 +28,7 @@ in {
         backupDir = "/var/lib/vaultwarden/backup";
         config = {
           DOMAIN = "https://vault.xilain.dev";
-          SIGNUPS_ALLOWED = false;
+          SIGNUPS_ALLOWED = true;
           ROCKET_ADDRESS = host;
           ROCKET_PORT = port;
           extendedLogging = true;
