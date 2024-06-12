@@ -1,4 +1,4 @@
-{}: let
+let
   domain = "xilain.dev";
 in {
   homepage = {
