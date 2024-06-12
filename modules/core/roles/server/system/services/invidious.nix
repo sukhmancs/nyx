@@ -43,8 +43,6 @@ in {
             host = mkDefault "/run/postgresql";
           };
           db = {
-            # host = mkForce "/run/postgresql";
-            # port = mkForce "";
             dbname = mkForce "invidious";
             user = mkForce "invidious";
             # password = mkForce "changeme";

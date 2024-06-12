@@ -3,6 +3,7 @@
     # essentials
     ./databases # mysql, postgreqsl, redis and more
     ./nginx # base nginx webserver configuration
+    ./dashy # dashboard for all services
 
     # other services
     ./bincache # atticd and harmonia

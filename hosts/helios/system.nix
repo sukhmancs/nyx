@@ -9,7 +9,7 @@
   config = {
     networking.domain = "xilain.dev";
     services.smartd.enable = lib.mkForce false;
-    time.timeZone = lib.mkForce "Africa/Johannesburg";
+    # time.timeZone = lib.mkForce "Africa/Johannesburg";
     boot = {
       growPartition = !config.boot.initrd.systemd.enable;
       initrd.availableKernelModules = ["ata_piix" "uhci_hcd" "xen_blkfront" "vmw_pvscsi"];
