@@ -88,7 +88,7 @@ in {
                 };
               }
               {
-                SearX = {
+                SearXNG = {
                   href = "https://search.${domain}";
                   icon = "searxng";
                   siteMonitor = "https://search.${domain}";
@@ -240,7 +240,7 @@ in {
                 };
               }
               {
-                UptimeKuma = {
+                "Uptime Kuma" = {
                   href = "https://up.${domain}";
                   icon = "uptime-kuma";
                   siteMonitor = "https://up.${domain}";
