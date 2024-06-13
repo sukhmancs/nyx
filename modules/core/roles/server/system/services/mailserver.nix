@@ -21,9 +21,9 @@ in {
 
     mailserver = {
       enable = true;
-      mailDirectory = "/var/lib/mail/vmail";
-      dkimKeyDirectory = "/var/lib/mail/dkim";
-      sieveDirectory = "/var/lib/mail/sieve";
+      mailDirectory = "/var/mail/vmail";
+      dkimKeyDirectory = "/var/mail/dkim";
+      sieveDirectory = "/var/mail/sieve";
       openFirewall = true;
       enableImap = true;
       enableImapSsl = true;
