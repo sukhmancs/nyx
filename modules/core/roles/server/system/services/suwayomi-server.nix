@@ -18,17 +18,17 @@ in {
     services.suwayomi-server = {
       enable = true;
 
-      openFirewall = false;
+      openFirewall = false; #CHANGEME
 
       settings = {
         server = {
           ip = "${host}";
           port = port;
-          #   basicAuthEnabled = true;
-          #   basicAuthUsername = "suwayomi";
+          #   basicAuthEnabled = true; # CHANGEME
+          #   basicAuthUsername = "suwayomi"; #CHANGEME
 
           #   # NOTE: this is not a real upstream option
-          #   basicAuthPasswordFile = ./path/to/the/password/file;
+          #   basicAuthPasswordFile = ./path/to/the/password/file; #CHANGEME
           autoDownloadNewChapters = false;
           maxSourcesInParallel = 6;
           extensionRepos = [
@@ -46,7 +46,7 @@ in {
           };
         };
 
-        nginx.virtualHosts. "manga.xilain.dev" =
+        nginx.virtualHosts."manga.xilain.dev" =
           {
             locations."/" = {
               # TODO: the port is not customizable in the upstream service, PR nixpkgs
