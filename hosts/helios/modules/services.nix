@@ -7,7 +7,6 @@
     searxng.enable = true;
     reposilite.enable = true;
     invidious.enable = true;
-    zerobin.enable = true;
 
     homelab = {
       homepage.enable = true;
