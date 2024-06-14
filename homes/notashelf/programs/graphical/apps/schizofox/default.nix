@@ -83,7 +83,8 @@ in {
           "browser-extension@anonaddy".install_url = "https://addons.mozilla.org/firefox/downloads/latest/addy_io/latest.xpi";
           "2.0@disconnect.me".install_url = "https://addons.mozilla.org/firefox/downloads/latest/disconnect/latest.xpi";
           "{0d7cafdd-501c-49ca-8ebb-e3341caaa55e}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/youtube-nonstop/latest.xpi";
-        };
+          "{446900e4-71c2-419f-a6a7-df9c091e268b}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+};
         #     let
         #       mkUrl = name: "https://addons.mozilla.org/firefox/downloads/latest/${name}/latest.xpi";
         #       extensions = [
