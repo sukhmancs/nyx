@@ -5,6 +5,7 @@
 }: let
   inherit (lib) mkIf;
 
+  domain = "manga.xilain.dev";
   sys = config.modules.system;
   cfg = sys.services;
 
@@ -22,7 +23,7 @@ in {
 
       settings = {
         server = {
-          ip = "${host}";
+          ip = ${host};
           port = port;
           #   basicAuthEnabled = true; # CHANGEME
           #   basicAuthUsername = "suwayomi"; #CHANGEME
@@ -46,7 +47,7 @@ in {
           };
         };
 
-        nginx.virtualHosts."manga.xilain.dev" =
+        nginx.virtualHosts.${domain} =
           {
             locations."/" = {
               # TODO: the port is not customizable in the upstream service, PR nixpkgs
