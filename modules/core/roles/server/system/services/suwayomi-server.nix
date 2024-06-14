@@ -22,6 +22,7 @@ in {
 
       settings = {
         server = {
+          ip = "${host}";
           port = port;
           #   basicAuthEnabled = true;
           #   basicAuthUsername = "suwayomi";
@@ -34,6 +35,11 @@ in {
             "https://raw.githubusercontent.com/ThePBone/tachiyomi-extensions-revived/repo/index.min.json"
             "https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"
           ];
+          settings = {
+            server.webUIEnabled = false;
+            server.globalUpdateInterval = 12;
+            server.updateMangas = false;
+          };
         };
 
         nginx.virtualHosts. "manga.xilain.dev" =
