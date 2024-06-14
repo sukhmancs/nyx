@@ -88,6 +88,13 @@ in {
         host = "127.0.0.1";
         port = 8000;
       };
+
+      suwayomi-server = mkService {
+        name = "Suwayomi Server";
+        type = "manga reader";
+        host = "127.0.0.1";
+        port = 4567;
+      };
     };
   };
 }

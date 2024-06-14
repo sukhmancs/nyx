@@ -7,6 +7,7 @@
     searxng.enable = true;
     reposilite.enable = true;
     invidious.enable = true;
+    suwayomi-server.enable = true;
 
     homelab = {
       homepage.enable = true;
