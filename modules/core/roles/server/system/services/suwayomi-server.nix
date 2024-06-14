@@ -23,7 +23,7 @@ in {
 
       settings = {
         server = {
-          ip = ${host};
+          ip = host;
           port = port;
           #   basicAuthEnabled = true; # CHANGEME
           #   basicAuthUsername = "suwayomi"; #CHANGEME
