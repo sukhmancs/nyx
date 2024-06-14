@@ -30,7 +30,7 @@ in {
             proxyPass = "http://${host}:${toString port}";
           };
 
-          #   quic = true;
+          quic = true;
         }
         // lib.sslTemplate;
     };
