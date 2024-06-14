@@ -28,10 +28,9 @@ in {
           locations."/" = {
             # TODO: the port is not customizable in the upstream service, PR nixpkgs
             proxyPass = "http://${host}:${toString port}";
-            proxyWebsockets = true;
           };
 
-          quic = true;
+          #   quic = true;
         }
         // lib.sslTemplate;
     };
