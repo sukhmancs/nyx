@@ -12,6 +12,8 @@
   inherit (cfg.suwayomi-server.settings) port host;
 in {
   config = mkIf cfg.suwayomi-server.enable {
+    networking.firewall.allowedTCPPorts = [4567];
+
     modules.system.services = {
       nginx.enable = true;
     };
