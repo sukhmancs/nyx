@@ -41,8 +41,8 @@ in {
       # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
       loginAccounts = {
         "shelf@xilain.dev" = {
-          # hashedPasswordFile = secrets.mailserver-secret.path;
-          hashedPasswordFile = "/home/notashelf/password";
+          hashedPasswordFile = secrets.mailserver-secret.path;
+          # hashedPasswordFile = "/home/notashelf/password"; #REMOVEME
           aliases = [
             "me"
             "shelf"
