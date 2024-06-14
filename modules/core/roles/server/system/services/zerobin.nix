@@ -23,7 +23,7 @@ in {
         dataDir = "/var/lib/zerobin";
       };
 
-      nginx.virtualHosts. "bin.xilain.dev" =
+      nginx.virtualHosts."bin.xilain.dev" =
         {
           locations."/" = {
             # TODO: the port is not customizable in the upstream service, PR nixpkgs
