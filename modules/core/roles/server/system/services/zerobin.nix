@@ -7,6 +7,8 @@
 
   sys = config.modules.system;
   cfg = sys.services;
+
+  inherit (cfg.zerobin.settings) port host;
 in {
   config = mkIf cfg.zerobin.enable {
     modules.system.services = {
@@ -25,7 +27,7 @@ in {
         {
           locations."/" = {
             # TODO: the port is not customizable in the upstream service, PR nixpkgs
-            proxyPass = "http://127.0.0.1:${cfg.zerobin.settings.port}/";
+            proxyPass = "http://${host}:${toString port}";
             proxyWebsockets = true;
           };
 

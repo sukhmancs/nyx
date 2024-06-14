@@ -84,7 +84,8 @@ in {
 
       zerobin = mkService {
         name = "Zerobin";
-        type = "media";
+        type = "pastebin";
+        host = "127.0.0.1";
         port = 8000;
       };
     };
