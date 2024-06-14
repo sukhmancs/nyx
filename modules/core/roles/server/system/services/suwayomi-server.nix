@@ -19,12 +19,12 @@ in {
     services.suwayomi-server = {
       enable = true;
 
-      openFirewall = false; #CHANGEME
+      openFirewall = true; #CHANGEME
 
       settings = {
         server = {
-          ip = host;
-          port = port;
+          ip = "127.0.0.1"; # host;
+          port = 4567;
           #   basicAuthEnabled = true; # CHANGEME
           #   basicAuthUsername = "suwayomi"; #CHANGEME
 
@@ -51,7 +51,7 @@ in {
           {
             locations."/" = {
               # TODO: the port is not customizable in the upstream service, PR nixpkgs
-              proxyPass = "http://${host}:${toString port}";
+              proxyPass = "http://127.0.0.1:4567";
             };
 
             quic = true;
