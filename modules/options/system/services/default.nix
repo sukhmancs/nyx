@@ -81,6 +81,12 @@ in {
         name = "Invidious";
         port = 3333;
       };
+
+      zerobin = mkService {
+        name = "Zerobin";
+        type = "media";
+        port = 8000;
+      };
     };
   };
 }

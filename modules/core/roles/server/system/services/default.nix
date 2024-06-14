@@ -22,6 +22,7 @@
     ./elasticsearch.nix # elasticsearch
     ./kanidm.nix # kanidm identity management
     ./invidious.nix # invidious youtube frontend
+    ./zerobin.nix # zerobin pastebin
 
     # misc
     ./mkm.nix # holy fuck
