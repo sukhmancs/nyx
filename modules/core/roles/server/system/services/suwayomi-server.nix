@@ -36,7 +36,11 @@ in {
             "https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"
           ];
           settings = {
-            server.webUIEnabled = false;
+            server.webUIEnabled = true;
+            server.webUIFlavor = "WebUI";
+            server.webUIInterface = "browser";
+            server.webUIChannel = "stable"; # "bundled" (the version bundled with the server release), "stable" or "preview" - the webUI version that should be used
+            server.webUIUpdateCheckInterval = 23;
             server.globalUpdateInterval = 12;
             server.updateMangas = false;
           };
