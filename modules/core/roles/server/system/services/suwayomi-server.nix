@@ -18,7 +18,7 @@ in {
     services.suwayomi-server = {
       enable = true;
 
-      openFirewall = true;
+      openFirewall = false;
 
       settings = {
         server = {
