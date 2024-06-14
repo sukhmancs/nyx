@@ -11,9 +11,6 @@
   inherit (cfg.zerobin.settings) port host;
 in {
   config = mkIf cfg.zerobin.enable {
-    permittedInsecurePackages = [
-      "beaker"
-    ];
     modules.system.services = {
       nginx.enable = true;
     };
