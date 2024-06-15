@@ -84,23 +84,47 @@ in {
             ];
             #   rewrites = hostsIps ++ aliasIps;
           };
+          filtering = {
+            protection_enabled = true;
+            filtering_enabled = true;
+
+            parental_enabled = false; # Parental control-based DNS requests filtering.
+            safe_search = {
+              enabled = false; # Enforcing "Safe search" option for search engines, when possible.
+            };
+          };
+          # The following notation uses map
+          # to not have to manually create {enabled = true; url = "";} for every filter
+          # This is, however, fully optional
+          filters =
+            map (url: {
+              enabled = true;
+              url = url;
+            }) [
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt" # The Big List of Hacked Malware Web Sites
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt" # malicious url blocklist
+            ];
         };
       };
 
-      nginx.virtualHosts."${domain}" = {
-        # Use wildcard domain
-        useACMEHost = "xilain.dev";
-        forceSSL = true;
+      nginx.virtualHosts."${domain}" =
+        {
+          # Use wildcard domain
+          useACMEHost = "xilain.dev";
+          forceSSL = true;
 
-        locations."/" = {
-          extraConfig = ''
-            proxy_pass http://127.0.0.1:3002;
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          '';
-        };
-      };
+          locations."/" = {
+            extraConfig = ''
+              proxy_pass http://127.0.0.1:3002;
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            '';
+          };
+
+          quic = true;
+        }
+        // lib.sslTemplate;
     };
   };
 }
