@@ -70,7 +70,7 @@ in {
             ratelimit = 20; # DDoS protection
             refuse_any = true; # Request of type ANY will be refused
             enable_dnssec = true; # DNSSEC validation
-            bind_hosts = ["0.0.0.0"];
+            bind_hosts = ["127.0.0.1"];
             port = 53;
             anonymize_client_ip = true;
             bootstrap_dns = [
