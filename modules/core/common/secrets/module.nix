@@ -141,7 +141,6 @@ in {
 
     suwayomi-server-password = mkAgenixSecret cfg.suwayomi-server.enable {
       file = "service/suwayomi-server.age";
-      mode = "400";
     };
 
     # mailserver secrets

@@ -23,6 +23,10 @@ in {
           title = "Xi's dashboard";
           favicon = "https://jnsgr.uk/favicon.ico";
           background = "https://images.unsplash.com/photo-1502790671504-542ad42d5189?auto=format&fit=crop&w=2560&q=80";
+          blur = "sm"; # sm, "", md, xl... see https://tailwindcss.com/docs/backdrop-blur
+          saturate = 50; # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
+          brightness = 50; # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
+          opacity = 50; # 0-100
           headerStyle = "clean"; # "boxedWidgets";
           # layout = {
           #   Services = {
