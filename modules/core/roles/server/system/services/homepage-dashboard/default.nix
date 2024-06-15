@@ -126,7 +126,7 @@ in {
               {
                 Mail = {
                   href = "https://webmail.${domain}";
-                  icon = "mailfence";
+                  icon = "roundcube";
                   siteMonitor = "https://webmail.${domain}";
                 };
               }
@@ -135,6 +135,13 @@ in {
                   href = "https://yt.${domain}";
                   icon = "invidious";
                   siteMonitor = "https://yt.${domain}";
+                };
+              }
+              {
+                Suwayomi = {
+                  href = "https://manga.${domain}";
+                  icon = "https://raw.githubusercontent.com/Suwayomi/Suwayomi-Server/master/server/src/main/resources/icon/faviconlogo.png";
+                  siteMonitor = "https://manga.${domain}";
                 };
               }
               # {
