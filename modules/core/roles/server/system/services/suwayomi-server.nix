@@ -12,7 +12,7 @@
   inherit (cfg.suwayomi-server.settings) port host;
 in {
   config = mkIf cfg.suwayomi-server.enable {
-    networking.firewall.allowedTCPPorts = [4567];
+    networking.firewall.allowedTCPPorts = [80 443 4567];
 
     modules.system.services = {
       nginx.enable = true;
@@ -46,14 +46,20 @@ in {
             server.webUIUpdateCheckInterval = 23;
             server.globalUpdateInterval = 12;
             server.updateMangas = false;
+            server.public-url = "https://manga.xilain.dev";
           };
         };
 
-        nginx.virtualHosts.${domain} =
+        nginx.virtualHosts."manga.xilain.dev" =
           {
             locations."/" = {
               # TODO: the port is not customizable in the upstream service, PR nixpkgs
               proxyPass = "http://127.0.0.1:4567";
+              extraConfig = ''
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              '';
             };
 
             quic = true;
