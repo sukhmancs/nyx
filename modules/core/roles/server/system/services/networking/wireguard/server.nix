@@ -53,11 +53,16 @@ in {
             {
               allowedIPs = [
                 "10.255.255.11/32"
-                "10.0.0.2/24"
                 "fe80::11/128"
                 "2a01:4f9:c010:2cf9:f::11/128"
               ];
               publicKey = "9BtqBu73BFTkYew/x3spLtvNmCSLrZrjfuToag84jjA=";
+            }
+            {
+              allowedIPs = [
+                "10.0.0.2/24"
+              ];
+              publicKey = "T0y8gISdCvbgwH2wOinfX3YuiAfb7zuw20li7dzt1QU=";
             }
           ];
         };
