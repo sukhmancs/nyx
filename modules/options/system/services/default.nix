@@ -99,7 +99,7 @@ in {
       adguard = mkService {
         name = "AdGuard";
         type = "DNS";
-        host = "0.0.0.0";
+        host = "0.0.0.0"; #"127.0.0.1";
         port = 3003;
       };
     };

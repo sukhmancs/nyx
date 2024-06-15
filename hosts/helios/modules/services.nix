@@ -5,7 +5,7 @@
     vaultwarden.enable = true;
     forgejo.enable = true;
     searxng.enable = true;
-    reposilite.enable = true;
+    reposilite.enable = false;
     invidious.enable = true;
     suwayomi-server.enable = true;
     adguard.enable = true;

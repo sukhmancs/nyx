@@ -59,19 +59,19 @@ in {
       adguardhome = {
         enable = true;
         mutableSettings = false;
-        host = host;
+        # host = host;
         port = port;
         openFirewall = true;
         settings = {
           http.address = "${host}:${toString port}";
-          #   schema_version = 20;
+          schema_version = 20;
           theme = "dark"; # Dark theme
           dns = {
             ratelimit = 20; # DDoS protection
-            refuse_any = true; # Request of type ANY will be refused
-            enable_dnssec = true; # DNSSEC validation
+            # refuse_any = true; # Request of type ANY will be refused
+            # enable_dnssec = true; # DNSSEC validation
             bind_hosts = ["0.0.0.0"];
-            port = 53;
+            # port = 53;
             anonymize_client_ip = true;
             bootstrap_dns = [
               "9.9.9.10"
