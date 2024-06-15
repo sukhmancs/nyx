@@ -106,7 +106,7 @@ in {
       nginx.virtualHosts."${domain}" =
         {
           locations."/" = {
-            proxyPass = "http://${host}:${toString port}/";
+            proxyPass = "http://127.0.0.1:${toString port}";
             extraConfig = ''
               proxy_set_header Host $host;
               proxy_set_header X-Real-IP $remote_addr;

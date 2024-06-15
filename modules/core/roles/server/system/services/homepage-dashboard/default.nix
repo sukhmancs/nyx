@@ -80,7 +80,7 @@ in {
           }
           {
             openmeteo = {
-              label = "weather";
+              label = "Weather";
               units = "metric";
             };
           }
