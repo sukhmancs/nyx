@@ -139,7 +139,7 @@ in {
       group = "headscale";
     };
 
-    suwayomi-server-password = mkAgenixSecret cfg.networking.headscale.enable {
+    suwayomi-server-password = mkAgenixSecret cfg.suwayomi-server.enable {
       file = "service/suwayomi-server.age";
       mode = "400";
     };
