@@ -59,13 +59,9 @@ in {
       adguardhome = {
         enable = true;
         mutableSettings = false;
-        port = 3002;
+        port = port;
         settings = {
-          # bind_host = "0.0.0.0";
-          # bind_port = 3002;
-          # FIXME: temporary fix, MR is in progress https://github.com/NixOS/nixpkgs/issues/278601
-          #   bind_port = 3002;
-          http.address = "0.0.0.0:3002";
+          http.address = "${host}:${toString port}";
           schema_version = 20;
           dns = {
             ratelimit = 0;
@@ -110,7 +106,7 @@ in {
       nginx.virtualHosts."${domain}" =
         {
           locations."/" = {
-            proxyPass = "http://127.0.0.1:3002";
+            proxyPass = "http://${host}:${toString port}/";
             extraConfig = ''
               proxy_set_header Host $host;
               proxy_set_header X-Real-IP $remote_addr;
