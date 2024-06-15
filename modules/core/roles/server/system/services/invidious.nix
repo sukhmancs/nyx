@@ -53,7 +53,7 @@ in {
       nginx.virtualHosts."${domain}" =
         {
           locations."/" = {
-            proxyPass = "http://127.0.0.1:${toString cfg.invidious.settings.port}/";
+            proxyPass = "http://127.0.0.1:${toString cfg.invidious.settings.port}";
             proxyWebsockets = true;
           };
 
