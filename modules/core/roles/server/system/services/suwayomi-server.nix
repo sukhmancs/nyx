@@ -25,7 +25,7 @@ in {
 
       settings = {
         server = {
-          ip = "127.0.0.1"; # host;
+          ip = "manga.xilain.dev"; # host;
           port = 4567;
           #   basicAuthEnabled = true; # CHANGEME
           #   basicAuthUsername = "suwayomi"; #CHANGEME
@@ -40,13 +40,16 @@ in {
           ];
           settings = {
             server.webUIEnabled = true;
+            server.initialOpenInBrowserEnabled = false;
+            server.systemTrayEnabled = false;
+            server.socksProxyEnabled = false;
             server.webUIFlavor = "WebUI";
             server.webUIInterface = "browser";
             server.webUIChannel = "stable"; # "bundled" (the version bundled with the server release), "stable" or "preview" - the webUI version that should be used
             server.webUIUpdateCheckInterval = 23;
             server.globalUpdateInterval = 12;
             server.updateMangas = false;
-            server.public-url = "https://manga.xilain.dev";
+            # server.public-url = "https://manga.xilain.dev";
           };
         };
 
@@ -54,7 +57,7 @@ in {
           {
             locations."/" = {
               # TODO: the port is not customizable in the upstream service, PR nixpkgs
-              proxyPass = "http://127.0.0.1:4567";
+              proxyPass = "http://0.0.0.0:4567";
               extraConfig = ''
                 proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
