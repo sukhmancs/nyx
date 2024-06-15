@@ -3,7 +3,6 @@ let
   inherit (keys) servers workstations;
   inherit (keys) mkGlobal;
 in {
-
   # core system secrets
   # "common/nix-builder.age".publicKeys = mkGlobal (workstations ++ servers);
   # "client/spotify.age".publicKeys = mkGlobal workstations;
@@ -19,6 +18,7 @@ in {
   "service/wg.age".publicKeys = mkGlobal servers;
   "service/searx.age".publicKeys = mkGlobal servers;
   "service/forgejo-runner-token.age".publicKeys = mkGlobal servers;
+  "service/suwayomi-server.age".publicKeys = mkGlobal servers;
   # "service/forgejo-runner-config.age".publicKeys = mkGlobal servers;
   # "service/harmonia.age".publicKeys = mkGlobal servers;
   # "service/attic.age".publicKeys = mkGlobal servers;

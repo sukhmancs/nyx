@@ -139,6 +139,11 @@ in {
       group = "headscale";
     };
 
+    suwayomi-server-password = mkAgenixSecret cfg.networking.headscale.enable {
+      file = "service/suwayomi-server.age";
+      mode = "400";
+    };
+
     # mailserver secrets
     mailserver-secret = mkAgenixSecret cfg.mailserver.enable {
       file = "mailserver/postmaster.age";

@@ -4,6 +4,7 @@
   ...
 }: let
   inherit (lib) mkIf;
+  inherit (config.age) secrets;
 
   domain = "manga.xilain.dev";
   sys = config.modules.system;
@@ -12,8 +13,6 @@
   inherit (cfg.suwayomi-server.settings) port host;
 in {
   config = mkIf cfg.suwayomi-server.enable {
-    # networking.firewall.allowedTCPPorts = [80 443 4567];
-
     modules.system.services = {
       nginx.enable = true;
     };
@@ -28,11 +27,11 @@ in {
           server = {
             ip = host;
             port = port;
-            #   basicAuthEnabled = true; # CHANGEME
-            #   basicAuthUsername = "suwayomi"; #CHANGEME
+            basicAuthEnabled = true;
+            basicAuthUsername = "suwayomi";
 
-            #   # NOTE: this is not a real upstream option
-            #   basicAuthPasswordFile = ./path/to/the/password/file; #CHANGEME
+            # NOTE: this is not a real upstream option
+            basicAuthPasswordFile = secrets.suwayomi-server-password.path;
             autoDownloadNewChapters = false;
             maxSourcesInParallel = 6;
             extensionRepos = [
@@ -50,7 +49,6 @@ in {
               server.webUIUpdateCheckInterval = 23;
               server.globalUpdateInterval = 12;
               server.updateMangas = false;
-              # server.public-url = "https://manga.xilain.dev";
             };
           };
         };
@@ -59,9 +57,7 @@ in {
       nginx.virtualHosts."manga.xilain.dev" =
         {
           locations."/" = {
-            # TODO: the port is not customizable in the upstream service, PR nixpkgs
             proxyPass = "http://${host}:${toString port}";
-            proxyWebsockets = true;
           };
 
           quic = true;
