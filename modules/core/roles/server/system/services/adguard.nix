@@ -63,7 +63,6 @@ in {
         openFirewall = true;
         settings = {
           http.address = "${host}:${toString port}";
-          bind_port = port;
           #   schema_version = 20;
           dns = {
             ratelimit = 20; # DDoS protection
