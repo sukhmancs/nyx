@@ -67,7 +67,7 @@ in {
             refuse_any = true; # Request of type ANY will be refused
             enable_dnssec = true; # DNSSEC validation
             theme = "dark"; # Dark theme
-            # bind_hosts = ["0.0.0.0"];
+            # bind_hosts = ["127.0.0.1"];
             # anonymize_client_ip = true;
             bootstrap_dns = [
               "9.9.9.10"
