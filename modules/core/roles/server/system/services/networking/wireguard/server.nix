@@ -58,11 +58,19 @@ in {
               ];
               publicKey = "9BtqBu73BFTkYew/x3spLtvNmCSLrZrjfuToag84jjA=";
             }
+            # android
             {
               allowedIPs = [
                 "10.0.0.2/24"
               ];
               publicKey = "T0y8gISdCvbgwH2wOinfX3YuiAfb7zuw20li7dzt1QU=";
+            }
+            # iphone
+            {
+              allowedIPs = [
+                "10.0.0.147/32"
+              ];
+              publicKey = "7SUc29cwNgNsvNh95ffsRyQHadDehnO3aC4UHJ8DAXM=";
             }
           ];
         };
