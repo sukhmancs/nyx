@@ -60,7 +60,7 @@ in {
         {
           locations."/" = {
             # TODO: the port is not customizable in the upstream service, PR nixpkgs
-            proxyPass = "https://${host}:${toString port}";
+            proxyPass = "http://${host}:${toString port}";
             proxyWebsockets = true;
           };
 
