@@ -59,11 +59,12 @@ in {
       adguardhome = {
         enable = true;
         mutableSettings = false;
+        port = 3002;
         settings = {
           # bind_host = "0.0.0.0";
           # bind_port = 3002;
           # FIXME: temporary fix, MR is in progress https://github.com/NixOS/nixpkgs/issues/278601
-          bind_port = 3002;
+          #   bind_port = 3002;
           http.address = "0.0.0.0:3002";
           schema_version = 20;
           dns = {
