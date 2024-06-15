@@ -151,6 +151,13 @@ in {
                   siteMonitor = "https://manga.${domain}";
                 };
               }
+              {
+                AdGuardHome = {
+                  href = "https://dns.${domain}";
+                  icon = "adguard-home";
+                  siteMonitor = "https://dns.${domain}";
+                };
+              }
               # {
               #   Gitea = {
               #     href = "https://gitea.${domain}";
