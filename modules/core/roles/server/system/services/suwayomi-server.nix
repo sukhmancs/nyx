@@ -57,7 +57,7 @@ in {
           {
             locations."/" = {
               # TODO: the port is not customizable in the upstream service, PR nixpkgs
-              proxyPass = "http://0.0.0.0:4567";
+              proxyPass = "http://127.0.0.1:3333";
               extraConfig = ''
                 proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;

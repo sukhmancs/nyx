@@ -22,6 +22,7 @@ in {
         settings = {
           title = "Xi's dashboard";
           favicon = "https://jnsgr.uk/favicon.ico";
+          background = "https://images.unsplash.com/photo-1502790671504-542ad42d5189?auto=format&fit=crop&w=2560&q=80";
           headerStyle = "clean"; # "boxedWidgets";
           # layout = {
           #   Services = {
