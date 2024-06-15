@@ -25,7 +25,7 @@ in {
 
       settings = {
         server = {
-          ip = "manga.xilain.dev"; # host;
+          ip = "0.0.0.0"; # host;
           port = 4567;
           #   basicAuthEnabled = true; # CHANGEME
           #   basicAuthUsername = "suwayomi"; #CHANGEME
