@@ -95,6 +95,13 @@ in {
         host = "127.0.0.1";
         port = 4567;
       };
+
+      adguard = mkService {
+        name = "AdGuard";
+        type = "DNS";
+        host = "127.0.0.1";
+        port = 3002;
+      };
     };
   };
 }

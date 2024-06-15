@@ -24,6 +24,7 @@
     ./invidious.nix # invidious youtube frontend
     ./zerobin.nix # zerobin pastebin
     ./suwayomi-server.nix # manga reader server
+    ./adguard.nix # adguard home dns server
 
     # misc
     ./mkm.nix # holy fuck

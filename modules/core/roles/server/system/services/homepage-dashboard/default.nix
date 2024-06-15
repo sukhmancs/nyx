@@ -22,6 +22,7 @@ in {
         settings = {
           title = "Xi's dashboard";
           favicon = "https://jnsgr.uk/favicon.ico";
+          # This will make the page less responsive. You are warned.
           background = {
             image = "https://images.unsplash.com/photo-1502790671504-542ad42d5189?auto=format&fit=crop&w=2560&q=80";
             blur = "sm"; # sm, "", md, xl... see https://tailwindcss.com/docs/backdrop-blur

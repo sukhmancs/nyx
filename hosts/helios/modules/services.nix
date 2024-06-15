@@ -8,6 +8,7 @@
     reposilite.enable = true;
     invidious.enable = true;
     suwayomi-server.enable = true;
+    adguard.enable = true;
 
     homelab = {
       homepage.enable = true;
