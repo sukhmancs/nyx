@@ -15,8 +15,8 @@
     };
 
     social = {
-      mastodon.enable = true;
-      matrix.enable = true;
+      mastodon.enable = false;
+      matrix.enable = false;
     };
 
     # bincache = {
