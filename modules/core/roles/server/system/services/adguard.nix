@@ -63,14 +63,15 @@ in {
         openFirewall = true;
         settings = {
           http.address = "${host}:${toString port}";
+          bind_port = port;
           #   schema_version = 20;
           dns = {
             ratelimit = 20; # DDoS protection
             refuse_any = true; # Request of type ANY will be refused
             enable_dnssec = true; # DNSSEC validation
             theme = "dark"; # Dark theme
-            # bind_hosts = ["127.0.0.1"];
-            # anonymize_client_ip = true;
+            bind_hosts = ["127.0.0.1"];
+            anonymize_client_ip = true;
             bootstrap_dns = [
               "9.9.9.10"
               "149.112.112.10"
