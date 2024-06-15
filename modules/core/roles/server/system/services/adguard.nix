@@ -55,32 +55,34 @@ in {
     networking.firewall.allowedTCPPorts = [80 443];
     networking.firewall.allowedUDPPorts = [53];
 
-    services.adguardhome = {
-      enable = true;
-      mutableSettings = false;
-      settings = {
-        # bind_host = "0.0.0.0";
-        # bind_port = 3002;
-        # FIXME: temporary fix, MR is in progress https://github.com/NixOS/nixpkgs/issues/278601
-        bind_port = 3002;
-        http.address = "0.0.0.0:3002";
-        schema_version = 20;
-        dns = {
-          ratelimit = 0;
-          bind_hosts = ["0.0.0.0"];
-          bootstrap_dns = [
-            "9.9.9.10"
-            "149.112.112.10"
-            "2620:fe::10"
-            "2620:fe::fe:10"
-          ];
-          upstream_dns = [
-            "1.1.1.1"
-            "1.0.0.1"
-            "8.8.8.8"
-            "8.8.4.4"
-          ];
-          #   rewrites = hostsIps ++ aliasIps;
+    services = {
+      adguardhome = {
+        enable = true;
+        mutableSettings = false;
+        settings = {
+          # bind_host = "0.0.0.0";
+          # bind_port = 3002;
+          # FIXME: temporary fix, MR is in progress https://github.com/NixOS/nixpkgs/issues/278601
+          bind_port = 3002;
+          http.address = "0.0.0.0:3002";
+          schema_version = 20;
+          dns = {
+            ratelimit = 0;
+            bind_hosts = ["0.0.0.0"];
+            bootstrap_dns = [
+              "9.9.9.10"
+              "149.112.112.10"
+              "2620:fe::10"
+              "2620:fe::fe:10"
+            ];
+            upstream_dns = [
+              "1.1.1.1"
+              "1.0.0.1"
+              "8.8.8.8"
+              "8.8.4.4"
+            ];
+            #   rewrites = hostsIps ++ aliasIps;
+          };
         };
       };
 
