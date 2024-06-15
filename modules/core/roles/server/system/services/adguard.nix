@@ -59,6 +59,8 @@ in {
       adguardhome = {
         enable = true;
         mutableSettings = false;
+        port = port;
+        openFirewall = true;
         settings = {
           http.address = "${host}:${toString port}";
           #   schema_version = 20;
