@@ -49,7 +49,7 @@ in {
           # user = "authelia";
           port = 0;
           databases = 16;
-          logLevel = "debug";
+          # logLevel = "debug";
         };
       };
     };
