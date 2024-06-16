@@ -109,6 +109,13 @@ in {
         host = "127.0.0.1";
         port = 19999;
       };
+
+      authelia = mkService {
+        name = "Authelia";
+        type = "authentication";
+        host = "127.0.0.1";
+        port = 9092;
+      };
     };
   };
 }

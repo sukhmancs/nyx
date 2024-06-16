@@ -10,6 +10,7 @@
     suwayomi-server.enable = true;
     adguard.enable = true;
     netdata.enable = true;
+    authelia.enable = true;
 
     homelab = {
       homepage.enable = true;
