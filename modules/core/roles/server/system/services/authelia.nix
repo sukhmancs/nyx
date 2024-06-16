@@ -94,9 +94,9 @@ in {
       authelia.instances.main = {
         enable = true;
         secrets = {
-          jwtSecretFile = "${pkgs.writeText "jwtSecretFile" "supersecretkey"}";
-          storageEncryptionKeyFile = "${pkgs.writeText "storageEncryptionKeyFile" "supersecretkey"}";
-          sessionSecretFile = "${pkgs.writeText "sessionSecretFile" "supersecretkey"}";
+          jwtSecretFile = "${pkgs.writeText "jwtSecretFile" "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey"}";
+          storageEncryptionKeyFile = "${pkgs.writeText "storageEncryptionKeyFile" "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey"}";
+          sessionSecretFile = "${pkgs.writeText "sessionSecretFile" "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey"}";
           # jwtSecretFile = config.age.secrets.authelia_jwt_secret.path;
           # oidcHmacSecretFile = "${pkgs.writeText "oidSecretFile" "supersecretkey"}";
           # oidcIssuerPrivateKeyFile = "${pkgs.writeText "oidcissuerSecretFile" "supersecretkey"}";
@@ -189,7 +189,7 @@ in {
             ];
           };
           storage = {
-            postgresql = {
+            postgres = {
               host = "/run/postgresql";
               database = "authelia";
               username = "authelia";
