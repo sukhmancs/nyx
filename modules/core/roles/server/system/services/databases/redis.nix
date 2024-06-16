@@ -44,11 +44,11 @@ in {
           logLevel = "debug";
         };
 
-        authelia = mkIf cfg.authelia.enable {
+        "" = mkIf cfg.authelia.enable {
           enable = true;
-          user = "authelia";
+          # user = "authelia";
           port = 0;
-          # databases = 16;
+          databases = 16;
           logLevel = "debug";
         };
       };

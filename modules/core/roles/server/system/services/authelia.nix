@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  # authelia = config.services.authelia.instances.main;
+  authelia = config.services.authelia.instances.main;
   redis = config.services.redis.servers."";
   # autheliaUrl = "http://${authelia.settings.server.host}:${builtins.toString authelia.settings.server.port}";
   inherit (lib) mkIf;
@@ -26,8 +26,8 @@ in {
     #   pkgs.unstable.authelia
     # ];
 
-    # users.users."${config.mySystem.user}".extraGroups = ["authelia"];
-    # users.users."${authelia.user}".extraGroups = ["redis" "sendgrid"];
+    users.users."notashelf".extraGroups = ["authelia"];
+    users.users."${authelia.user}".extraGroups = ["redis" "sendgrid"];
 
     #   homelab.traefik.services = lib.mkMerge [
     #     {auth.port = 9092;}
@@ -122,7 +122,8 @@ in {
             domain = "xilain.dev";
             # redis.host = "/run/redis-authelia-main/redis.sock";
             redis = {
-              host = "/run/redis-default/redis.sock";
+              host = redis.unixSocket;
+              port = 0;
               database_index = 0;
             };
           };
