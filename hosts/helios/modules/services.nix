@@ -9,6 +9,7 @@
     invidious.enable = true;
     suwayomi-server.enable = true;
     adguard.enable = true;
+    netdata.enable = true;
 
     homelab = {
       homepage.enable = true;

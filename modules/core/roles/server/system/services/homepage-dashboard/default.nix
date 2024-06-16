@@ -268,18 +268,12 @@ in {
                   siteMonitor = "https://up.${domain}";
                 };
               }
-              # {
-              #   Netdata = {
-              #     href = "https://netdata.${domain}";
-              #     icon = "netdata";
-              #   };
-              # }
-              # {
-              #   Prometheus = {
-              #     href = "https://prometheus.${domain}";
-              #     icon = "prometheus";
-              #   };
-              # }
+              (mkIf cfg.netdata.enable {
+                Netdata = {
+                  href = "https://netdata.${domain}";
+                  icon = "netdata";
+                };
+              })
             ];
           }
         ];

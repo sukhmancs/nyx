@@ -102,6 +102,13 @@ in {
         host = "0.0.0.0"; #"127.0.0.1";
         port = 3003;
       };
+
+      netdata = mkService {
+        name = "Netdata";
+        type = "monitoring";
+        host = "127.0.0.1";
+        port = 19999;
+      };
     };
   };
 }
