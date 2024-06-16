@@ -8,6 +8,7 @@
   redis = config.services.redis.servers."";
   autheliaUrl = "http://${authelia.settings.server.host}:${builtins.toString authelia.settings.server.port}";
   inherit (lib) mkIf;
+  inherit (config.age) secrets;
 
   cfg = config.modules.system.services;
 
@@ -15,7 +16,7 @@
 in {
   config = mkIf cfg.authelia.enable {
     # Open Port in Firewall
-    networking.firewall.allowedTCPPorts = [9091];
+    networking.firewall.allowedTCPPorts = [port];
 
     modules.system.services = {
       nginx.enable = true;
@@ -31,54 +32,7 @@ in {
     users.users."notashelf".extraGroups = ["authelia"];
     users.users."${authelia.user}".extraGroups = ["redis" "sendgrid"];
 
-    #   homelab.traefik.services = lib.mkMerge [
-    #     {auth.port = 9092;}
-    #     (
-    #       lib.genAttrs [
-    #         "bazarr"
-    #         "blocky"
-    #         "deluge"
-    #         "grafana"
-    #         "netdata"
-    #         "prometheus"
-    #         "prowlarr"
-    #         "radarr"
-    #         "readarr"
-    #         "sonarr"
-    #       ]
-    #       (_: {middlewares = ["authelia"];})
-    #     )
-    #   ];
-
     services = {
-      # traefik.dynamicConfigOptions.http = {
-      #   routers.traefik.middlewares = ["authelia"];
-      #   middlewares.authelia.forwardAuth = {
-      #     address = "${autheliaUrl}/api/verify?rd=https%3A%2F%2Fauth.${config.homelab.domain}%2F";
-      #     trustForwardHeader = true;
-      #     authResponseHeaders = ["Remote-User" "Remote-Groups" "Remote-Name" "Remote-Email"];
-      #     tls.insecureSkipVerify = true;
-      #   };
-      #   middlewares.authelia-basic.forwardAuth = {
-      #     address = "${autheliaUrl}/api/verify?auth=basic";
-      #     trustForwardHeader = true;
-      #     authResponseHeaders = ["Remote-User" "Remote-Groups" "Remote-Name" "Remote-Email"];
-      #   };
-      # };
-
-      # mysql = {
-      #   ensureDatabases = [
-      #     "authelia"
-      #   ];
-      #   ensureUsers = [
-      #     {
-      #       name = authelia.user;
-      #       ensurePermissions = {
-      #         "authelia.*" = "ALL PRIVILEGES";
-      #       };
-      #     }
-      #   ];
-      # };
       authelia.instances.main = {
         enable = true;
         secrets = {
@@ -91,11 +45,11 @@ in {
           # sessionSecretFile = config.age.secrets.authelia_session_secret.path;
           # storageEncryptionKeyFile = config.age.secrets.authelia_storage_encryption_key.path;
         };
-        #   environmentVariables = {
-        #     AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.ldap_password.path;
-        #     AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = config.homelab.mail.smtp.passFile;
-        #     AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE = config.age.secrets.authelia_mysql_password.path;
-        #   };
+        environmentVariables = {
+          # AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.ldap_password.path;
+          AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = secrets.mailserver-vaultwarden-secret.path;
+          # AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE = config.age.secrets.authelia_mysql_password.path;
+        };
         #   settingsFiles = [config.age.secrets.authelia_secret_config.path];
         settings = {
           theme = "dark";
