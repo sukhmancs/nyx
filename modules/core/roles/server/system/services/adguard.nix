@@ -114,7 +114,7 @@ in {
 
       nginx.virtualHosts."${domain}" =
         {
-          useACMEHost = "xilain.dev";
+          # useACMEHost = "xilain.dev";
           forceSSL = true;
 
           locations."/" = {
