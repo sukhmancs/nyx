@@ -268,12 +268,15 @@ in {
                   siteMonitor = "https://up.${domain}";
                 };
               }
-              (mkIf cfg.netdata.enable {
-                Netdata = {
-                  href = "https://netdata.${domain}";
-                  icon = "netdata";
-                };
-              })
+              (
+                mkIf cfg.netdata.enable
+                {
+                  Netdata = {
+                    href = "https://netdata.${domain}";
+                    icon = "netdata";
+                  };
+                }
+              )
             ];
           }
         ];
