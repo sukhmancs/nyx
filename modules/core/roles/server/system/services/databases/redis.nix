@@ -11,8 +11,8 @@ in {
   config = mkIf cfg.database.redis.enable {
     services.redis = {
       vmOverCommit = true;
-      servers = mkIf cfg.nextcloud.enable {
-        nextcloud = {
+      servers = {
+        nextcloud = mkIf cfg.nextcloud.enable {
           enable = true;
           user = "nextcloud";
           port = 0;
