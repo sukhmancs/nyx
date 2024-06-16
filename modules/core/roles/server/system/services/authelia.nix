@@ -113,7 +113,7 @@ in {
           theme = "dark";
           default_2fa_method = "totp";
           server = {
-            host = "localhost";
+            host = "127.0.0.1";
             port = 9092;
           };
           log.level = "info";
