@@ -43,6 +43,12 @@ in {
           databases = 16;
           logLevel = "debug";
         };
+
+        "" = mkIf cfg.authelia.enable {
+          enable = true;
+          port = 0;
+          databases = 16;
+        };
       };
     };
   };
