@@ -53,25 +53,27 @@ in {
     };
 
     networking.firewall.allowedTCPPorts = [80 443];
-    networking.firewall.allowedUDPPorts = [53 1053];
+    networking.firewall.allowedUDPPorts = [53];
 
     services = {
       adguardhome = {
         enable = true;
         mutableSettings = false;
-        host = host;
-        port = port;
+        # host = host;
+        # port = port;
         openFirewall = true;
         settings = {
+          bind_port = port;
           http.address = "${host}:${toString port}";
           schema_version = 20;
           theme = "dark"; # Dark theme
           dns = {
-            ratelimit = 20; # DDoS protection
+            ratelimit = 0; # DDoS protection
             # refuse_any = true; # Request of type ANY will be refused
             # enable_dnssec = true; # DNSSEC validation
-            bind_hosts = ["127.0.0.1" "102.209.85.226"];
-            port = 1053;
+            # bind_hosts = ["127.0.0.1" "102.209.85.226"];
+            bind_hosts = ["0.0.0.0"];
+            # port = 1053;
             # anonymize_client_ip = true;
             bootstrap_dns = [
               "9.9.9.10"
@@ -114,12 +116,13 @@ in {
         {
           # useACMEHost = "xilain.dev";
           locations."/" = {
-            proxyPass = "http://127.0.0.1:${toString port}";
-            # extraConfig = ''
-            #   proxy_set_header Host $host;
-            #   proxy_set_header X-Real-IP $remote_addr;
-            #   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            # '';
+            # proxyPass = "http://127.0.0.1:${toString port}";
+            extraConfig = ''
+              proxy_pass http://127.0.0.1:${toString port};
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            '';
           };
 
           #   quic = true;
