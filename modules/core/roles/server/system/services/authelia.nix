@@ -22,9 +22,9 @@ in {
         postgresql.enable = true;
       };
     };
-    environment.systemPackages = [
-      pkgs.unstable.authelia
-    ];
+    # environment.systemPackages = [
+    #   pkgs.unstable.authelia
+    # ];
 
     # users.users."${config.mySystem.user}".extraGroups = ["authelia"];
     # users.users."${authelia.user}".extraGroups = ["redis" "sendgrid"];
