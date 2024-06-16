@@ -112,7 +112,7 @@ in {
 
       nginx.virtualHosts."${domain}" =
         {
-          useACMEHost = "xilain.dev";
+          # useACMEHost = "xilain.dev";
           locations."/" = {
             proxyPass = "http://127.0.0.1:${toString port}";
             # extraConfig = ''
