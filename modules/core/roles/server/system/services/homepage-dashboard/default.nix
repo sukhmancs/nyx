@@ -12,11 +12,11 @@
   domain = "xilain.dev";
 
   sys = config.modules.system;
-  cfg = sys.services.homelab;
+  cfg = sys.services;
 
-  inherit (cfg.homepage.settings) port host;
+  inherit (cfg.homelab.homepage.settings) port host;
 in {
-  config = mkIf cfg.homepage.enable {
+  config = mkIf cfg.homelab.homepage.enable {
     modules.system.services.homelab = {
       homepage.settings = {
         settings = {
@@ -116,20 +116,20 @@ in {
                   siteMonitor = "https://git.${domain}";
                 };
               }
-              {
+              (mkIf cfg.social.mastodon.enable {
                 Mastodon = {
                   href = "https://social.${domain}";
                   icon = "mastodon";
                   siteMonitor = "https://social.${domain}";
                 };
-              }
-              {
+              })
+              (mkIf cfg.reposilite.enable {
                 RepoSilite = {
                   href = "https://repo.${domain}";
                   icon = "mdi-cached";
                   siteMonitor = "https://repo.${domain}";
                 };
-              }
+              })
               {
                 Mail = {
                   href = "https://webmail.${domain}";
@@ -330,10 +330,10 @@ in {
     services.homepage-dashboard.enable = true;
     systemd.services.homepage-dashboard = {
       preStart = ''
-        ln -sf ${format.generate "settings.yaml" cfg.homepage.settings.settings} ${configDir}/settings.yaml
-        ln -sf ${format.generate "services.yaml" cfg.homepage.settings.services} ${configDir}/services.yaml
-        ln -sf ${format.generate "widgets.yaml" cfg.homepage.settings.widgets} ${configDir}/widgets.yaml
-        ln -sf ${format.generate "bookmarks.yaml" cfg.homepage.settings.bookmarks} ${configDir}/bookmarks.yaml
+        ln -sf ${format.generate "settings.yaml" cfg.homelab.homepage.settings.settings} ${configDir}/settings.yaml
+        ln -sf ${format.generate "services.yaml" cfg.homelab.homepage.settings.services} ${configDir}/services.yaml
+        ln -sf ${format.generate "widgets.yaml" cfg.homelab.homepage.settings.widgets} ${configDir}/widgets.yaml
+        ln -sf ${format.generate "bookmarks.yaml" cfg.homelab.homepage.settings.bookmarks} ${configDir}/bookmarks.yaml
       '';
     };
   };
