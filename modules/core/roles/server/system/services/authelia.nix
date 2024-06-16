@@ -81,7 +81,7 @@ in {
         {
           # enableACME = true;
           forceSSL = true;
-          acmeRoot = null;
+          # acmeRoot = null;
 
           locations."/" = {
             proxyPass = "http://127.0.0.1:9092";
