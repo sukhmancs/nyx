@@ -3,6 +3,8 @@
     # services.qemuGuest.enable = lib.mkForce true;
     services.resolved.enable = lib.mkForce false; # use adguardhome for dns
     networking = {
+      networkmanager.dns = lib.mkForce "none";
+      nameservers = ["127.0.0.1"]; # adguardhome dns server
       defaultGateway = "102.209.85.225";
       defaultGateway6 = {
         address = "";
