@@ -48,9 +48,7 @@ in {
           enable = true;
           user = "authelia";
           port = 0;
-          databases = 16;
-          unixSocket = "/run/redis-authelia-main/redis.sock";
-          unixSocketPerm = 600;
+          # databases = 16;
           logLevel = "debug";
         };
       };
