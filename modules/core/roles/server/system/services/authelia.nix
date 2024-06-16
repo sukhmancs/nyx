@@ -15,6 +15,9 @@
   inherit (cfg.authelia.settings) port;
 in {
   config = mkIf cfg.authelia.enable {
+    # Open Port in Firewall
+    networking.firewall.allowedTCPPorts = [9091];
+
     modules.system.services = {
       nginx.enable = true;
       database = {
@@ -77,20 +80,6 @@ in {
       #     }
       #   ];
       # };
-      nginx.virtualHosts."auth.xilain.dev" =
-        {
-          # enableACME = true;
-          forceSSL = true;
-          # acmeRoot = null;
-
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:9092";
-            proxyWebsockets = true;
-          };
-          quic = true;
-        }
-        // lib.sslTemplate;
-
       authelia.instances.main = {
         enable = true;
         secrets = {
@@ -114,7 +103,7 @@ in {
           default_2fa_method = "totp";
           server = {
             host = "127.0.0.1";
-            port = 9092;
+            port = 9091;
           };
           log.level = "info";
           totp.issuer = "authelia.com";
@@ -208,6 +197,20 @@ in {
           };
         };
       };
+
+      nginx.virtualHosts."auth.xilain.dev" =
+        {
+          # enableACME = true;
+          forceSSL = true;
+          # acmeRoot = null;
+
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:9091";
+            proxyWebsockets = true;
+          };
+          quic = true;
+        }
+        // lib.sslTemplate;
     };
 
     # systemd.services.authelia.after = ["lldap.service"];
