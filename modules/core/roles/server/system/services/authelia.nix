@@ -10,9 +10,8 @@
   inherit (lib) mkIf;
 
   cfg = config.modules.system.services;
-  domain = "auth.xilain.dev";
 
-  inherit (cfg.authelia.settings) port;
+  inherit (cfg.authelia.settings) host port;
 in {
   config = mkIf cfg.authelia.enable {
     # Open Port in Firewall
@@ -103,8 +102,8 @@ in {
           default_redirection_url = "https://xilain.dev";
           default_2fa_method = "totp";
           server = {
-            host = "127.0.0.1";
-            port = 9091;
+            host = host;
+            port = port;
           };
           log.level = "info";
           totp.issuer = "authelia.com";
