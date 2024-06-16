@@ -120,11 +120,7 @@ in {
           totp.issuer = "authelia.com";
           session = {
             domain = "xilain.dev";
-            redis = {
-              host = redis.unixSocket;
-              port = 0;
-              database_index = 0;
-            };
+            redis.host = "/run/redis-authelia-main/redis.sock";
           };
           regulation = {
             max_retries = 3;

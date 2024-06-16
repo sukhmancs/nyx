@@ -44,10 +44,14 @@ in {
           logLevel = "debug";
         };
 
-        "" = mkIf cfg.authelia.enable {
+        authelia = mkIf cfg.authelia.enable {
           enable = true;
+          user = "authelia";
           port = 0;
           databases = 16;
+          unixSocket = "/run/redis-authelia-main/redis.sock";
+          unixSocketPerm = 600;
+          logLevel = "debug";
         };
       };
     };
