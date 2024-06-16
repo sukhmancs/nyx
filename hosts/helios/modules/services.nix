@@ -1,23 +1,23 @@
 {
   config.modules.system.services = {
-    nextcloud.enable = false; # changeme
-    mailserver.enable = false; # changeme
+    nextcloud.enable = true;
+    mailserver.enable = true;
     vaultwarden.enable = true;
-    forgejo.enable = false; # changeme
+    forgejo.enable = true;
     searxng.enable = true;
     reposilite.enable = false;
-    invidious.enable = false; # changeme
-    suwayomi-server.enable = false; # changeme
-    adguard.enable = false; # changeme
-    netdata.enable = false; # changeme
+    invidious.enable = true;
+    suwayomi-server.enable = true;
+    adguard.enable = true;
+    netdata.enable = true;
     authelia.enable = true;
 
     homelab = {
-      homepage.enable = false; # changeme
+      homepage.enable = true;
     };
 
     social = {
-      mastodon.enable = false; # changeme
+      mastodon.enable = true;
       matrix.enable = false;
     };
 
@@ -27,14 +27,14 @@
 
     networking = {
       # headscale.enable = true;
-      wireguard.enable = false; # changeme
+      wireguard.enable = true;
     };
 
     monitoring = {
-      grafana.enable = false; # changeme
-      prometheus.enable = false; # changeme
+      grafana.enable = true;
+      prometheus.enable = true;
       loki.enable = false;
-      uptime-kuma.enable = false; # changeme
+      uptime-kuma.enable = true;
     };
 
     database = {
