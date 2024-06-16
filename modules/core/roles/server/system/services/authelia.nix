@@ -6,7 +6,7 @@
 }: let
   authelia = config.services.authelia.instances.main;
   redis = config.services.redis.servers."";
-  # autheliaUrl = "http://${authelia.settings.server.host}:${builtins.toString authelia.settings.server.port}";
+  autheliaUrl = "http://${authelia.settings.server.host}:${builtins.toString authelia.settings.server.port}";
   inherit (lib) mkIf;
 
   cfg = config.modules.system.services;
@@ -100,6 +100,7 @@ in {
         #   settingsFiles = [config.age.secrets.authelia_secret_config.path];
         settings = {
           theme = "dark";
+          default_redirection_url = "https://xilain.dev";
           default_2fa_method = "totp";
           server = {
             host = "127.0.0.1";
@@ -124,7 +125,7 @@ in {
           authentication_backend = {
             file = {
               # CHANGEME
-              path = "/var/lib/authelia-main/users_database.yml";
+              path = "/home/notashelf/users_database.yml";
             };
             # password_reset.disable = false;
             # refresh_interval = "1m";
@@ -205,7 +206,7 @@ in {
           # acmeRoot = null;
 
           locations."/" = {
-            proxyPass = "http://127.0.0.1:9091";
+            proxyPass = autheliaUrl;
             proxyWebsockets = true;
           };
           quic = true;
