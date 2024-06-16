@@ -60,10 +60,10 @@ in {
         enable = true;
         mutableSettings = false;
         # host = host;
-        # port = port;
+        port = port;
         openFirewall = true;
         settings = {
-          bind_port = port;
+          # bind_port = port;
           http.address = "${host}:${toString port}";
           schema_version = 20;
           theme = "dark"; # Dark theme
