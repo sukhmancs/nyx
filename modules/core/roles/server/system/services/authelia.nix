@@ -193,7 +193,7 @@ in {
               host = "/run/postgresql";
               database = "authelia";
               username = "authelia";
-              password = "changeme";
+              password = "changeme"; # CHANGEME
             };
           };
           notifier = {
