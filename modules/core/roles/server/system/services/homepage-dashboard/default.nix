@@ -116,20 +116,20 @@ in {
                   siteMonitor = "https://git.${domain}";
                 };
               }
-              (mkIf cfg.social.mastodon.enable {
-                Mastodon = {
-                  href = "https://social.${domain}";
-                  icon = "mastodon";
-                  siteMonitor = "https://social.${domain}";
-                };
-              })
-              (mkIf cfg.reposilite.enable {
-                RepoSilite = {
-                  href = "https://repo.${domain}";
-                  icon = "mdi-cached";
-                  siteMonitor = "https://repo.${domain}";
-                };
-              })
+              # {
+              #   Mastodon = {
+              #     href = "https://social.${domain}";
+              #     icon = "mastodon";
+              #     siteMonitor = "https://social.${domain}";
+              #   };
+              # }
+              # {
+              #   RepoSilite = {
+              #     href = "https://repo.${domain}";
+              #     icon = "mdi-cached";
+              #     siteMonitor = "https://repo.${domain}";
+              #   };
+              # }
               {
                 Mail = {
                   href = "https://webmail.${domain}";
@@ -268,15 +268,12 @@ in {
                   siteMonitor = "https://up.${domain}";
                 };
               }
-              (
-                mkIf cfg.netdata.enable
-                {
-                  Netdata = {
-                    href = "https://netdata.${domain}";
-                    icon = "netdata";
-                  };
-                }
-              )
+              {
+                Netdata = {
+                  href = "https://netdata.${domain}";
+                  icon = "netdata";
+                };
+              }
             ];
           }
         ];

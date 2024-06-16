@@ -24,6 +24,7 @@ in {
         "headscale"
         "atticd"
         "invidious"
+        "authelia"
       ];
 
       ensureUsers = [
@@ -67,6 +68,10 @@ in {
         }
         {
           name = "invidious";
+          ensureDBOwnership = true;
+        }
+        {
+          name = "authelia";
           ensureDBOwnership = true;
         }
       ];
