@@ -68,7 +68,7 @@ in {
             # iphone
             {
               allowedIPs = [
-                "10.0.0.147/32"
+                "10.0.0.3/32"
               ];
               publicKey = "7SUc29cwNgNsvNh95ffsRyQHadDehnO3aC4UHJ8DAXM=";
             }

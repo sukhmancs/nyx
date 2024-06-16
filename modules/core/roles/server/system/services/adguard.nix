@@ -53,13 +53,13 @@ in {
     };
 
     networking.firewall.allowedTCPPorts = [80 443];
-    networking.firewall.allowedUDPPorts = [53];
+    networking.firewall.allowedUDPPorts = [53 1053];
 
     services = {
       adguardhome = {
         enable = true;
         mutableSettings = false;
-        # host = host;
+        host = host;
         port = port;
         openFirewall = true;
         settings = {
@@ -71,7 +71,7 @@ in {
             # refuse_any = true; # Request of type ANY will be refused
             # enable_dnssec = true; # DNSSEC validation
             bind_hosts = ["127.0.0.1" "102.209.85.226"];
-            # port = 53;
+            port = 1053;
             # anonymize_client_ip = true;
             bootstrap_dns = [
               "9.9.9.10"
@@ -112,7 +112,7 @@ in {
 
       nginx.virtualHosts."${domain}" =
         {
-          #   useACMEHost = "xilain.dev";
+          useACMEHost = "xilain.dev";
           locations."/" = {
             proxyPass = "http://127.0.0.1:${toString port}";
             # extraConfig = ''
