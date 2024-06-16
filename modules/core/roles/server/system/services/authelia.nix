@@ -25,9 +25,9 @@ in {
         postgresql.enable = true;
       };
     };
-    # environment.systemPackages = [
-    #   pkgs.unstable.authelia
-    # ];
+    environment.systemPackages = [
+      pkgs.authelia
+    ];
 
     users.users."notashelf".extraGroups = ["authelia"];
     users.users."${authelia.user}".extraGroups = ["redis" "sendgrid"];
