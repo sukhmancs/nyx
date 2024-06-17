@@ -7,7 +7,7 @@
   authelia = config.services.authelia.instances.main;
   redis = config.services.redis.servers."";
   autheliaUrl = "http://${authelia.settings.server.host}:${builtins.toString authelia.settings.server.port}";
-  inherit (lib) mkIf;
+  inherit (lib) mkIf mkDefault;
   inherit (config.age) secrets;
 
   cfg = config.modules.system.services;
@@ -56,11 +56,11 @@ in {
           # default_redirection_url = "https://xilain.dev";
           default_2fa_method = "totp";
           server = {
-            host = host;
-            port = port;
+            host = mkDefault host;
+            port = mkDefault port;
           };
           log.level = "info";
-          totp.issuer = "authelia.com";
+          # totp.issuer = "authelia.com";
           session = {
             domain = "xilain.dev";
             # redis.host = "/run/redis-authelia-main/redis.sock";
