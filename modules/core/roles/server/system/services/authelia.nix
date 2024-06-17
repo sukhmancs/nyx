@@ -151,7 +151,7 @@ in {
               host = "mail.xilain.dev";
               port = 465;
               username = "authelia";
-              sender = "vaultwarden@xilain.dev";
+              sender = "authelia@xilain.dev";
             };
           };
         };
