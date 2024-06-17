@@ -63,15 +63,13 @@ in {
         port = port;
         openFirewall = true;
         settings = {
-          # bind_port = port;
           http.address = "${host}:${toString port}";
           schema_version = 20;
           theme = "dark"; # Dark theme
           dns = {
-            ratelimit = 0; # DDoS protection
-            # refuse_any = true; # Request of type ANY will be refused
+            ratelimit = 30; # DDoS protection
+            refuse_any = true; # Request of type ANY will be refused
             # enable_dnssec = true; # DNSSEC validation
-            # bind_hosts = ["127.0.0.1" "102.209.85.226"];
             bind_hosts = ["0.0.0.0"];
             # port = 1053;
             # anonymize_client_ip = true;
@@ -114,7 +112,6 @@ in {
 
       nginx.virtualHosts."${domain}" =
         {
-          # useACMEHost = "xilain.dev";
           forceSSL = true;
 
           locations."/" = {
@@ -127,7 +124,7 @@ in {
             '';
           };
 
-          #   quic = true;
+          quic = true;
         }
         // lib.sslTemplate;
     };

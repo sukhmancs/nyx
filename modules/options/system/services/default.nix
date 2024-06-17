@@ -9,6 +9,7 @@ in {
     ./networking.nix
     ./social.nix
     ./homelab.nix
+    ./nginx.nix
   ];
 
   options.modules.system = {
