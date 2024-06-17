@@ -47,7 +47,7 @@ in {
         };
         environmentVariables = {
           #   # AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.ldap_password.path;
-          AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = secrets.mailserver-vaultwarden-secret.path;
+          AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = secrets.mailserver-authelia-secret.path;
           #   # AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE = config.age.secrets.authelia_mysql_password.path;
         };
         #   settingsFiles = [config.age.secrets.authelia_secret_config.path];
@@ -60,10 +60,9 @@ in {
             port = mkDefault port;
           };
           log.level = "info";
-          # totp.issuer = "authelia.com";
+          totp.issuer = "authelia.com";
           session = {
             domain = "xilain.dev";
-            # redis.host = "/run/redis-authelia-main/redis.sock";
             redis = {
               host = redis.unixSocket;
               port = 0;
@@ -101,34 +100,34 @@ in {
           };
           access_control = {
             default_policy = "deny";
-            # networks = [
-            #   {
-            #     name = "localhost";
-            #     networks = ["127.0.0.1/32"];
-            #   }
-            #   {
-            #     name = "internal";
-            #     networks = [
-            #       "10.100.0.0/8"
-            #       "172.16.0.0/12"
-            #       "192.168.0.0/16"
-            #       "102.209.85.226/27"
-            #     ];
-            #   }
-            # ];
+            networks = [
+              {
+                name = "localhost";
+                networks = ["127.0.0.1/32"];
+              }
+              {
+                name = "internal";
+                networks = [
+                  "10.100.0.0/8"
+                  "172.16.0.0/12"
+                  "192.168.0.0/16"
+                  "102.209.85.226/27"
+                ];
+              }
+            ];
             rules = [
               {
-                domain = ["auth.xilain.dev"];
+                domain = ["*.xilain.dev"];
                 policy = "bypass";
-                # networks = "localhost";
+                networks = "localhost";
               }
               {
                 domain = ["*.xilain.dev"];
                 policy = "one_factor";
-                # networks = "internal";
-                # subject = [
-                #   "group:admin"
-                # ];
+                networks = "internal";
+                subject = [
+                  "group:admin"
+                ];
               }
             ];
           };
@@ -151,7 +150,7 @@ in {
             # smtp = {
             #   host = "mail.xilain.dev";
             #   port = 465;
-            #   username = "xilain";
+            #   username = "authelia";
             #   sender = "vaultwarden@xilain.dev";
             # };
           };
@@ -160,15 +159,7 @@ in {
 
       nginx.virtualHosts."auth.xilain.dev" =
         {
-          # enableACME = true;
           forceSSL = true;
-          # acmeRoot = null;
-
-          # locations."/" = {
-          #   proxyPass = autheliaUrl;
-          #   proxyWebsockets = true;
-          # };
-          # quic = true;
           extraConfig = ''
               location / {
                 set $upstream_authelia http://127.0.0.1:9092;
