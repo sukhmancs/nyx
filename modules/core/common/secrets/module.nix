@@ -146,6 +146,28 @@ in {
       group = "suwayomi";
     };
 
+   # authelia secrets
+   authelia_jwt_secret = mkAgenixSecret cfg.authelia.enable {
+      file = "authelia/jwt_secret.age";
+      mode = "400";
+      owner = "authelia-main";
+      group = "authelia-main";
+    };
+
+    authelia_session_secret = mkAgenixSecret cfg.authelia.enable {
+      file = "authelia/session_secret.age";
+      mode = "400";
+      owner = "authelia-main";
+      group = "authelia-main";
+    };
+ 
+    authelia_storage_encryption_key = mkAgenixSecret cfg.authelia.enable {
+      file = "authelia/storage_encryption_key.age";
+      mode = "400";
+      owner = "authelia-main";
+      group = "authelia-main";
+    };
+
     # mailserver secrets
     mailserver-secret = mkAgenixSecret cfg.mailserver.enable {
       file = "mailserver/postmaster.age";
