@@ -150,8 +150,8 @@ in {
             smtp = {
               host = "mail.xilain.dev";
               port = 465;
-              username = "authelia";
-              sender = "authelia@xilain.dev";
+              username = "authelia@xilain.dev";
+              sender = "Authelia <authelia@xilain.dev>";
             };
           };
         };
