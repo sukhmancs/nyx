@@ -1,5 +1,5 @@
 #
-# FIXME - add this file into separete override folder
+# Sunshine is a self-hosted game stream host for Moonlight.
 #
 {
   config,
@@ -7,17 +7,13 @@
   pkgs,
   ...
 }: let
-  cfg = config.programs.sunshine;
+  inherit (lib.modules) mkIf;
+  inherit (config) modules;
+
+  sys = modules.system;
+  prg = sys.programs;
 in {
-  options.programs.sunshine = with lib; {
-    enable = mkEnableOption "sunshine";
-  };
-
-  config = {
-    environment.systemPackages = [
-      pkgs.zoom-us
-    ];
-
+  config = mkIf prg.gaming.sunshine.enable {
     networking.firewall.allowedTCPPortRanges = [
       {
         from = 47984;

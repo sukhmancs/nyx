@@ -20,5 +20,6 @@ in {
     gamemode.enable = mkEnableOption "Feral-Interactive's Gamemode with userspace optimizations" // {default = prg.gaming.enable;};
     gamescope.enable = mkEnableOption "Gamescope compositing manager" // {default = prg.gaming.enable;};
     mangohud.enable = mkEnableOption "MangoHud overlay" // {default = prg.gaming.enable;};
+    sunshine.enable = mkEnableOption "Sunshine self-hosted game stream host for Moonlight" // {default = prg.gaming.enable;};
   };
 }
