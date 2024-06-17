@@ -181,7 +181,14 @@ in {
       mode = "400";
       owner = "lldap";
       group = "lldap";
-    };   
+    };
+
+    lldap_private_key = mkAgenixSecret cfg.ldap.enable {
+      file = "lldap/private_key.age";
+      mode = "400";
+      owner = "lldap";
+      group = "lldap";
+    };    
  
     # mailserver secrets
     mailserver-secret = mkAgenixSecret cfg.mailserver.enable {
