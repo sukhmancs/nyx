@@ -71,6 +71,20 @@ in {
             policy = "accept";
           };
 
+          dns-tcp = entryBetween ["basic-icmp6" "basic-icmp" "ping6" "ping"] ["default"] {
+            protocol = "tcp";
+            field = "dport";
+            value = 53;
+            policy = "accept";
+          };
+
+          dns-udp = entryBetween ["basic-icmp6" "basic-icmp" "ping6" "ping"] ["default"] {
+            protocol = "udp";
+            field = "dport";
+            value = 53;
+            policy = "accept";
+          };
+
           default = entryAfter ["loopback" "established-locally" "basic-icmp6" "basic-icmp" "ping6" "ping"] {
             policy = lib.mkDefault "drop";
           };
