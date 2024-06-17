@@ -144,15 +144,15 @@ in {
           };
           notifier = {
             disable_startup_check = false;
-            filesystem = {
-              filename = "/var/lib/authelia-main/notification.txt";
-            };
-            # smtp = {
-            #   host = "mail.xilain.dev";
-            #   port = 465;
-            #   username = "authelia";
-            #   sender = "vaultwarden@xilain.dev";
+            # filesystem = {
+            #   filename = "/var/lib/authelia-main/notification.txt";
             # };
+            smtp = {
+              host = "mail.xilain.dev";
+              port = 465;
+              username = "authelia";
+              sender = "vaultwarden@xilain.dev";
+            };
           };
         };
       };
