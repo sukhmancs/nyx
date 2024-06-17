@@ -27,6 +27,7 @@
     ./adguard.nix # adguard home dns server
     ./lldap.nix # authentication server
     ./authelia.nix # authelia authentication server
+    ./jitsi-meet.nix # jitsi meet video conferencing
 
     # misc
     ./mkm.nix # holy fuck

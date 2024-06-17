@@ -11,6 +11,7 @@
     adguard.enable = true;
     netdata.enable = true;
     authelia.enable = true;
+    jitsi-meet.enable = true;
 
     homelab = {
       homepage.enable = true;

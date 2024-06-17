@@ -18,6 +18,7 @@ in {
     services = {
       zerobin = {
         enable = true;
+        listenPort = port;
         group = "zerobin";
         user = "zerobin";
         dataDir = "/var/lib/zerobin";

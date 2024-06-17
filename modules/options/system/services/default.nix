@@ -88,7 +88,7 @@ in {
         name = "Zerobin";
         type = "pastebin";
         host = "127.0.0.1";
-        port = 8000;
+        port = 1357;
       };
 
       suwayomi-server = mkService {
@@ -124,6 +124,13 @@ in {
         type = "directory";
         host = "127.0.0.1";
         port = 17170;
+      };
+
+      jitsi-meet = mkService {
+        name = "Jitsi Meet";
+        type = "video conferencing";
+        host = "127.0.0.1";
+        port = 8000;
       };
     };
   };
