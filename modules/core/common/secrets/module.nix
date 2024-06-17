@@ -182,5 +182,11 @@ in {
       owner = "mastodon";
       mode = "400";
     };
+
+    mailserver-authelia-secret = mkAgenixSecret cfg.authelia.enable {
+      file = "mailserver/authelia.age";
+      owner = "authelia";
+      group = "authelia";
+      mode = "400";
   };
 }

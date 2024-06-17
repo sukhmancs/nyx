@@ -90,6 +90,13 @@ in {
           sendOnly = true;
           sendOnlyRejectMessage = "";
         };
+
+        "authelia@xilain.dev" = mkIf cfg.authelia.enable {
+          aliases = ["auth" "security"];
+          hashedPasswordFile = secrets.mailserver-authelia-secret.path;
+          sendOnly = true;
+          sendOnlyRejectMessage = "";
+        };
       };
 
       mailboxes = {

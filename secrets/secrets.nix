@@ -35,4 +35,5 @@ in {
   "mailserver/noreply.age".publicKeys = mkGlobal servers;
   "mailserver/postmaster.age".publicKeys = mkGlobal servers;
   "mailserver/vaultwarden.age".publicKeys = mkGlobal servers;
+  "mailserver/authelia.age".publicKeys = mkGlobal servers;
 }
