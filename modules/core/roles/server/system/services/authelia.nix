@@ -76,28 +76,28 @@ in {
             ban_time = 300;
           };
           authentication_backend = {
-            file = {
-              # CHANGEME
-              path = "/var/lib/authelia-main/users_database.yml";
-            };
-            # password_reset.disable = false;
-            # refresh_interval = "1m";
-            # ldap = {
-            #   implementation = "custom";
-            #   url = "ldap://localhost:3890";
-            #   timeout = "5m";
-            #   start_tls = false;
-            #   base_dn = "dc=longerhv,dc=xyz";
-            #   username_attribute = "uid";
-            #   additional_users_dn = "ou=people";
-            #   users_filter = "(&({username_attribute}={input})(objectClass=person))";
-            #   additional_groups_dn = "ou=groups";
-            #   groups_filter = "(member={dn})";
-            #   group_name_attribute = "cn";
-            #   mail_attribute = "mail";
-            #   display_name_attribute = "displayName";
-            #   user = "uid=admin,ou=people,dc=longerhv,dc=xyz";
+            # file = {
+            #   # CHANGEME
+            #   path = "/var/lib/authelia-main/users_database.yml";
             # };
+            password_reset.disable = false;
+            refresh_interval = "1m";
+            ldap = {
+              implementation = "custom";
+              url = "ldap://localhost:3890";
+              timeout = "5m";
+              start_tls = false;
+              base_dn = "dc=longerhv,dc=xyz";
+              username_attribute = "uid";
+              additional_users_dn = "ou=people";
+              users_filter = "(&({username_attribute}={input})(objectClass=person))";
+              additional_groups_dn = "ou=groups";
+              groups_filter = "(member={dn})";
+              group_name_attribute = "cn";
+              mail_attribute = "mail";
+              display_name_attribute = "displayName";
+              user = "uid=admin,ou=people,dc=longerhv,dc=xyz";
+            };
           };
           access_control = {
             default_policy = "deny";
