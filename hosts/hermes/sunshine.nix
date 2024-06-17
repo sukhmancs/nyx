@@ -1,3 +1,6 @@
+#
+# FIXME - add this file into separete override folder
+#
 {
   config,
   lib,
@@ -11,6 +14,10 @@ in {
   };
 
   config = {
+    environment.systemPackages = [
+      pkgs.zoom-us
+    ];
+
     networking.firewall.allowedTCPPortRanges = [
       {
         from = 47984;
