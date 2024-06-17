@@ -45,11 +45,11 @@ in {
           # sessionSecretFile = config.age.secrets.authelia_session_secret.path;
           # storageEncryptionKeyFile = config.age.secrets.authelia_storage_encryption_key.path;
         };
-        environmentVariables = {
-          # AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.ldap_password.path;
-          AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = secrets.mailserver-vaultwarden-secret.path;
-          # AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE = config.age.secrets.authelia_mysql_password.path;
-        };
+        # environmentVariables = {
+        #   # AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.ldap_password.path;
+        #   AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = secrets.mailserver-vaultwarden-secret.path;
+        #   # AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE = config.age.secrets.authelia_mysql_password.path;
+        # };
         #   settingsFiles = [config.age.secrets.authelia_secret_config.path];
         settings = {
           theme = "dark";
