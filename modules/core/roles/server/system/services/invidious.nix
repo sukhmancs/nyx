@@ -10,11 +10,12 @@
   ...
 }: let
   inherit (lib) mkIf mkDefault mkForce;
-  inherit (cfg.invidious.settings) port host;
 
   domain = "yt.xilain.dev";
   sys = config.modules.system;
   cfg = sys.services;
+
+  inherit (cfg.invidious.settings) port host;
 in {
   config = mkIf cfg.invidious.enable {
     modules.system.services = {

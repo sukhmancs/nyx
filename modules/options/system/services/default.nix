@@ -118,6 +118,13 @@ in {
         host = "127.0.0.1";
         port = 9092;
       };
+
+      ldap = mkService {
+        name = "LDAP";
+        type = "directory";
+        host = "127.0.0.1";
+        port = 17170;
+      };
     };
   };
 }

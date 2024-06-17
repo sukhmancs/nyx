@@ -15,7 +15,6 @@
   inherit (cfg.authelia.settings) host port;
 in {
   config = mkIf cfg.authelia.enable {
-    # Open Port in Firewall
     networking.firewall.allowedTCPPorts = [port];
 
     modules.system.services = {
@@ -24,7 +23,9 @@ in {
         redis.enable = true;
         postgresql.enable = true;
       };
+      ldap.enable = true;
     };
+
     environment.systemPackages = [
       pkgs.authelia
     ];
@@ -119,12 +120,12 @@ in {
               {
                 domain = ["*.xilain.dev"];
                 policy = "bypass";
-                # networks = "localhost";
+                networks = "localhost";
               }
               {
                 domain = ["*.xilain.dev"];
                 policy = "one_factor";
-                # networks = "internal";
+                networks = "internal";
                 # subject = [
                 #   "group:admin"
                 # ];

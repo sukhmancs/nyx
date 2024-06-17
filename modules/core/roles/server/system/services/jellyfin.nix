@@ -21,7 +21,7 @@ in {
         openFirewall = true;
       };
 
-      nginx.virtualHosts. "fin.xilain.dev" =
+      nginx.virtualHosts."fin.xilain.dev" =
         {
           locations."/" = {
             # TODO: the port is not customizable in the upstream service, PR nixpkgs

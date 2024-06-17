@@ -193,11 +193,11 @@ in {
               #     icon = "blocky";
               #   };
               # }
-              # {
-              #   LLDAP = {
-              #     href = "https://ldap.${domain}";
-              #   };
-              # }
+              {
+                LLDAP = {
+                  href = "https://ldap.${domain}";
+                };
+              }
               {
                 Authelia = {
                   href = "https://auth.${domain}";
