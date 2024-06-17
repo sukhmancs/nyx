@@ -189,4 +189,5 @@ in {
       group = "authelia-main";
       mode = "400";
   };
+};
 }
