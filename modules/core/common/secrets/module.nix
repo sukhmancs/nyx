@@ -167,7 +167,22 @@ in {
       owner = "authelia-main";
       group = "authelia-main";
     };
-
+    
+    # lldap secrets
+    lldap_jwt_secret = mkAgenixSecret cfg.ldap.enable {
+      file = "lldap/jwt_secret.age";
+      mode = "400";
+      owner = "lldap";
+      group = "lldap";
+    };   
+    
+    lldap_user_pass = mkAgenixSecret cfg.ldap.enable {
+      file = "lldap/user_pass.age";
+      mode = "400";
+      owner = "lldap";
+      group = "lldap";
+    };   
+ 
     # mailserver secrets
     mailserver-secret = mkAgenixSecret cfg.mailserver.enable {
       file = "mailserver/postmaster.age";

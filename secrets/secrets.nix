@@ -22,6 +22,8 @@ in {
   "authelia/jwt_secret.age".publicKeys = mkGlobal servers;
   "authelia/session_secret.age".publicKeys = mkGlobal servers;
   "authelia/storage_encryption_key.age".publicKeys = mkGlobal servers;
+  "lldap/jwt_secret.age".publicKeys = mkGlobal servers;
+  "lldap/user_pass.age".publicKeys = mkGlobal servers;
   # "service/forgejo-runner-config.age".publicKeys = mkGlobal servers;
   # "service/harmonia.age".publicKeys = mkGlobal servers;
   # "service/attic.age".publicKeys = mkGlobal servers;

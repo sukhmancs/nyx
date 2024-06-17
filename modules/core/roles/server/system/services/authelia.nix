@@ -37,14 +37,14 @@ in {
       authelia.instances.main = {
         enable = true;
         secrets = {
-          jwtSecretFile = "${pkgs.writeText "jwtSecretFile" "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey"}";
-          storageEncryptionKeyFile = "${pkgs.writeText "storageEncryptionKeyFile" "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey"}";
-          sessionSecretFile = "${pkgs.writeText "sessionSecretFile" "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey"}";
-          # jwtSecretFile = config.age.secrets.authelia_jwt_secret.path;
+          # jwtSecretFile = "${pkgs.writeText "jwtSecretFile" "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey"}";
+          # storageEncryptionKeyFile = "${pkgs.writeText "storageEncryptionKeyFile" "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey"}";
+          # sessionSecretFile = "${pkgs.writeText "sessionSecretFile" "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey"}";
+          jwtSecretFile = config.age.secrets.authelia_jwt_secret.path;
           # oidcHmacSecretFile = "${pkgs.writeText "oidSecretFile" "supersecretkey"}";
           # oidcIssuerPrivateKeyFile = "${pkgs.writeText "oidcissuerSecretFile" "supersecretkey"}";
-          # sessionSecretFile = config.age.secrets.authelia_session_secret.path;
-          # storageEncryptionKeyFile = config.age.secrets.authelia_storage_encryption_key.path;
+          sessionSecretFile = config.age.secrets.authelia_session_secret.path;
+          storageEncryptionKeyFile = config.age.secrets.authelia_storage_encryption_key.path;
         };
         # environmentVariables = {
         #   #   # AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.ldap_password.path;
