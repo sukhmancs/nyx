@@ -59,7 +59,6 @@ in {
       adguardhome = {
         enable = true;
         mutableSettings = false;
-        # host = host;
         port = port;
         openFirewall = true;
         settings = {
@@ -71,8 +70,7 @@ in {
             refuse_any = true; # Request of type ANY will be refused
             # enable_dnssec = true; # DNSSEC validation
             bind_hosts = ["0.0.0.0"];
-            # port = 1053;
-            # anonymize_client_ip = true;
+            anonymize_client_ip = true;
             bootstrap_dns = [
               "9.9.9.10"
               "149.112.112.10"
@@ -110,12 +108,11 @@ in {
         };
       };
 
-      nginx.virtualHosts."${domain}" =
+      nginx.virtualHosts.${domain} =
         {
           forceSSL = true;
 
           locations."/" = {
-            # proxyPass = "http://127.0.0.1:${toString port}";
             extraConfig = ''
               proxy_pass http://127.0.0.1:${toString port};
               proxy_set_header Host $host;
