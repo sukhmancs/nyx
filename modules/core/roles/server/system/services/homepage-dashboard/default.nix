@@ -198,12 +198,12 @@ in {
               #     href = "https://ldap.${domain}";
               #   };
               # }
-              # {
-              #   Authelia = {
-              #     href = "https://auth.${domain}";
-              #     icon = "authelia";
-              #   };
-              # }
+              {
+                Authelia = {
+                  href = "https://auth.${domain}";
+                  icon = "authelia";
+                };
+              }
             ];
           }
           # {
