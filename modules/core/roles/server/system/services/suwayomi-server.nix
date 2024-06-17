@@ -54,7 +54,7 @@ in {
         };
       };
 
-      nginx.virtualHosts."${domain}" =
+      nginx.virtualHosts.${domain} =
         {
           locations."/" = {
             proxyPass = "http://${host}:${toString port}";
