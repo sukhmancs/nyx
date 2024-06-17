@@ -51,7 +51,7 @@ in {
         };
       };
 
-      nginx.virtualHosts."${domain}" =
+      nginx.virtualHosts.${domain} =
         {
           enableAuthelia = true; # add custom authelia location
 

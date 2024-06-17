@@ -119,15 +119,15 @@ in {
               {
                 domain = ["*.xilain.dev"];
                 policy = "bypass";
-                networks = "localhost";
+                # networks = "localhost";
               }
               {
                 domain = ["*.xilain.dev"];
                 policy = "one_factor";
-                networks = "internal";
-                subject = [
-                  "group:admin"
-                ];
+                # networks = "internal";
+                # subject = [
+                #   "group:admin"
+                # ];
               }
             ];
           };
