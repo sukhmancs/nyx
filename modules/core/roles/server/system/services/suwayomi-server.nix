@@ -54,18 +54,18 @@ in {
         };
       };
 
+      # nginx.virtualHosts.${domain} =
+      #   {
+      #     locations."/" = {
+      #       proxyPass = "http://${host}:${toString port}";
+      #       extraConfig = "proxy_pass_header Authorization;";
+      #     };
+
+      #     quic = true;
+      #   }
+      #   // lib.sslTemplate;
+
       nginx.virtualHosts.${domain} =
-        {
-          locations."/" = {
-            proxyPass = "http://${host}:${toString port}";
-            extraConfig = "proxy_pass_header Authorization;";
-          };
-
-          quic = true;
-        }
-        // lib.sslTemplate;
-
-      nginx.virtualHosts."${domain}" =
         {
           enableAuthelia = true; # add custom authelia location
 
@@ -108,6 +108,7 @@ in {
               set_real_ip_from 192.168.1.0/16;
               real_ip_header X-Forwarded-For;
               real_ip_recursive on;
+              proxy_pass_header Authorization;
 
             }
           '';
