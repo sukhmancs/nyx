@@ -78,7 +78,7 @@ in {
           authentication_backend = {
             file = {
               # CHANGEME
-              path = "/home/notashelf/users_database.yml";
+              path = "/var/lib/authelia-main/users_database.yml";
             };
             # password_reset.disable = false;
             # refresh_interval = "1m";
@@ -133,21 +133,27 @@ in {
             ];
           };
           storage = {
-            postgres = {
-              host = "/run/postgresql";
-              database = "authelia";
-              username = "authelia";
-              password = "changeme"; # CHANGEME
+            local = {
+              path = "/var/lib/authelia-main/db.sqlite3";
             };
+            # postgres = {
+            #   host = "/run/postgresqld/postgresqld.sock";
+            #   database = "authelia";
+            #   username = "authelia";
+            #   password = "changeme"; # CHANGEME
+            # };
           };
           notifier = {
             disable_startup_check = false;
-            smtp = {
-              host = "mail.xilain.dev";
-              port = 465;
-              username = "xilain";
-              sender = "vaultwarden@xilain.dev";
+            filesystem = {
+              filename = "/var/lib/authelia-main/notification.txt";
             };
+            # smtp = {
+            #   host = "mail.xilain.dev";
+            #   port = 465;
+            #   username = "xilain";
+            #   sender = "vaultwarden@xilain.dev";
+            # };
           };
         };
       };
