@@ -185,8 +185,8 @@ in {
 
     mailserver-authelia-secret = mkAgenixSecret cfg.authelia.enable {
       file = "mailserver/authelia.age";
-      owner = "authelia";
-      group = "authelia";
+      owner = "authelia-main";
+      group = "authelia-main";
       mode = "400";
   };
 }
