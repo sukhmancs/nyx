@@ -25,6 +25,7 @@
     ./zerobin.nix # zerobin pastebin
     ./suwayomi-server.nix # manga reader server
     ./adguard.nix # adguard home dns server
+    ./lldap.nix # authentication server
     ./authelia.nix # authelia authentication server
 
     # misc

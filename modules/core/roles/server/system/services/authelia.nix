@@ -97,6 +97,7 @@ in {
               mail_attribute = "mail";
               display_name_attribute = "displayName";
               user = "uid=admin,ou=people,dc=longerhv,dc=xyz";
+              password = "changeme"; #TODO
             };
           };
           access_control = {
