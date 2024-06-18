@@ -49,7 +49,7 @@ in {
         environmentVariables = {
           AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = "${pkgs.writeText "storageEncryptionKeyFile" "password"}"; # config.age.secrets.ldap_password.path;
           # AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = secrets.mailserver-authelia-secret.path;
-          #   # AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE = config.age.secrets.authelia_mysql_password.path;
+          AUTHELIA_STORAGE_POSTGRES_PASSWORD_FILE = "${pkgs.writeText "storagepasswordfile" "password"}"; #config.age.secrets.authelia_mysql_password.path;
         };
         #   settingsFiles = [config.age.secrets.authelia_secret_config.path];
         settings = {
