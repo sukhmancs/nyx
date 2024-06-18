@@ -13,10 +13,10 @@
 in {
   users = {
     groups = {
-      lldap-secrets = { };
-      gitea-secrets = { };
+      lldap-secrets = {};
+      gitea-secrets = {};
 
-      miniflux-secrets = { };
+      miniflux-secrets = {};
     };
   };
 
@@ -157,8 +157,8 @@ in {
       group = "suwayomi";
     };
 
-   # authelia secrets
-   authelia_jwt_secret = mkAgenixSecret cfg.authelia.enable {
+    # authelia secrets
+    authelia_jwt_secret = mkAgenixSecret cfg.authelia.enable {
       file = "authelia/jwt_secret.age";
       owner = autheliaUser;
     };
@@ -167,19 +167,19 @@ in {
       file = "authelia/session_secret.age";
       owner = autheliaUser;
     };
- 
+
     authelia_storage_encryption_key = mkAgenixSecret cfg.authelia.enable {
       file = "authelia/storage_encryption_key.age";
       owner = autheliaUser;
     };
-    
+
     # lldap secrets
     lldap_jwt_secret = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/jwt_secret.age";
       mode = "0400";
       group = "lldap-secrets";
-    };   
-    
+    };
+
     lldap_user_pass = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/user_pass.age";
       mode = "0400";
@@ -190,8 +190,8 @@ in {
       file = "lldap/private_key.age";
       mode = "0400";
       group = "lldap-secrets";
-    };    
- 
+    };
+
     # mailserver secrets
     mailserver-secret = mkAgenixSecret cfg.mailserver.enable {
       file = "mailserver/postmaster.age";
@@ -232,6 +232,6 @@ in {
     mailserver-authelia-secret = mkAgenixSecret cfg.authelia.enable {
       file = "mailserver/authelia.age";
       owner = autheliaUser;
+    };
   };
-};
 }
