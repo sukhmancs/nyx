@@ -140,6 +140,7 @@ in {
             postgres = {
               host = "/run/postgresql"; # /run/postgresql;
               database = "authelia-main";
+              port = 5432;
               username = authelia.user;
             };
           };
