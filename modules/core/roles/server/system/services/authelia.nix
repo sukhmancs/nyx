@@ -1,3 +1,23 @@
+#
+# Authelia - Authentication and Authorization Server
+#
+# This server is setup to provide a single sign-on experience for all services
+# that are behind it. It provides a 2FA experience for users. LLDAP is being used as
+# the backend for user authentication.
+#
+# Pre-requisites:
+# - LDAP server (LLDAP, etc) - This is used to store user information
+# - Redis server - This is used to store session information
+# - Postgres server - For the Authelia database
+# - Nginx server - For reverse proxying
+# - SMTP server - For sending emails
+#
+# Security:
+# Brute Force Protection - max_retries, find_time, ban_time
+# Unauthorized Access, Server Scanning - default_policy, networks, rules
+# Account Takeover - password_reset
+# Session Hijacking - refresh_interval
+#
 {
   config,
   pkgs,
@@ -114,6 +134,7 @@ in {
                   "172.16.0.0/12"
                   "192.168.0.0/16"
                   "102.209.85.226/27"
+                  "174.119.200.86"
                 ];
               }
             ];
@@ -124,12 +145,12 @@ in {
                 networks = "localhost";
               }
               {
-                domain = ["yt.xilain.dev"];
+                domain = ["*.xilain.dev"];
                 policy = "one_factor";
-                # networks = "internal";
-                # subject = [
-                #   "group:admin"
-                # ];
+                networks = "internal";
+                subject = [
+                  "group:admin"
+                ];
               }
             ];
           };

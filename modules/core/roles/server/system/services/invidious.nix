@@ -129,7 +129,7 @@ in {
 
                 }
           '';
-          # quic = true;
+          quic = true;
         }
         // lib.sslTemplate;
     };

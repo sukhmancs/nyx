@@ -1,6 +1,9 @@
 #
 # Extend the Nginx module to support Authelia
 #
+# Options added:
+# - enableAuthelia: This will enable the /authelia location block. To enable it just set enableAuthelia = true;
+#
 {
   config,
   lib,
