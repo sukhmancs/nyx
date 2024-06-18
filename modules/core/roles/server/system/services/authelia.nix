@@ -96,7 +96,7 @@ in {
               group_name_attribute = "cn";
               mail_attribute = "mail";
               display_name_attribute = "displayName";
-              # user = "uid=admin,ou=people,dc=xilain,dc=dev";
+              user = "uid=admin,ou=people,dc=xilain,dc=dev";
               # password = "password"; #TODO
             };
           };
