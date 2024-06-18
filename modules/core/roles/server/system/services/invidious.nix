@@ -26,7 +26,7 @@ in {
       invidious = {
         enable = true;
         port = mkDefault port;
-        domain = mkDefault "${domain}";
+        domain = mkDefault domain;
         settings = {
           https_only = false;
           default_user_preferences = {
@@ -129,7 +129,7 @@ in {
 
                 }
           '';
-          quic = true;
+          # quic = true;
         }
         // lib.sslTemplate;
     };

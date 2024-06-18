@@ -127,9 +127,9 @@ in {
                 domain = ["*.xilain.dev"];
                 policy = "one_factor";
                 networks = "internal";
-                # subject = [
-                #   "group:admin"
-                # ];
+                subject = [
+                  "group:admin"
+                ];
               }
             ];
           };
