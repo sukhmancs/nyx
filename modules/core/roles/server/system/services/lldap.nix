@@ -47,6 +47,6 @@ in {
         // lib.sslTemplate;
     };
 
-    systemd.services.lldap.serviceConfig.SupplementaryGroups = ["lldap-secrets"];
+    # systemd.services.lldap.serviceConfig.SupplementaryGroups = ["lldap-secrets"];
   };
 }
