@@ -26,7 +26,7 @@ in {
         "headscale"
         "atticd"
         "invidious"
-        "authelia"
+        "authelia-main"
       ];
 
       ensureUsers = [

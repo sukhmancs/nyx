@@ -139,7 +139,7 @@ in {
             # };
             postgres = {
               host = "/run/postgresql/.s.PGSQL.5432"; # /run/postgresql;
-              database = "authelia";
+              database = "authelia-main";
               username = authelia.user;
             };
           };
