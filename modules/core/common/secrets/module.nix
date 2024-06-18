@@ -176,19 +176,19 @@ in {
     # lldap secrets
     lldap_jwt_secret = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/jwt_secret.age";
-      mode = "400";
+      mode = "0400";
       group = "lldap-secrets";
     };   
     
     lldap_user_pass = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/user_pass.age";
-      mode = "400";
+      mode = "0400";
       group = "lldap-secrets";
     };
 
     lldap_private_key = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/private_key.age";
-      mode = "400";
+      mode = "0400";
       group = "lldap-secrets";
     };    
  
