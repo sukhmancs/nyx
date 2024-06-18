@@ -3,13 +3,13 @@
     nextcloud.enable = true;
     mailserver.enable = true;
     vaultwarden.enable = true;
-    forgejo.enable = true;
+    forgejo.enable = false; #CHANGEME
     searxng.enable = true;
     reposilite.enable = false;
-    invidious.enable = true;
-    suwayomi-server.enable = true;
+    invidious.enable = false; #CHANGEME
+    suwayomi-server.enable = false; #CHANGEME
     adguard.enable = true;
-    netdata.enable = true;
+    netdata.enable = false; #CHANGEME
     authelia.enable = true;
     jitsi-meet.enable = true;
 
@@ -18,7 +18,7 @@
     };
 
     social = {
-      mastodon.enable = true;
+      mastodon.enable = false; #CHANGEME
       matrix.enable = false;
     };
 
@@ -32,10 +32,10 @@
     };
 
     monitoring = {
-      grafana.enable = true;
-      prometheus.enable = true;
+      grafana.enable = false; #CHANGEME
+      prometheus.enable = false; #CHANGEME
       loki.enable = false;
-      uptime-kuma.enable = true;
+      uptime-kuma.enable = false; #CHANGEME
     };
 
     database = {
