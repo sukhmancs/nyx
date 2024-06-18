@@ -134,15 +134,14 @@ in {
             ];
           };
           storage = {
-            local = {
-              path = "/var/lib/authelia-main/db.sqlite3";
-            };
-            # postgres = {
-            #   host = "/run/postgresqld/postgresqld.sock";
-            #   database = "authelia";
-            #   username = "authelia";
-            #   password = "changeme"; # CHANGEME
+            # local = {
+            #   path = "/var/lib/authelia-main/db.sqlite3";
             # };
+            postgres = {
+              host = "/run/postgresql/.s.PGSQL.5432"; # /run/postgresql;
+              database = "authelia";
+              username = authelia.user;
+            };
           };
           notifier = {
             disable_startup_check = false;

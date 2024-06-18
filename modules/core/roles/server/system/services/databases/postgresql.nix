@@ -6,6 +6,8 @@
 }: let
   inherit (lib) mkIf;
 
+  authelia = config.services.authelia.instances.main;
+
   sys = config.modules.system;
   cfg = sys.services;
 in {
@@ -71,7 +73,7 @@ in {
           ensureDBOwnership = true;
         }
         {
-          name = "authelia";
+          name = authelia.user;
           ensureDBOwnership = true;
         }
       ];
