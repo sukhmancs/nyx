@@ -37,7 +37,7 @@ in {
         {
           locations."/" = {
             # TODO: the port is not customizable in the upstream service, PR nixpkgs
-            proxyPass = "http://${host}:${cfg.ldap.settings.port}";
+            proxyPass = "http://${host}:${toString port}";
             proxyWebsockets = true;
             extraConfig = "proxy_pass_header Authorization;";
           };

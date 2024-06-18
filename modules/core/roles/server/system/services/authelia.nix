@@ -164,7 +164,7 @@ in {
           forceSSL = true;
           extraConfig = ''
               location / {
-                set $upstream_authelia http://127.0.0.1:9092;
+                set $upstream_authelia http://${host}:${toString port};
                 proxy_pass $upstream_authelia;
                 client_body_buffer_size 128k;
 
@@ -205,6 +205,6 @@ in {
         // lib.sslTemplate;
     };
 
-    # systemd.services.authelia.after = ["lldap.service"];
+    systemd.services.authelia.after = ["lldap.service"];
   };
 }
