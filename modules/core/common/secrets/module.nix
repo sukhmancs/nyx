@@ -85,18 +85,18 @@ in {
     matrix-secret = mkAgenixSecret cfg.social.matrix.enable {
       file = "service/matrix.age";
       owner = "matrix-synapse";
-      mode = "400";
+      mode = "440";
     };
 
     vaultwarden-env = mkAgenixSecret cfg.vaultwarden.enable {
       file = "service/vaultwarden.age";
       owner = "vaultwarden";
-      mode = "400";
+      mode = "440";
     };
 
     searx-secretkey = mkAgenixSecret cfg.searxng.enable {
       file = "service/searx.age";
-      mode = "400";
+      mode = "440";
       owner = "searx";
       group = "searx";
     };
@@ -124,14 +124,14 @@ in {
 
     forgejo-runner-token = mkAgenixSecret cfg.forgejo.enable {
       file = "service/forgejo-runner-token.age";
-      mode = "400";
+      mode = "440";
       owner = "gitea-runner";
       group = "gitea-runner";
     };
 
     forgejo-runner-config = mkAgenixSecret cfg.forgejo.enable {
       file = "service/forgejo-runner-config.age";
-      mode = "400";
+      mode = "440";
       owner = "gitea-runner";
       group = "gitea-runner";
     };
@@ -152,7 +152,7 @@ in {
 
     suwayomi-server-password = mkAgenixSecret cfg.suwayomi-server.enable {
       file = "service/suwayomi-server.age";
-      mode = "400";
+      mode = "440";
       owner = "suwayomi";
       group = "suwayomi";
     };
@@ -176,19 +176,19 @@ in {
     # lldap secrets
     lldap_jwt_secret = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/jwt_secret.age";
-      mode = "0400";
+      mode = "440";
       group = "lldap-secrets";
     };
 
     lldap_user_pass = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/user_pass.age";
-      mode = "0400";
+      mode = "440";
       group = "lldap-secrets";
     };
 
     lldap_private_key = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/private_key.age";
-      mode = "0400";
+      mode = "440";
       group = "lldap-secrets";
     };
 
@@ -202,7 +202,7 @@ in {
       file = "mailserver/forgejo.age";
       owner = "forgejo";
       group = "forgejo";
-      mode = "400";
+      mode = "440";
     };
 
     mailserver-vaultwarden-secret = mkAgenixSecret cfg.vaultwarden.enable {
