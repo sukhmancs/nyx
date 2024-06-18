@@ -6,6 +6,9 @@
   lib,
   ...
 }: let
+  authelia = config.services.authelia.instances.main;
+  autheliaUrl = "http://${authelia.settings.server.host}:${builtins.toString authelia.settings.server.port}";
+
   vhostOptions = {config, ...}: {
     options = {
       enableAuthelia = lib.mkEnableOption "Enable authelia location";
@@ -13,7 +16,7 @@
     config = lib.mkIf config.enableAuthelia {
       locations."/authelia".extraConfig = ''
         internal;
-        set $upstream_authelia http://127.0.0.1:9092/api/verify; #ADD YOUR IP AND PORT OF AUTHELIA
+        set $upstream_authelia ${autheliaUrl}/api/verify; #ADD YOUR IP AND PORT OF AUTHELIA
         proxy_pass_request_body off;
         proxy_pass $upstream_authelia;
         proxy_set_header Content-Length "";

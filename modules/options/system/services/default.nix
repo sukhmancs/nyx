@@ -9,7 +9,7 @@ in {
     ./networking.nix
     ./social.nix
     ./homelab.nix
-    ./nginx.nix
+    ./authelia.nix
   ];
 
   options.modules.system = {

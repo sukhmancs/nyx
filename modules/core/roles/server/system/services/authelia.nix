@@ -138,7 +138,7 @@ in {
             #   path = "/var/lib/authelia-main/db.sqlite3";
             # };
             postgres = {
-              host = "/run/postgresql"; # /run/postgresql;
+              host = "/run/postgresql";
               database = "authelia-main";
               port = 5432;
               username = authelia.user;
