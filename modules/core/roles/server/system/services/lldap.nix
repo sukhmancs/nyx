@@ -28,8 +28,11 @@ in {
           key_file = secrets.lldap_private_key.path;
         };
         environment = {
-          LLDAP_JWT_SECRET_FILE = secrets.lldap_jwt_secret.path;
-          LLDAP_LDAP_USER_PASS_FILE = secrets.lldap_user_pass.path;
+          #TODO: use secrets
+          LLDAP_JWT_SECRET = "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey";
+          LLDAP_LDAP_USER_PASS = "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey";
+          # LLDAP_JWT_SECRET_FILE = secrets.lldap_jwt_secret.path;
+          # LLDAP_LDAP_USER_PASS_FILE = secrets.lldap_user_pass.path;
         };
       };
 
