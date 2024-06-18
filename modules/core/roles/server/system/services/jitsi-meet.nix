@@ -24,9 +24,9 @@ in {
         hostName = "meet.xilain.dev";
         config = {
           enableWelcomePage = false;
-          enableInsecureRoomNameWarning = true;
-          fileRecordingsEnabled = false;
-          liveStreamingEnabled = false;
+          #   enableInsecureRoomNameWarning = true;
+          #   fileRecordingsEnabled = false;
+          #   liveStreamingEnabled = false;
           prejoinPageEnabled = true;
           defaultLang = "en";
         };
