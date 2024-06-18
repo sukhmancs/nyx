@@ -44,7 +44,7 @@ in {
           # oidcHmacSecretFile = "${pkgs.writeText "oidSecretFile" "supersecretkey"}";
           # oidcIssuerPrivateKeyFile = "${pkgs.writeText "oidcissuerSecretFile" "supersecretkey"}";
           sessionSecretFile = config.age.secrets.authelia_session_secret.path;
-          # storageEncryptionKeyFile = config.age.secrets.authelia_storage_encryption_key.path;
+          storageEncryptionKeyFile = config.age.secrets.authelia_storage_encryption_key.path;
         };
         # environmentVariables = {
         #   #   # AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.ldap_password.path;
