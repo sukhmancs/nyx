@@ -6,9 +6,20 @@
   inherit (lib) mkAgenixSecret;
   inherit (lib.strings) optionalString;
 
+  autheliaUser = config.services.authelia.instances.main.user;
+
   sys = config.modules.system;
   cfg = sys.services;
 in {
+  users = {
+    groups = {
+      lldap-secrets = { };
+      gitea-secrets = { };
+
+      miniflux-secrets = { };
+    };
+  };
+
   age.identityPaths = [
     "${optionalString sys.impermanence.root.enable "/persist"}/etc/ssh/ssh_host_ed25519_key"
     "${optionalString sys.impermanence.home.enable "/persist"}/home/notashelf/.ssh/id_ed25519"
@@ -149,45 +160,36 @@ in {
    # authelia secrets
    authelia_jwt_secret = mkAgenixSecret cfg.authelia.enable {
       file = "authelia/jwt_secret.age";
-      mode = "400";
-      owner = "authelia-main";
-      group = "authelia-main";
+      owner = autheliaUser;
     };
 
     authelia_session_secret = mkAgenixSecret cfg.authelia.enable {
       file = "authelia/session_secret.age";
-      mode = "400";
-      owner = "authelia-main";
-      group = "authelia-main";
+      owner = autheliaUser;
     };
  
     authelia_storage_encryption_key = mkAgenixSecret cfg.authelia.enable {
       file = "authelia/storage_encryption_key.age";
-      mode = "400";
-      owner = "authelia-main";
-      group = "authelia-main";
+      owner = autheliaUser;
     };
     
     # lldap secrets
     lldap_jwt_secret = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/jwt_secret.age";
       mode = "400";
-      owner = "lldap";
-      group = "lldap";
+      group = "lldap-secrets";
     };   
     
     lldap_user_pass = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/user_pass.age";
       mode = "400";
-      owner = "lldap";
-      group = "lldap";
+      group = "lldap-secrets";
     };
 
     lldap_private_key = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/private_key.age";
       mode = "400";
-      owner = "lldap";
-      group = "lldap";
+      group = "lldap-secrets";
     };    
  
     # mailserver secrets
@@ -229,9 +231,7 @@ in {
 
     mailserver-authelia-secret = mkAgenixSecret cfg.authelia.enable {
       file = "mailserver/authelia.age";
-      owner = "authelia-main";
-      group = "authelia-main";
-      mode = "400";
+      owner = autheliaUser;
   };
 };
 }
