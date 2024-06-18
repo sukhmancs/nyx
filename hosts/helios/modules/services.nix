@@ -8,6 +8,7 @@
     reposilite.enable = false;
     invidious.enable = false; #CHANGEME
     suwayomi-server.enable = false; #CHANGEME
+    ldap.enable = true; # FIXME: This is a temporary workaround
     adguard.enable = true;
     netdata.enable = false; #CHANGEME
     authelia.enable = true;
