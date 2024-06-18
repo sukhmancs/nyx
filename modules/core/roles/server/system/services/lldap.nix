@@ -25,7 +25,7 @@ in {
         settings = {
           http_url = "https://${domain}";
           ldap_base_dn = "dc=xilain,dc=dev";
-          ldap_user_email = "admin@example.com"; # TODO
+          # ldap_user_email = "admin@example.com"; # TODO
           # key_file = secrets.lldap_private_key.path;
         };
         environment = {
