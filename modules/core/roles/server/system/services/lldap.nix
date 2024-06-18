@@ -25,14 +25,16 @@ in {
         settings = {
           http_url = "https://${domain}";
           ldap_base_dn = "dc=xilain,dc=dev";
-          key_file = secrets.lldap_private_key.path;
+          # key_file = secrets.lldap_private_key.path;
         };
         environment = {
           #TODO: use secrets
-          LLDAP_JWT_SECRET = "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey";
-          LLDAP_LDAP_USER_PASS = "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey2323$autA";
+          # LLDAP_JWT_SECRET = "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey";
+          # LLDAP_LDAP_USER_PASS = "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey2323$autA";
           # LLDAP_JWT_SECRET_FILE = secrets.lldap_jwt_secret.path;
           # LLDAP_LDAP_USER_PASS_FILE = secrets.lldap_user_pass.path;
+          LLDAP_JWT_SECRET = "na<CP/B&qK?:cmDl>dk>IoHKjB2c#l@M";
+          LLDAP_KEY_SEED = "IiB&IBZH6%kr-IUIoz62^Z@XQCS#s&!d";
         };
       };
 
