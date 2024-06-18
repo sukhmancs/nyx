@@ -16,6 +16,8 @@ in {
       nginx.enable = true;
     };
 
+    networking.firewall.allowedTCPPorts = [80 443];
+
     services = {
       jitsi-meet = {
         enable = true;
@@ -33,8 +35,7 @@ in {
           SHOW_WATERMARK_FOR_GUESTS = false;
         };
       };
-      services.jitsi-videobridge.openFirewall = true;
-      networking.firewall.allowedTCPPorts = [80 443];
+      jitsi-videobridge.openFirewall = true;
 
       nginx.virtualHosts.${domain} =
         {
