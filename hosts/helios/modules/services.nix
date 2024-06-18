@@ -3,16 +3,15 @@
     nextcloud.enable = true;
     mailserver.enable = true;
     vaultwarden.enable = true;
-    forgejo.enable = false; #CHANGEME
+    forgejo.enable = true;
     searxng.enable = true;
     reposilite.enable = false;
-    invidious.enable = false; #CHANGEME
-    suwayomi-server.enable = false; #CHANGEME
-    ldap.enable = true; # FIXME: This is a temporary workaround
+    invidious.enable = true;
+    suwayomi-server.enable = true;
     adguard.enable = true;
-    netdata.enable = false; #CHANGEME
+    netdata.enable = true;
     authelia.enable = true;
-    jitsi-meet.enable = true;
+    jitsi-meet.enable = false; #FIXME: Remove jitsi-meet as i was unable to find a way for jitsi-meet to listen on different port other than 443. I am already serving my own website on that port.And that is where nginx is listening
 
     homelab = {
       homepage.enable = true;
