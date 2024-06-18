@@ -97,7 +97,7 @@ in {
               mail_attribute = "mail";
               display_name_attribute = "displayName";
               user = "uid=admin,ou=people,dc=xilain,dc=dev";
-              password = "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey2323$autA"; #TODO
+              password = "password"; #TODO
             };
           };
           access_control = {

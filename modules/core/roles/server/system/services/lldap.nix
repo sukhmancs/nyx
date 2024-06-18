@@ -25,6 +25,7 @@ in {
         settings = {
           http_url = "https://${domain}";
           ldap_base_dn = "dc=xilain,dc=dev";
+          ldap_user_email = "admin@example.com"; # TODO
           # key_file = secrets.lldap_private_key.path;
         };
         environment = {
@@ -35,6 +36,10 @@ in {
           # LLDAP_LDAP_USER_PASS_FILE = secrets.lldap_user_pass.path;
           LLDAP_JWT_SECRET = "na<CP/B&qK?:cmDl>dk>IoHKjB2c#l@M";
           LLDAP_KEY_SEED = "IiB&IBZH6%kr-IUIoz62^Z@XQCS#s&!d";
+          LLDAP_LDAP_USER_DN = "admin";
+          LLDAP_LDAP_USER_PASS = "password";
+          LLDAP_LDAP_USER_EMAIL = "admin@changeme.com";
+          LLDAP_FORCE_LDAP_USER_PASS_RESET = "false";
         };
       };
 
