@@ -124,12 +124,12 @@ in {
                 networks = "localhost";
               }
               {
-                domain = ["*.xilain.dev"];
+                domain = ["yt.xilain.dev"];
                 policy = "one_factor";
-                networks = "internal";
-                subject = [
-                  "group:admin"
-                ];
+                # networks = "internal";
+                # subject = [
+                #   "group:admin"
+                # ];
               }
             ];
           };
