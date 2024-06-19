@@ -178,6 +178,11 @@ in {
       owner = autheliaUser;
     };
 
+    lldap_user_pass = mkAgenixSecret cfg.authelia.enable {
+      file = "authelia/lldap_user_pass.age";
+      owner = autheliaUser;
+    };
+
     # lldap secrets
     lldap_jwt_secret = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/jwt_secret.age";
