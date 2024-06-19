@@ -54,17 +54,6 @@ in {
         };
       };
 
-      # nginx.virtualHosts.${domain} =
-      #   {
-      #     locations."/" = {
-      #       proxyPass = "http://${host}:${toString port}";
-      #       extraConfig = "proxy_pass_header Authorization;";
-      #     };
-
-      #     quic = true;
-      #   }
-      #   // lib.sslTemplate;
-
       nginx.virtualHosts.${domain} =
         {
           enableAuthelia = true; # add custom authelia location

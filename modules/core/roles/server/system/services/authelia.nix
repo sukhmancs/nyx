@@ -74,7 +74,7 @@ in {
         #   settingsFiles = [config.age.secrets.authelia_secret_config.path];
         settings = {
           theme = "dark";
-          # default_redirection_url = "https://xilain.dev";
+          default_redirection_url = "https://xilain.dev";
           default_2fa_method = "totp";
           server = {
             host = mkDefault host;
@@ -96,10 +96,6 @@ in {
             ban_time = 300;
           };
           authentication_backend = {
-            # file = {
-            #   # CHANGEME
-            #   path = "/var/lib/authelia-main/users_database.yml";
-            # };
             password_reset.disable = false;
             refresh_interval = "1m";
             ldap = {
@@ -117,7 +113,6 @@ in {
               mail_attribute = "mail";
               display_name_attribute = "displayName";
               user = "uid=admin,ou=people,dc=xilain,dc=dev";
-              # password = "password"; #TODO
             };
           };
           access_control = {
@@ -134,7 +129,7 @@ in {
                   "172.16.0.0/12"
                   "192.168.0.0/16"
                   "102.209.85.226/27"
-                  "174.119.200.86"
+                  "174.119.200.86" # My home public IP
                 ];
               }
             ];
@@ -155,9 +150,6 @@ in {
             ];
           };
           storage = {
-            # local = {
-            #   path = "/var/lib/authelia-main/db.sqlite3";
-            # };
             postgres = {
               host = "/run/postgresql";
               database = "authelia-main";
