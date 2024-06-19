@@ -24,6 +24,7 @@ in {
   "authelia/storage_encryption_key.age".publicKeys = mkGlobal servers;
   "authelia/postgre_password.age".publicKeys = mkGlobal servers;
   "authelia/lldap_user_pass.age".publicKeys = mkGlobal servers;
+  "authelia/smtp_pass.age".publicKeys = mkGlobal servers;
   "lldap/jwt_secret.age".publicKeys = mkGlobal servers;
   "lldap/user_pass.age".publicKeys = mkGlobal servers;
   "lldap/private_key.age".publicKeys = mkGlobal servers;

@@ -178,6 +178,11 @@ in {
       owner = autheliaUser;
     };
 
+    authelia_smtp_password = mkAgenixSecret cfg.authelia.enable {
+      file = "authelia/smtp_pass.age";
+      owner = autheliaUser;
+    };
+
     #lldap_user_pass = mkAgenixSecret cfg.authelia.enable {
     #  file = "authelia/lldap_user_pass.age";
     #  owner = autheliaUser;

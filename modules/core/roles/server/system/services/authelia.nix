@@ -65,7 +65,7 @@ in {
         };
         environmentVariables = {
           AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.lldap_user_pass.path; # config.age.secrets.ldap_password.path;
-          AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = secrets.mailserver-authelia-secret.path;
+          AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = secrets.authelia_smtp_password.path;
           AUTHELIA_STORAGE_POSTGRES_PASSWORD_FILE = config.age.secrets.authelia_postgre_password.path;
         };
         #   settingsFiles = [config.age.secrets.authelia_secret_config.path];
