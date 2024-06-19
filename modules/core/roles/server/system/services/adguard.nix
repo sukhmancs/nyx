@@ -104,6 +104,12 @@ in {
             }) [
               "https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt" # The Big List of Hacked Malware Web Sites
               "https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt" # malicious url blocklist
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_33.txt" # Steven black's hosts file
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_18.txt" # Filter Phishing domains
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_12.txt" # Anti-mailware list
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_30.txt" # Filter Phishing domains based on PhishTank and OpenPhish lists"
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_57.txt" # Block dating sites
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_47.txt" # Block gambling sites
             ];
         };
       };
