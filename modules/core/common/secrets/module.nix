@@ -173,6 +173,11 @@ in {
       owner = autheliaUser;
     };
 
+    authelia_postgre_password = mkAgenixSecret cfg.authelia.enable {
+      file = "authelia/postgre_password.age";
+      owner = autheliaUser;
+    };
+
     # lldap secrets
     lldap_jwt_secret = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/jwt_secret.age";
@@ -188,6 +193,12 @@ in {
 
     lldap_private_key = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/private_key.age";
+      mode = "440";
+      group = "lldap-secrets";
+    };
+
+    lldap_key_seed = mkAgenixSecret cfg.ldap.enable {
+      file = "lldap/key_seed.age";
       mode = "440";
       group = "lldap-secrets";
     };

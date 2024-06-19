@@ -31,12 +31,13 @@ in {
           #TODO: use secrets
           # LLDAP_JWT_SECRET = "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey";
           # LLDAP_LDAP_USER_PASS = "supersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkeysupersecretkey2323$autA";
-          # LLDAP_JWT_SECRET_FILE = secrets.lldap_jwt_secret.path;
-          # LLDAP_LDAP_USER_PASS_FILE = secrets.lldap_user_pass.path;
-          LLDAP_JWT_SECRET = "na<CP/B&qK?:cmDl>dk>IoHKjB2c#l@M";
-          LLDAP_KEY_SEED = "IiB&IBZH6%kr-IUIoz62^Z@XQCS#s&!d";
+          LLDAP_JWT_SECRET_FILE = secrets.lldap_jwt_secret.path;
+          LLDAP_LDAP_USER_PASS_FILE = secrets.lldap_user_pass.path;
+          LLDAP_KEY_SEED_FILE = secrets.lldap_key_seed.path;
+          # LLDAP_JWT_SECRET = "na<CP/B&qK?:cmDl>dk>IoHKjB2c#l@M";
+          # LLDAP_KEY_SEED = "IiB&IBZH6%kr-IUIoz62^Z@XQCS#s&!d";
           LLDAP_LDAP_USER_DN = "admin";
-          LLDAP_LDAP_USER_PASS = "password";
+          # LLDAP_LDAP_USER_PASS = "password";
           # LLDAP_LDAP_USER_EMAIL = "admin@changeme.com";
           LLDAP_FORCE_LDAP_USER_PASS_RESET = "false";
         };
