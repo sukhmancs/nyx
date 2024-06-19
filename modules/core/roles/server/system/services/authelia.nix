@@ -68,7 +68,7 @@ in {
         };
         environmentVariables = {
           AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.lldap_user_pass.path; # config.age.secrets.ldap_password.path;
-          # AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = secrets.mailserver-authelia-secret.path;
+          AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = secrets.mailserver-authelia-secret.path;
           AUTHELIA_STORAGE_POSTGRES_PASSWORD_FILE = config.age.secrets.authelia_postgre_password.path;
         };
         #   settingsFiles = [config.age.secrets.authelia_secret_config.path];
@@ -147,6 +147,13 @@ in {
                   "group:lldap_strict_readonly"
                 ];
               }
+              {
+                domain = ["manga.xilain.dev"];
+                policy = "two_factor";
+                subject = [
+                  "group:lldap_strict_readonly"
+                ];
+              }
             ];
           };
           storage = {
@@ -159,15 +166,15 @@ in {
           };
           notifier = {
             disable_startup_check = false;
-            filesystem = {
-              filename = "/var/lib/authelia-main/notification.txt";
-            }; #FIXME
-            # smtp = {
-            #   host = "mail.xilain.dev";
-            #   port = 465;
-            #   username = "authelia@xilain.dev";
-            #   sender = "Authelia <authelia@xilain.dev>";
-            # };
+            # filesystem = {
+            #   filename = "/var/lib/authelia-main/notification.txt";
+            # }; #FIXME
+            smtp = {
+              host = "mail.xilain.dev";
+              port = 465;
+              username = "authelia@xilain.dev";
+              sender = "Authelia <authelia@xilain.dev>";
+            };
           };
         };
       };
