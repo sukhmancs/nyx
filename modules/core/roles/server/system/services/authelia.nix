@@ -149,7 +149,7 @@ in {
                 policy = "one_factor";
                 networks = "internal";
                 subject = [
-                  "group:admin"
+                  "group:lldap_strict_readonly"
                 ];
               }
             ];
