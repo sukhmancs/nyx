@@ -193,7 +193,7 @@ in {
     lldap_user_pass = mkAgenixSecret cfg.ldap.enable {
       file = "lldap/user_pass.age";
       mode = "440";
-      owner = autheliaUser
+      owner = autheliaUser;
       group = "lldap-secrets";
     };
 
