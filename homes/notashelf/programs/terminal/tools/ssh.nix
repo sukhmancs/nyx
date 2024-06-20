@@ -27,7 +27,7 @@
           port = 30;
         };
 
-        "prometheus" = {
+        "hermes" = {
           port = 30;
         };
 
