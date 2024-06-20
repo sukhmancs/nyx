@@ -18,8 +18,8 @@
     };
 
     social = {
-      mastodon.enable = false; #CHANGEME
-      matrix.enable = false;
+      mastodon.enable = true;
+      matrix.enable = true;
     };
 
     # bincache = {
@@ -32,10 +32,10 @@
     };
 
     monitoring = {
-      grafana.enable = false; #CHANGEME
-      prometheus.enable = false; #CHANGEME
+      grafana.enable = true;
+      prometheus.enable = true;
       loki.enable = false;
-      uptime-kuma.enable = false; #CHANGEME
+      uptime-kuma.enable = true;
     };
 
     database = {
