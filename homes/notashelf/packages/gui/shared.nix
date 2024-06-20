@@ -21,7 +21,7 @@ in {
       # Electron applications
       # zoom-us # may we never return to online education
       netflix
-      bitwarden
+      bitwarden-desktop
 
       # Obsidian has a pandoc plugin that allows us to render and export
       # alternative image format, but as the name indicates the plugin
