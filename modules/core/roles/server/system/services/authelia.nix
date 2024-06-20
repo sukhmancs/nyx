@@ -132,6 +132,13 @@ in {
             ];
             rules = [
               {
+                domain = ["manga.xilain.dev"];
+                policy = "two_factor";
+                subject = [
+                  "group:lldap_strict_readonly"
+                ];
+              }
+              {
                 domain = ["*.xilain.dev"];
                 policy = "bypass";
                 networks = "localhost";
@@ -140,13 +147,6 @@ in {
                 domain = ["*.xilain.dev"];
                 policy = "one_factor";
                 networks = "internal";
-                subject = [
-                  "group:lldap_strict_readonly"
-                ];
-              }
-              {
-                domain = ["manga.xilain.dev"];
-                policy = "two_factor";
                 subject = [
                   "group:lldap_strict_readonly"
                 ];
