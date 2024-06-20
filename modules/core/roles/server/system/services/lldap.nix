@@ -39,10 +39,8 @@ in {
       nginx.virtualHosts.${domain} =
         {
           locations."/" = {
-            # TODO: the port is not customizable in the upstream service, PR nixpkgs
             proxyPass = "http://${host}:${toString port}";
             proxyWebsockets = true;
-            # extraConfig = "proxy_pass_header Authorization;";
           };
 
           quic = true;

@@ -1,17 +1,19 @@
 {pkgs, ...}: {
   environment = {
-    # Yubikey tooling
     systemPackages = with pkgs; [
+      # Yubikey tooling
       yubikey-personalization
       cryptsetup
       pwgen
       paperkey
       gnupg
       ctmg
-    ];
 
-    # needed for i3blocks
-    pathsToLink = ["/libexec"];
+      # GUI tools
+      alacritty # terminal emulator
+      zathura # PDF viewer
+      imv # image viewer
+    ];
 
     # fix an annoying warning
     etc."mdadm.conf".text = ''

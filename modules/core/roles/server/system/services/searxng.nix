@@ -56,7 +56,7 @@ in {
           server = {
             inherit port;
             method = "GET";
-            secret_key = "changeme"; #"@SEARX_SECRET_KEY@"; # set in the environment file
+            secret_key = "changeme"; #"@SEARX_SECRET_KEY@"; # set in the environment file #FIXME
             limiter = false;
             image_proxy = false; # no thanks, lol
             default_http_headers = {

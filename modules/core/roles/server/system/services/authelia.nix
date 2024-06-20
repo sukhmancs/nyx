@@ -163,9 +163,6 @@ in {
           };
           notifier = {
             disable_startup_check = false;
-            # filesystem = {
-            #   filename = "/var/lib/authelia-main/notification.txt";
-            # }; #FIXME
             smtp = {
               host = "mail.xilain.dev";
               port = 465;
