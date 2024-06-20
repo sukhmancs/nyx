@@ -133,7 +133,7 @@ in {
             rules = [
               {
                 domain = ["manga.xilain.dev"];
-                policy = "two_factor";
+                policy = "one_factor";
                 subject = [
                   "group:lldap_strict_readonly"
                 ];
