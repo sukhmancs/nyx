@@ -31,6 +31,8 @@ in {
       serviceConfig.DynamicUser = lib.mkForce false;
     };
 
+    # Run this command to generate the secrets for credentialsFile:
+    # openssl rand 64 | base64 -w0
     services = {
       atticd = {
         enable = true;
