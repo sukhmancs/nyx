@@ -205,6 +205,11 @@ in ''
     padding: 6px 0px 6px 0px;
   }
 
+  #custom-tray {
+    color: #${base0D};
+    padding: 14px 0px 14px 0px;
+  }
+
   #custom-todo {
     color: #${base05};
     padding-left: 2px;

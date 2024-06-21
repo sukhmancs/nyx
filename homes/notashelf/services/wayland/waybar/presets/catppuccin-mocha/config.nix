@@ -24,8 +24,8 @@ in {
     exclusive = true;
     modules-left = [
       "custom/search"
-      #"hyprland/workspaces"
-      "custom/lock"
+      "cpu"
+      "memory"
       "backlight"
       "battery"
       "custom/weather"
@@ -33,15 +33,14 @@ in {
     ];
     modules-center = ["hyprland/workspaces"];
     modules-right = [
-      "cpu"
-      "memory"
       # (optionalString sys.bluetooth.enable "bluetooth")
       # "gamemode"
-      # "pulseaudio"
       "tray"
+      "pulseaudio"
       "network"
       "custom/swallow"
       "clock"
+      "custom/lock"
       "custom/power"
     ];
 
@@ -58,6 +57,7 @@ in {
         "1" = [];
         "2" = [];
         "3" = [];
+        "4" = [];
       };
       format-icons = {
         "1" = "一";
