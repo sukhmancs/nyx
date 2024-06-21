@@ -26,40 +26,21 @@ in ''
     opacity: 0.2;
   }
 
+  .modules-left {
+    margin: 0px 7px 0px 7px;
+    background-color: #${base02};
+    border: .5px solid #${base01};
+    border-radius: 20px;
+    padding: 10px 0px 10px 0px;
+  }
+
   .modules-right {
     margin: 0px 7px 0px 7px;
     background-color: #${base02};
     border: .5px solid #${base01};
-    border-radius: 15px;
+    border-radius: 20px;
     padding: 10px 0px 10px 0px;
   }
-
-  #custom-weather,
-  #clock,
-  #network,
-  #custom-swallow,
-  #custom-power,
-  #cpu,
-  #battery,
-  #backlight,
-  #memory,
-  #workspaces,
-  #custom-search,
-  #custom-power,
-  #custom-todo,
-  #custom-lock,
-  #custom-weather,
-  #volume,
-  #cpu,
-  #bluetooth,
-  #gamemode,
-  #pulseaudio {
-    border-radius: 15px;
-    margin: 0px 7px 0px 7px;
-    background-color: #${base02};
-    padding: 10px 0px 10px 0px;
-  }
-
 
   #workspaces button {
     background-color: transparent;
@@ -105,66 +86,6 @@ in ''
   #custom-weather {
     color: #${base05};
     background-color: #${base02};
-  }
-
-  #cpu {
-    color: rgba(0, 0, 0, 0.0);
-    background-color: rgba(0, 0, 0, 0.0);
-    margin: -50;
-  }
-
-  #cpu.50 {
-    color: #${base06};
-    background-color: #${base02};
-    border-radius: 15px;
-    margin: 0px 7px 0px 7px;
-    padding: 10px 0px 10px 0px;
-  }
-
-  #cpu.60 {
-    color: #${base09};
-    background-color: #${base02};
-    border-radius: 15px;
-    margin: 0px 7px 0px 7px;
-    padding: 10px 0px 10px 0px;
-  }
-
-  #cpu.70 {
-    color: #${base08};
-    background-color: #${base02};
-    border-radius: 15px;
-    margin: 0px 7px 0px 7px;
-    padding: 10px 0px 10px 0px;
-  }
-
-  #memory.50 {
-    color: #${base06};
-    background-color: #${base02};
-    border-radius: 15px;
-    margin: 0px 7px 0px 7px;
-    padding: 10px 0px 10px 0px;
-  }
-
-  #memory.60 {
-    color: #${base09};
-    background-color: #${base02};
-    border-radius: 15px;
-    margin: 0px 7px 0px 7px;
-    padding: 10px 0px 10px 0px;
-  }
-
-  #memory.70 {
-    color: #${base08};
-    background-color: #${base02};
-    border-radius: 15px;
-    margin: 0px 7px 0px 7px;
-    padding: 10px 0px 10px 0px;
-  }
-
-  #memory {
-    color: rgba(0, 0, 0, 0.0);
-    background-color: rgba(0, 0, 0, 0.0);
-    margin: -50;
   }
 
   #bluetooth {

@@ -58,8 +58,6 @@ in {
         "2" = [];
         "3" = [];
         "4" = [];
-        "5" = [];
-        "6" = [];
       };
       format-icons = {
         "1" = "一";
@@ -316,45 +314,45 @@ in {
       };
     };
 
-    cpu = {
-      interval = 10;
-      format = "{icon}";
-      max-length = 10;
-      states = {
-        "10" = 10;
-        "20" = 20;
-        "30" = 30;
-        "40" = 40;
-        "50" = 50;
-        "60" = 60;
-        "70" = 70;
-        "80" = 80;
-        "90" = 90;
-        "100" = 100;
-      };
-      format-icons = {
-        default = ["░░░░░" "▒░░░░" "▓░░░░" "▓▒░░" "▓▓░░░" "▓▓▒░░" "▓▓▓░░" "▓▓▓▒░" "▓▓▓▓░" "▓▓▓▓▓"];
-      };
-      tooltip = true;
-    };
+    # cpu = {
+    #   interval = 10;
+    #   format = "{icon}";
+    #   max-length = 10;
+    #   states = {
+    #     "10" = 10;
+    #     "20" = 20;
+    #     "30" = 30;
+    #     "40" = 40;
+    #     "50" = 50;
+    #     "60" = 60;
+    #     "70" = 70;
+    #     "80" = 80;
+    #     "90" = 90;
+    #     "100" = 100;
+    #   };
+    #   format-icons = {
+    #     default = ["░░░░░" "▒░░░░" "▓░░░░" "▓▒░░" "▓▓░░░" "▓▓▒░░" "▓▓▓░░" "▓▓▓▒░" "▓▓▓▓░" "▓▓▓▓▓"];
+    #   };
+    #   tooltip = true;
+    # };
 
-    memory = {
-      interval = 10;
-      format = "{icon}";
-      max-length = 10;
-      states = {
-        "20" = 20;
-        "40" = 40;
-        "60" = 60;
-        "80" = 80;
-        "90" = 90;
-        "100" = 100;
-      };
-      format-icons = {
-        default = ["·····" "●····" "●●···" "●●●··" "●●●●·" "●●●●●"];
-      };
-      tooltip = true;
-    };
+    # memory = {
+    #   interval = 10;
+    #   format = "{icon}";
+    #   max-length = 10;
+    #   states = {
+    #     "20" = 20;
+    #     "40" = 40;
+    #     "60" = 60;
+    #     "80" = 80;
+    #     "90" = 90;
+    #     "100" = 100;
+    #   };
+    #   format-icons = {
+    #     default = ["·····" "●····" "●●···" "●●●··" "●●●●·" "●●●●●"];
+    #   };
+    #   tooltip = true;
+    # };
 
     bluetooth = {
       # controller = "controller1", // specify the alias of the controller if there are more than 1 on the system
