@@ -35,9 +35,10 @@ in {
     modules-right = [
       "cpu"
       "memory"
-      (optionalString sys.bluetooth.enable "bluetooth")
-      "gamemode"
-      "pulseaudio"
+      # (optionalString sys.bluetooth.enable "bluetooth")
+      # "gamemode"
+      # "pulseaudio"
+      "tray"
       "network"
       "custom/swallow"
       "clock"
@@ -51,8 +52,13 @@ in {
       on-scroll-up = "${hyprctl} dispatch workspace m+1";
       on-scroll-down = "${hyprctl} dispatch workspace m-1";
       format = "{icon}";
-      active-only = true;
+      active-only = false;
       all-outputs = true;
+      persistent-workspaces = {
+        "1" = [];
+        "2" = [];
+        "3" = [];
+      };
       format-icons = {
         "1" = "一";
         "2" = "二";
@@ -74,7 +80,7 @@ in {
     };
 
     "custom/todo" = {
-      format = "{}";
+      format = "🗒️";
       tooltip = true;
       interval = 7;
       exec = let
@@ -137,6 +143,10 @@ in {
       tooltip = false;
       on-click = "${pkgs.bash}/bin/bash -c '(sleep 0.5s; ${lib.getExe pkgs.swaylock-effects} --grace 0)' & disown";
       format = "";
+    };
+
+    "tray" = {
+      spacing = 10;
     };
 
     "custom/swallow" = {

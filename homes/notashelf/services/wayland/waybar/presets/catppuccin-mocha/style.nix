@@ -129,6 +129,36 @@ in ''
     padding: 10px 0px 10px 0px;
   }
 
+  #memory.50 {
+    color: #${base06};
+    background-color: #${base02};
+    border-radius: 15px;
+    margin: 0px 7px 0px 7px;
+    padding: 10px 0px 10px 0px;
+  }
+
+  #memory.60 {
+    color: #${base09};
+    background-color: #${base02};
+    border-radius: 15px;
+    margin: 0px 7px 0px 7px;
+    padding: 10px 0px 10px 0px;
+  }
+
+  #memory.70 {
+    color: #${base08};
+    background-color: #${base02};
+    border-radius: 15px;
+    margin: 0px 7px 0px 7px;
+    padding: 10px 0px 10px 0px;
+  }
+
+  #memory {
+    color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(0, 0, 0, 0.0);
+    margin: -50;
+  }
+
   #bluetooth {
     color: #${base0E};
   }
