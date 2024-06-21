@@ -204,6 +204,12 @@ in {
                   icon = "authelia";
                 };
               }
+              {
+                Harmonia = {
+                  href = "https://cache.${domain}";
+                  icon = "si-nixos";
+                };
+              }
             ];
           }
           # {
