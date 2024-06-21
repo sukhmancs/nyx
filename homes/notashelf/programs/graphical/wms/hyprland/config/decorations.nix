@@ -23,8 +23,8 @@
       shadow_range = 20;
       shadow_render_power = 3;
 #      "col.shadow" = "rgba(292c3cee)";
-      "col.shadow" = rgb(262626);
-      "col.shadow_inactive" = rgb(161616);
+      "col.shadow" = "rgb(262626)";
+      "col.shadow_inactive" = "rgb(161616)";
       shadow_offset = "0 0";
    };
 
