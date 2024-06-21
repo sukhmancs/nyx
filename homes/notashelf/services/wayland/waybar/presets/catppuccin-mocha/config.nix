@@ -226,6 +226,7 @@ in {
       format-plugged = "󰂄";
       format-alt = "{icon}";
       format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+      tooltip-format = "{icon} {percentage}% ({time})";
     };
     network = let
       nm-editor = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
@@ -252,23 +253,39 @@ in {
 
     cpu = {
       interval = 10;
-      format = "";
+      format = "{icon}";
       max-length = 10;
       states = {
+        "10" = 10;
+        "20" = 20;
+        "30" = 30;
+        "40" = 40;
         "50" = 50;
-        "60" = 75;
-        "70" = 90;
+        "60" = 60;
+        "70" = 70;
+        "80" = 80;
+        "90" = 90;
+        "100" = 100;
+      };
+      format-icons = {
+        default = ["░░░░░" "▒░░░░" "▓░░░░" "▓▒░░" "▓▓░░░" "▓▓▒░░" "▓▓▓░░" "▓▓▓▒░" "▓▓▓▓░" "▓▓▓▓▓"];
       };
     };
 
     memory = {
       interval = 10;
-      format = "󰋛";
+      format = "{icon}";
       max-length = 10;
       states = {
-        "50" = 50;
-        "60" = 75;
-        "70" = 90;
+        "20" = 20;
+        "40" = 40;
+        "60" = 60;
+        "80" = 80;
+        "90" = 90;
+        "100" = 100;
+      };
+      format-icons = {
+        default = ["·····" "●····" "●●···" "●●●··" "●●●●·" "●●●●●"];
       };
     };
 
