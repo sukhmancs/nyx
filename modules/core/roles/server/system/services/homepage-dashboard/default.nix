@@ -116,13 +116,13 @@ in {
                   siteMonitor = "https://git.${domain}";
                 };
               }
-              # {
-              #   Mastodon = {
-              #     href = "https://social.${domain}";
-              #     icon = "mastodon";
-              #     siteMonitor = "https://social.${domain}";
-              #   };
-              # }
+              {
+                Mastodon = {
+                  href = "https://social.${domain}";
+                  icon = "mastodon";
+                  siteMonitor = "https://social.${domain}";
+                };
+              }
               # {
               #   RepoSilite = {
               #     href = "https://repo.${domain}";
