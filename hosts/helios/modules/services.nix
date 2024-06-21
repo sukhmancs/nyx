@@ -22,9 +22,9 @@
       matrix.enable = true;
     };
 
-    # bincache = {
-    #   harmonia.enable = true;
-    # };
+    bincache = {
+      harmonia.enable = true;
+    };
 
     networking = {
       # headscale.enable = true;

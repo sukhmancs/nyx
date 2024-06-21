@@ -311,6 +311,7 @@
       "https://hyprland.cachix.org"
       "https://cache.privatevoid.net"
       "https://nyx.cachix.org"
+      "https://cache.xilain.dev"
     ];
 
     extra-trusted-public-keys = [
@@ -319,6 +320,7 @@
       "cache.privatevoid.net:SErQ8bvNWANeAvtsOESUwVYr2VJynfuc9JRwlzTTkVg="
       "notashelf.cachix.org-1:VTTBFNQWbfyLuRzgm2I7AWSDJdqAa11ytLXHBhrprZk="
       "nyx.cachix.org-1:xH6G0MO9PrpeGe7mHBtj1WbNzmnXr7jId2mCiq6hipE="
+      "cache.xilain.dev-1:jmB+1nvzo2i+y71RgmHjMcKjvzkJTs2JtoRbyV4Z4jc="
     ];
   };
 }
