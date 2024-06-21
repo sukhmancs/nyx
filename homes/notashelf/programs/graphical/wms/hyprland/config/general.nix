@@ -18,7 +18,7 @@ in {
       border_size = 2;
 
       # active border color
-      "col.active_border" = "0xff${colors.base07}";
+      "col.active_border" = "rgb(393939)";# "0xff${colors.base07}";
 
       # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
       apply_sens_to_raw = 0;
