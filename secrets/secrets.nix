@@ -30,8 +30,8 @@ in {
   "lldap/private_key.age".publicKeys = mkGlobal servers;
   "lldap/key_seed.age".publicKeys = mkGlobal servers;
   # "service/forgejo-runner-config.age".publicKeys = mkGlobal servers;
-  # "service/harmonia.age".publicKeys = mkGlobal servers;
-  # "service/attic.age".publicKeys = mkGlobal servers;
+  "service/harmonia.age".publicKeys = mkGlobal servers;
+  "service/attic.age".publicKeys = mkGlobal servers;
   # "service/headscale-noise.age".publicKeys = mkGlobal servers;
   # "service/headscale-derp.age".publicKeys = mkGlobal servers;
 
