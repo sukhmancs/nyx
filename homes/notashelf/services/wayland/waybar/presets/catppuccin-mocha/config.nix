@@ -27,7 +27,7 @@ in {
       "backlight"
       "battery"
       "custom/weather"
-      "custom/todo"
+      # "custom/todo"
       "hyprland/submap"
       "group/info"
     ];
@@ -271,7 +271,8 @@ in {
       brightnessctl = lib.getExe pkgs.brightnessctl;
     in {
       format = "{icon}";
-      format-icons = ["" "" "" "" "" "" "" "" "" "" "" "" "" "" ""];
+      # format-icons = ["" "" "" "" "" "" "" "" "" "" "" "" "" "" ""];
+      format-icons = ["󰋙" "󰫃" "󰫄" "󰫅" "󰫆" "󰫇" "󰫈"];
       on-scroll-up = "${brightnessctl} s 5%-";
       on-scroll-down = "${brightnessctl} s +5%";
       tooltip = true;

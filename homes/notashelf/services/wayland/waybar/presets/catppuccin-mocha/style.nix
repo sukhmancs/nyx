@@ -27,7 +27,7 @@ in ''
   }
 
   .modules-left {
-    margin: 0px 7px 0px 7px;
+    margin: 7px 7px 7px 7px;
     background-color: #${base02};
     border: .5px solid #${base01};
     border-radius: 20px;
@@ -35,7 +35,7 @@ in ''
   }
 
   .modules-right {
-    margin: 0px 7px 0px 7px;
+    margin: 7px 7px 7px 7px;
     background-color: #${base02};
     border: .5px solid #${base01};
     border-radius: 20px;
@@ -83,6 +83,7 @@ in ''
     color: #${base0C};
     box-shadow: inherit;
     text-shadow: inherit;
+    border-radius: 15px;
   }
 
   #workspaces button.active {
