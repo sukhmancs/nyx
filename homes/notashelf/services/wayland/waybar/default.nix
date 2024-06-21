@@ -17,7 +17,7 @@ in {
   config = mkIf (builtins.elem device.type acceptedTypes) {
     home.packages = with pkgs.python3Packages; [requests];
     programs.waybar = {
-      enable = false;
+      enable = true;
       systemd.enable = true;
       package = pkgs.waybar;
       settings = waybar_config;
