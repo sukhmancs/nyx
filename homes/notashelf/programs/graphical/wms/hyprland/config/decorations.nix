@@ -2,7 +2,7 @@
   wayland.windowManager.hyprland.settings = {
     decoration = {
       # fancy corners
-      rounding = 7;
+      rounding = 8;
 
       # blur
       blur = {
@@ -20,10 +20,13 @@
 
       # shadow config
       drop_shadow = "yes";
-      shadow_range = 10;
+      shadow_range = 20;
       shadow_render_power = 3;
-      "col.shadow" = "rgba(292c3cee)";
-    };
+#      "col.shadow" = "rgba(292c3cee)";
+      "col.shadow" = rgb(262626);
+      "col.shadow_inactive" = rgb(161616);
+      shadow_offset = "0 0";
+   };
 
     group = {
       # new windows in a group spawn after current or at group tail
@@ -61,6 +64,7 @@
       animation = [
         "windows, 1, 4, overshot, slide"
         "windowsOut, 1, 4, smoothOut, slide"
+        "windowsMove, 1, 4, default"
         "border,1,10,default"
 
         "fade, 1, 10, smoothIn"
