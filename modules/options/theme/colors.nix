@@ -70,7 +70,7 @@ in {
             base04 = "#869696";
             base05 = "#a1a19a";
             base06 = "#e6e6dc";
-            base07 = "#272727"; # "#fafaf8";
+            base07 = "#fafaf8";
             base08 = "#ff5a67";
             base09 = "#f08e48";
             base0A = "#ffcc1b";

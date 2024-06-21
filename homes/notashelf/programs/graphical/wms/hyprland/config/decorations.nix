@@ -22,11 +22,9 @@
       drop_shadow = "yes";
       shadow_range = 20;
       shadow_render_power = 3;
-#      "col.shadow" = "rgba(292c3cee)";
-      "col.shadow" = "rgb(262626)";
-      "col.shadow_inactive" = "rgb(161616)";
+      "col.shadow" = "rgba(292c3cee)";
       shadow_offset = "0 0";
-   };
+    };
 
     group = {
       # new windows in a group spawn after current or at group tail
@@ -34,8 +32,8 @@
       # focus on the window that has just been moved out of the group
       focus_removed_window = true;
 
-      "col.border_active" = "rgba(88888888)";
-      "col.border_inactive" = "rgba(00000088)";
+      "col.border_active" = "rgb(393939)"; # "rgba(88888888)";
+      "col.border_inactive" = "rgb(262626)"; # "rgba(00000088)";
 
       groupbar = {
         # groupbar stuff

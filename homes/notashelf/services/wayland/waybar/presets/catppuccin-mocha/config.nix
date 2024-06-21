@@ -24,16 +24,17 @@ in {
     exclusive = true;
     modules-left = [
       "custom/search"
-      "hyprland/workspaces"
+      #"hyprland/workspaces"
       "custom/lock"
       "backlight"
       "battery"
       "custom/weather"
       "custom/todo"
     ];
-    modules-center = [];
+    modules-center = ["hyprland/workspaces"];
     modules-right = [
       "cpu"
+      "memory"
       (optionalString sys.bluetooth.enable "bluetooth")
       "gamemode"
       "pulseaudio"
@@ -242,6 +243,17 @@ in {
     cpu = {
       interval = 10;
       format = "";
+      max-length = 10;
+      states = {
+        "50" = 50;
+        "60" = 75;
+        "70" = 90;
+      };
+    };
+
+    memory = {
+      interval = 10;
+      format = "󰋛";
       max-length = 10;
       states = {
         "50" = 50;
