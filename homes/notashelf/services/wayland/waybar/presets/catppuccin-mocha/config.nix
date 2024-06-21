@@ -24,12 +24,12 @@ in {
     exclusive = true;
     modules-left = [
       "custom/search"
-      "cpu"
-      "memory"
       "backlight"
       "battery"
       "custom/weather"
       "custom/todo"
+      "hyprland/submap"
+      "group/info"
     ];
     modules-center = ["hyprland/workspaces"];
     modules-right = [
@@ -58,6 +58,8 @@ in {
         "2" = [];
         "3" = [];
         "4" = [];
+        "5" = [];
+        "6" = [];
       };
       format-icons = {
         "1" = "一";
@@ -77,6 +79,67 @@ in {
       format = " ";
       tooltip = false;
       on-click = "${lib.getExe pkgs.killall} rofi || run-as-service $(rofi -show drun)";
+    };
+
+    "hyprland/submap" = {
+      format = "<b>󰇘</b>";
+      "max-length" = 8;
+      tooltip = true;
+    };
+
+    "group/info" = {
+      orientation = "inherit";
+      drawer = {
+        "transition-duration" = 500;
+        "transition-left-to-right" = false;
+      };
+      modules = [
+        "custom/dmark"
+        "group/gcpu"
+        "memory"
+        "disk"
+      ];
+    };
+
+    "custom/dmark" = {
+      format = "";
+      tooltip = false;
+    };
+
+    "group/gcpu" = {
+      orientation = "inherit";
+      modules = [
+        "custom/cpu-icon"
+        # "custom/cputemp"
+        "cpu"
+      ];
+    };
+
+    "custom/cpu-icon" = {
+      format = "󰻠";
+      tooltip = false;
+    };
+
+    # "custom/cputemp" = {
+    #   format = "{}";
+    #   exec = "~/.config/waybar/bin/cputemp";
+    #   interval = 10;
+    #   "return-type" = "json";
+    # };
+
+    cpu = {
+      format = "<b>{usage}󱉸</b>";
+      "on-click" = "foot btop";
+    };
+
+    memory = {
+      format = "<b>  \n{:2}󱉸</b>";
+    };
+
+    disk = {
+      interval = 600;
+      format = "<b> 󰋊 \n{percentage_used}󱉸</b>";
+      path = "/";
     };
 
     "custom/todo" = {
@@ -210,10 +273,12 @@ in {
       brightnessctl = lib.getExe pkgs.brightnessctl;
     in {
       format = "{icon}";
-      format-icons = ["󰋙" "󰫃" "󰫄" "󰫅" "󰫆" "󰫇" "󰫈"];
-      #format-icons = ["" "" "" "" "" "" "" "" ""];
-      on-scroll-up = "${brightnessctl} s 1%-";
-      on-scroll-down = "${brightnessctl} s +1%";
+      format-icons = ["" "" "" "" "" "" "" "" "" "" "" "" "" "" ""];
+      on-scroll-up = "${brightnessctl} s 5%-";
+      on-scroll-down = "${brightnessctl} s +5%";
+      tooltip = true;
+      tooltip-format = "Brightness: {percent}% ";
+      smooth-scrolling-threshold = 1;
     };
 
     battery = {
@@ -270,6 +335,7 @@ in {
       format-icons = {
         default = ["░░░░░" "▒░░░░" "▓░░░░" "▓▒░░" "▓▓░░░" "▓▓▒░░" "▓▓▓░░" "▓▓▓▒░" "▓▓▓▓░" "▓▓▓▓▓"];
       };
+      tooltip = true;
     };
 
     memory = {
@@ -287,6 +353,7 @@ in {
       format-icons = {
         default = ["·····" "●····" "●●···" "●●●··" "●●●●·" "●●●●●"];
       };
+      tooltip = true;
     };
 
     bluetooth = {

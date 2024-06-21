@@ -26,6 +26,14 @@ in ''
     opacity: 0.2;
   }
 
+  .modules-right {
+    margin: 0px 7px 0px 7px;
+    background-color: #${base02};
+    border: .5px solid #${base01};
+    border-radius: 15px;
+    padding: 10px 0px 10px 0px;
+  }
+
   #custom-weather,
   #clock,
   #network,
