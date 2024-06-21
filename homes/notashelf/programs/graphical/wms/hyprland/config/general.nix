@@ -15,7 +15,7 @@ in {
       gaps_out = 8;
 
       # border thiccness
-      border_size = 3;
+      border_size = 2;
 
       # active border color
       "col.active_border" = "0xff${colors.base07}";

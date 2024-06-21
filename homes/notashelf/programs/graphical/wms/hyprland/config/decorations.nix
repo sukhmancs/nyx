@@ -32,8 +32,8 @@
       # focus on the window that has just been moved out of the group
       focus_removed_window = true;
 
-      "col.border_active" = "rgb(393939)"; # "rgba(88888888)";
-      "col.border_inactive" = "rgb(262626)"; # "rgba(00000088)";
+      "col.border_active" = "rgba(88888888)";
+      "col.border_inactive" = "rgba(00000088)";
 
       groupbar = {
         # groupbar stuff
