@@ -105,7 +105,7 @@ in ''
 
   #network {
     color: #${base0D};
-    padding: 14px 0px 14px 0px;
+
   }
 
   #gamemode {
@@ -135,37 +135,36 @@ in ''
     background-color: #${base02};
     font-weight: 700;
     font-size: 20px;
-    padding: 5px 0px 5px 0px;
+
     font-family: "Iosevka Term";
   }
 
   #pulseaudio {
     color: #${base0B};
-    padding: 5px 0px 5px 0px;
+
     font-size: 30;
   }
 
   #pulseaudio.source-muted,
   #pulseaudio.muted {
     color: #${base08};
-    padding: 16px 0px 16px 0px;
+
     font-size: 15;
   }
 
   #custom-swallow {
     color: #${base0E};
-    padding: 14px 0px 14px 0px;
+
   }
 
   #custom-lock {
     color: #${base0D};
     font-size: 27;
-    padding: 6px 0px 6px 0px;
+
   }
 
   #custom-todo {
     color: #${base05};
-    padding-left: 2px;
   }
 
   #custom-cpu {
@@ -174,7 +173,6 @@ in ''
 
   #custom-power {
     margin-bottom: 7px;
-    padding: 14px 0px 14px 0px;
   }
 
   #custom-search {
