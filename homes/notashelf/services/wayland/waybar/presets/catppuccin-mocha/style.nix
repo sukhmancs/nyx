@@ -42,6 +42,34 @@ in ''
     padding: 10px 0px 10px 0px;
   }
 
+  #custom-weather,
+  #clock,
+  #network,
+  #custom-swallow,
+  #custom-power,
+  #cpu,
+  #battery,
+  #backlight,
+  #memory,
+  #workspaces,
+  #custom-search,
+  #custom-power,
+  #custom-todo,
+  #custom-lock,
+  #custom-weather,
+  #volume,
+  #cpu,
+  #bluetooth,
+  #gamemode,
+  #gcpu,
+  #memory,
+  #disk,
+  #submap,
+  #pulseaudio {
+    margin: 0px 7px 0px 7px;
+    border-radius: 15px;
+  }
+
   #workspaces button {
     background-color: transparent;
     /* Use box-shadow instead of border so the text isn't offset */
@@ -139,6 +167,10 @@ in ''
     padding-left: 2px;
   }
 
+  #custom-cpu {
+    font-size: 20px;
+  }
+
   #custom-power {
     margin-bottom: 7px;
     padding: 14px 0px 14px 0px;
@@ -154,6 +186,7 @@ in ''
 
   #backlight {
     color: #${base0A};
+    font-size: 20px;
   }
 
   #battery {
