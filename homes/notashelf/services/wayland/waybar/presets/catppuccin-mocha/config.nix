@@ -351,7 +351,9 @@ in {
       on-click-right = "${nm-editor}";
     };
 
-    "network#speed" = {
+    "network#speed" = let
+      nm-editor = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
+    in {
       format = " {bandwidthDownBits} ";
       rotate = 90;
       interval = 5;
