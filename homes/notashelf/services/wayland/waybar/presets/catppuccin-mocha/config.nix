@@ -36,6 +36,7 @@ in {
       "battery"
       # "network"
       "group/network"
+      "group/cnoti"
       "clock"
       "custom/lock"
       "custom/power"
@@ -124,6 +125,13 @@ in {
       modules = [
         "network"
         "network#speed"
+      ];
+    };
+
+    "group/cnoti" = {
+      orientation = "inherit";
+      modules = [
+        "custom/github"
       ];
     };
 
