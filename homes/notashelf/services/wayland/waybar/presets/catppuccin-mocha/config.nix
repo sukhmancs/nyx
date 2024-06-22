@@ -55,7 +55,6 @@ in {
         "3" = [];
         "4" = [];
         "5" = [];
-        "6" = [];
       };
       format-icons = {
         "1" = "一";
@@ -178,53 +177,60 @@ in {
       format = "{}";
       interval = 10;
       "return-type" = "json";
-      exec = pkgs.writeShellScript "cputemp-waybar" ''
-        #!/bin/sh
+      exec = let
+        data = "$(sensors coretemp-isa-0000 | sed 's/+//g')";
+        package = "$(echo ${data} | awk -e '/Package/ {print $4}')";
+        coretemp = "$(echo ${data} | awk -e '/Core/ {print $3}')";
 
-        check() {
-          command -v "$1" 1>/dev/null
-        }
+        tooltip = "<b>Core Temp: $package </b>\n";
+      in
+        pkgs.writeShellScript "cputemp-waybar" ''
+          #!/bin/sh
 
-        check sensors || exit
+          check() {
+            command -v "$1" 1>/dev/null
+          }
 
-        data="$(sensors coretemp-isa-0000 | sed 's/+//g')"
-        package="$(echo "$data" | awk -e '/Package/ {print $4}')"
-        coretemp="$(echo "$data" | awk -e '/Core/ {print $3}')"
+          check sensors || exit
 
-        tooltip="<b>Core Temp: $package </b>\n"
+          # data="$(sensors coretemp-isa-0000 | sed 's/+//g')"
+          # package="$(echo "$data" | awk -e '/Package/ {print $4}')"
+          # coretemp="$(echo "$data" | awk -e '/Core/ {print $3}')"
 
-        # "format-icons" : [ "", "", "", "", "" ] ,
-        tempint="$(echo "$package" | cut -d. -f1)"
-        temp="<b>\${tempint}󰔄</b>"
-        icon=""
-        class="cool"
-        [ "$tempint" -gt 50 ] && {
+          # tooltip="<b>Core Temp: $package </b>\n"
+
+          # "format-icons" : [ "", "", "", "", "" ] ,
+          tempint="$(echo ${package} | cut -d. -f1)"
+          temp="<b>${tempint}󰔄</b>"
           icon=""
-          class="normal"
-        }
-        [ "$tempint" -gt 70 ] && {
-          icon=" "
-          class="warm"
-        }
-        [ "$tempint" -gt 85 ] && {
-          icon=" "
-          class="warn"
-        }
-        [ "$tempint" -gt 95 ] && {
-          icon=" "
-          class="critical"
-        }
+          class="cool"
+          [ "$tempint" -gt 50 ] && {
+            icon=""
+            class="normal"
+          }
+          [ "$tempint" -gt 70 ] && {
+            icon=" "
+            class="warm"
+          }
+          [ "$tempint" -gt 85 ] && {
+            icon=" "
+            class="warn"
+          }
+          [ "$tempint" -gt 95 ] && {
+            icon=" "
+            class="critical"
+          }
 
-        j=0
-        for i in $coretemp; do
-          tooltip+="Core $j: $i\n"
-          ((j = j + 1))
-        done
-        tooltip="${tooltip::-2}"
-        cat <<EOF
-        {"text":"$temp","tooltip":"$tooltip", "class": "$class"}
-        EOF
-      '';
+          j=0
+          for i in $coretemp; do
+            tooltip+="Core $j: $i\n"
+            ((j = j + 1))
+          done
+          tooltip="${tooltip::-2}"
+          cat <<EOF
+          {"text":"$temp","tooltip":"$tooltip", "class": "$class"}
+          EOF
+        '';
     };
 
     "custom/todo" = {
