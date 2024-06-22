@@ -82,6 +82,10 @@ in {
       mode = "400";
     };
 
+    github_token = mkAgenixSecret true {
+      file = "service/github_token.age";
+    };
+
     matrix-secret = mkAgenixSecret cfg.social.matrix.enable {
       file = "service/matrix.age";
       owner = "matrix-synapse";

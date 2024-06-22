@@ -400,5 +400,48 @@ in {
       tooltip = true;
       tooltip-format = "Games running: {count}";
     };
+
+    "custom/github" = {
+      format = "{}";
+      return-type = "json";
+      interval = 3600;
+      signal = 9;
+      on-click = "xdg-open https://github.com/notifications;pkill -RTMIN+9 waybar";
+      exec = let
+        todo = pkgs.todo + "/bin/todo";
+        sed = pkgs.gnused + "/bin/sed";
+        wc = pkgs.coreutils + "/bin/wc";
+      in
+        pkgs.writeShellScript "todo-waybar" ''
+                    #!/bin/sh
+                    #!/usr/bin/env bash
+
+          check() {
+            command -v &>/dev/null
+          }
+
+          notify() {
+            check notify-send && notify-send "$@" || echo "$@"
+          }
+
+          count="0"
+          # token=$(cat "${HOME}"/.config/github/notifications.token)
+          token=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
+          count=$(curl -su niksingh710:"${token}" https://api.github.com/notifications | jq '. | length')
+          if [ -z "$count" ]; then
+            count="0"
+          fi
+
+          if [ "$count" -gt 0 ]; then
+            cat <<EOF
+          {"text":"\n$count","tooltip":"<b>Github: $count Notifications</b>"}
+          EOF
+          else
+            cat <<EOF
+          {"text":"","tooltip":"<b>Github: $count Notifications</b>"}
+          EOF
+          fi
+        '';
+    };
   };
 }
