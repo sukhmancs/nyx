@@ -421,9 +421,8 @@ in {
           tail ${tokenPath} -n 1
         '';
       in
-        pkgs.writeShellScript "todo-waybar" ''
-                      #!/bin/sh
-                      #!/usr/bin/env bash
+        pkgs.writeShellScript "github-waybar" ''
+          #!/bin/sh
 
           check() {
             command -v &>/dev/null
@@ -433,19 +432,19 @@ in {
             check notify-send && notify-send "$@" || echo "$@"
           }
 
-            [ -f ${token} ] || {
-              notify "Ensure you have placed token"
-              cat <<EOF
-              {"text":"NaN","tooltip":"Token was not found"}
-            EOF
-              exit 1
-            }
+          [ -f ${token} ] || {
+            notify "Ensure you have placed token"
+            cat <<EOF
+            {"text":"NaN","tooltip":"Token was not found"}
+          EOF
+            exit 1
+          }
 
+          count="0"
+          count=$(curl -su niksingh710:"${token}" https://api.github.com/notifications | jq '. | length')
+          if [ -z "$count" ]; then
             count="0"
-            count=$(curl -su niksingh710:"${token}" https://api.github.com/notifications | jq '. | length')
-            if [ -z "$count" ]; then
-              count="0"
-            fi
+          fi
 
           if [ "$count" -gt 0 ]; then
             cat <<EOF
