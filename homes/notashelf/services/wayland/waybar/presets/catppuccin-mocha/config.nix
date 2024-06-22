@@ -431,14 +431,6 @@ in {
             check notify-send && notify-send "$@" || echo "$@"
           }
 
-          [ -f "${token}" ] || {
-            notify "Ensure you have placed token"
-            cat <<EOF
-            {"text":"NaN","tooltip":"Token was not found"}
-          EOF
-            exit 1
-          }
-
           count="0"
           count=$(curl -su sukhmancs:"${token}" https://api.github.com/notifications | jq '. | length')
           if [ -z "$count" ]; then
