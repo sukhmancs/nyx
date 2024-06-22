@@ -178,7 +178,7 @@ in {
       interval = 10;
       "return-type" = "json";
       exec = let
-        data = "$(sensors coretemp-isa-0000 | sed 's/+//g')";
+        data = "$(sensors asus-isa-0000 | sed 's/+//g')";
         package = "$(echo ${data} | awk -e '/Package/ {print $4}')";
         coretemp = "$(echo ${data} | awk -e '/Core/ {print $3}')";
 
