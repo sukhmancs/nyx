@@ -408,9 +408,10 @@ in {
       signal = 9;
       on-click = "xdg-open https://github.com/notifications;pkill -RTMIN+9 waybar";
       exec = let
-        todo = pkgs.todo + "/bin/todo";
-        sed = pkgs.gnused + "/bin/sed";
-        wc = pkgs.coreutils + "/bin/wc";
+        tokenPath = osConfig.age.secrets.github_token.path;
+        token = ''
+          tail ${tokenPath} -n 1
+        '';
       in
         pkgs.writeShellScript "todo-waybar" ''
                     #!/bin/sh
@@ -424,9 +425,15 @@ in {
             check notify-send && notify-send "$@" || echo "$@"
           }
 
+          [ -f ${token} ] || {
+            notify "Ensure you have placed token"
+            cat <<EOF
+            {"text":"NaN","tooltip":"Token was not found"}
+          EOF
+            exit 1
+          }
+
           count="0"
-          # token=$(cat "${HOME}"/.config/github/notifications.token)
-          token=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
           count=$(curl -su niksingh710:"${token}" https://api.github.com/notifications | jq '. | length')
           if [ -z "$count" ]; then
             count="0"
