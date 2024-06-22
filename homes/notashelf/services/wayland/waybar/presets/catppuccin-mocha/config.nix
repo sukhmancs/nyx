@@ -24,7 +24,7 @@ in {
     exclusive = true;
     modules-left = [
       "custom/search"
-      "battery"
+      # "battery"
       "custom/weather"
       "hyprland/submap"
       "custom/todo"
@@ -33,6 +33,7 @@ in {
     modules-center = ["hyprland/workspaces"];
     modules-right = [
       "group/info-right"
+      "battery"
       "network"
       "clock"
       "custom/lock"
@@ -194,7 +195,7 @@ in {
 
         # "format-icons" : [ "", "", "", "", "" ] ,
         tempint="$(echo "$package" | cut -d. -f1)"
-        temp="<b>${tempint}󰔄</b>"
+        temp="<b>\${tempint}󰔄</b>"
         icon=""
         class="cool"
         [ "$tempint" -gt 50 ] && {
