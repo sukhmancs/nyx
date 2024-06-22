@@ -24,7 +24,6 @@ in {
     exclusive = true;
     modules-left = [
       "custom/search"
-      "backlight"
       "battery"
       "custom/weather"
       # "custom/todo"
@@ -35,10 +34,11 @@ in {
     modules-right = [
       # (optionalString sys.bluetooth.enable "bluetooth")
       # "gamemode"
-      "tray"
-      "pulseaudio"
+      "group/info-right"
+      # "tray"
+      # "pulseaudio"
       "network"
-      "custom/swallow"
+      # "custom/swallow"
       "clock"
       "custom/lock"
       "custom/power"
@@ -58,6 +58,8 @@ in {
         "2" = [];
         "3" = [];
         "4" = [];
+        "5" = [];
+        "6" = [];
       };
       format-icons = {
         "1" = "一";
@@ -99,8 +101,30 @@ in {
       ];
     };
 
+    "group/info-right" = {
+      orientation = "inherit";
+      drawer = {
+        "transition-duration" = 500;
+        "transition-left-to-right" = false;
+      };
+      modules = [
+        "custom/dmark-up"
+        "pulseaudio"
+        "backlight"
+        "custom/swallow"
+        "bluetooth"
+        "gamemode"
+        "tray"
+      ];
+    };
+
     "custom/dmark" = {
       format = "";
+      tooltip = false;
+    };
+
+    "custom/dmark-up" = {
+      format = "";
       tooltip = false;
     };
 
@@ -281,17 +305,20 @@ in {
     };
 
     battery = {
+      rotate = 270;
       states = {
+        good = 80;
         warning = 30;
         critical = 15;
       };
       format = "{icon}";
-      format-charging = "󰂄";
+      format-charging = "<b>{icon} </b>";
+      format-full = "<span color='#82A55F'><b>{icon}</b></span>";
       format-plugged = "󰂄";
-      format-alt = "{icon}";
       format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-      tooltip-format = "{icon} {percentage}% ({time})";
+      tooltip-format = "{timeTo} {capacity} % | {power} W";
     };
+
     network = let
       nm-editor = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
     in {
