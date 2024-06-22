@@ -105,6 +105,7 @@ in {
       modules = [
         "custom/dmark-up"
         "pulseaudio"
+        "privacy"
         "backlight"
         "custom/swallow"
         (optionalString sys.bluetooth.enable "bluetooth")
