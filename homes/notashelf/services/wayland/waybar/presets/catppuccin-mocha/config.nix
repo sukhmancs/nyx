@@ -26,19 +26,14 @@ in {
       "custom/search"
       "battery"
       "custom/weather"
-      # "custom/todo"
       "hyprland/submap"
+      "custom/todo"
       "group/info"
     ];
     modules-center = ["hyprland/workspaces"];
     modules-right = [
-      # (optionalString sys.bluetooth.enable "bluetooth")
-      # "gamemode"
       "group/info-right"
-      # "tray"
-      # "pulseaudio"
       "network"
-      # "custom/swallow"
       "clock"
       "custom/lock"
       "custom/power"
@@ -112,7 +107,7 @@ in {
         "pulseaudio"
         "backlight"
         "custom/swallow"
-        "bluetooth"
+        (optionalString sys.bluetooth.enable "bluetooth")
         "gamemode"
         "tray"
       ];
@@ -132,7 +127,7 @@ in {
       orientation = "inherit";
       modules = [
         "custom/cpu-icon"
-        # "custom/cputemp"
+        "custom/cputemp"
         "cpu"
       ];
     };
@@ -141,13 +136,6 @@ in {
       format = "󰻠";
       tooltip = false;
     };
-
-    # "custom/cputemp" = {
-    #   format = "{}";
-    #   exec = "~/.config/waybar/bin/cputemp";
-    #   interval = 10;
-    #   "return-type" = "json";
-    # };
 
     cpu = {
       format = "<b>{usage}󱉸</b>";
@@ -162,6 +150,79 @@ in {
       interval = 600;
       format = "<b> 󰋊 \n{percentage_used}󱉸</b>";
       path = "/";
+    };
+
+    privacy = {
+      orientation = "vertical";
+      icon-spacing = 4;
+      icon-size = 14;
+      "transition-duration" = 250;
+      modules = [
+        {
+          type = "screenshare";
+          tooltip = true;
+          "tooltip-icon-size" = 24;
+        }
+      ];
+    };
+
+    "custom/screenshare" = {
+      format = "󰇘";
+      tooltip = true;
+      tooltip-format = "Screen sharing is active";
+    };
+
+    "custom/cputemp" = {
+      format = "{}";
+      interval = 10;
+      "return-type" = "json";
+      exec = pkgs.writeShellScript "cputemp-waybar" ''
+        #!/bin/sh
+
+        check() {
+          command -v "$1" 1>/dev/null
+        }
+
+        check sensors || exit
+
+        data="$(sensors coretemp-isa-0000 | sed 's/+//g')"
+        package="$(echo "$data" | awk -e '/Package/ {print $4}')"
+        coretemp="$(echo "$data" | awk -e '/Core/ {print $3}')"
+
+        tooltip="<b>Core Temp: $package </b>\n"
+
+        # "format-icons" : [ "", "", "", "", "" ] ,
+        tempint="$(echo "$package" | cut -d. -f1)"
+        temp="<b>${tempint}󰔄</b>"
+        icon=""
+        class="cool"
+        [ "$tempint" -gt 50 ] && {
+          icon=""
+          class="normal"
+        }
+        [ "$tempint" -gt 70 ] && {
+          icon=" "
+          class="warm"
+        }
+        [ "$tempint" -gt 85 ] && {
+          icon=" "
+          class="warn"
+        }
+        [ "$tempint" -gt 95 ] && {
+          icon=" "
+          class="critical"
+        }
+
+        j=0
+        for i in $coretemp; do
+          tooltip+="Core $j: $i\n"
+          ((j = j + 1))
+        done
+        tooltip="${tooltip::-2}"
+        cat <<EOF
+        {"text":"$temp","tooltip":"$tooltip", "class": "$class"}
+        EOF
+      '';
     };
 
     "custom/todo" = {
@@ -341,46 +402,6 @@ in {
         default = ["" "" ""];
       };
     };
-
-    # cpu = {
-    #   interval = 10;
-    #   format = "{icon}";
-    #   max-length = 10;
-    #   states = {
-    #     "10" = 10;
-    #     "20" = 20;
-    #     "30" = 30;
-    #     "40" = 40;
-    #     "50" = 50;
-    #     "60" = 60;
-    #     "70" = 70;
-    #     "80" = 80;
-    #     "90" = 90;
-    #     "100" = 100;
-    #   };
-    #   format-icons = {
-    #     default = ["░░░░░" "▒░░░░" "▓░░░░" "▓▒░░" "▓▓░░░" "▓▓▒░░" "▓▓▓░░" "▓▓▓▒░" "▓▓▓▓░" "▓▓▓▓▓"];
-    #   };
-    #   tooltip = true;
-    # };
-
-    # memory = {
-    #   interval = 10;
-    #   format = "{icon}";
-    #   max-length = 10;
-    #   states = {
-    #     "20" = 20;
-    #     "40" = 40;
-    #     "60" = 60;
-    #     "80" = 80;
-    #     "90" = 90;
-    #     "100" = 100;
-    #   };
-    #   format-icons = {
-    #     default = ["·····" "●····" "●●···" "●●●··" "●●●●·" "●●●●●"];
-    #   };
-    #   tooltip = true;
-    # };
 
     bluetooth = {
       # controller = "controller1", // specify the alias of the controller if there are more than 1 on the system

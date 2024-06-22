@@ -39,7 +39,7 @@ in ''
     background-color: #${base02};
     border: .5px solid #${base01};
     border-radius: 15px;
-    padding: 2px 2px;
+    padding: 2px 0px 2px 0px;
   }
 
   .modules-right {
@@ -47,7 +47,7 @@ in ''
     background-color: #${base02};
     border: .5px solid #${base01};
     border-radius: 15px;
-    padding: 2px 2px;
+    padding: 2px 0px 2px 0px;
   }
 
   #custom-weather,
@@ -74,7 +74,7 @@ in ''
   #disk,
   #submap,
   #pulseaudio {
-    padding: 2px 2px;
+    padding: 4px 0px 4px 0px;
     margin: 0px 0px;
     border-radius: 15px;
   }
