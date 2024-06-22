@@ -31,7 +31,6 @@ in ''
     background-color: #${base02};
     border: .5px solid #${base01};
     border-radius: 20px;
-    padding: 10px 0px 10px 0px;
   }
 
   .modules-right {
@@ -39,7 +38,6 @@ in ''
     background-color: #${base02};
     border: .5px solid #${base01};
     border-radius: 20px;
-    padding: 10px 0px 10px 0px;
   }
 
   #custom-weather,
@@ -66,8 +64,6 @@ in ''
   #disk,
   #submap,
   #pulseaudio {
-    margin: 0px 7px 0px 7px;
-    border-radius: 15px;
   }
 
   #workspaces button {
@@ -99,7 +95,6 @@ in ''
   }
 
   #workspaces {
-    font-size: 15px;
     background-color: #${base02};
   }
 
@@ -141,15 +136,11 @@ in ''
 
   #pulseaudio {
     color: #${base0B};
-
-    font-size: 30;
   }
 
   #pulseaudio.source-muted,
   #pulseaudio.muted {
     color: #${base08};
-
-    font-size: 15;
   }
 
   #custom-swallow {
@@ -159,7 +150,6 @@ in ''
 
   #custom-lock {
     color: #${base0D};
-    font-size: 27;
 
   }
 
@@ -168,7 +158,7 @@ in ''
   }
 
   #custom-cpu {
-    font-size: 20px;
+    color: #${base0B};
   }
 
   #custom-power {
@@ -185,7 +175,6 @@ in ''
 
   #backlight {
     color: #${base0A};
-    font-size: 20px;
   }
 
   #battery {
@@ -211,5 +200,4 @@ in ''
     font-family: 'Lato', sans-serif;
     padding: 20px;
   }
-
 ''
