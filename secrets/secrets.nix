@@ -32,7 +32,7 @@ in {
   # "service/forgejo-runner-config.age".publicKeys = mkGlobal servers;
   "service/harmonia.age".publicKeys = mkGlobal servers;
   "service/attic.age".publicKeys = mkGlobal servers;
-  "service/github_token.age".publicKeys = mkGlobal servers;
+  "service/github_notification_token.age".publicKeys = mkGlobal servers;
   # "service/headscale-noise.age".publicKeys = mkGlobal servers;
   # "service/headscale-derp.age".publicKeys = mkGlobal servers;
 

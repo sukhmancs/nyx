@@ -82,8 +82,8 @@ in {
       mode = "400";
     };
 
-    github_token = mkAgenixSecret true {
-      file = "service/github_token.age";
+    github_notification_token = mkAgenixSecret true {
+      file = "service/github_notification_token.age";
     };
 
     matrix-secret = mkAgenixSecret cfg.social.matrix.enable {
