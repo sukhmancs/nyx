@@ -34,6 +34,14 @@ in ''
     padding: 2px 2px;
   }
 
+  .modules-center {
+    margin: 7px 7px 7px 7px;
+    background-color: #${base02};
+    border: .5px solid #${base01};
+    border-radius: 15px;
+    padding: 2px 2px;
+  }
+
   .modules-right {
     margin: 7px 7px 7px 7px;
     background-color: #${base02};
@@ -67,6 +75,8 @@ in ''
   #submap,
   #pulseaudio {
     padding: 2px 2px;
+    margin: 0px 0px;
+    border-radius: 15px;
   }
 
   #workspaces button {
@@ -95,6 +105,7 @@ in ''
 
   #custom-power {
     color: #${base08};
+    margin-bottom: 7px;
   }
 
   #workspaces {
