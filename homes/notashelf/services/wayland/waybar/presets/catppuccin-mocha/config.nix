@@ -183,6 +183,8 @@ in {
         coretemp = "$(echo ${data} | awk -e '/Core/ {print $3}')";
 
         tooltip = "<b>Core Temp: $package </b>\n";
+        tempint = "$(echo ${package} | cut -d. -f1)";
+        temp = "<b>${tempint}󰔄</b>";
       in
         pkgs.writeShellScript "cputemp-waybar" ''
           #!/bin/sh
@@ -200,8 +202,8 @@ in {
           # tooltip="<b>Core Temp: $package </b>\n"
 
           # "format-icons" : [ "", "", "", "", "" ] ,
-          tempint="$(echo ${package} | cut -d. -f1)"
-          temp="<b>${tempint}󰔄</b>"
+          # tempint="$(echo ${package} | cut -d. -f1)"
+          # temp="<b>${tempint}󰔄</b>"
           icon=""
           class="cool"
           [ "$tempint" -gt 50 ] && {
