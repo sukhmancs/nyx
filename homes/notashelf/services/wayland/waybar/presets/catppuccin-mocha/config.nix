@@ -34,7 +34,8 @@ in {
     modules-right = [
       "group/info-right"
       "battery"
-      "network"
+      # "network"
+      "group/network"
       "clock"
       "custom/lock"
       "custom/power"
@@ -111,6 +112,18 @@ in {
         (optionalString sys.bluetooth.enable "bluetooth")
         "gamemode"
         "tray"
+      ];
+    };
+
+    "group/network" = {
+      orientation = "inherit";
+      drawer = {
+        "transition-duration" = 500;
+        "transition-left-to-right" = true;
+      };
+      modules = [
+        "network"
+        "network#speed"
       ];
     };
 
@@ -336,6 +349,18 @@ in {
       format-disconnected = "󰤭";
       tooltip-format = "{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)";
       on-click-right = "${nm-editor}";
+    };
+
+    "network#speed" = {
+      format = " {bandwidthDownBits} ";
+      rotate = 90;
+      interval = 5;
+      tooltip-format = "{ipaddr}";
+      tooltip-format-wifi = "{essid} ({signalStrength}%)   \n{ipaddr} | {frequency} MHz{icon} ";
+      tooltip-format-ethernet = "{ifname} 󰈀 \n{ipaddr} | {frequency} MHz{icon} ";
+      tooltip-format-disconnected = "Not Connected to any type of Network";
+      tooltip = true;
+      on-click = "${nm-editor}";
     };
 
     pulseaudio = {
