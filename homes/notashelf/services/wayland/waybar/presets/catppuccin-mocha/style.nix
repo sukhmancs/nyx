@@ -17,7 +17,7 @@ in ''
     border-radius: 20px;
     box-shadow: 2 3 2 2px #151515;
     color: #${base05};
-    margin: 16px 16px;
+    margin: 8px 8px;
     transition-property: background-color;
     transition-duration: .5s;
   }
@@ -30,14 +30,16 @@ in ''
     margin: 7px 7px 7px 7px;
     background-color: #${base02};
     border: .5px solid #${base01};
-    border-radius: 20px;
+    border-radius: 15px;
+    padding: 2px 2px;
   }
 
   .modules-right {
     margin: 7px 7px 7px 7px;
     background-color: #${base02};
     border: .5px solid #${base01};
-    border-radius: 20px;
+    border-radius: 15px;
+    padding: 2px 2px;
   }
 
   #custom-weather,
@@ -64,6 +66,7 @@ in ''
   #disk,
   #submap,
   #pulseaudio {
+    padding: 2px 2px;
   }
 
   #workspaces button {
@@ -130,7 +133,6 @@ in ''
     background-color: #${base02};
     font-weight: 700;
     font-size: 20px;
-
     font-family: "Iosevka Term";
   }
 
@@ -159,10 +161,6 @@ in ''
 
   #custom-cpu {
     color: #${base0B};
-  }
-
-  #custom-power {
-    margin-bottom: 7px;
   }
 
   #custom-search {
