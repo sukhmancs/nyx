@@ -417,7 +417,7 @@ in {
       on-click = "xdg-open https://github.com/notifications;pkill -RTMIN+9 waybar";
       exec = let
         token = ''
-          tail ${osConfig.age.secrets.github_token.path} -n 1
+          tail ${osConfig.age.secrets.github_notification_token.path} -n 1
         '';
       in
         pkgs.writeShellScript "github-waybar" ''
