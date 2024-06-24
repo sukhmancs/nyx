@@ -24,7 +24,7 @@ in {
       acpid.enable = true;
 
       # allows changing system behavior based upon user-selected power profiles
-      power-profiles-daemon.enable = false;
+      power-profiles-daemon.enable = true;
 
       # temperature target on battery
       undervolt = {
