@@ -34,7 +34,7 @@ in {
 
       # superior power management
       auto-cpufreq = {
-        enable = true;
+        enable = false;
         settings = let
           MHz = x: x * 1000;
         in {
