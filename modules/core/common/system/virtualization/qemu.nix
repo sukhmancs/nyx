@@ -24,7 +24,7 @@ in {
         enable = true;
         qemu = {
           package = pkgs.qemu_kvm;
-          runAsRoot = false; #FIXME:permission denied error everytime it is set to false. Manually changing file permissions did not work.
+          runAsRoot = true; #FIXME:permission denied error everytime it is set to false. Manually changing file permissions did not work.
           swtpm.enable = true;
 
           ovmf = {
