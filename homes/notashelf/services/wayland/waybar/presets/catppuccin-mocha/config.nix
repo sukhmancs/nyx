@@ -27,7 +27,6 @@ in {
       "custom/weather"
       "hyprland/submap"
       "custom/todo"
-      "keyboard-state"
       "group/info"
     ];
     modules-center = ["hyprland/workspaces"];
