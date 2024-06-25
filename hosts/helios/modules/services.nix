@@ -1,7 +1,7 @@
 {
   config.modules.system.services = {
     nextcloud.enable = true;
-    mailserver.enable = false; #Change me
+    mailserver.enable = true;
     vaultwarden.enable = true;
     forgejo.enable = true;
     searxng.enable = true;
