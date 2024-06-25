@@ -3,13 +3,13 @@
     nextcloud.enable = true;
     mailserver.enable = false; #Change me
     vaultwarden.enable = true;
-    forgejo.enable = false; #Change me
+    forgejo.enable = true;
     searxng.enable = true;
     reposilite.enable = false;
-    invidious.enable = false; #Change me
-    suwayomi-server.enable = false; #Change me
+    invidious.enable = true;
+    suwayomi-server.enable = true;
     adguard.enable = true;
-    netdata.enable = false; #Change me
+    netdata.enable = true;
     authelia.enable = true;
     jitsi-meet.enable = false; #FIXME: Remove jitsi-meet as i was unable to find a way for jitsi-meet to listen on different port other than 443. I am already serving my own website on that port.And that is where nginx is listening
 
@@ -18,12 +18,12 @@
     };
 
     social = {
-      mastodon.enable = false; #Change me
-      matrix.enable = false; #Change me
+      mastodon.enable = true;
+      matrix.enable = true;
     };
 
     bincache = {
-      harmonia.enable = false; #Change me
+      harmonia.enable = true;
     };
 
     networking = {
