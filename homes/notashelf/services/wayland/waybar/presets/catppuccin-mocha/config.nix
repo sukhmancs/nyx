@@ -24,17 +24,16 @@ in {
     exclusive = true;
     modules-left = [
       "custom/search"
-      # "battery"
       "custom/weather"
       "hyprland/submap"
       "custom/todo"
+      "keyboard-state"
       "group/info"
     ];
     modules-center = ["hyprland/workspaces"];
     modules-right = [
       "group/info-right"
       "battery"
-      # "network"
       "group/network"
       "group/cnoti"
       "clock"
@@ -161,6 +160,17 @@ in {
     cpu = {
       format = "<b>{usage}󱉸</b>";
       "on-click" = "foot btop";
+    };
+
+    "keyboard-state" = {
+      numlock = true;
+      capslock = true;
+      format = "{name} {icon}";
+      format-icons = {
+        locked = "";
+        unlocked = "";
+      };
+      tooltip = true;
     };
 
     memory = {

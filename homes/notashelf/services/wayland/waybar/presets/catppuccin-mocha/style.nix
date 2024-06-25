@@ -82,14 +82,14 @@ in ''
   #workspaces button {
     background-color: transparent;
     /* Use box-shadow instead of border so the text isn't offset */
-    color: #${base0D};
+    color: #${base07};
     font-size: 21px;
     /* padding-left: 6px; */
     box-shadow: inset 0 -3px transparent;
   }
 
   #workspaces button:hover {
-    color: #${base0C};
+    color: #${base08};
     box-shadow: inherit;
     text-shadow: inherit;
     border-radius: 15px;
@@ -113,12 +113,12 @@ in ''
   }
 
   #network {
-    color: #${base0D};
+    color: #${base07};
 
   }
 
   #gamemode {
-    color: #${base0D};
+    color: #${base07};
   }
 
   #custom-weather {
@@ -162,7 +162,7 @@ in ''
   }
 
   #custom-lock {
-    color: #${base0D};
+    color: #${base07};
 
   }
 
