@@ -1,6 +1,6 @@
 {
   config.modules.system.services = {
-    nextcloud.enable = false; #Change me
+    nextcloud.enable = true;
     mailserver.enable = false; #Change me
     vaultwarden.enable = true;
     forgejo.enable = false; #Change me
@@ -8,7 +8,7 @@
     reposilite.enable = false;
     invidious.enable = false; #Change me
     suwayomi-server.enable = false; #Change me
-    adguard.enable = false; #Change me
+    adguard.enable = true;
     netdata.enable = false; #Change me
     authelia.enable = true;
     jitsi-meet.enable = false; #FIXME: Remove jitsi-meet as i was unable to find a way for jitsi-meet to listen on different port other than 443. I am already serving my own website on that port.And that is where nginx is listening
