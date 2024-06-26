@@ -42,7 +42,6 @@ in {
       loginAccounts = {
         "shelf@xilain.dev" = {
           hashedPasswordFile = secrets.mailserver-secret.path;
-          # hashedPasswordFile = "/home/notashelf/password"; #REMOVEME
           aliases = [
             "me"
             "shelf"
