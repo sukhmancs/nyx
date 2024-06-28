@@ -23,7 +23,7 @@ in {
         #"interface-name:br-*"
         "interface-name:rndis*"
         "interface-name:docker*"
-        "interface-name:virbr*"
+        #        "interface-name:virbr*"
         "interface-name:vboxnet*"
         "interface-name:waydroid*"
         #"type:bridge"
