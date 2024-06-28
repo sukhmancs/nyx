@@ -31,7 +31,7 @@
 
     networking = {
       optimizeTcp = true;
-      nftables.enable = true;
+      nftables.enable = false; # Change me
       #      tailscale = { # FIXME:
       #        enable = true;
       #        isClient = true;
