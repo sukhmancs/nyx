@@ -6,23 +6,8 @@
   ...
 }: let
   inherit (lib) optionalString primaryMonitor;
-  waybar-wttr = pkgs.stdenv.mkDerivation {
-    name = "waybar-wttr";
-    buildInputs = [
-      (pkgs.python39.withPackages
-        (pythonPackages: with pythonPackages; [requests]))
-    ];
-    unpackPhase = "true";
-    installPhase = ''
-      mkdir -p $out/bin
-      cp ${./waybar-wttr.py} $out/bin/waybar-wttr
-      chmod +x $out/bin/waybar-wttr
-    '';
-  };
-
   sys = osConfig.modules.system;
 in {
-  home.packages = [waybar-wttr];
   mainBar = {
     layer = "top";
     position = "left";
@@ -51,7 +36,6 @@ in {
       "group/cnoti"
       "clock"
       "custom/lock"
-      "custom/power"
     ];
 
     "hyprland/workspaces" = let
@@ -257,15 +241,7 @@ in {
       return-type = "json";
     };
 
-    "custom/weather" = {
-      format = "{}";
-      tooltip = true;
-      interval = 3600;
-      exec = "waybar-wttr";
-      return-type = "json";
-    };
-
-    "custom/weather1" = let
+    "custom/weather" = let
       waybar-wttr = pkgs.stdenv.mkDerivation {
         name = "waybar-wttr";
         buildInputs = [(pkgs.python3.withPackages (pythonPackages: with pythonPackages; [requests]))];
@@ -355,7 +331,6 @@ in {
       brightnessctl = lib.getExe pkgs.brightnessctl;
     in {
       format = "{icon}";
-      # format-icons = ["" "" "" "" "" "" "" "" "" "" "" "" "" "" ""];
       format-icons = ["󰋙" "󰫃" "󰫄" "󰫅" "󰫆" "󰫇" "󰫈"];
       on-scroll-up = "${brightnessctl} s 5%-";
       on-scroll-down = "${brightnessctl} s +5%";
@@ -379,15 +354,11 @@ in {
       tooltip-format = "{timeTo} {capacity} % | {power} W";
     };
 
-    network = let
-      nm-editor = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
-    in {
+    network = {
       format-wifi = "󰤨";
       format-ethernet = "󰈀";
       format-alt = "󱛇";
       format-disconnected = "󰤭";
-      tooltip-format = "{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)";
-      on-click-right = "${nm-editor}";
     };
 
     "network#speed" = let
