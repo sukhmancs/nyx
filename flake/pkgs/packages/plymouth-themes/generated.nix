@@ -9,7 +9,7 @@
       repo = "plymouth-themes";
       rev = "5d8817458d764bff4ff9daae94cf1bbaabf16ede";
       fetchSubmodules = false;
-      sha256 = "sha256-e3lRgIBzDkKcWEp5yyRCzQJM6yyTjYC5XmNUZZroDuw=";
+      sha256 = "sha256-XLGwmW6yk9/jhlHwWCgAkWJ8dOTCN6t9SEGc/OTuHmk=";
     };
     date = "2023-08-22";
   };
