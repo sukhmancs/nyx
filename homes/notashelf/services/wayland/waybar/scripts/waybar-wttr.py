@@ -95,12 +95,9 @@ if tempint >= 0 and tempint < 10:
 
 
 data["text"] = (
-    " "
-    + WEATHER_CODES[weather["current_condition"][0]["weatherCode"]]
-    + " "
-    + extrachar
-    + weather["current_condition"][0]["FeelsLikeC"]
-    + "°"
+    WEATHER_CODES[weather["current_condition"][0]["weatherCode"]]
+    # + weather["current_condition"][0]["FeelsLikeC"]
+    # + "°"
 )
 
 data["tooltip"] = (

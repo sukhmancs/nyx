@@ -10,15 +10,15 @@
 in {
   mainBar = {
     layer = "top";
-    position = "left";
+    position = "right";
     # monitor configuration, kind of dirty since it assumes DP-1 is my main monitor
     output = primaryMonitor osConfig; #builtins.elemAt monitors 0;
     width = 55;
-    spacing = 7;
-    margin-left = 6;
-    margin-top = 9;
-    margin-bottom = 9;
-    margin-right = null;
+    spacing = 6;
+    margin-left = null;
+    margin-top = 6;
+    margin-bottom = 6;
+    margin-right = 6;
     fixed-center = true;
     exclusive = true;
     modules-left = [
