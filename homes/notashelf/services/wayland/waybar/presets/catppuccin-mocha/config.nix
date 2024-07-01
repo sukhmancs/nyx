@@ -6,9 +6,23 @@
   ...
 }: let
   inherit (lib) optionalString primaryMonitor;
+  waybar-wttr = pkgs.stdenv.mkDerivation {
+    name = "waybar-wttr";
+    buildInputs = [
+      (pkgs.python39.withPackages
+        (pythonPackages: with pythonPackages; [requests]))
+    ];
+    unpackPhase = "true";
+    installPhase = ''
+      mkdir -p $out/bin
+      cp ${./waybar-wttr.py} $out/bin/waybar-wttr
+      chmod +x $out/bin/waybar-wttr
+    '';
+  };
 
   sys = osConfig.modules.system;
 in {
+  home.packages = [waybar-wttr];
   mainBar = {
     layer = "top";
     position = "left";
@@ -243,7 +257,15 @@ in {
       return-type = "json";
     };
 
-    "custom/weather" = let
+    "custom/weather" = {
+      format = "{}";
+      tooltip = true;
+      interval = 3600;
+      exec = "waybar-wttr";
+      return-type = "json";
+    };
+
+    "custom/weather1" = let
       waybar-wttr = pkgs.stdenv.mkDerivation {
         name = "waybar-wttr";
         buildInputs = [(pkgs.python3.withPackages (pythonPackages: with pythonPackages; [requests]))];
@@ -437,7 +459,7 @@ in {
           }
 
           count="0"
-          count=$(curl -su sukhmancs:$token https://api.github.com/notifications | jq '. | length')
+          count=$(curl -su sukhmancs:${token} https://api.github.com/notifications | jq '. | length')
           if [ -z "$count" ]; then
             count="0"
           fi
