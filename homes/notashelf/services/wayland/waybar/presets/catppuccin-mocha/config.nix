@@ -24,7 +24,6 @@ in {
     modules-left = [
       "custom/search"
       "custom/weather"
-      "hyprland/submap"
       "custom/todo"
       "group/info"
     ];
@@ -53,6 +52,7 @@ in {
         "3" = [];
         "4" = [];
         "5" = [];
+        "6" = [];
       };
       format-icons = {
         "1" = "一";
