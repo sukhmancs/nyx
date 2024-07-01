@@ -53,6 +53,8 @@ in {
         "4" = [];
         "5" = [];
         "6" = [];
+        "7" = [];
+        "8" = [];
       };
       format-icons = {
         "1" = "一";
@@ -103,11 +105,9 @@ in {
       modules = [
         "custom/dmark-up"
         "pulseaudio"
-        "privacy"
         "backlight"
         "custom/swallow"
         (optionalString sys.bluetooth.enable "bluetooth")
-        "gamemode"
         "tray"
       ];
     };
