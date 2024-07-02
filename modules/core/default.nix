@@ -1,0 +1,29 @@
+{
+  imports = [
+    ./boot
+    ./containers
+    ./environment
+    ./gaming
+    ./hardware
+    ./networking
+    ./nix
+    ./programs
+    ./secrets
+    ./security
+    ./services
+    ./theme
+    ./users
+    ./virtualization
+    ./wayland
+    ./xorg
+
+    ./activation.nix
+    ./docs.nix
+    ./emulation.nix
+    ./encryption.nix
+    ./fs.nix
+    ./hyprland.nix
+    ./impermanence.nix
+    ./workstation.nix
+  ];
+}
