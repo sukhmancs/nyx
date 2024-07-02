@@ -2,8 +2,8 @@
   imports = [
     ./common
     ./editors
-    ./emulators
+    ./programs
     ./shell
-    ./tools
+    ./terminals
   ];
 }

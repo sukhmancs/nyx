@@ -8,11 +8,6 @@
   gitPackage = pkgs.gitFull;
   cfg = modules.system.programs.git;
 in {
-  imports = [
-    ./aliases.nix
-    ./ignore.nix
-  ];
-
   config = {
     home.packages = with pkgs; [
       gist # manage github gists
@@ -39,6 +34,70 @@ in {
         enable = true;
         skipSmudge = true;
       };
+
+      aliases = {
+        br = "branch";
+        c = "commit -m";
+        ca = "commit -am";
+        co = "checkout";
+        d = "diff";
+        df = "!git hist | peco | awk '{print $2}' | xargs -I {} git diff {}^ {}";
+        edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`";
+        fuck = "commit --amend -m";
+        graph = "log --all --decorate --graph";
+        ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)";
+        pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)";
+        af = "!git add $(git ls-files -m -o --exclude-standard | fzf -m)";
+        st = "status";
+        hist = ''
+          log --pretty=format:"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)" --graph --date=relative --decorate --all
+        '';
+        llog = ''
+          log --graph --name-status --pretty=format:"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset" --date=relative
+        '';
+      };
+
+      ignores = [
+        # COMMON
+        ".cache/"
+        ".DS_Store"
+        "auto-save-list"
+        "*.elc"
+
+        # IDE
+        ".idea/"
+        "*.swp"
+        ".~lock*"
+
+        # NPM
+        "node_modules"
+
+        # Nix
+        ".direnv/"
+        "result"
+        "result-*"
+
+        # C
+        ".tags"
+        "tags"
+        "*~"
+        "*.o"
+        "*.so"
+        "*.cmake"
+        "CMakeCache.txt"
+        "CMakeFiles/"
+        "cmake-build-debug/"
+        "compile_commands.json"
+        ".ccls*"
+
+        # Python
+        "venv"
+        ".venv"
+        "*pyc"
+        "*.egg-info/"
+        "__pycached__/"
+        ".mypy_cache"
+      ];
 
       extraConfig = {
         # I don't care about the usage of the term "master"

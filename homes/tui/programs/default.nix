@@ -1,13 +1,9 @@
 {
   imports = [
-    ./bin
-    ./fastfetch
-    ./git
     ./latex.nix
     ./neomutt
     ./newsboat
-    ./vifm
-    ./xplr
+    ./scripts
     ./yazi
     ./zellij
 
@@ -16,7 +12,9 @@
     ./dircolors.nix
     ./editorconfig.nix
     ./eza.nix
+    ./fastfetch.nix
     ./fzf.nix
+    ./git.nix
     ./gh.nix
     ./gpg.nix
     ./man.nix
