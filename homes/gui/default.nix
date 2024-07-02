@@ -5,7 +5,7 @@
     ./desktops
     ./gaming
     ./launchers
+    ./lock
     ./programs
-    ./screenlock
   ];
 }

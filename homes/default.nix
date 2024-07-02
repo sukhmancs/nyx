@@ -18,70 +18,54 @@
   specialArgs = {inherit inputs self inputs' self' defaults;};
 in {
   home-manager = mkIf env.useHomeManager {
-    # tell home-manager to be as verbose as possible
+    # Enable verbose logging for Home Manager
     verbose = true;
 
-    # use the system configuration’s pkgs argument
-    # this ensures parity between nixos' pkgs and hm's pkgs
+    # Synchronize package sets between NixOS and Home Manager
     useGlobalPkgs = true;
 
     # enable the usage user packages through
     # the users.users.<name>.packages option
     useUserPackages = true;
 
-    # move existing files to the .hm.old suffix rather than failing
-    # with a very long error message about it
-    backupFileExtension = "hm.old";
+    # Define a standard file extension for backup files created by Home Manager
+    backupFileExtension = "hm.backup";
 
-    # extra specialArgs passed to Home Manager
-    # for reference, the config argument in nixos can be accessed
-    # in home-manager through osConfig without us passing it
+    # Additional special arguments for Home Manager, enhancing configurability
     extraSpecialArgs = specialArgs;
 
     # per-user Home Manager configuration
-    # the genAttrs function generates an attribute set of users
-    # as `user = ./user` where user is picked from a list of
-    # users in modules.system.users
-    # the system expects user directories to be found in the present
-    # directory, or will exit with directory not found errors
-    # users = genAttrs config.modules.system.users (name: ./${name});
     users.notashelf = {
       imports = [
-        ./gui
-        ./media
-        ./misc
-        ./services
-        ./tui
-        ./themes
+        ./gui # Graphical user interface settings
+        ./media # Media-related configurations
+        ./services # Service configurations
+        ./tui # Terminal user interface applications
+        ./themes # Theme and appearance settings
       ];
 
       home = {
         username = "notashelf";
         homeDirectory = "/home/notashelf";
+        # Specify additional outputs to install, such as documentation
         extraOutputsToInstall = ["doc" "devdoc"];
 
-        # This is, and should remain, the version on which you have initiated
-        # the home-manager configuration. Similar to the `stateVersion` in the
-        # NixOS module system, you should not be changing it.
-        # I will personally strangle every moron who just puts nothing but "DONT CHANGE" next
-        # to this value
+        # The initial version of Home Manager configuration, should not be changed after set
         stateVersion = "23.05";
       };
 
+      # Configuration for the Home Manager manual and documentation
       manual = {
-        # Try to save some space by not installing variants of the home-manager
-        # manual, which I don't use at all. Unlike what the name implies, this
-        # section is for home-manager related manpages only, and does not affect
-        # whether or not manpages of actual packages will be installed.
+        # Disable installation of various manual formats to save space
         manpages.enable = false;
         html.enable = false;
         json.enable = false;
       };
 
-      # let HM manage itself when in standalone mode
+      # Enable Home Manager to manage its own configurations
       programs.home-manager.enable = true;
 
-      # reload system units when changing configs
+      # Configure systemd to reload user services upon configuration changes
       systemd.user.startServices = "sd-switch"; # or "legacy" if "sd-switch" breaks again
     };
   };
