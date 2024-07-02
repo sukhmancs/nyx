@@ -17,7 +17,7 @@
 
   specialArgs = {inherit inputs self inputs' self' defaults;};
 in {
-  home-manager = mkIf env.useHomeManager {
+  home-manager = {
     # Enable verbose logging for Home Manager
     verbose = true;
 
