@@ -1,7 +1,7 @@
 {
   imports = [
     ./common
-    ./editors
+    ./ides
     ./programs
     ./shell
     ./terminals
