@@ -24,7 +24,7 @@
         # ./flake/deployments.nix # deploy-rs configurations for active hosts
         ./flake/fmt.nix
         ./flake/iso-images.nix
-        ./flake/shell.nix
+        ./flake/shell
       ];
 
       flake = {
