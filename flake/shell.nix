@@ -16,7 +16,7 @@
     ...
   }: {
     devShells.default = inputs'.devshell.legacyPackages.mkShell {
-      name = "config";
+      name = "nixos-dotfiles";
       commands = [
         {
           help = "Rebuild the system using nh os switch";
