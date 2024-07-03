@@ -15,13 +15,6 @@ in
     inherit (nv) pname src;
     version = nv.date;
 
-    #    src = fetchFromGitHub {
-    #      owner = "dylanaraps";
-    #      repo = "neofetch";
-    #      rev = "ccd5d9f52609bbdcd5d8fa78c4fdb0f12954125f";
-    #      sha256 = "sha256-9MoX6ykqvd2iB0VrZCfhSyhtztMpBTukeKejfAWYW1w=";
-    #    };
-
     patches = [./0001-nicksfetch.patch];
 
     outputs = ["out" "man"];
