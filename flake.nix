@@ -1,43 +1,33 @@
 {
-  # https://github.com/NotAShelf/nyx
-  description = "My vastly overengineered monorepo for everything NixOS";
+  description = "Xi's NixOS configuration";
 
   outputs = {flake-parts, ...} @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} ({withSystem, ...}: {
-      # Systems for which the attributes of `perSystem` will be built
-      # add more if they can be supported...
-      #  - x86_64-linux: Desktops, laptops, servers
-      #  - aarch64-linux: ARM-based devices, PoC server and builders
-      #  - ...
-      systems = import inputs.systems;
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
 
-      # Imports for constructing a final flake to be built.
       imports = [
-        # Imported
         inputs.flake-parts.flakeModules.easyOverlay
         inputs.treefmt-nix.flakeModule
 
-        # Explicitly import parts of the flake, which allows me to build the
-        # "final flake" from various parts, arranged in a way that makes
-        # sense to me the most. By convention, things that would usually
-        # go to flake.nix should have its own file in the `flake/` directory.
-        ./flake/apps # apps provided by the flake
-        ./flake/checks # checks that are performed on `nix flake check`
-        ./flake/lib # extended library on top of `nixpkgs.lib`
+        # ./flake/apps # apps provided by the flake
+        # ./flake/checks # checks that are performed on `nix flake check`
+        ./flake/lib
         ./flake/modules # nixos and home-manager modules provided by this flake
-        ./flake/pkgs # packages exposed by the flake
-        ./flake/pre-commit # pre-commit hooks, performed before each commit inside the devShell
-        ./flake/templates # flake templates
+        ./flake/pkgs
+        ./flake/pre-commit
+        # ./flake/templates # flake templates
 
-        ./flake/args.nix # args that are passed to the flake, moved away from the main file
-        ./flake/deployments.nix # deploy-rs configurations for active hosts
-        ./flake/fmt.nix # various formatter configurations for this flake
-        ./flake/iso-images.nix # local installation media
-        ./flake/shell.nix # devShells exposed by the flake
+        ./flake/args.nix
+        # ./flake/deployments.nix # deploy-rs configurations for active hosts
+        ./flake/fmt.nix
+        ./flake/iso-images.nix
+        ./flake/shell.nix
       ];
 
       flake = {
-        # Entry-point for NixOS configurations.
         nixosConfigurations = import ./hosts {inherit inputs withSystem;};
       };
     });

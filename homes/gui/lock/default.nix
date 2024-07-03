@@ -1,6 +1,6 @@
 {
   imports = [
-    ./gtklock
+    # ./gtklock
     ./swaylock
   ];
 }

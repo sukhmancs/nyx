@@ -1,3 +1,6 @@
+#
+# treefmt - A tree-wide formatter
+#
 {
   perSystem = {
     inputs',
@@ -5,10 +8,6 @@
     pkgs,
     ...
   }: {
-    # provide the formatter for `nix fmt`
-    formatter = config.treefmt.build.wrapper;
-
-    # configure treefmt
     treefmt = {
       projectRootFile = "flake.nix";
 
@@ -17,9 +16,13 @@
           enable = true;
           package = inputs'.nyxpkgs.packages.alejandra-no-ads;
         };
-
-        shellcheck.enable = true; # cannot be configured, errors on basic bash convention
-
+        black.enable = true;
+        deadnix.enable = false;
+        shellcheck.enable = true;
+        shfmt = {
+          enable = true;
+          indent_size = 4;
+        };
         prettier = {
           enable = true;
           package = pkgs.prettierd;
@@ -27,12 +30,6 @@
           settings = {
             editorconfig = true;
           };
-        };
-
-        shfmt = {
-          enable = true;
-          # https://flake.parts/options/treefmt-nix.html#opt-perSystem.treefmt.programs.shfmt.indent_size
-          indent_size = 2; # set to 0 to use tabs
         };
       };
     };
