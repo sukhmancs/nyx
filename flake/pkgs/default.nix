@@ -6,11 +6,15 @@
     ...
   }: let
     # Dynamically import all Nix files from the directory
-    importPackages = directory:
+    importPackages = directory: let
+      directoryPath = builtins.toPath directory;
+    in
       lib.mapAttrs' (
-        name: type:
-          pkgs.callPackage (directory + "/" + name + "/package.nix") {}
-      ) (builtins.readDir directory);
+        name: type: let
+          packagePath = directoryPath + ("/" + name + "/package.nix");
+        in
+          pkgs.callPackage packagePath {}
+      ) (builtins.readDir directoryPath);
 
     # Import all packages from the packages directory
     packages = importPackages ./packages;

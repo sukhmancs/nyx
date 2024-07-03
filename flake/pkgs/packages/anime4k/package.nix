@@ -2,6 +2,7 @@
   lib,
   stdenvNoCC,
   fetchzip,
+  fetchFromGitHub,
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "anime4k";
