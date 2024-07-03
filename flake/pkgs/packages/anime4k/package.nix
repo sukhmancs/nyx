@@ -3,6 +3,7 @@
   stdenvNoCC,
   callPackages,
   fetchzip,
+  unzip,
 }: let
   nv = (callPackages ./generated.nix {}).anime4k;
 in
