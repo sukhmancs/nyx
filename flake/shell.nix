@@ -1,10 +1,12 @@
 #
 # devShell - a shell for Nix project. It includes tools for development and
-# debugging, such as formatters, linters, and source control tools.
+# debugging, such as formatters, linters, and source control tools. This shell
+# is intended to be used in conjunction with direnv, which will automatically
+# load the shell environment when you enter the project directory.
 #
-# To use this development environment, ensure you have Nix installed and run
-# `nix develop` in the directory containing this shell.nix file. This will instantiate
-# the shell environment, making all specified commands and packages available for use.
+# To manually use this development environment, ensure you have Nix installed and run
+# `nix run '.#<myapp>' -- <devshell-command> <and-args>`.  This makes it possible to run
+# commands defined in your devshell without entering a nix-shell or nix develop session.
 #
 {
   perSystem = {
