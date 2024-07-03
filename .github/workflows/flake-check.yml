@@ -18,7 +18,7 @@ jobs:
       - name: Check flake inputs
         uses: DeterminateSystems/flake-checker-action@main
         with:
-          flake-lock-path: ../../flake.lock
+          flake-lock-path: ./flake.lock
           check-outdated: true
           check-owner: true
           check-supported: true
