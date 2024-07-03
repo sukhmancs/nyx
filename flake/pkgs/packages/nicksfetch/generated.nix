@@ -9,7 +9,7 @@
       repo = "neofetch";
       rev = "ccd5d9f52609bbdcd5d8fa78c4fdb0f12954125f";
       fetchSubmodules = false;
-      sha256 = "sha256-9MoX6ykqvd2iB0VrZCfhSyhtztMpBTukeKejfAWYW1w=";
+      sha256 = "sha256-hTWURmH+Z5q9eUJZOf6NAuu/n40COyrEeOOKk3qAIVo=";
     };
     date = "2021-12-10";
   };
