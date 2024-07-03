@@ -1,20 +1,19 @@
 {
   lib,
   stdenvNoCC,
-  fetchzip,
-  fetchFromGitHub,
+  callPackages,
 }: let
   nv = (callPackages ./generated.nix {}).nicksfetch;
 in
   stdenvNoCC.mkDerivation {
-    inherit (nv) pname src;
-    version = nv.date;
-
+    inherit (nv) pname src version;
     # src = fetchzip {
     #   url = "https://github.com/bloc97/Anime4K/releases/download/v${version}/Anime4K_v4.0.zip";
     #   stripRoot = false;
     #   sha256 = "18x5q7zvkf5l0b2phh70ky6m99fx1pi6mhza4041b5hml7w987pl";
     # };
+
+    unpackPhase = "true";
 
     installPhase = ''
       mkdir $out
