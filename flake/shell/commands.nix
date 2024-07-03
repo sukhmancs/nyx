@@ -7,12 +7,12 @@
   }
   {
     help = "Rebuild the system using nh os boot";
-    name = "boot";
+    name = "bt";
     command = "nh os boot";
     category = "build";
   }
   {
-    help = "Format the source tree with treefmt";
+    help = "Format source tree using treefmt";
     name = "fmt";
     command = "treefmt";
     category = "formatter";
