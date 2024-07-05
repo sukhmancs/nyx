@@ -23,24 +23,24 @@
 
   # Define role-specific module lists
   workstationRoles = [
-    ../modules/roles/workstation
-    ../modules/roles/graphical
+    ../modules/workstation
+    ../modules/graphical
   ];
 
   laptopRoles = [
-    ../modules/roles/laptop
-    ../modules/roles/workstation
-    ../modules/roles/graphical
+    ../modules/laptop
+    ../modules/workstation
+    ../modules/graphical
   ];
 
   serverRoles = [
-    ../modules/roles/server
-    ../modules/roles/headless
+    ../modules/server
+    ../modules/headless
   ];
 
   isoRoles = [
-    ../modules/roles/iso
-    ../modules/roles/headless
+    ../modules/iso
+    ../modules/headless
   ];
 
   # Define a base configuration function

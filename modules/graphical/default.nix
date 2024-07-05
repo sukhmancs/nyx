@@ -5,6 +5,4 @@
 
     ./environment.nix
   ];
-
-  system.nixos.tags = ["graphical"];
 }
