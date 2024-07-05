@@ -20,15 +20,14 @@
     waydroid session stop
   '';
 in {
-  config = mkIf sys.virtualization.waydroid.enable {
+  config = mkIf config.virtualisation.waydroid.enable {
     environment.systemPackages = with pkgs; [
       waydroid
       waydroid-ui
     ];
 
     virtualisation = {
-      lxd.enable = sys.waydroid.enable; # TODO: make this also acceept sys.lxd.enable
-      waydroid.enable = sys.waydroid.enable;
+      lxd.enable = true;
     };
   };
 }

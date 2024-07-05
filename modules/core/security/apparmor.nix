@@ -6,7 +6,7 @@
 }: let
   inherit (lib.modules) mkIf;
 in {
-  config = mkIf (lib.isx86Linux pkgs) {
+  config = {
     services.dbus.apparmor = "enabled";
 
     environment.systemPackages = with pkgs; [

@@ -5,14 +5,11 @@
   ...
 }: let
   inherit (lib) mkIf;
-
-  sys = config.modules.system.bluetooth;
 in {
-  config = mkIf sys.enable {
+  config = mkIf config.hardware.bluetooth.enable {
     modules.system.boot.extraKernelParams = ["btusb"];
 
     hardware.bluetooth = {
-      enable = true;
       package = pkgs.bluez5-experimental;
       #hsphfpd.enable = true;
       powerOnBoot = true;

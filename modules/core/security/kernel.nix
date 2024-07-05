@@ -277,7 +277,7 @@ in {
 
         # if bluetooth is enabled, whitelist the module
         # necessary for bluetooth dongles to work
-        (optionals (!sys.bluetooth.enable) [
+        (optionals (!config.hardware.bluetooth.enable) [
           "bluetooth" # let bluetooth work
           "btusb" # let bluetooth dongles work
         ])

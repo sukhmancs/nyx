@@ -5,13 +5,28 @@
   ...
 }: let
   inherit (lib) mkIf optionalString;
-
-  sys = config.modules.system;
 in {
-  config = mkIf sys.security.clamav.enable {
+  config = {
     services.clamav = {
-      daemon = {enable = true;} // sys.security.clamav.daemon;
-      updater = {enable = true;} // sys.security.clamav.updater;
+      daemon = {
+        enable = true;
+        settings = {
+          LogFile = "/var/log/clamd.log";
+          LogTime = true;
+          DetectPUA = true;
+          VirusEvent = lib.escapeShellArgs [
+            "${pkgs.libnotify}/bin/notify-send"
+            "--"
+            "ClamAV Virus Scan"
+            "Found virus: %v"
+          ];
+        };
+      };
+      updater = {
+        enable = true;
+        frequency = 12;
+        interval = "hourly";
+      };
     };
 
     systemd = {

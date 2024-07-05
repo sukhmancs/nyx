@@ -5,11 +5,8 @@
   ...
 }: let
   inherit (lib) mkIf;
-
-  sys = config.modules.system;
-  cfg = sys.security.selinux;
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (!config.security.apparmor.enable) {
     # build systemd with SE Linux support so it loads policy at boot and supports file labelling
     systemd.package = pkgs.systemd.override {withSelinux = true;};
 
@@ -49,13 +46,13 @@ in {
         #     enforcing - SELinux security policy is enforced.
         #     permissive - SELinux prints warnings instead of enforcing.
         #     disabled - No SELinux policy is loaded.
-        SELINUX=${cfg.state}
+        SELINUX=enforcing
 
         # SELINUXTYPE= can take one of three two values:
         #     targeted - Targeted processes are protected,
         #     minimum - Modification of targeted policy. Only selected processes are protected.
         #     mls - Multi Level Security protection.
-        SELINUXTYPE=${cfg.type}
+        SELINUXTYPE=targeted
       '';
     };
   };

@@ -5,11 +5,8 @@
 }: let
   inherit (lib) mkIf;
   inherit (config) modules;
-  env = modules.usrEnv;
-
-  cfg = env.brightness;
 in {
-  config = mkIf cfg.enable {
+  config = mkIf cfg.video.enable {
     systemd.services."system-brightnessd" = {
       description = "Automatic backlight management with systemd";
 
@@ -22,8 +19,12 @@ in {
       # not that a backlight service is a security risk, but it's a good habit
       # to keep our systemd services as secure as possible
       serviceConfig = {
-        Type = "${cfg.serviceType}";
-        ExecStart = "${lib.getExe cfg.package}";
+        Type = "oneshot";
+        ExecStart = "${pkgs.writeShellApplication {
+          name = "set-system-brightness";
+          runtimeInputs = with pkgs; [brightnessctl];
+          text = "brightnessctl set 85";
+        }}";
         Restart = "never";
         RestartSec = "5s";
       };

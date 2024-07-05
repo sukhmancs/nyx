@@ -8,7 +8,7 @@
 
   sys = config.modules.system.virtualization;
 in {
-  config = mkIf sys.qemu.enable {
+  config = mkIf config.virtualisation.libvirtd.enable {
     environment.systemPackages = with pkgs; [
       virt-manager
       virt-viewer
@@ -21,7 +21,6 @@ in {
       spiceUSBRedirection.enable = true;
 
       libvirtd = {
-        enable = true;
         qemu = {
           package = pkgs.qemu_kvm;
           runAsRoot = true; #FIXME:permission denied error everytime it is set to false. Manually changing file permissions did not work.

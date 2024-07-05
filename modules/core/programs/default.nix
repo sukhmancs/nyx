@@ -1,7 +1,6 @@
 {
   imports = [
     ./bash.nix
-    ./comma.nix
     ./console.nix
     ./crash.nix
     ./direnv.nix
@@ -9,7 +8,6 @@
     ./nano.nix
     ./reposilite.nix
     ./wakapi.nix
-    ./xdg-portals.nix
   ];
 
   programs = {

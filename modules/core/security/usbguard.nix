@@ -9,7 +9,7 @@
   sys = config.modules.system;
   env = config.modules.usrEnv;
 in {
-  config = mkIf sys.security.usbguard.enable {
+  config = mkIf config.services.usbguard.enable {
     services.usbguard = {
       IPCAllowedUsers = ["root" "${env.mainUser}"];
       presentDevicePolicy = "allow";

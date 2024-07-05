@@ -6,8 +6,7 @@
   inherit (builtins) elem;
   inherit (lib.modules) mkIf mkDefault;
 
-  sys = config.modules.system;
-  inherit (sys) fs;
+  supportedFilesystems = ["vfat" "ext4" "btrfs" "exfat" "ntfs"];
 in {
   config = {
     # Add enabled filesystems to the kernel module list
@@ -15,9 +14,9 @@ in {
     # The former is only required of you plan to use systemd support
     # in stage one.
     boot = {
-      supportedFilesystems = fs.enabledFilesystems;
+      supportedFilesystems = supportedFilesystems;
       initrd = {
-        supportedFilesystems = fs.enabledFilesystems;
+        supportedFilesystems = supportedFilesystems;
       };
     };
 
@@ -34,7 +33,7 @@ in {
       # btrfs-scrub systemd service for periodically scrubbing listed
       # filesystems, which defaults to `/`. The service will be enabled
       # by default if btrfs support is advertised by the host.
-      btrfs.autoScrub = mkIf (elem "btrfs" fs.enabledFilesystems) {
+      btrfs.autoScrub = mkIf (elem "btrfs" supportedFilesystems) {
         inherit (fs.btrfs.scrub) enable interval fileSystems;
       };
 

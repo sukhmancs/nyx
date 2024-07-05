@@ -4,11 +4,8 @@
   ...
 }: let
   inherit (lib) mkIf;
-
-  sys = config.modules.system;
-  auditEnabled = sys.security.auditd.enable;
 in {
-  config = mkIf auditEnabled {
+  config = {
     security = {
       # system audit
       auditd.enable = true;

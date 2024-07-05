@@ -14,10 +14,10 @@
 }: let
   inherit (lib) mkIf getExe;
 
-  cfg = config.modules.system.video;
+  cfg = config.modules.system;
   env = config.meta;
 in {
-  config = mkIf (cfg.enable && env.isWayland) {
+  config = mkIf (cfg.video.enable && env.isWayland) {
     systemd.services = {
       seatd = {
         enable = true;
