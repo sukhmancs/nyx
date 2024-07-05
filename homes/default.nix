@@ -35,7 +35,7 @@ in {
     extraSpecialArgs = specialArgs;
 
     # per-user Home Manager configuration
-    users.notashelf = {
+    users.xi = {
       imports = [
         ./gui # Graphical user interface settings
         ./media # Media-related configurations
@@ -45,8 +45,8 @@ in {
       ];
 
       home = {
-        username = "notashelf";
-        homeDirectory = "/home/notashelf";
+        username = "xi";
+        homeDirectory = "/home/xi";
         # Specify additional outputs to install, such as documentation
         extraOutputsToInstall = ["doc" "devdoc"];
 

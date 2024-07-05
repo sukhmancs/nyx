@@ -10,7 +10,7 @@ in {
       createHome = true;
       group = "builder";
       home = "/var/empty";
-      openssh.authorizedKeys.keys = mkBuilderKeys [keys.notashelf];
+      openssh.authorizedKeys.keys = mkBuilderKeys [keys.xi];
     };
   };
 }

@@ -66,7 +66,7 @@
           ]
           ++ roleModules
           ++ [
-            ../modules/options
+            ../options
             agenix
           ]
           ++ (

@@ -7,10 +7,9 @@
 }: let
   inherit (lib) mkIf;
   inherit (osConfig.modules) device;
-  inherit (osConfig.modules.style.colorScheme) slug colors;
 
-  waybar_config = import ./presets/${slug}/config.nix {inherit osConfig config lib pkgs;};
-  waybar_style = import ./presets/${slug}/style.nix {inherit colors;};
+  waybar_config = import ./presets/config.nix {inherit osConfig config lib pkgs;};
+  waybar_style = import ./presets/style.nix;
 
   acceptedTypes = ["desktop" "laptop" "lite" "hybrid"];
 in {

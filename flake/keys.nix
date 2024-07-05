@@ -3,7 +3,7 @@ let
 
   # Users
   users = {
-    notashelf = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILPakhaEWcF9kSpjx1y8sjOBGd9OILZ2EVS/YaEQ+o8Z";
+    xi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILPakhaEWcF9kSpjx1y8sjOBGd9OILZ2EVS/YaEQ+o8Z";
   };
 
   # Hosts
@@ -19,12 +19,12 @@ let
   servers = concatLists (map (host: machines.${host}) ["helios" "icarus" "leto"]);
   workstations = concatLists (map (host: machines.${host}) ["enyo" "hermes" "icarus"]);
 
-  all = foldl' (a: b: a ++ b) [users.notashelf] (attrValues machines);
+  all = foldl' (a: b: a ++ b) [users.xi] (attrValues machines);
 in {
-  inherit (users) notashelf;
+  inherit (users) xi;
   inherit (machines) helios enyo hermes icarus leto;
   inherit servers workstations all;
 
   # Additional utilities
-  mkGlobal = list: list ++ [users.notashelf];
+  mkGlobal = list: list ++ [users.xi];
 }

@@ -11,7 +11,7 @@
     "lightningcalendartabs@jlx.84" = "12d48e41-412e-4d09-835a-fa6fb8c180eb";
   };
 in {
-  programs.thunderbird.profiles."notashelf".settings = {
+  programs.thunderbird.profiles."xi".settings = {
     "calendar.timezone.useSystemTimezone" = true;
     "datareporting.healthreport.uploadEnabled" = false;
     "extensions.ui.locale.hidden" = true;

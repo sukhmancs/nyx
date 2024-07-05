@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   modules.system = {
-    mainUser = "notashelf";
+    mainUser = "xi";
     fs.enabledFilesystems = ["btrfs" "ext4" "vfat"];
     impermanence.root.enable = true;
 

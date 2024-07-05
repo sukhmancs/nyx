@@ -7,14 +7,14 @@
   inherit (lib.lists) zipListsWith;
   inherit (lib.strings) escapeShellArg;
 in {
-  environment.variables.FLAKE = "/home/notashelf/.config/nyx";
+  environment.variables.FLAKE = "/home/xi/.config/nyx";
 
   programs.nh = {
     enable = true;
     package = pkgs.nh;
 
     # path to the system flake
-    flake = "/home/notashelf/.config/nyx";
+    flake = "/home/xi/.config/nyx";
 
     # whether to let nh run gc on the store weekly
     clean = {

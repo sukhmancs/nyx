@@ -15,7 +15,7 @@
         # ./flake/apps # apps provided by the flake
         # ./flake/checks # checks that are performed on `nix flake check`
         ./flake/lib
-        ./flake/modules # nixos and home-manager modules provided by this flake
+        # ./flake/modules # nixos and home-manager modules provided by this flake
         ./flake/pkgs
         ./flake/pre-commit
         # ./flake/templates # flake templates
@@ -75,6 +75,9 @@
       url = "github:viperML/nh";
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
+
+    # Stylix - System-Wide theme configuration
+    stylix.url = "github:danth/stylix";
 
     # multi-profile Nix-flake deploy
     deploy-rs = {

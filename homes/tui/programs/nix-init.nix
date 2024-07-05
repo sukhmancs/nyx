@@ -6,7 +6,7 @@ in {
 
     xdg.configFile."nix-init/config.toml".source = toTOML "config.toml" {
       commit = true;
-      maintainers = ["NotAShelf"];
+      maintainers = ["xi"];
     };
   };
 }

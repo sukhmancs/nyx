@@ -1,7 +1,6 @@
 {
   imports = [
     ./boot
-    ./containers
     ./environment
     ./gaming
     ./hardware
@@ -11,14 +10,13 @@
     ./secrets
     ./security
     ./services
-    ./theme
+    ./style
     ./users
     ./virtualization
     ./wayland
     ./xorg
 
     ./activation.nix
-    ./docs.nix
     ./emulation.nix
     ./encryption.nix
     ./fs.nix

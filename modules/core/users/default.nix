@@ -5,7 +5,7 @@
   # In short:users that are not in users/<username>.nix don't get to
   # be a real user
   imports = [
-    ./notashelf.nix
+    ./xi.nix
     ./builder.nix
     ./root.nix
   ];
