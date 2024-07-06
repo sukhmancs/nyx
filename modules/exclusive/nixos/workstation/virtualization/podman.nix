@@ -5,18 +5,14 @@
   ...
 }: let
   inherit (lib) mkIf;
-
-  sys = config.modules.system.virtualization;
 in {
-  config = mkIf (sys.docker.enable || sys.podman.enable) {
+  config = mkIf config.virtualization.podman.enable {
     environment.systemPackages = with pkgs; [
       podman-compose
       podman-desktop
     ];
 
     virtualisation.podman = {
-      enable = true;
-
       # make docker backwards compatible with docker interface
       # certain interface elements will be different, but unless hardcoded
       # does not cause problems for us

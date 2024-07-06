@@ -5,19 +5,26 @@
   ...
 }: let
   inherit (lib.modules) mkIf mkMerge;
-  inherit (osConfig) modules;
-
-  env = modules.usrEnv;
-  prg = env.programs;
 
   inherit (self'.packages) anime4k;
   low1k = import ./low1k.nix {inherit anime4k;};
 in {
-  config = {
+  config = mkIf config.programs.mpv.enable {
     programs.mpv = {
-      enable = true;
+      scripts = with pkgs.mpvScripts; [
+        # from nixpkgs
+        cutter # cut and automatically concat videos
+        mpris # MPRIS plugin
+        thumbnail # OSC seekbar thumbnails
+        thumbfast # on-the-fly thumbnailer
+        sponsorblock # skip sponsored segments
+        uosc # proximity UI
+        quality-menu # ytdl-format quality menu
+        seekTo # seek to specific pos.
 
-      inherit (prg.media.mpv) scripts;
+        # from nyxpkgs
+        # inputs'.nyxpkgs.packages.mpv-history # save a history of played files with timestamps
+      ];
 
       config = {
         ytdl-format = "bestvideo+bestaudio/best";

@@ -5,7 +5,6 @@
   ...
 }: let
   inherit (lib) mkForce;
-  dev = config.modules.device;
   cfg = config.networking.nftables;
 in {
   imports = [
@@ -16,11 +15,6 @@ in {
   ];
 
   config = {
-    # enable opensnitch firewall
-    # inactive until opensnitch UI is opened
-    # since the UI cannot be opened on servers, we
-    # disable it if dev.type is server
-    services.opensnitch.enable = dev.type != "server";
     networking.firewall = {
       enable = !cfg.enable;
       package =
@@ -29,7 +23,7 @@ in {
         else pkgs.iptables;
       allowedTCPPorts = [443 8080];
       allowedUDPPorts = [];
-      allowPing = dev.type == "server";
+      allowPing = true;
       logReversePathDrops = true;
       logRefusedConnections = false; # avoid log spam
       # Leaks IPv6 route table entries due to kernel bug. This leads to degraded

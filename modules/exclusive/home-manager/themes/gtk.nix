@@ -6,12 +6,8 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (osConfig.modules) device;
-  cfg = osConfig.modules.style;
-
-  acceptedTypes = ["laptop" "desktop" "hybrid" "lite"];
 in {
-  config = mkIf (builtins.elem device.type acceptedTypes) {
+  config = mkIf config.gtk.enable {
     xdg.systemDirs.data = let
       schema = pkgs.gsettings-desktop-schemas;
     in ["${schema}/share/gsettings-schemas/${schema.name}"];
@@ -19,34 +15,51 @@ in {
     home = {
       packages = with pkgs; [
         glib # gsettings
-        cfg.gtk.theme.package
-        cfg.gtk.iconTheme.package
+        pkgs.catppuccin-gtk.override
+        {
+          size = "standard";
+          accents = ["blue"];
+          variant = "mocha";
+          tweaks = ["normal"];
+        }
+        pkgs.catppuccin-papirus-folders.override
+        {
+          accent = "blue";
+          flavor = "mocha";
+        }
       ];
 
       sessionVariables = {
         # set GTK theme to the name specified by the gtk theme package
-        GTK_THEME = "${cfg.gtk.theme.name}";
+        GTK_THEME = "Catppuccin-Mocha-Standard-Blue-dark";
 
         # gtk applications should use filepickers specified by xdg
-        GTK_USE_PORTAL = "${toString (lib.boolToNum cfg.gtk.usePortal)}";
+        GTK_USE_PORTAL = "${toString (lib.boolToNum true)}";
       };
     };
 
     gtk = {
-      enable = true;
       theme = {
-        name = cfg.gtk.theme.name;
-        package = cfg.gtk.theme.package;
+        name = "Catppuccin-Mocha-Standard-Blue-dark";
+        package = pkgs.catppuccin-gtk.override {
+          size = "standard";
+          accents = ["blue"];
+          variant = "mocha";
+          tweaks = ["normal"];
+        };
       };
 
       iconTheme = {
-        name = cfg.gtk.iconTheme.name;
-        package = cfg.gtk.iconTheme.package;
+        name = "Papirus-Dark";
+        package = pkgs.catppuccin-papirus-folders.override {
+          accent = "blue";
+          flavor = "mocha";
+        };
       };
 
       font = {
-        name = cfg.gtk.font.name;
-        size = cfg.gtk.font.size;
+        name = "Lexend";
+        size = 14;
       };
 
       gtk2 = {

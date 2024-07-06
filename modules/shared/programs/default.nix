@@ -6,8 +6,6 @@
     ./direnv.nix
     ./journald.nix
     ./nano.nix
-    ./reposilite.nix
-    ./wakapi.nix
   ];
 
   programs = {

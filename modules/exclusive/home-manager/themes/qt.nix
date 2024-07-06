@@ -5,21 +5,18 @@
   ...
 }: let
   inherit (lib.modules) mkIf mkMerge;
-
-  dev = osConfig.modules.device;
-  sys = osConfig.modules.system;
-  cfg = osConfig.modules.style;
-
-  acceptedTypes = ["laptop" "desktop" "hybrid" "lite"];
 in {
-  config = mkIf (builtins.elem dev.type acceptedTypes && sys.video.enable) {
+  config = mkIf config.qt.enable {
     qt = {
-      enable = true;
-      platformTheme.name = mkIf cfg.forceGtk "gtk"; # just an override for QT_QPA_PLATFORMTHEME, takes “gtk”, “gnome”, “qtct” or “kde”
+      platformTheme.name = "gtk"; # just an override for QT_QPA_PLATFORMTHEME, takes “gtk”, “gnome”, “qtct” or “kde”
 
-      style = mkIf (!cfg.forceGtk) {
-        name = cfg.qt.theme.name;
-        package = cfg.qt.theme.package;
+      style = {
+        name = "Catppuccin-Mocha-Dark";
+        package = pkgs.catppuccin-kde.override {
+          flavour = ["mocha"];
+          accents = ["blue"];
+          winDecStyles = ["modern"];
+        };
       };
     };
 

@@ -8,7 +8,6 @@
   inherit (lib.modules) mkIf;
 
   inherit (config) modules;
-  sys = modules.system;
   dev = modules.device;
 in {
   imports = [
@@ -18,7 +17,7 @@ in {
     ./settings.nix
   ];
 
-  config = mkIf (sys.sound.enable && dev.hasSound) {
+  config = mkIf dev.hasSound {
     # Enable PipeWire sound server and additional emulation layers
     # for all kinds of backwards compatibility. Audio on Linux has
     # always been finicky, and this is the best way to ensure that

@@ -10,11 +10,8 @@
   mpv = "${getExe pkgs.mpv}";
   glow = "${getExe pkgs.glow}";
   pandoc = "${getExe pkgs.pandoc}";
-
-  dev = osConfig.modules.device;
-  acceptedTypes = ["laptop" "desktop" "hybrid" "lite"];
 in {
-  config = mkIf (builtins.elem dev.type acceptedTypes) {
+  config = {
     programs.newsboat = {
       enable = true;
       autoReload = true;

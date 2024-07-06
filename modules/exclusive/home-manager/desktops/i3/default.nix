@@ -5,11 +5,8 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (osConfig) modules;
-
-  env = modules.usrEnv;
 in {
-  config = mkIf env.desktops.i3.enable {
+  config = mkIf config.xsession.windowManager.i3.enable {
     home.packages = [pkgs.maim];
 
     # enable i3status for the bar
@@ -76,7 +73,6 @@ in {
     xsession.windowManager.i3 = let
       mod = "Mod4";
     in {
-      enable = true;
       config = {
         # status bar configuration
         bars = [

@@ -7,13 +7,9 @@
   inherit (lib) mkIf;
   inherit (osConfig) modules;
   inherit (modules.style.colorScheme) colors;
-
-  dev = modules.device;
-  acceptedTypes = ["desktop" "laptop" "lite" "hybrid"];
 in {
-  config = mkIf (builtins.elem dev.type acceptedTypes) {
+  config = mkIf config.services.dunst.enable {
     services.dunst = {
-      enable = true;
       iconTheme = {
         package = config.gtk.iconTheme.package;
         name = "Papirus-Dark";

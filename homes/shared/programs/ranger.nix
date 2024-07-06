@@ -5,12 +5,9 @@
   config,
   ...
 }: let
-  device = osConfig.modules.device;
-  # TODO: maybe not have a TUI file manager on desktops, when GUI does it better
-  acceptedTypes = ["laptop" "desktop" "hybrid" "server" "lite"];
   inherit (lib.strings) optionalString;
 in {
-  config = lib.mkIf (builtins.elem device.type acceptedTypes) {
+  config = {
     home.packages = with pkgs; [
       ranger
     ];

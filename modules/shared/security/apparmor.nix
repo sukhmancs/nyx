@@ -3,9 +3,7 @@
   pkgs,
   lib,
   ...
-}: let
-  inherit (lib.modules) mkIf;
-in {
+}: {
   config = {
     services.dbus.apparmor = "enabled";
 
@@ -64,8 +62,6 @@ in {
           '';
         };
       };
-
-      # TODO: includes
     };
   };
 }

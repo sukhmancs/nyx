@@ -6,13 +6,9 @@
 }: let
   inherit (lib) mkIf;
   inherit (osConfig) modules meta;
-
-  sys = modules.system;
-  prg = sys.programs;
 in {
-  config = mkIf prg.obs.enable {
+  config = mkIf config.programs.obs-studio.enable {
     programs.obs-studio = {
-      enable = true;
       plugins = with pkgs.obs-studio-plugins;
         [
           obs-gstreamer

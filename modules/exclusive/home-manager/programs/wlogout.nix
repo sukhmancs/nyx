@@ -6,11 +6,11 @@
 }: let
   inherit (lib) mkIf;
 
-  dev = osConfig.modules.device;
-  env = osConfig.meta;
-  acceptedTypes = ["laptop" "desktop" "hybrid" "lite"];
+  inherit (osConfig) modules;
+
+  prg = modules.home.programs.wlogout;
 in {
-  config = mkIf ((builtins.elem dev.type acceptedTypes) && env.isWayland) {
+  config = mkIf prg.enable {
     home.packages = with pkgs; [
       wlogout
     ];

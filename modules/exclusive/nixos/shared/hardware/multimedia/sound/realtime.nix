@@ -5,10 +5,9 @@
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.modules.system.sound;
   dev = config.modules.device;
 in {
-  config = mkIf (cfg.enable && dev.hasSound) {
+  config = mkIf dev.hasSound {
     # port of https://gitlab.archlinux.org/archlinux/packaging/packages/realtime-privileges
     # see https://wiki.archlinux.org/title/Realtime_process_management
     # tldr: realtime processes have higher priority than normal processes

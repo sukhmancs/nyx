@@ -6,15 +6,11 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (osConfig) modules;
-  sys = modules.system;
-  prg = sys.programs;
 in {
   imports = [inputs.schizofox.homeManagerModule];
-  config = {
+  config = mkIf config.programs.firefox.enable {
     programs.schizofox = {
       enable = true;
-
       theme = {
         font = "Inter";
         colors = {

@@ -6,15 +6,12 @@
 }: let
   inherit (lib.modules) mkIf;
 
-  sys = config.modules.system;
-  env = config.modules.usrEnv;
-
-  hyprlandPkg = env.desktops.hyprland.package;
+  hyprlandPkg = inputs'.hyprland.packages.hyprland;
 in {
   # disables Nixpkgs Hyprland module to avoid conflicts
   disabledModules = ["programs/hyprland.nix"];
 
-  config = mkIf (env.desktop == "Hyprland") {
+  config = mkIf config.wayland.windowManager.hyprland.enable {
     services.displayManager.sessionPackages = [hyprlandPkg];
 
     xdg.portal = {

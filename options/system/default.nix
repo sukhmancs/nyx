@@ -12,29 +12,17 @@ in {
   imports = [
     # configuration options for nixos activation scripts
     ./activation.nix
-
-    # boot/impermanence mounts
-    ./boot.nix
     ./impermanence.nix
 
     # network and overall hardening
     ./networking
-    ./security.nix
     ./encryption.nix
 
     # filesystems
     ./fs.nix
 
-    # emulation and virtualization
-    ./emulation.nix
-    ./virtualization.nix
-
     # package and program related options
     ./services
-    ./programs
-
-    # systemd-nspawn containers
-    ./containers.nix
   ];
   config = {
     warnings = mkMerge [
@@ -49,58 +37,13 @@ in {
   };
 
   options.modules.system = {
+    # mainUser is required by many services that needs the current usrname
     mainUser = mkOption {
       type = str;
       default = elemAt config.modules.system.users 0;
       description = ''
         The username of the main user for your system.
       '';
-    };
-
-    users = mkOption {
-      type = listOf str;
-      default = ["xi"];
-      description = "A list of home-manager users on the system.";
-    };
-
-    autoLogin = mkOption {
-      type = bool;
-      default = false;
-      description = ''
-        Whether to enable passwordless login. This is generally useful on systems with
-        FDE (Full Disk Encryption) enabled. It is a security risk for systems without FDE.
-      '';
-    };
-
-    yubikeySupport = {
-      enable = mkEnableOption "yubikey support";
-      deviceType = mkOption {
-        type = nullOr (enum ["NFC5" "nano"]);
-        default = null;
-        description = "A list of device models to enable Yubikey support for";
-      };
-    };
-
-    sound.enable = mkEnableOption "sound related programs and audio-dependent programs";
-    video.enable = mkEnableOption "video drivers and programs that require a graphical user interface";
-    bluetooth.enable = mkEnableOption "bluetooth modules, drivers and configuration program(s)";
-
-    printing = {
-      enable = mkEnableOption "printing";
-      extraDrivers = mkOption {
-        type = listOf str;
-        default = [];
-        description = "A list of extra drivers to enable for printing";
-      };
-
-      "3d" = {
-        enable = mkEnableOption "3D printing suite";
-        extraPrograms = mkOption {
-          type = listOf package;
-          default = [];
-          description = "A list of extra programs to enable for 3D printing";
-        };
-      };
     };
   };
 }

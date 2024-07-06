@@ -15,6 +15,7 @@ in {
       ]
       else [];
   };
+  # is being used by exclusive/nixos/workstation/encryption.nix
   options.modules.system.encryption = {
     enable = mkEnableOption "LUKS encryption";
 

@@ -4,13 +4,9 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-
-  dev = osConfig.modules.device;
-  acceptedTypes = ["desktop" "laptop" "lite" "hybrid"];
 in {
-  config = {
+  config = mkIf config.services.easyeffects.enable {
     services.easyeffects = {
-      enable = true;
       preset = "quiet";
     };
 

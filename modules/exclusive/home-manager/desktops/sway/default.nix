@@ -9,9 +9,8 @@
   env = osConfig.modules.usrEnv;
 in {
   imports = [./config.nix];
-  config = mkIf env.desktops.sway.enable {
+  config = mkIf config.wayland.windowManager.sway.enable {
     wayland.windowManager.sway = {
-      enable = true;
       package = pkgs.swayfx;
     };
   };

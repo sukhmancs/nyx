@@ -8,7 +8,7 @@
   inherit (lib.modules) mkIf;
   inherit (osConfig) modules;
 
-  sys = modules.system;
+  sys = modules.home;
   prg = sys.programs;
 
   spicePkgs = inputs.spicetify.packages.${pkgs.stdenv.system}.default;

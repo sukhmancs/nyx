@@ -8,20 +8,16 @@
   inherit (lib.lists) optionals;
   inherit (lib.attrsets) optionalAttrs;
   inherit (lib.meta) getExe;
-
-  sys = config.modules.system;
-
-  inherit (sys.networking) wireless;
 in {
   config = {
-    environment.systemPackages = optionals (wireless.backend == "iwd") pkgs.iwgtk;
+    environment.systemPackages = pkgs.iwgtk;
     networking.wireless =
       {
-        enable = wireless.backend == "wpa_supplicant";
+        enable = true;
 
         # configure iwd
         iwd = {
-          enable = wireless.backend == "iwd";
+          enable = !config.networking.wireless.enable;
           settings = {
             #Rank.BandModifier5Ghz = 2.0;
             #Scan.DisablePeriodicScan = true;
@@ -42,7 +38,7 @@ in {
           };
         };
       }
-      // optionalAttrs wireless.allowImperative {
+      // optionalAttrs true {
         # Imperative Configuration
         userControlled.enable = true;
         allowAuxiliaryImperativeNetworks = true; # patches wpa_supplicant
@@ -61,7 +57,7 @@ in {
         touch /etc/wpa_supplicant.conf
       '';
 
-      user.services.iwgtk = mkIf (wireless.backend == "iwd") {
+      user.services.iwgtk = mkIf (!config.networking.wireless.enable) {
         serviceConfig.ExecStart = "${getExe pkgs.iwgtk} -i";
         wantedBy = ["graphical-session.target"];
         partOf = ["graphical-session.target"];

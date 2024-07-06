@@ -6,8 +6,6 @@
 }: let
   inherit (lib) mkIf;
 
-  sys = config.modules.system;
-
   waydroid-ui = pkgs.writeShellScriptBin "waydroid-ui" ''
     export WAYLAND_DISPLAY=wayland-0
     ${pkgs.weston}/bin/weston -Swayland-1 --width=600 --height=1000 --shell="kiosk-shell.so" &

@@ -5,13 +5,10 @@
   ...
 }: let
   inherit (lib) mkIf;
-
-  sys = config.modules.system;
 in {
-  config = mkIf sys.security.tor.enable {
+  config = mkIf config.services.tor.enable {
     services = {
       tor = {
-        enable = true;
         torsocks.enable = true;
         client = {
           enable = true;

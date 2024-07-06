@@ -7,9 +7,6 @@
 }: let
   inherit (osConfig.modules.style.colorScheme) slug colors;
   inherit (lib) mkIf;
-
-  dev = osConfig.modules.device;
-  acceptedTypes = ["laptop" "desktop" "hybrid" "lite"];
 in {
   config = {
     home.packages = with pkgs; [

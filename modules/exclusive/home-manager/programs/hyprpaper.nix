@@ -11,15 +11,14 @@
   inherit (lib.strings) concatStringsSep;
 
   inherit (osConfig) modules;
-  env = modules.usrEnv;
-  sys = modules.system;
+  prg = modules.home.programs;
 
   monitors = modules.device.monitors;
 
   hyprpaper = inputs.hyprpaper.packages.${pkgs.stdenv.system}.default;
   wallpkgs = inputs.wallpkgs.packages.${pkgs.stdenv.system};
 in {
-  config = mkIf ((sys.video.enable) && (env.isWayland && (env.desktop == "Hyprland"))) {
+  config = mkIf prg.hyprpaper.enable {
     systemd.user.services.hyprpaper = lib.mkHyprlandService {
       Unit.Description = "Hyprland wallpaper daemon";
       Service = {

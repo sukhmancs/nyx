@@ -5,15 +5,9 @@
   ...
 }: let
   inherit (lib.modules) mkIf mkForce;
-  inherit (config) modules;
-
-  sys = modules.system;
-  env = modules.usrEnv;
 in {
-  config = mkIf sys.video.enable {
+  config = mkIf config.xdg.portal.enable {
     xdg.portal = {
-      enable = true;
-
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk
       ];
@@ -21,9 +15,9 @@ in {
       config = {
         common = let
           portal =
-            if env.desktop == "Hyprland"
+            if config.wayland.windowManager.hyprland.enable
             then "hyprland"
-            else if env.desktop == "sway"
+            else if config.wayland.windowManager.sway.enable
             then "wlr"
             else "gtk"; # FIXME: does this actually implement what we need?
         in {
@@ -40,7 +34,7 @@ in {
       # will (and should) override this one
       # however in case I run a different compositor on a Wayland host, it can be enabled
       wlr = {
-        enable = mkForce (env.isWayland && env.desktop != "Hyprland");
+        enable = mkForce (!config.wayland.windowManager.hyprland.enable) && config.wayland.windowManager.sway.enable;
         settings = {
           screencast = {
             max_fps = 30;

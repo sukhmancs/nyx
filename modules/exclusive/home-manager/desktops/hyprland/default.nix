@@ -19,7 +19,7 @@ in {
   imports = filter (hasSuffix ".nix") (
     map toString (filter (p: p != ./default.nix) (listFilesRecursive ./config))
   );
-  config = mkIf env.desktops.hyprland.enable {
+  config = mkIf config.wayland.windowManager.hyprland.enable {
     home.packages = [
       hyprshot
       grimblast
@@ -28,7 +28,6 @@ in {
     ];
 
     wayland.windowManager.hyprland = {
-      enable = true;
       package = env.desktops.hyprland.package;
       xwayland.enable = true;
       systemd = {

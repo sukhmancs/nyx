@@ -5,15 +5,9 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (osConfig) modules;
-  sys = modules.system;
-  prg = sys.programs;
 in {
-  # TODO: make this use the usrEnv.programs value
-  # prg.librewolf.enable
-  config = mkIf true {
+  config = mkIf config.programs.librewolf.enable {
     programs.librewolf = {
-      enable = true;
       package = pkgs.librewolf.override {cfg.speechSynthesisSupport = false;};
       settings = {
         "sidebar.position_start" = false;

@@ -6,7 +6,7 @@
 
       # storage daemon required for udiskie auto-mount
       udisks2 = {
-        enable = !config.boot.isContainer;
+        enable = true;
         settings = {
           # general udisks2 configuration
           "udisks2.conf" = {

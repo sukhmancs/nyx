@@ -18,11 +18,6 @@
     "${sessionData}/share/wayland-sessions"
   ];
 
-  initialSession = {
-    user = "${sys.mainUser}";
-    command = "${env.desktop}";
-  };
-
   defaultSession = {
     user = "greeter";
     command = concatStringsSep " " [
@@ -38,16 +33,13 @@ in {
   services.greetd = {
     enable = true;
     vt = 2;
-    restart = !sys.autoLogin;
+    restart = true;
 
     # <https://man.sr.ht/~kennylevinsen/greetd/>
     settings = {
       # default session is what will be used if no session is selected
       # in this case it'll be a TUI greeter
       default_session = defaultSession;
-
-      # initial session
-      initial_session = mkIf sys.autoLogin initialSession;
     };
   };
 

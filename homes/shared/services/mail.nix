@@ -18,7 +18,7 @@
           address = "shelf@xilain.dev";
           aliases = ["me@xilain.dev"];
           userName = "shelf@xilain.dev";
-          realName = name; # very real, I know
+          realName = name;
           passwordCommand = ''
             # this is a really bad way of getting the password
             # but home-manager does not provide a passwordFile option

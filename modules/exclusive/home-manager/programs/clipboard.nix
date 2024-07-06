@@ -5,9 +5,11 @@
   ...
 }: let
   inherit (lib) mkIf mkGraphicalService getExe;
-  inherit (osConfig) meta;
+  inherit (osConfig) modules;
+
+  prg = modules.home.programs.clipboard;
 in {
-  config = mkIf meta.isWayland {
+  config = mkIf prg.enable {
     systemd.user.services = {
       cliphist = mkGraphicalService {
         Unit.Description = "Clipboard history service";

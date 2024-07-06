@@ -26,7 +26,7 @@ in {
         kernelParams = ["amd_iommu=on"];
       }
 
-      (mkIf (isx86Linux pkgs) {
+      {
         kernelModules = [
           "amd-pstate" # load pstate module in case the device has a newer gpu
           "zenpower" # zenpower is for reading cpu info, i.e voltage
@@ -34,7 +34,7 @@ in {
         ];
 
         extraModulePackages = [config.boot.kernelPackages.zenpower];
-      })
+      }
 
       (mkIf (pstate.enable && (versionAtLeast kver "5.17") && (versionOlder kver "6.1")) {
         kernelParams = ["initcall_blacklist=acpi_cpufreq_init"];

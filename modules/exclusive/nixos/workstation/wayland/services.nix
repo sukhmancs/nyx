@@ -13,14 +13,10 @@
   ...
 }: let
   inherit (lib) mkIf getExe;
-
-  cfg = config.modules.system;
-  env = config.meta;
 in {
-  config = mkIf (cfg.video.enable && env.isWayland) {
+  config = mkIf conif.services.seatd.enable {
     systemd.services = {
       seatd = {
-        enable = true;
         description = "Seat management daemon";
         # The -g wheel option in this script configures seatd to use the
         # wheel group. You should ensure that users who need access to

@@ -6,9 +6,7 @@
   ...
 }: let
   inherit (lib) getExe mkIf;
-
-  env = osConfig.modules.usrEnv;
-  locker = getExe env.programs.screenlock.package;
+  locker = getExe pkgs.swaylock-effects;
 
   systemctl = "${pkgs.systemd}/bin/systemctl";
   suspendScript = pkgs.writeShellScript "suspend-script" ''
@@ -20,12 +18,11 @@
   '';
 in {
   # TODO: can we make it so that it works with sway *or* hyprland based on which one is enabled?
-  config = mkIf env.desktops.hyprland.enable {
+  config = mkIf config.services.swayidle.enable {
     systemd.user.services.swayidle.Install.WantedBy = ["hyprland-session.target"];
 
     # screen idle
     services.swayidle = {
-      enable = true;
       extraArgs = ["-d" "-w"];
       events = [
         {

@@ -4,12 +4,7 @@
   pkgs,
   inputs',
   ...
-}: let
-  inherit (lib) mkIf;
-  inherit (osConfig) modules;
-
-  prg = modules.system.programs;
-in {
+}: {
   config = {
     home.packages = with pkgs; [
       # packages from inputs

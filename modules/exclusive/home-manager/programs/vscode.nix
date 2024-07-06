@@ -5,14 +5,9 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (osConfig) modules;
-
-  sys = modules.system;
-  prg = sys.programs;
 in {
-  config = mkIf prg.vscode.enable {
+  config = mkIf config.programs.vscode.enable {
     programs.vscode = {
-      enable = true;
       enableExtensionUpdateCheck = true;
       enableUpdateCheck = true;
       extensions = with pkgs.vscode-extensions;

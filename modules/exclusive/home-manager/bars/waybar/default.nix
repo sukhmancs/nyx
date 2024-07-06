@@ -6,7 +6,6 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (osConfig.modules) device;
 
   waybar_config = import ./presets/config.nix {inherit osConfig config lib pkgs;};
   waybar_style = import ./presets/style.nix;

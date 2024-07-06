@@ -5,8 +5,6 @@
   ...
 }: let
   inherit (lib) mkIf;
-
-  sys = config.modules.system.virtualization;
 in {
   config = mkIf config.virtualisation.libvirtd.enable {
     environment.systemPackages = with pkgs; [

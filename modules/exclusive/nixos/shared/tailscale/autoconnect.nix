@@ -6,11 +6,8 @@
 }: let
   inherit (lib.modules) mkIf mkBefore;
   inherit (config.services) tailscale;
-
-  sys = config.modules.system;
-  cfg = sys.networking.tailscale;
 in {
-  config = mkIf cfg.enable {
+  config = mkIf config.services.tailscale.enable {
     systemd.services = {
       tailscaled.serviceConfig.Environment = mkBefore [
         # lets not send our logs to log.tailscale.io

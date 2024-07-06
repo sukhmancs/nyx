@@ -4,14 +4,9 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (osConfig) modules;
-
-  env = modules.usrEnv;
-  prg = env.programs;
 in {
-  config = mkIf prg.gaming.mangohud.enable {
+  config = mkIf config.programs.mangohud.enable {
     programs.mangohud = {
-      enable = true;
       settings = {
         fps_limit = "60,0";
         vsync = 1;
@@ -34,5 +29,19 @@ in {
         toggle_fps_limit = "Shift_R+F1";
       };
     };
+
+    home.packages = with pkgs; [
+      legendary-gl # epic games launcher
+      mangohud # fps counter & vulkan overlay
+      lutris # alternative game launcher
+
+      # emulators
+      # dolphin-emu # general console
+
+      # runtime
+      dotnet-runtime_6 # for running terraria manually, from binary
+      mono # general dotnet apps
+      winetricks # wine helper utility
+    ];
   };
 }

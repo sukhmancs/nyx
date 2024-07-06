@@ -16,33 +16,10 @@
     else config.boot.kernelPackages.nvidiaPackages.beta;
 
   dev = config.modules.device;
-  env = config.modules.usrEnv;
 in {
   config = mkIf (builtins.elem dev.gpu.type ["nvidia" "hybrid-nv"]) {
     # nvidia drivers are unfree software
     nixpkgs.config.allowUnfree = true;
-
-    services.xserver = mkMerge [
-      {
-        videoDrivers = ["nvidia"];
-      }
-
-      # xorg settings
-      (mkIf (!env.isWayland) {
-        # disable DPMS
-        monitorSection = ''
-          Option "DPMS" "false"
-        '';
-
-        # disable screen blanking in general
-        serverFlagsSection = ''
-          Option "StandbyTime" "0"
-          Option "SuspendTime" "0"
-          Option "OffTime" "0"
-          Option "BlankTime" "0"
-        '';
-      })
-    ];
 
     # blacklist nouveau module so that it does not conflict with nvidia drm stuff
     # also the nouveau performance is godawful, I'd rather run linux on a piece of paper than use nouveau
@@ -54,16 +31,9 @@ in {
       sessionVariables = mkMerge [
         {LIBVA_DRIVER_NAME = "nvidia";}
 
-        (mkIf env.isWayland {
+        {
           WLR_NO_HARDWARE_CURSORS = "1";
-          #__GLX_VENDOR_LIBRARY_NAME = "nvidia";
-          #GBM_BACKEND = "nvidia-drm"; # breaks firefox apparently
-        })
-
-        (mkIf (env.isWayland && (dev.gpu == "hybrid-nv")) {
-          #__NV_PRIME_RENDER_OFFLOAD = "1";
-          #WLR_DRM_DEVICES = mkDefault "/dev/dri/card1:/dev/dri/card0";
-        })
+        }
       ];
       systemPackages = with pkgs; [
         nvtopPackages.nvidia

@@ -10,7 +10,7 @@
   cfg = sys.networking.tailscale;
 in {
   imports = [./autoconnect.nix];
-  config = mkIf cfg.enable {
+  config = mkIf config.services.tailscale.enable {
     # Allow all system users to use the `tailscale` command
     # by adding the package used by the tailscale service
     # to their PATH.
@@ -47,7 +47,6 @@ in {
     # Enable Tailscale, the inter-machine VPN service
     # with our Headscale coordination server.
     services.tailscale = {
-      enable = true;
       permitCertUid = "root";
       useRoutingFeatures = mkDefault "both";
       # TODO: these flags still need to be specified with `tailscale up`

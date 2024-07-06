@@ -5,14 +5,11 @@
   ...
 }: let
   inherit (lib) mkIf;
-
-  sys = config.modules.system;
 in {
-  config = mkIf sys.printing.enable {
+  config = mkIf config.services.printing.enable {
     # enable cups and add some drivers for common printers
     services = {
       printing = {
-        enable = true;
         drivers = with pkgs; [
           gutenprint
           hplip

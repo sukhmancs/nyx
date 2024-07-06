@@ -2,9 +2,7 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkIf;
-in {
+}: {
   config = {
     security = {
       # system audit

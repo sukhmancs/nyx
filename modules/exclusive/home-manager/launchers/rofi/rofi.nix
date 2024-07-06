@@ -7,44 +7,10 @@
   ...
 }: let
   inherit (lib) mkIf optionals;
-  inherit (osConfig) modules meta;
-
-  env = modules.usrEnv;
-  rofiPackage = with pkgs;
-    if meta.isWayland
-    then rofi-wayland
-    else rofi;
 in {
-  config = mkIf env.programs.launchers.rofi.enable {
+  config = mkIf config.programs.rofi.enable {
     programs.rofi = {
-      enable = true;
-      package = rofiPackage.override {
-        plugins =
-          [
-            pkgs.rofi-rbw
-          ]
-          ++ optionals meta.isWayland (with inputs'.nyxpkgs.packages; [
-            # rofi-rbw-wayland
-            rofi-calc-wayland
-            rofi-emoji-wayland
-          ]);
-      };
       font = "Iosevka Nerd Font 14";
-      extraConfig = {
-        modi = "drun,filebrowser,calc,emoji";
-        drun-display-format = " {name} ";
-        sidebar-mode = true;
-        matching = "prefix";
-        scroll-method = 0;
-        disable-history = false;
-        show-icons = true;
-
-        display-drun = " Run";
-        display-run = " Run";
-        display-filebrowser = " Files";
-        display-calc = "󰃬 Calculator";
-        display-emoji = "💀 Emoji";
-      };
 
       theme = let
         inherit (osConfig.modules.style.colorScheme) colors;

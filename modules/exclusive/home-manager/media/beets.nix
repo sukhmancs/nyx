@@ -5,14 +5,8 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (osConfig) modules;
-
-  env = modules.usrEnv;
-  prg = env.programs;
 in {
-  programs.beets = {
-    enable = true;
-
+  programs.beets = mkIf config.programs.beets.enable {
     settings = {
       ui.color = true;
       directory = config.services.mpd.musicDirectory;

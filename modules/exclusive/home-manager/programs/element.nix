@@ -7,7 +7,7 @@
   inherit (lib) mkIf;
   inherit (osConfig) modules;
 
-  sys = modules.system;
+  sys = modules.home;
   prg = sys.programs;
 in {
   config = mkIf prg.element.enable {

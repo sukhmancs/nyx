@@ -9,10 +9,10 @@
   inherit (lib) mkIf;
   inherit (osConfig) modules;
 
-  env = modules.usrEnv;
+  env = modules.home;
 in {
   imports = [inputs.anyrun.homeManagerModules.default];
-  config = mkIf env.programs.launchers.anyrun.enable {
+  config = mkIf env.programs.anyrun.enable {
     programs.anyrun = {
       enable = true;
       config = {

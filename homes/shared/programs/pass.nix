@@ -8,11 +8,8 @@
   inherit (osConfig) modules;
 
   sys = modules.system;
-  prg = sys.programs;
-  dev = modules.device;
-  acceptedTypes = ["desktop" "laptop" "lite" "hybrid"];
 in {
-  config = mkIf ((builtins.elem dev.type acceptedTypes) && prg.cli.enable) {
+  config = {
     programs = {
       # password-store pass
       password-store = {

@@ -7,8 +7,7 @@
   inherit (lib) mkIf;
   inherit (osConfig) modules;
 
-  sys = modules.system;
-  prg = sys.programs;
+  prg = modules.home.programs;
 
   discord-wrapped =
     (pkgs.discord-canary.override {

@@ -7,7 +7,7 @@
   inherit (lib.modules) mkIf;
   inherit (osConfig) modules;
 
-  sys = modules.system;
+  sys = modules.home;
   prg = sys.programs;
 
   catppuccin-mocha = pkgs.fetchFromGitHub {

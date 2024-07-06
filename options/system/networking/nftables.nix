@@ -1,6 +1,7 @@
 {lib, ...}: let
   inherit (lib) mkTable mkPrerouteChain mkForwardChain mkOutputChain mkInputChain mkPostrouteChain mkIngressChain;
 in {
+  # being used by modules/shared/networking/firewall/nftables.nix
   options.networking.nftables.rules = {
     # man nft(8)
     netdev = mkTable "netdev address family netfilter table" {

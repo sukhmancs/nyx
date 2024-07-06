@@ -6,7 +6,6 @@
   inherit (osConfig) modules;
 
   gitPackage = pkgs.gitFull;
-  cfg = modules.system.programs.git;
 in {
   config = {
     home.packages = with pkgs; [
@@ -26,8 +25,8 @@ in {
       # lets sign using our own key
       # this must be provided by the host
       signing = {
-        key = cfg.signingKey;
-        signByDefault = true;
+        key = null;
+        signByDefault = false;
       };
 
       lfs = {

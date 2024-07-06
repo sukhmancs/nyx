@@ -7,13 +7,9 @@
   ...
 }: let
   inherit (lib) mkIf;
-
-  sys = config.modules.system;
-  cfg = sys.networking.tarpit;
 in {
-  config = mkIf cfg.enable {
+  config = mkIf config.services.endlessh-go.enable {
     services.endlessh-go = {
-      enable = true;
       port = 22;
       openFirewall = true;
 

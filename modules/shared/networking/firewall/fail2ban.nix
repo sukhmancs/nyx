@@ -6,8 +6,6 @@
 }: let
   inherit (lib.modules) mkIf mkMerge;
   inherit (lib.strings) concatStringsSep;
-
-  sys = config.modules.system;
 in {
   # fail2ban firewall jail
   services.fail2ban = {

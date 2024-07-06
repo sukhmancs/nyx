@@ -8,7 +8,7 @@
   inherit (pkgs) plymouth;
   inherit (lib) mkIf;
 in {
-  config = {
+  config = mkIf config.boot.plymouth.enable {
     # configure plymouth theme
     # <https://github.com/adi1090x/plymouth-themes>
     boot.plymouth = let

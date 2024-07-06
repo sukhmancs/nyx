@@ -8,5 +8,6 @@
     ./nh.nix
     ./thunar.nix
     ./xdg-ninja.nix
+    ./wakapi.nix
   ];
 }

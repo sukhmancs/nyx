@@ -5,13 +5,11 @@
   ...
 }: let
   inherit (lib) mkIf;
-
-  sys = config.modules.system;
 in {
   # start the Pantheon policykit agent
   # this is based on the GNOME policykit agent
   # but uses a newer GTK version
-  systemd = mkIf sys.video.enable {
+  systemd = {
     user.services.polkit-pantheon-authentication-agent-1 = {
       description = "Pantheon PolicyKit agent";
       serviceConfig = {

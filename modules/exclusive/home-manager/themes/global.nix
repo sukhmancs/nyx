@@ -1,12 +1,10 @@
-{osConfig, ...}: let
-  cfg = osConfig.modules.style;
-in {
+{osConfig, ...}: {
   # cursor theme
   home = {
     pointerCursor = {
-      package = cfg.pointerCursor.package;
-      name = cfg.pointerCursor.name;
-      size = cfg.pointerCursor.size;
+      package = pkgs.catppuccin-cursors.mochaDark;
+      name = "catppuccin-mocha-dark-cursors";
+      size = 24;
       gtk.enable = true;
       x11.enable = true;
     };

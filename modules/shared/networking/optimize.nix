@@ -2,10 +2,7 @@
   config,
   lib,
   ...
-}: let
-  sys = config.modules.system.networking;
-  inherit (lib) mkIf;
-in {
+}: {
   config = {
     boot = {
       kernelModules = ["tls" "tcp_bbr"];

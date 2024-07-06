@@ -5,12 +5,8 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (osConfig) modules;
-
-  sys = modules.system;
-  prg = sys.programs;
 in {
-  config = mkIf prg.zathura.enable {
+  config = mkIf config.programs.zathura.enable {
     xdg.configFile."zathura/catppuccin-mocha".source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/catppuccin/zathura/main/src/catppuccin-mocha";
       hash = "sha256-POxMpm77Pd0qywy/jYzZBXF/uAKHSQ0hwtXD4wl8S2Q=";

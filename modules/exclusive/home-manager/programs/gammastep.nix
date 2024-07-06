@@ -4,11 +4,9 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (osConfig) meta;
 in {
-  config = mkIf meta.isWayland {
+  config = mkIf config.services.gammastep.enable {
     services.gammastep = {
-      enable = true;
       provider = "geoclue2";
     };
   };

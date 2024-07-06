@@ -1,5 +1,5 @@
 #
-# NuShell - a better alternative to zsh/bash
+# NuShell - a better alternative to zsh/bash with a lot of whistles
 #
 {
   pkgs,
@@ -9,11 +9,8 @@
 }: let
   inherit (lib.modules) mkIf;
   inherit (osConfig) modules;
-
-  sys = modules.system;
-  cfg = sys.programs.nushell;
 in {
-  config = mkIf cfg.enable {
+  config = {
     programs = {
       direnv = {
         enable = true;

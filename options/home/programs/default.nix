@@ -1,8 +1,7 @@
 {
   imports = [
-    ./gaming.nix
-    ./launchers.nix
-    ./lockers.nix
-    ./media.nix
+    ./git.nix
+    ./packages.nix
+    ./programs.nix
   ];
 }

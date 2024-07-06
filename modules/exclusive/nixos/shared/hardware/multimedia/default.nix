@@ -1,6 +1,5 @@
 {
   imports = [
-    ./video
     ./sound
   ];
 }
