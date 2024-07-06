@@ -1,6 +1,7 @@
 {
   lib,
   osConfig,
+  config,
   ...
 }: let
   inherit (lib) mkIf;

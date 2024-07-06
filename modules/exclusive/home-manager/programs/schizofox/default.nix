@@ -2,6 +2,7 @@
   self',
   inputs,
   osConfig,
+  config,
   lib,
   ...
 }: let

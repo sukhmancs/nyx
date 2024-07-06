@@ -14,7 +14,7 @@
 }: let
   inherit (lib) mkIf getExe;
 in {
-  config = mkIf conif.services.seatd.enable {
+  config = mkIf config.services.seatd.enable {
     systemd.services = {
       seatd = {
         description = "Seat management daemon";
@@ -23,7 +23,7 @@ in {
         # input and output devices are members of the wheel group.
         script = "${getExe pkgs.seatd} -g wheel";
         serviceConfig = {
-          Type = "simple";
+          Type = lib.mkForce "simple";
           Restart = "always";
           RestartSec = "1";
         };

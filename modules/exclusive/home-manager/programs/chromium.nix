@@ -2,13 +2,13 @@
   lib,
   pkgs,
   osConfig,
+  config,
   ...
 }: let
   inherit (lib) mkIf optionals concatStringsSep;
 in {
   config = mkIf config.programs.chromium.enable {
     programs.chromium = {
-      enable = true;
       extensions = [
         {id = "mnjggcdmjocbbbhaepdhchncahnbgone";} # sponsor block
         {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # ublock

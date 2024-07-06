@@ -21,7 +21,6 @@ in {
 
       # music player daemon service
       mpd = {
-        enable = true;
         musicDirectory = "${config.home.homeDirectory}/Media/Music";
         network = {
           startWhenNeeded = true;

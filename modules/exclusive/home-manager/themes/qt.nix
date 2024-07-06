@@ -1,10 +1,16 @@
 {
   pkgs,
   lib,
+  config,
   osConfig,
   ...
 }: let
   inherit (lib.modules) mkIf mkMerge;
+  qtThemePackage = pkgs.catppuccin-kde.override {
+    flavour = ["mocha"];
+    accents = ["blue"];
+    winDecStyles = ["modern"];
+  };
 in {
   config = mkIf config.qt.enable {
     qt = {
@@ -52,7 +58,7 @@ in {
             kdePackages.breeze-icons
           ]
 
-          (mkIf cfg.forceGtk [
+          (mkIf config.gtk.enable [
             # libraries to ensure that "gtk" platform theme works
             # as intended after the following PR:
             # <https://github.com/nix-community/home-manager/pull/5156>
@@ -60,7 +66,7 @@ in {
             qt6Packages.qt6gtk2
           ])
 
-          (mkIf cfg.useKvantum [
+          [
             # kvantum as a library and a program to theme qt applications
             # this added here, however, this will not have an effect
             # until QT_QPA_PLATFORMTHEME has been set appropriately
@@ -68,7 +74,7 @@ in {
             # but again, it is a no-op until the env var is set
             qt6Packages.qtstyleplugin-kvantum
             libsForQt5.qtstyleplugin-kvantum
-          ])
+          ]
         ];
 
       sessionVariables = {
@@ -98,7 +104,7 @@ in {
       # write ~/.config/kdeglobals based on the kdeglobals file the user has specified
       # this option is a catch-all and not a set path because some programs specify different
       # paths inside their kdeglobals package
-      "kdeglobals".source = cfg.qt.kdeglobals.source;
+      "kdeglobals".source = "${qtThemePackage}/share/color-schemes/CatppuccinMochaBlue.colors".source;
 
       "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
         General.theme = "catppuccin";

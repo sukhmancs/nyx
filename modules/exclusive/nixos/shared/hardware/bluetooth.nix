@@ -7,7 +7,7 @@
   inherit (lib) mkIf;
 in {
   config = mkIf config.hardware.bluetooth.enable {
-    modules.system.boot.extraKernelParams = ["btusb"];
+    boot.kernelParams = ["btusb"];
 
     hardware.bluetooth = {
       package = pkgs.bluez5-experimental;

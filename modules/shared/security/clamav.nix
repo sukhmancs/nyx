@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) optionalString;
+  inherit (lib) optionalString mkForce;
 in {
   config = {
     services.clamav = {
@@ -69,10 +69,8 @@ in {
         clamav-freshclam = {
           wants = ["clamav-daemon.service"];
           serviceConfig = {
-            ExecStart = let
-              message = "Updating ClamAV database";
-            in ''
-              ${pkgs.coreutils}/bin/echo -en ${message}
+            ExecStart = mkForce ''
+              ${pkgs.coreutils}/bin/echo -en Updating ClamAV database
             '';
             SuccessExitStatus = lib.mkForce [11 40 50 51 52 53 54 55 56 57 58 59 60 61 62];
           };

@@ -17,7 +17,6 @@
     ./vscode.nix
     ./webcord.nix
     ./zathura.nix
-    ./swaybg.nix
     ./swayidle.nix
     ./wlogout.nix
   ];

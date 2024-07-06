@@ -6,19 +6,15 @@
   ...
 }: let
   inherit (lib) mkIf;
-  dev = osConfig.modules.device;
 
   credientals = {
     password_cmd = "${pkgs.coreutils}/bin/tail -1 /run/agenix/spotify";
     username_cmd = "${pkgs.coreutils}/bin/head -1 /run/agenix/spotify";
   };
-
-  acceptedTypes = ["desktop" "laptop" "lite" "hybrid"];
 in {
-  config = {
+  config = mkIf config.services.spotifyd.enable {
     services = {
       spotifyd = {
-        enable = false;
         package = pkgs.spotifyd.override {withMpris = true;};
         settings.global = {
           inherit (credientals) password_cmd username_cmd;

@@ -64,7 +64,7 @@ in {
     config = mkOption {
       type = attrsOf (nullOr (oneOf [bool int str]));
       default = {
-        config = {};
+        config = null;
       };
       example = literalExpression ''
         {

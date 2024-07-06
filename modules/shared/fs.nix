@@ -34,7 +34,9 @@ in {
       # filesystems, which defaults to `/`. The service will be enabled
       # by default if btrfs support is advertised by the host.
       btrfs.autoScrub = mkIf (elem "btrfs" supportedFilesystems) {
-        inherit (fs.btrfs.scrub) enable interval fileSystems;
+        enable = true;
+        interval = "weekly";
+        fileSystems = ["/"];
       };
 
       # I don't use lvm, can be disabled

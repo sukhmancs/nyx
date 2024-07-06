@@ -31,25 +31,6 @@
   cfg = sys.security;
 in {
   config = {
-    # failsafe for idiots, god knows there are plenty
-    assertions =
-      optionals cfg.mitigations.disable
-      [
-        {
-          assertion = cfg.mitigations.acceptRisk;
-          message = ''
-            You have enabled `config.modules.system.security.mitigations`.
-
-            To make sure you are not doing this out of sheer idiocy, you must explicitly
-            accept the risk of running your kernel without Spectre or Meltdown mitigations.
-
-            Set `config.modules.system.security.mitigations.acceptRisk` to `true` only if you know what your doing!
-
-            If you don't know what you are doing, but still insist on disabling mitigations; perish on your own accord.
-          '';
-        }
-      ];
-
     security = {
       protectKernelImage = true; # disables hibernation
 
@@ -131,78 +112,76 @@ in {
       };
 
       # https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
-      kernelParams =
-        [
-          # make stack-based attacks on the kernel harder
-          "randomize_kstack_offset=on"
+      kernelParams = [
+        # make stack-based attacks on the kernel harder
+        "randomize_kstack_offset=on"
 
-          # Disable vsyscalls as they are obsolete and have been replaced with vDSO.
-          # vsyscalls are also at fixed addresses in memory, making them a potential
-          # target for ROP attacks
-          # this breaks really old binaries for security
-          "vsyscall=none"
+        # Disable vsyscalls as they are obsolete and have been replaced with vDSO.
+        # vsyscalls are also at fixed addresses in memory, making them a potential
+        # target for ROP attacks
+        # this breaks really old binaries for security
+        "vsyscall=none"
 
-          # reduce most of the exposure of a heap attack to a single cache
-          # Disable slab merging which significantly increases the difficulty of heap
-          # exploitation by preventing overwriting objects from merged caches and by
-          # making it harder to influence slab cache layout
-          "slab_nomerge"
+        # reduce most of the exposure of a heap attack to a single cache
+        # Disable slab merging which significantly increases the difficulty of heap
+        # exploitation by preventing overwriting objects from merged caches and by
+        # making it harder to influence slab cache layout
+        "slab_nomerge"
 
-          # Disable debugfs which exposes a lot of sensitive information about the
-          # kernel. Some programs, such as powertop, use this interface to gather
-          # information about the system, but it is not necessary for the system to
-          # actually publish those. I can live without it.
-          "debugfs=off"
+        # Disable debugfs which exposes a lot of sensitive information about the
+        # kernel. Some programs, such as powertop, use this interface to gather
+        # information about the system, but it is not necessary for the system to
+        # actually publish those. I can live without it.
+        "debugfs=off"
 
-          # Sometimes certain kernel exploits will cause what is known as an "oops".
-          # This parameter will cause the kernel to panic on such oopses, thereby
-          # preventing those exploits
-          "oops=panic"
+        # Sometimes certain kernel exploits will cause what is known as an "oops".
+        # This parameter will cause the kernel to panic on such oopses, thereby
+        # preventing those exploits
+        "oops=panic"
 
-          # Only allow kernel modules that have been signed with a valid key to be
-          # loaded, which increases security by making it much harder to load a
-          # malicious kernel module
-          "module.sig_enforce=1"
+        # Only allow kernel modules that have been signed with a valid key to be
+        # loaded, which increases security by making it much harder to load a
+        # malicious kernel module
+        "module.sig_enforce=1"
 
-          # The kernel lockdown LSM can eliminate many methods that user space code
-          # could abuse to escalate to kernel privileges and extract sensitive
-          # information. This LSM is necessary to implement a clear security boundary
-          # between user space and the kernel
-          #  integrity: kernel features that allow userland to modify the running kernel
-          #             are disabled
-          #  confidentiality: kernel features that allow userland to extract confidential
-          #             information from the kernel are also disabled
-          "lockdown=confidentiality"
+        # The kernel lockdown LSM can eliminate many methods that user space code
+        # could abuse to escalate to kernel privileges and extract sensitive
+        # information. This LSM is necessary to implement a clear security boundary
+        # between user space and the kernel
+        #  integrity: kernel features that allow userland to modify the running kernel
+        #             are disabled
+        #  confidentiality: kernel features that allow userland to extract confidential
+        #             information from the kernel are also disabled
+        "lockdown=confidentiality"
 
-          # enable buddy allocator free poisoning
-          #  on: memory will befilled with a specific byte pattern
-          #      that is unlikely to occur in normal operation.
-          #  off (default): page poisoning will be disabled
-          "page_poison=on"
+        # enable buddy allocator free poisoning
+        #  on: memory will befilled with a specific byte pattern
+        #      that is unlikely to occur in normal operation.
+        #  off (default): page poisoning will be disabled
+        "page_poison=on"
 
-          # performance improvement for direct-mapped memory-side-cache utilization
-          # reduces the predictability of page allocations
-          "page_alloc.shuffle=1"
+        # performance improvement for direct-mapped memory-side-cache utilization
+        # reduces the predictability of page allocations
+        "page_alloc.shuffle=1"
 
-          # for debugging kernel-level slab issues
-          "slub_debug=FZP"
+        # for debugging kernel-level slab issues
+        "slub_debug=FZP"
 
-          # ignore access time (atime) updates on files
-          # except when they coincide with updates to the ctime or mtime
-          "rootflags=noatime"
+        # ignore access time (atime) updates on files
+        # except when they coincide with updates to the ctime or mtime
+        "rootflags=noatime"
 
-          # linux security modules
-          "lsm=landlock,lockdown,yama,integrity,apparmor,bpf,tomoyo,selinux"
+        # linux security modules
+        "lsm=landlock,lockdown,yama,integrity,apparmor,bpf,tomoyo,selinux"
 
-          # prevent the kernel from blanking plymouth out of the fb
-          "fbcon=nodefer"
+        # prevent the kernel from blanking plymouth out of the fb
+        "fbcon=nodefer"
 
-          # the format that will be used for integrity audit logs
-          #  0 (default): basic integrity auditing messages
-          #  1: additional integrity auditing messages
-          "integrity_audit=1"
-        ]
-        ++ optionals cfg.mitigations.disable mitigationFlags;
+        # the format that will be used for integrity audit logs
+        #  0 (default): basic integrity auditing messages
+        #  1: additional integrity auditing messages
+        "integrity_audit=1"
+      ];
 
       blacklistedKernelModules = lib.concatLists [
         # Obscure network protocols
@@ -271,9 +250,9 @@ in {
         # you might possibly want your webcam to work
         # we whitelsit the module if the system wants
         # webcam to work
-        (optionals (!sys.security.fixWebcam) [
+        [
           "uvcvideo" # this is why your webcam no worky
-        ])
+        ]
 
         # if bluetooth is enabled, whitelist the module
         # necessary for bluetooth dongles to work

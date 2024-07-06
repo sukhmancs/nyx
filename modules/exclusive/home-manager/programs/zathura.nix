@@ -1,5 +1,6 @@
 {
   osConfig,
+  config,
   pkgs,
   lib,
   ...
@@ -13,7 +14,6 @@ in {
     };
 
     programs.zathura = {
-      enable = true;
       extraConfig = "include catppuccin-mocha";
 
       options = {

@@ -5,13 +5,11 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (osConfig.modules) device;
 
   format = pkgs.formats.json {};
-
-  acceptedTypes = ["desktop" "laptop"];
 in {
-  config = {
+  #TODO add custom options to enable it
+  config = mkIf true {
     # Write a PipeWire userspace configuration based on werman's noise-supression-for-voice
     # for usage instructions, see:
     # <https://github.com/werman/noise-suppression-for-voice?tab=readme-ov-file#linux>

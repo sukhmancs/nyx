@@ -4,5 +4,5 @@
     then " @ " + config.system.configurationRevision
     else "";
 in {
-  services.getty.greetingLine = "<<< Welcome to ${config.meta.hostname} @ ${revision} >>>";
+  services.getty.greetingLine = "<<< Welcome to ${config.networking.hostName} @ ${revision} >>>";
 }

@@ -6,7 +6,6 @@
       rofi.enable = true;
       firefox.enable = true;
       vscode.enable = true;
-      discord.enable = true;
       swaylock.enable = true;
     };
     gtk.enable = true;

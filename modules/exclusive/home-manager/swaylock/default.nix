@@ -1,6 +1,7 @@
 {
   osConfig,
   pkgs,
+  config,
   lib,
   ...
 }: let
@@ -9,7 +10,6 @@
 in {
   config = mkIf config.programs.swaylock.enable {
     programs.swaylock = {
-      enable = true;
       package = pkgs.swaylock-effects;
       settings = {
         clock = true;

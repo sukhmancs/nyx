@@ -3,47 +3,47 @@
 in {
   options.modules.home.programs = {
     # anyrun options is being used in exclusive/home-manager/programs/anyrun.nix
-    anyrun = mkEnableOption {
+    anyrun.enable = mkEnableOption {
       default = false;
       description = "Enable AnyRun";
     };
 
-    clipboard = mkEnableOption {
+    clipboard.enable = mkEnableOption {
       default = false;
       description = "Enable clipboard service";
     };
 
-    discord = mkEnableOption {
+    discord.enable = mkEnableOption {
       default = false;
       description = "Enable Discord";
     };
 
-    webcord = mkEnableOption {
+    webcord.enable = mkEnableOption {
       default = false;
       description = "Enable Webcord";
     };
 
-    element = mkEnableOption {
+    element.enable = mkEnableOption {
       default = false;
       description = "Enable Element";
     };
 
-    hyprpaper = mkEnableOption {
+    hyprpaper.enable = mkEnableOption {
       default = false;
       description = "Enable Hyprpaper";
     };
 
-    libreoffice = mkEnableOption {
+    libreoffice.enable = mkEnableOption {
       default = false;
       description = "Enable LibreOffice";
     };
 
-    spotify = mkEnableOption {
+    spotify.enable = mkEnableOption {
       default = false;
       description = "Enable Spotify";
     };
 
-    wlogout = mkEnableOption {
+    wlogout.enable = mkEnableOption {
       default = false;
       description = "Enable Wlogout";
     };

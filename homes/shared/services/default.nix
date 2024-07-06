@@ -1,7 +1,5 @@
 {
   imports = [
-    ./dunst
-
     ./dconf.nix
     ./kdeconnect.nix
     ./mail.nix

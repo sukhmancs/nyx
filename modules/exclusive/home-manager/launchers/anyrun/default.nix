@@ -14,7 +14,6 @@ in {
   imports = [inputs.anyrun.homeManagerModules.default];
   config = mkIf env.programs.anyrun.enable {
     programs.anyrun = {
-      enable = true;
       config = {
         plugins = with inputs'.anyrun.packages; [
           applications

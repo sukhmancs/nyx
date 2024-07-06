@@ -6,7 +6,7 @@
 }: let
   inherit (lib) mkIf;
 in {
-  config = mkIf config.virtualization.podman.enable {
+  config = mkIf config.virtualisation.podman.enable {
     environment.systemPackages = with pkgs; [
       podman-compose
       podman-desktop

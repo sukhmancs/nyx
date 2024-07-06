@@ -1,6 +1,7 @@
 {
   osConfig,
   pkgs,
+  config,
   lib,
   ...
 }: let
@@ -11,7 +12,6 @@ in {
     home.packages = with pkgs; [birdtray thunderbird];
 
     programs.thunderbird = {
-      enable = true;
       profiles."xi" = {
         isDefault = true;
         userChrome = "";

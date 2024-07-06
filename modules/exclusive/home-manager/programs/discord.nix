@@ -2,6 +2,7 @@
   osConfig,
   lib,
   pkgs,
+  config,
   ...
 }: let
   inherit (lib) mkIf;

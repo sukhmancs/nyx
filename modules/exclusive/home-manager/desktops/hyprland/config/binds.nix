@@ -1,24 +1,22 @@
 {
   inputs',
   osConfig,
-  defaults,
+  config,
   pkgs,
   lib,
   ...
 }: let
   inherit (lib.meta) getExe;
-  inherit (osConfig) modules;
-  env = modules.usrEnv;
 
   # nix advantages
   inherit (import ../packages {inherit inputs' pkgs;}) propaganda;
 
   terminal =
-    if (defaults.terminal == "foot")
+    if config.programs.foot.enable
     then "foot"
-    else "${defaults.terminal}";
+    else "alacritty";
 
-  locker = getExe env.programs.screenlock.package;
+  locker = getExe pkgs.swaylock-effects;
 in {
   wayland.windowManager.hyprland.settings = {
     # define the mod key
@@ -39,7 +37,7 @@ in {
 
       # Daily Applications
       "$MOD,F1,exec,firefox" # browser
-      ''$MOD,F2,exec,run-as-service "${defaults.fileManager}"'' # file manager
+      ''$MOD,F2,exec,run-as-service dolphin'' # file manager
       ''$MOD,RETURN,exec,run-as-service "${terminal}"'' # terminal
       ''$MODSHIFT,RETURN,exec,run-as-service "${terminal}"'' # floating terminal (TODO)
       ''$MOD,D,exec, killall rofi || run-as-service $(rofi -show drun)'' # application launcher

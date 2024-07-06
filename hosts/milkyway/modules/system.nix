@@ -77,7 +77,7 @@
   config = {
     boot.loader.grub.enable = true;
     boot.plymouth.enable = true;
-    services.seatd.enable = true;
+    # services.seatd.enable = true;
     xdg.portal.enable = true;
 
     modules.system = {

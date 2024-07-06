@@ -1,7 +1,6 @@
 {
   imports = [
     ./environment
-    ./gaming
     ./nix
     ./programs
     ./secrets

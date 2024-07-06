@@ -10,9 +10,6 @@ in {
     # build systemd with SE Linux support so it loads policy at boot and supports file labelling
     systemd.package = pkgs.systemd.override {withSelinux = true;};
 
-    # we cannot have apparmor and security together. disable apparmor
-    security.apparmor.enable = lib.mkForce false;
-
     boot = {
       # tell kernel to use SE Linux by adding necessary parameters
       kernelParams = ["security=selinux" "selinux=1"];

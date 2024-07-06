@@ -4,10 +4,12 @@
   ...
 }: let
   inherit (lib) mkIf;
+
+  cfg = config.home-manager.users.xi;
 in {
   config = {
     environment.etc."greetd/environments".text = ''
-      ${lib.optionalString (config.wayland.windowManager.hyprland.enable) "Hyprland"}
+      ${lib.optionalString (cfg.wayland.windowManager.hyprland.enable) "Hyprland"}
       zsh
     '';
 

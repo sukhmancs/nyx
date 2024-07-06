@@ -2,6 +2,7 @@
   pkgs,
   lib,
   osConfig,
+  config,
   ...
 }: let
   inherit (lib) mkIf mkGraphicalService getExe;

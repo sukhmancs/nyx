@@ -1,7 +1,11 @@
 #
 # Override - rofi with wayland plugins
 #
-{lib, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (lib) mkForce;
 in {
   home-manager.users.xi = {
@@ -10,8 +14,8 @@ in {
       package = pkgs.rofi-wayland.override {
         plugins = [
           pkgs.rofi-rbw
-          pkgs.rofi-calc-wayland
-          pkgs.rofi-emoji-wayland
+          pkgs.rofi-calc
+          pkgs.rofi-emoji
         ];
       };
       font = mkForce "Iosevka Nerd Font 14";

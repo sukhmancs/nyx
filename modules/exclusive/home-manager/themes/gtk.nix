@@ -15,18 +15,8 @@ in {
     home = {
       packages = with pkgs; [
         glib # gsettings
-        pkgs.catppuccin-gtk.override
-        {
-          size = "standard";
-          accents = ["blue"];
-          variant = "mocha";
-          tweaks = ["normal"];
-        }
-        pkgs.catppuccin-papirus-folders.override
-        {
-          accent = "blue";
-          flavor = "mocha";
-        }
+        catppuccin-gtk
+        catppuccin-papirus-folders
       ];
 
       sessionVariables = {
@@ -41,12 +31,7 @@ in {
     gtk = {
       theme = {
         name = "Catppuccin-Mocha-Standard-Blue-dark";
-        package = pkgs.catppuccin-gtk.override {
-          size = "standard";
-          accents = ["blue"];
-          variant = "mocha";
-          tweaks = ["normal"];
-        };
+        package = pkgs.catppuccin-gtk;
       };
 
       iconTheme = {

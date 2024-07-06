@@ -9,13 +9,8 @@
   inherit (self) inputs;
   inherit (lib.modules) mkIf;
   inherit (lib.attrsets) genAttrs;
-  inherit (config) modules;
 
-  env = modules.usrEnv;
-  sys = modules.system;
-  defaults = sys.programs.default;
-
-  specialArgs = {inherit inputs self inputs' self' defaults;};
+  specialArgs = {inherit inputs self inputs' self';};
 in {
   home-manager = {
     # Enable verbose logging for Home Manager

@@ -1,4 +1,8 @@
-{osConfig, ...}: {
+{
+  osConfig,
+  pkgs,
+  ...
+}: {
   # cursor theme
   home = {
     pointerCursor = {

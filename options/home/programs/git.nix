@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib.options) mkEnableOption;
+  inherit (lib.options) mkEnableOption mkOption types;
 in {
   options.modules.home.programs = {
     # Signing key is being used in homes/shared/programs/git.nix

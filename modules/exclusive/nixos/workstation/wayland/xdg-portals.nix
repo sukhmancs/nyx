@@ -5,8 +5,10 @@
   ...
 }: let
   inherit (lib.modules) mkIf mkForce;
+  cfg = config.home-manager.users.xi;
 in {
-  config = mkIf config.xdg.portal.enable {
+  #TODO: this should be a module
+  config = mkIf true {
     xdg.portal = {
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk
@@ -15,9 +17,9 @@ in {
       config = {
         common = let
           portal =
-            if config.wayland.windowManager.hyprland.enable
+            if cfg.wayland.windowManager.hyprland.enable
             then "hyprland"
-            else if config.wayland.windowManager.sway.enable
+            else if cfg.wayland.windowManager.sway.enable
             then "wlr"
             else "gtk"; # FIXME: does this actually implement what we need?
         in {
@@ -34,7 +36,7 @@ in {
       # will (and should) override this one
       # however in case I run a different compositor on a Wayland host, it can be enabled
       wlr = {
-        enable = mkForce (!config.wayland.windowManager.hyprland.enable) && config.wayland.windowManager.sway.enable;
+        enable = mkForce (cfg.wayland.windowManager.sway.enable);
         settings = {
           screencast = {
             max_fps = 30;
