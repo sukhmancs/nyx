@@ -1,16 +1,14 @@
 {
-  modules.usrEnv = {
-    desktop = "Hyprland";
-
+  home-manager.users.xi = {
+    wayland.windowManager.hyprland.enable = true;
+    services.dunst.enable = true;
     programs = {
-      media.mpv.enable = true;
-
-      launchers = {
-        anyrun.enable = true;
-        rofi.enable = true;
-      };
-
-      screenlock.swaylock.enable = true;
+      rofi.enable = true;
+      firefox.enable = true;
+      vscode.enable = true;
+      discord.enable = true;
+      swaylock.enable = true;
     };
+    gtk.enable = true;
   };
 }

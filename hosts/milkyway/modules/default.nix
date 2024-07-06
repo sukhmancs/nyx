@@ -2,9 +2,9 @@
   imports = [
     ./device.nix
     ./home.nix
-    ./profiles.nix
+    ./environment.nix
     ./system.nix
-    ./style.nix
-    ./theme.nix
+    # ./style.nix
+    # ./theme.nix
   ];
 }

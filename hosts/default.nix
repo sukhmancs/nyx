@@ -14,7 +14,7 @@
   hm = inputs.home-manager.nixosModules.home-manager; # home-manager nixos module
 
   # Home-manager
-  homesPath = ../homes;
+  homesPath = ./home.nix;
   homes = [hm homesPath];
 
   # Default
@@ -23,24 +23,24 @@
 
   # Define role-specific module lists
   workstationRoles = [
-    ../modules/workstation
-    ../modules/graphical
+    ../modules/roles/workstation
+    ../modules/roles/graphical
   ];
 
   laptopRoles = [
-    ../modules/laptop
-    ../modules/workstation
-    ../modules/graphical
+    ../modules/roles/laptop
+    ../modules/roles/workstation
+    ../modules/roles/graphical
   ];
 
   serverRoles = [
-    ../modules/server
-    ../modules/headless
+    ../modules/roles/server
+    ../modules/roles/headless
   ];
 
   isoRoles = [
-    ../modules/iso
-    ../modules/headless
+    ../modules/roles/iso
+    ../modules/roles/headless
   ];
 
   # Define a base configuration function
@@ -62,7 +62,8 @@
           [
             {networking.hostName = hostname;}
             ./${hostname}
-            ../modules/core
+            ../modules/shared # modules shared across all hosts, enabled by default
+            ../modules/exclusive/nixos # modules shared across all hosts, but need to be enabled
           ]
           ++ roleModules
           ++ [
