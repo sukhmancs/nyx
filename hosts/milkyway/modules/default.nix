@@ -1,10 +1,9 @@
 {
   imports = [
     ./device.nix
-    ./home.nix
     ./environment.nix
+    ./home.nix
     ./system.nix
-    # ./style.nix
     # ./theme.nix
   ];
 }
