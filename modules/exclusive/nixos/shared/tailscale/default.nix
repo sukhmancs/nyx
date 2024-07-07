@@ -1,13 +1,24 @@
+#
+# Tailscale - Client Setup (Overide the flags for tailscale server setup)
+#
 {
   config,
   lib,
   ...
 }: let
-  inherit (lib.modules) mkIf mkDefault;
+  inherit (lib.modules) mkIf mkDefault concatLists concatStringsSep optionals;
   inherit (config.services) tailscale;
 
-  sys = config.modules.system;
-  cfg = sys.networking.tailscale;
+  endpoint = "https://hs.xilain.dev";
+  operator = config.modules.system.mainUser;
+  tags = "tag:client"; # default tag for all clients
+  flags = concatLists [
+    ["--ssh"]
+    ["--authkeyfile:${config.age.secrets.tailscale-client.path}"]
+    (optionals (endpoint != null) ["--login-server" "${endpoint}"])
+    (optionals (operator != null) ["--operator ${operator}"])
+    (optionals (tags != []) ["--advertise-tags" (concatStringsSep "," tags)])
+  ];
 in {
   imports = [./autoconnect.nix];
   config = mkIf config.services.tailscale.enable {
@@ -51,7 +62,7 @@ in {
       useRoutingFeatures = mkDefault "both";
       # TODO: these flags still need to be specified with `tailscale up`
       # for some reason
-      extraUpFlags = cfg.flags.final;
+      extraUpFlags = flags;
     };
 
     # Ignore the default Tailscale interface for network.wait-online
