@@ -12,43 +12,34 @@
         inputs.flake-parts.flakeModules.easyOverlay
         inputs.treefmt-nix.flakeModule
 
-        # ./flake/apps # apps provided by the flake
-        # ./flake/checks # checks that are performed on `nix flake check`
         ./flake/lib
-        # ./flake/modules # nixos and home-manager modules provided by this flake
-        ./flake/pkgs
-        ./flake/pre-commit
-        # ./flake/templates # flake templates
-
+        ./flake/default
+        ./flake/git-hooks
         ./flake/args.nix
-        # ./flake/deployments.nix # deploy-rs configurations for active hosts
         ./flake/fmt.nix
         ./flake/iso-images.nix
         ./flake/shell
       ];
 
       flake = {
-        nixosConfigurations = import ./hosts {inherit inputs withSystem;};
+        nixosConfigurations = import ./machines {inherit inputs withSystem;};
       };
     });
 
   inputs = {
-    # global, so they can be `.follow`ed
     systems.url = "github:nix-systems/default-linux";
 
-    # Feature-rich and convenient fork of the Nix package manager
+    # Fork of the Nix package manager
     nix-super.url = "github:privatevoid-net/nix-super";
 
-    # We build against NixOS unstable, because stable takes way too long to get things into
-    # more versions with or without pinned branches can be added if deemed necessary
-    # stable? Never heard of her.
+    # NixOS unstable
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small"; # moves faster, has less packages
 
     # Sometimes nixpkgs breaks something I need, pin a working commit when that occurs
     # nixpkgs-pinned.url = "github:NixOS/nixpkgs/b610c60e23e0583cdc1997c54badfd32592d3d3e";
 
-    # Powered by
+    # Flake parts for easier flake development
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -60,17 +51,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Ever wanted nix error messages to be even more cryptic?
-    # Try flake-utils today! (Devs I beg you please stop)
+    # Flake utilities
     flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
 
-    # Repo for hardware-specific NixOS modules
+    # NixOS hardware configuration
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
-    # Nix wrapper for building and testing my system
+    # Nix hepler
     nh = {
       url = "github:viperML/nh";
       inputs.nixpkgs.follows = "nixpkgs-small";
@@ -79,7 +69,7 @@
     # Stylix - System-Wide theme configuration
     stylix.url = "github:danth/stylix";
 
-    # multi-profile Nix-flake deploy
+    # Nix-flake deploy
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs = {
@@ -115,8 +105,7 @@
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
-    # I *dare you* to guess what this does
-    # come on, try
+    # git-hooks for nix
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs = {
@@ -134,20 +123,16 @@
       };
     };
 
-    # This exists, I guess
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
     };
 
     # Impermanence
-    # doesn't offer much above properly used symlinks
-    # but it *is* convenient
     impermanence.url = "github:nix-community/impermanence";
 
     # Secure-boot support on nixos
-    # the interface iss still shaky and I would recommend
-    # avoiding on production systems for now
+    # Avoid on production systems for now
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs = {
@@ -195,9 +180,7 @@
       };
     };
 
-    # Nightly builds of Neovim, built from the latest
-    # revision. Usually breaks most plugins, but worth
-    # keeping for when it actually works.
+    # Nightly builds of Neovim
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs = {
@@ -207,11 +190,11 @@
       };
     };
 
-    # Personal package collection for packages that are
+    # Notashelf' personal package collection for packages that are
     # not in nixpkgs.
     nyxpkgs.url = "github:NotAShelf/nyxpkgs";
 
-    # An extensiblee  neovim configuration wrapper.
+    # Neovim configuration wrapper.
     neovim-flake = {
       url = "github:NotAShelf/nvf";
       inputs = {
@@ -222,16 +205,14 @@
       };
     };
 
-    # Use my own wallpapers repository to provide various
-    # wallpapers as nix packages. This has storage usage
-    # implications as those wallpapers will be kept in the
-    # store even though they are not used.
+    # Notashelf' wallpapers repository to provide various
+    # wallpapers as nix packages.
     wallpkgs = {
       url = "github:NotAShelf/wallpkgs";
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
-    # anyrun program launcher
+    # Anyrun program launcher
     anyrun.url = "github:anyrun-org/anyrun";
     anyrun-nixos-options = {
       url = "github:n3oney/anyrun-nixos-options";
@@ -277,6 +258,7 @@
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     hyprpicker.url = "github:hyprwm/hyprpicker";
 
+    # Hyprland's wallpaper repository
     hyprpaper = {
       url = "github:hyprwm/hyprpaper";
       inputs = {
@@ -291,12 +273,14 @@
       inputs.nixpkgs.follows = "hyprland/nixpkgs";
     };
 
+    # Hyprland's plugins repository
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
   };
 
+  # Nix cache configuration
   nixConfig = {
     extra-substituters = [
       "https://nix-community.cachix.org"
