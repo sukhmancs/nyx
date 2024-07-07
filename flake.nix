@@ -1,31 +1,6 @@
 {
   description = "Xi's NixOS configuration";
 
-  outputs = {flake-parts, ...} @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} ({withSystem, ...}: {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-
-      imports = [
-        inputs.flake-parts.flakeModules.easyOverlay
-        inputs.treefmt-nix.flakeModule
-
-        ./flake/lib
-        ./flake/default
-        ./flake/git-hooks
-        ./flake/args.nix
-        ./flake/fmt.nix
-        ./flake/iso-images.nix
-        ./flake/shell
-      ];
-
-      flake = {
-        nixosConfigurations = import ./machines {inherit inputs withSystem;};
-      };
-    });
-
   inputs = {
     systems.url = "github:nix-systems/default-linux";
 
@@ -69,7 +44,7 @@
     # Stylix - System-Wide theme configuration
     stylix.url = "github:danth/stylix";
 
-    # Nix-flake deploy
+    # Deploy-rs - A deployment tool
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs = {
@@ -280,23 +255,21 @@
     };
   };
 
-  # Nix cache configuration
-  nixConfig = {
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-      "https://hyprland.cachix.org"
-      "https://cache.privatevoid.net"
-      "https://nyx.cachix.org"
-      #      "https://cache.xilain.dev"
-    ];
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} ({withSystem, ...}: {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
 
-    extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "cache.privatevoid.net:SErQ8bvNWANeAvtsOESUwVYr2VJynfuc9JRwlzTTkVg="
-      "notashelf.cachix.org-1:VTTBFNQWbfyLuRzgm2I7AWSDJdqAa11ytLXHBhrprZk="
-      "nyx.cachix.org-1:xH6G0MO9PrpeGe7mHBtj1WbNzmnXr7jId2mCiq6hipE="
-      #     "cache.xilain.dev-1:jmB+1nvzo2i+y71RgmHjMcKjvzkJTs2JtoRbyV4Z4jc="
-    ];
-  };
+      imports = [./flake-parts];
+
+      flake = {
+        nixosConfigurations = (
+          import ./machines {
+            inherit inputs withSystem;
+          }
+        );
+      };
+    });
 }

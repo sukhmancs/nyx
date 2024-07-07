@@ -1,8 +1,4 @@
-{inputs, ...}: {
-  imports = [
-    inputs.git-hooks.flakeModule
-  ];
-
+{
   perSystem = {
     pkgs,
     inputs',
