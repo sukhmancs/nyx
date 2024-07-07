@@ -1,6 +1,7 @@
 {
   osConfig,
   lib,
+  inputs',
   pkgs,
   ...
 }: let
