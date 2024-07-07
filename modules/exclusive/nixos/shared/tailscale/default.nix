@@ -6,7 +6,9 @@
   lib,
   ...
 }: let
-  inherit (lib.modules) mkIf mkDefault concatLists concatStringsSep optionals;
+  inherit (lib.lists) optionals concatLists;
+  inherit (builtins) concatStringsSep;
+  inherit (lib.modules) mkIf mkDefault;
   inherit (config.services) tailscale;
 
   endpoint = "https://hs.xilain.dev";
