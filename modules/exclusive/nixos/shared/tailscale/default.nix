@@ -13,7 +13,7 @@
 
   endpoint = "https://hs.xilain.dev";
   operator = config.modules.system.mainUser;
-  tags = "tag:client"; # default tag for all clients
+  tags = ["tag:client"]; # default tag for all clients
   flags = concatLists [
     ["--ssh"]
     ["--authkeyfile:${config.age.secrets.tailscale-client.path}"]
