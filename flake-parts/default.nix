@@ -1,4 +1,4 @@
-{
+{inputs, ...}: {
   imports = [
     inputs.flake-parts.flakeModules.easyOverlay
     inputs.git-hooks.flakeModule
